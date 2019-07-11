@@ -4,6 +4,7 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import YachtApp from '@/views/YachtApp.vue'
 import Admin from '@/views/Admin.vue'
+import EditAdmin from './views/Admin/EditAdmin.vue'
 
 Vue.use(Router)
 
@@ -27,9 +28,14 @@ export default new Router({
       component: YachtApp
     },
     {
-      path: '/Admin',
+      path: '/admin',
       name: 'Admin',
       component: Admin
+    },
+    {
+      path: '/admin/edit/:id?',
+      name: EditAdmin,
+      component: EditAdmin
     }
   ]
 })

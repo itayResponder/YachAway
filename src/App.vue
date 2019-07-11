@@ -1,19 +1,23 @@
 <template>
 	<div id="app">
-
+		<my-header></my-header>
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
+import MyHeader from './components/MyHeader.vue'
 export default {
 	name: "App",
 	data() {
 		return {};
 	},
-	components: {},
+	components: {
+		MyHeader
+	},
 	created() {
 		console.log("App.vue created!");
+		this.$store.dispatch('loadYachts');
 	}
 };
 </script>

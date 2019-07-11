@@ -51,9 +51,10 @@ export default {
             }
         },
 
-        async removeYacht(context, { yachtId }) {
+        async removeYacht({commit}, { yachtId }) {
             try {
                 await yachtService.remove(yachtId)
+                commit({type: 'removeYacht', yachtId})
             } catch {
                 console.log('Could not delete yacht')
             }
