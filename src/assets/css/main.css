@@ -1,0 +1,6 @@
+@import url('./HomePage.css');
+@import url('./MyHeader.css');
+body {
+    padding: 0;
+    margin: 0;
+}
