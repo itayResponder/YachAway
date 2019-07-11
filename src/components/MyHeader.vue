@@ -1,43 +1,40 @@
 <template>
-
-	<nav style="position: absolute; z-index: 5; overflow: hidden; " class="level is-padded">
-		<div class="level-left">
-			<div class="level-item">
-
-				<div>
-					<router-link class="button has-text-black is-medium is-transparent" exact to="/">Home</router-link>
-				</div>
-
-				<div>
-					<router-link class="button has-text-black is-medium is-transparent" to="/yachtApp">Yacht App
+	<nav class="navbar">
+		<div class="container">
+			<div class="navbar-brand">
+				<a class="navbar-item">
+					<img src="https://bulma.io/images/bulma-type-white.png" alt="Logo">
+				</a>
+				<span class="navbar-burger burger" data-target="navbarMenuHeroB">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+			</div>
+			<div id="navbarMenuHeroB" class="navbar-menu">
+				<div class="navbar-end">
+					<a class="navbar-item is-active is-inverted">
+						Home
+					</a>
+					<router-link class="navbar-item" to="/yachts">
+						Yachts
 					</router-link>
-				</div>
-				<div>
-					<router-link class="button has-text-black is-medium is-transparent" to="/about">About
+					<router-link class="navbar-item" to="/About">
+						About / Help
 					</router-link>
-				</div>
 
-			</div>
-		</div>
+					<span class="navbar-item">
+						<router-link class="navbar-item" to="/About">
 
-		<div class="level-left">
-			<div class="level-item">
-			</div>
-		</div>
-		<div class="level-right">
-			<div class="level-item">
-				<div>
-					<a class="button has-text-black is-small is-transparent">
-						<span>Log in</span> </a>
-				</div>
+							<span class="icon">
+							</span>
+							<span>Login / SignUp</span>
 
-				<div>
-					<a class="button has-text-black is-small is-transparent">
-						<span> Sign up </span> </a>
+						</router-link>
+					</span>
 				</div>
 			</div>
 		</div>
-
 	</nav>
 </template>
 

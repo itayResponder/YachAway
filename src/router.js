@@ -7,23 +7,22 @@ import YachtApp from '@/views/YachtApp.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/About',
-      name: 'About',
-      component: About,
-    },
-    {
-      path: '/YachtApp',
-      name: 'YachtApp',
-      component: YachtApp
-    }
-  ]
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [{
+            path: '/',
+            name: 'Home',
+            component: Home
+        },
+        {
+            path: '/About',
+            name: 'About',
+            component: About,
+        },
+        {
+            path: '/yachts',
+            name: 'YachtApp',
+            component: YachtApp
+        }
+    ]
 })
