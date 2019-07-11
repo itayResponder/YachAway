@@ -10,6 +10,7 @@
 
 <script>
 // @ is an alias to /src
+
 import hero from "@/components/Hero";
 import featureArea from "@/components/YachtCiteis";
 import citeis from "@/components/FeatureArea";
