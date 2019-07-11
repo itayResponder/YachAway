@@ -16,6 +16,10 @@
 					<router-link class="button has-text-black is-medium is-transparent" to="/about">About
 					</router-link>
 				</div>
+				<div>
+					<router-link class="button has-text-black is-medium is-transparent" to="/admin">Admin
+					</router-link>
+				</div>
 
 			</div>
 		</div>

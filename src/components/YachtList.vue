@@ -10,12 +10,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
-        // v-for="yacht in yachts"
-        // :key="yacht._id"
-        // :yacht="yacht"
-        // @delete="emitDeleteyacht"
-        // @isDone="emitIsDone"
 import YachtPreview from "../components/YachtPreview.vue";
 
 export default {

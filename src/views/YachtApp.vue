@@ -3,17 +3,16 @@
 	<section>
 		<div class="add-filter">
 			<div class="add-yachts">
-
 			</div>
 			<!-- <YachtFilter @set-filter="setFilter"></YachtFilter> -->
 		</div>
-
-		<YachtList @emitRemoveYacht="removeYacht" :yachts="yachts"></YachtList>
+		<yacht-List @emitRemoveYacht="removeYacht" :yachts="yachts"></yacht-List>
 	</section>
 </template>
 
 <script>
 import YachtList from "@/components/YachtList.vue";
+import AdminYachtList from "@/components/UserAdmin/AdminYachtList.vue";
 // import YachtFilter from "@/components/YachtFilter.vue";
 
 export default {
@@ -54,7 +53,8 @@ export default {
 	//   }
 	// },
 	components: {
-		YachtList
+		YachtList,
+		AdminYachtList,
 		// YachtFilter
 	}
 };

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import YachtApp from '@/views/YachtApp.vue'
+import Admin from '@/views/Admin.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,11 @@ export default new Router({
       path: '/YachtApp',
       name: 'YachtApp',
       component: YachtApp
+    },
+    {
+      path: '/Admin',
+      name: 'Admin',
+      component: Admin
     }
   ]
 })
