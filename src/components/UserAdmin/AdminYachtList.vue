@@ -9,12 +9,13 @@
                         <th>Owner</th>
                         <th>Price Per Night</th>
                         <th>Max People On Board</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr @emitRemoveYacht="removeYacht" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht">
-                        <td><admin-yacht-preview></admin-yacht-preview></td>
-                    </tr>
+                    <admin-yacht-preview @emitRemoveYacht="removeYacht" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht">
+                        </admin-yacht-preview>
+                    
                 </tbody>
             </table>
 		</div>
