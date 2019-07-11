@@ -11,15 +11,15 @@
 					<span></span>
 				</span>
 			</div>
-			<div id="navbarMenuHeroB" class="navbar-menu">
-				<div class="navbar-end">
-					<a class="navbar-item is-active is-inverted">
+			<div id="navbarMenuHeroB" class="navbar-menu ">
+				<div class="navbar-end ">
+					<router-link class="navbar-item  has-text-white" :active-class="is-active" to="/home">
 						Home
-					</a>
-					<router-link class="navbar-item" to="/yachts">
+					</router-link>
+					<router-link class="navbar-item  has-text-white" to="/yachts">
 						Yachts
 					</router-link>
-					<router-link class="navbar-item" to="/About">
+					<router-link class="navbar-item has-text-white" to="/About">
 						About / Help
 					</router-link>
 
@@ -28,7 +28,7 @@
 
 							<span class="icon">
 							</span>
-							<span>Login / SignUp</span>
+							<span class="has-text-white">Login / SignUp</span>
 
 						</router-link>
 					</span>

@@ -13,10 +13,10 @@
 
 			<div class="hero-body">
 				<div class="container has-text-centered">
-					<p class="title">
+					<p class="title has-text-white">
 						Title
 					</p>
-					<p class="subtitle">
+					<p class="subtitle has-text-white">
 						Subtitle
 					</p>
 				</div>
