@@ -13,7 +13,7 @@
 			</div>
 			<div id="navbarMenuHeroB" class="navbar-menu ">
 				<div class="navbar-end ">
-					<router-link class="navbar-item  has-text-white" :active-class="is-active" to="/home">
+					<router-link class="navbar-item  has-text-white" active-class="is-active" to="/">
 						Home
 					</router-link>
 					<router-link class="navbar-item  has-text-white" to="/yachts">
