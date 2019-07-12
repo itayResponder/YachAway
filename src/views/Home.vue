@@ -12,7 +12,7 @@
 // @ is an alias to /src
 
 import hero from "@/components/Hero";
-import citeis from "@/components/YachtCiteis";
+import citeis from "@/components/Citeis";
 import featureArea from "@/components/FeatureArea";
 
 export default {

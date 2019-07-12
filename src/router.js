@@ -22,7 +22,7 @@ export default new Router({
             component: About,
         },
         {
-            path: '/YachtApp',
+            path: '/yachts',
             name: 'YachtApp',
             component: YachtApp
         },
