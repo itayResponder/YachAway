@@ -22,6 +22,11 @@
 					<router-link class="navbar-item has-text-white" to="/About">
 						About / Help
 					</router-link>
+				</div>
+				<div>
+					<router-link class="button has-text-black is-medium is-transparent" to="/admin">Admin
+					</router-link>
+				</div>
 
 					<span class="navbar-item">
 						<router-link class="navbar-item" to="/About">
@@ -34,7 +39,6 @@
 					</span>
 				</div>
 			</div>
-		</div>
 	</nav>
 </template>
 

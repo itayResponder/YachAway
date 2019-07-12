@@ -10,9 +10,9 @@ export default {
             state.yachts = context.yachts;
         },
 
-        updateYacht({ yachts }, context) {
-            const idx = yachts.findIndex(yacht => yacht._id === context.yacht._id);
-            yachts.splice(idx, 1, context.yacht);
+        updateYacht({ yachts }, {yacht}) {
+            const idx = yachts.findIndex(currYacht => currYacht._id === yacht._id);
+            yachts.splice(idx, 1, yacht);
         },
 
         addNewYacht({ yachts }, { yacht }) {
@@ -32,10 +32,10 @@ export default {
     },
 
     actions: {
-        async loadYachts(context) {
+        async loadYachts({commit}) {
             try {
                 var yachts = await yachtService.query()
-                context.commit({ type: "setYachts", yachts })
+                commit({ type: "setYachts", yachts })
                 return yachts;
             } catch {
                 console.log("Could not find yachts");
@@ -51,25 +51,26 @@ export default {
             }
         },
 
-        async removeYacht(context, { yachtId }) {
+        async removeYacht({commit}, { yachtId }) {
             try {
                 await yachtService.remove(yachtId)
+                commit({type: 'removeYacht', yachtId})
             } catch {
                 console.log('Could not delete yacht')
             }
         },
 
-        async saveYacht(context, { yacht }) {
+        async saveYacht({commit}, { yacht }) {
             try {
-                var updatedYacht;
+                var saveYacht;
                 if (yacht._id) {
-                    yacht = await yachtService.save(yacht)
-                    context.commit({ type: 'updateYacht', yacht })
+                    saveYacht = await yachtService.save(yacht)
+                    commit({ type: 'updateYacht', yacht })
                 } else {
-                    yacht = await yachtService.save(yacht)
-                    context.commit({ type: 'addNewYacht', yacht })
+                    saveYacht = await yachtService.save(yacht)
+                    commit({ type: 'addNewYacht', yacht })
                 }
-                return updatedYacht;
+                return saveYacht;
             } catch {
                 console.log('Could not save yacht')
             }

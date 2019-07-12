@@ -13,6 +13,7 @@
     "buefy": "^0.7.10",
     "core-js": "^2.6.5",
     "register-service-worker": "^1.6.2",
+    "sweetalert2": "^8.13.4",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
