@@ -9,33 +9,32 @@ import AdminEdit from './views/Admin/AdminEdit.vue'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/About',
-      name: 'About',
-      component: About,
-    },
-    {
-      path: '/YachtApp',
-      name: 'YachtApp',
-      component: YachtApp
-    },
-    {
-      path: '/admin',
-      name: 'Admin',
-      component: Admin
-    },
-    {
-      path: '/admin/edit/:id?',
-      name: AdminEdit,
-      component: AdminEdit
-    }
-  ]
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes: [{
+            path: '/',
+            name: 'Home',
+            component: Home
+        },
+        {
+            path: '/About',
+            name: 'About',
+            component: About,
+        },
+        {
+            path: '/YachtApp',
+            name: 'YachtApp',
+            component: YachtApp
+        },
+        {
+            path: '/admin',
+            name: 'Admin',
+            component: Admin
+        },
+        {
+            path: '/admin/edit/:id?',
+            name: AdminEdit,
+            component: AdminEdit
+        }
+    ]
 })
