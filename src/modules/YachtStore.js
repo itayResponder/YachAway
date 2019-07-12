@@ -42,17 +42,19 @@ export default {
             }
         },
 
-        async getYachtById(context, { yachtId }) {
+        async getYachtById(context,  {yachtId} ) {
+            console.log('YachtStore getYachtById yachtId:', yachtId)
             try {
                 var yacht = await yachtService.getById(yachtId)
                 return yacht;
             } catch {
-                console.log('Could not find yacht')
+                console.log('YachtStore getById Could not find yacht')
             }
         },
 
         async removeYacht({commit}, { yachtId }) {
             try {
+                await console.log('store item deleted')
                 await yachtService.remove(yachtId)
                 commit({type: 'removeYacht', yachtId})
             } catch {
@@ -63,6 +65,7 @@ export default {
         async saveYacht({commit}, { yacht }) {
             try {
                 var saveYacht;
+                console.log('yachtStore saveYacht exist: saveYacht',yacht)
                 if (yacht._id) {
                     saveYacht = await yachtService.save(yacht)
                     commit({ type: 'updateYacht', yacht })

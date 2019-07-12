@@ -1,17 +1,18 @@
 <template>
   <section>
-    <form @submit.prevent="saveYacht">
-        <b-input v-model="this.yacht.name" placeholder="Name" rounded></b-input>
-        <b-input v-model="this.yacht.pricePerNight" placeholder="pricePerNight" rounded></b-input>
-        <b-input v-model="this.yacht.description" placeholder="description" rounded></b-input>
-        <b-input v-model="this.yacht.type" placeholder="type" rounded></b-input>
-        <b-input v-model="this.yacht.maxPeopleOnBoard" placeholder="maxPeopleOnBoard" rounded></b-input>
-      <b-button type="is-info">Save</b-button>
+    <form>
+        <b-input v-model="yacht.name" placeholder="Name" rounded></b-input>
+        <b-input v-model="yacht.pricePerNight" placeholder="pricePerNight" rounded></b-input>
+        <b-input v-model="yacht.description" placeholder="description" rounded></b-input>
+        <b-input v-model="yacht.type" placeholder="type" rounded></b-input>
+        <b-input v-model="yacht.maxPeopleOnBoard" placeholder="maxPeopleOnBoard" rounded></b-input>
+      <b-button @click="saveYacht" type="is-info">Save</b-button>
     </form>
   </section>
 </template>
 
 <script>
+import Swal from "sweetalert2";
 export default {
   data() {
     return {
@@ -29,23 +30,21 @@ export default {
     this.id = this.$route.params.id;
     if (this.id) {
       try {
-        var yacht = this.$store.dispacth({
-          type: "getYachtById",
-          yachId: this.id
-        });
+        var yacht = await this.$store.dispatch({type: "getYachtById", yachtId: this.id})
         this.yacht._id = yacht._id;
         this.yacht = JSON.parse(JSON.stringify(yacht));
       } catch {
-        console.log("Could not find yacht");
+        console.log("AdminEdit Could not find yacht");
       }
     }
   },
   methods: {
     async saveYacht() {
       let message = "Yacht has Updated";
+      console.log('save clicked!')
       try {
         if (this.yacht._id) {
-          this.$store.dispacth({ type: "saveYacht", yacht: this.yacht });
+          this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
         } else {
           this.yacht.createdAt = Date.now();
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
