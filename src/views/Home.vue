@@ -2,8 +2,8 @@
 	<div class="layout">
 
 		<hero />
-		<featureArea />
 		<citeis />
+		<featureArea />
 	</div>
 
 </template>
@@ -12,8 +12,8 @@
 // @ is an alias to /src
 
 import hero from "@/components/Hero";
-import featureArea from "@/components/YachtCiteis";
-import citeis from "@/components/FeatureArea";
+import citeis from "@/components/YachtCiteis";
+import featureArea from "@/components/FeatureArea";
 
 export default {
 	name: "home",

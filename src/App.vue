@@ -1,12 +1,13 @@
 <template>
 	<div id="app">
-		<my-header></my-header>
+
+		<my-header v-if="!headerType"></my-header>
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
-import MyHeader from './components/MyHeader.vue'
+import MyHeader from "./components/MyHeader.vue";
 export default {
 	name: "App",
 	data() {
@@ -15,9 +16,16 @@ export default {
 	components: {
 		MyHeader
 	},
+
+	computed: {
+		headerType() {
+			return this.$route.name === "Home";
+		}
+	},
 	created() {
 		console.log("App.vue created!");
-		this.$store.dispatch('loadYachts');
+
+		this.$store.dispatch("loadYachts");
 	}
 };
 </script>
