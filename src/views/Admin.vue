@@ -4,7 +4,7 @@
 		<div class="add-filter">
 			<div class="add-yachts">
 				<!-- <admin-yacht-list @emitRemoveYacht="removeYacht" :yachts="yachts"></admin-yacht-list> -->
-				<AdminYachtTable :yachts="yachts" />
+				<AdminYachtTable :yachts="yachts" @removeYacht="removeYacht" />
 			</div>
 		</div>
 	</section>
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import AdminYachtList from "@/components/UserAdmin/AdminYachtList.vue";
+// import AdminYachtList from "@/components/UserAdmin/AdminYachtList.vue";
 import AdminYachtTable from "@/components/UserAdmin/AdminYachtTable";
 
 export default {
@@ -34,7 +34,7 @@ export default {
 		}
 	},
 	components: {
-		AdminYachtList,
+		// AdminYachtList,
 		AdminYachtTable
 	}
 };
