@@ -14,34 +14,11 @@ export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
 
-    routes: [{
-            path: '/',
-            name: 'Home',
-            component: Home
-        },
-        {
-            path: '/About',
-            name: 'About',
-            component: About,
-        },
-        {
-            path: '/yachts',
-            name: 'YachtApp',
-            component: YachtApp
-        },
-        {
-            path: '/admin',
-            name: 'Admin',
-            component: Admin
-        },
-        {
-            path: '/admin/edit/:id?',
-            name: 'AdminEdit',
-            component: AdminEdit
-        },
-        {
-            path: '/admin/:id?',
-            name: 'AdminDetails',
-            component: AdminDetails
-        }
+    routes: [{ path: '/', name: 'Home', component: Home },
+    { path: '/About', name: 'About', component: About },
+    { path: '/yachts', name: 'YachtApp', component: YachtApp },
+    { path: '/admin', name: 'Admin', component: Admin },
+    { path: '/admin/edit/:id?', name: 'AdminEdit', component: AdminEdit },
+    { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails }
+    ]
 })
