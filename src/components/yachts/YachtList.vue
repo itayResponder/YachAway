@@ -19,6 +19,7 @@ export default {
 	},
 	created() {
 		console.log("YachtList yachts:", this.yachts);
+		console.log('test')
 	},
 
 	computed: {},
