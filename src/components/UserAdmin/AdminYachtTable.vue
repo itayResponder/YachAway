@@ -144,8 +144,19 @@ export default {
 				},
 				{
 					field: "maxPeopleOnBoard",
-					label: "Max People On Board",
+					label: "Max People",
+					centered: true,
 					numeric: true,
+					sortable: true
+				},
+				{
+					field: "location.country",
+					label: "Location",
+					sortable: true
+				},
+				{
+					field: "location.city",
+					label: "City",
 					sortable: true
 				}
 			]
