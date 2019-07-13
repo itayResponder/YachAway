@@ -65,6 +65,7 @@ export default {
                 var saveYacht;
                 if (yacht._id) {
                     saveYacht = await yachtService.save(yacht)
+                    console.log('YachtStore saveYacht:',saveYacht)
                     commit({ type: 'updateYacht', yacht })
                 } else {
                     saveYacht = await yachtService.save(yacht)
