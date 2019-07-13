@@ -10,7 +10,7 @@ export default {
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 
 async function login(user) {
-    const validUser = await httpService.post(_getUrl(), user)
+    const validUser = await httpService.post(_getUrl('login'), user)
      return _handleSuccessfulRegister(validUser)
  }
  

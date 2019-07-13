@@ -8,6 +8,7 @@ export default {
     mutations: {
         setYachts(state, context) {
             state.yachts = context.yachts;
+            console.log('YachtStore setYachts:',state.yachts)
         },
 
         updateYacht({ yachts }, {yacht}) {

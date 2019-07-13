@@ -6,8 +6,8 @@ var axios = Axios.create({
 });
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/'
-    : '//localhost:3000/'
+    ? '/api/'
+    : '//localhost:3000/api/'
 
 export default {
     get(endpoint, data) {
@@ -31,6 +31,7 @@ async function ajax(endpoint, method = 'get', data = null) {
             method,
             data
         })
+        console.log('front http.service res.data:', res.data)
         return res.data;
     } catch (err) {
         if (err.response.status === 401) {
