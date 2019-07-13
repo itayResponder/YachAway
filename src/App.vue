@@ -33,6 +33,7 @@ export default {
 <style lang="scss">
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
+// @import '../assets/css/main.css';
 
 // Set your colors
 $primary: #8c67ef;

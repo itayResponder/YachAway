@@ -1,0 +1,44 @@
+import httpService from './http.service';
+
+export default {
+    login,
+    getLoggedInUser,
+    logOut,
+    signUp
+}
+
+var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
+
+async function login(user) {
+    const validUser = await httpService.post(_getUrl(), user)
+     return _handleSuccessfulRegister(validUser)
+ }
+ 
+ async function signUp(user) {
+     const validUser = await httpService.post(_getUrl('signup'), user)
+     return _handleSuccessfulRegister(validUser);
+ }
+ 
+ async function logOut() {
+     await httpService.post(_getUrl('logout'))
+     try {
+         sessionStorage.clear()
+         loggedInUser = null
+     } catch (err) {
+         throw err;
+     }
+ }
+ 
+ function getLoggedInUser() {
+     return loggedInUser;
+ }
+ 
+ function _getUrl(userId = '') {
+     return `user/${userId}`
+ }
+ 
+ function _handleSuccessfulRegister(user) {
+     loggedInUser = user
+     sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+     return loggedInUser;
+ }
