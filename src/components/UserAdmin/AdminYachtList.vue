@@ -1,8 +1,9 @@
 <template>
 	<section v-if="yachts">
 		<div class="admin-table">
+<button style="width:200px" @click="addYacht">Add Yacht</button>
 			<table border="2">
-				<thead>
+				<thead> 
 					<tr>
 						<th>Id</th>
 						<th>Name</th>
@@ -33,7 +34,7 @@ export default {
 		return {};
 	},
 	created() {
-		console.log("YachtList yachts:", this.yachts);
+		// console.log("YachtList yachts:", this.yachts);
 	},
 
 	methods: {
@@ -42,6 +43,9 @@ export default {
 		},
 		emitIsDone(yachtId) {
 			this.$emit("isDone", yachtId);
+		},
+		addYacht(){
+			this.$router.push(`/admin/edit`)
 		}
 	},
 	computed: {},

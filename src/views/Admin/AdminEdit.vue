@@ -6,6 +6,24 @@
         <b-input v-model="yacht.description" placeholder="description" rounded></b-input>
         <b-input v-model="yacht.type" placeholder="type" rounded></b-input>
         <b-input v-model="yacht.maxPeopleOnBoard" placeholder="maxPeopleOnBoard" rounded></b-input>
+        <b-input v-model="yacht.owner.userFirstName" placeholder="Owner's Name" rounded></b-input>
+        <b-input v-model="yacht.imgs.imgUrl" placeholder="insert img Url" rounded></b-input>
+        <label for="facilities">
+          <input
+          type="checkbox"
+          id="wifi"
+          value="facilities"
+          v-model="facilities">Wifi
+          </label>
+          <input
+          type="checkbox"
+          id="wifi"
+          value="facilities"
+          v-model="facilities">pool
+          </label>
+          <p>dkjdfkjdfkj</p>
+          <p>{{facilities}}</p>
+          <!-- <li v-for="item in facilities">{{item}}</li> -->
       <b-button @click="saveYacht" type="is-info">Save</b-button>
     </form>
   </section>
@@ -22,7 +40,8 @@ export default {
         pricePerNight: 0,
         description: "",
         type: "",
-        maxPeopleOnBoard: 0
+        maxPeopleOnBoard: 0,
+        facilities: []
       }
     };
   },
