@@ -6,8 +6,8 @@ var axios = Axios.create({
 });
 
 const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
-    : '//localhost:3000/api/'
+    ? '/'
+    : '//localhost:3000/'
 
 export default {
     get(endpoint, data) {
@@ -17,6 +17,7 @@ export default {
         return ajax(endpoint, 'POST', data);
     },
     put(endpoint, data) {
+        console.log('front http.service data:', data, 'endpoint:', endpoint)
         return ajax(endpoint, 'PUT', data);
     },
     delete(endpoint, data) {

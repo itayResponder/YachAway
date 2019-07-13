@@ -22,7 +22,6 @@ function getById(yachtId) {
 
 function save(yacht) {
     if (yacht._id) {
-        console.log('yacht.service yachtId',yacht._id)
         return httpService.put(_getUrl(yacht._id), yacht);
     } else {
         return httpService.post(_getUrl(), yacht);

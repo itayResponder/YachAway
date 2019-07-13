@@ -66,10 +66,10 @@ export default {
                 if (yacht._id) {
                     saveYacht = await yachtService.save(yacht)
                     console.log('YachtStore saveYacht:',saveYacht)
-                    commit({ type: 'updateYacht', yacht })
+                    commit({ type: 'updateYacht', saveYacht })
                 } else {
                     saveYacht = await yachtService.save(yacht)
-                    commit({ type: 'addNewYacht', yacht })
+                    commit({ type: 'addNewYacht', saveYacht })
                 }
                 return saveYacht;
             } catch {
