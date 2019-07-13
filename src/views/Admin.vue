@@ -3,8 +3,8 @@
 	<section v-if="yachts">
 		<div class="add-filter">
 			<div class="add-yachts">
-				<admin-yacht-list @emitRemoveYacht="removeYacht" :yachts="yachts"></admin-yacht-list>
-				<!-- <AdminYachtTable :yachts="yachts" /> -->
+				<!-- <admin-yacht-list @emitRemoveYacht="removeYacht" :yachts="yachts"></admin-yacht-list> -->
+				<AdminYachtTable :yachts="yachts" />
 			</div>
 		</div>
 	</section>
@@ -13,7 +13,7 @@
 
 <script>
 import AdminYachtList from "@/components/UserAdmin/AdminYachtList.vue";
-// import AdminYachtTable from "@/components/UserAdmin/AdminYachtTable";
+import AdminYachtTable from "@/components/UserAdmin/AdminYachtTable";
 
 export default {
 	name: "YachtApp",
@@ -34,8 +34,8 @@ export default {
 		}
 	},
 	components: {
-		AdminYachtList
-		// AdminYachtTable
+		AdminYachtList,
+		AdminYachtTable
 	}
 };
 </script>

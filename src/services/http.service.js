@@ -5,9 +5,9 @@ var axios = Axios.create({
     withCredentials: true
 });
 
-const BASE_URL = process.env.NODE_ENV === 'production'
-    ? '/api/'
-    : '//localhost:3000/api/'
+const BASE_URL = process.env.NODE_ENV === 'production' ?
+    '/api/' :
+    '//localhost:3000/'
 
 export default {
     get(endpoint, data) {
