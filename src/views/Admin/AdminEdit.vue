@@ -30,7 +30,6 @@ export default {
     this.id = this.$route.params.id;
     if (this.id) {
       try {
-        console.log('TEST')
         var yacht = await this.$store.dispatch({type: "getYachtById", yachtId: this.id})
         this.yacht._id = yacht._id;
         this.yacht = JSON.parse(JSON.stringify(yacht));
