@@ -43,12 +43,8 @@ export default {
         this.$router.push(`/admin/edit/${yachtId}`);
     },
     detailsYacht(yachtId) {
-      console.log('in the details',yachtId)
         this.$router.push(`/admin/${yachtId}`);
     }
   },
-
-  computed: {},
-  components: {}
 };
 </script>

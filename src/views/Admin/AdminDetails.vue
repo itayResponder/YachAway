@@ -1,8 +1,6 @@
 <template>
   <section>
-    <button style="width:200px" @click="backToAdminPage">Back</button>
     <br />
-    <img :src="yacht.imgs.imgUrl" />
     <p>
       <b>Name</b>
       {{yacht.name}}
@@ -37,6 +35,7 @@
         <li v-for="facility in yacht.facilities" :key="facility.id">{{facility}}</li>
       </ul>
     </div>
+    <b-button @click="backToAdminPage" type="is-info">Back</b-button>
   </section>
 </template>
 
@@ -70,10 +69,7 @@ export default {
     this.id = this.$route.params.id;
     if (this.id) {
       try {
-        var yacht = await this.$store.dispatch({
-          type: "getYachtById",
-          yachtId: this.id
-        });
+        var yacht = await this.$store.dispatch({ type: "getYachtById", yachtId: this.id})
         this.yacht._id = yacht._id;
         this.yacht = JSON.parse(JSON.stringify(yacht));
       } catch {
@@ -81,10 +77,10 @@ export default {
       }
     }
   },
-
+  
   methods: {
     backToAdminPage() {
-      this.$router.push(`/admin`);
+      this.$router.push('/admin')
     }
   }
 };
