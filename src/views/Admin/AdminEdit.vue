@@ -55,6 +55,7 @@ export default {
         } else {
           this.yacht.createdAt = Date.now();
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
+          console.log('AdminEdit add new yacht:', this.yacht)
           this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
         }

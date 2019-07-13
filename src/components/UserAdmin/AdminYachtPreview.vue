@@ -2,7 +2,7 @@
   <tr v-if="yacht">
     <td>{{yacht._id}}</td>
     <td>{{yacht.name}}</td>
-    <td>{{yacht.owner.userFirstName}}</td>
+    <td>{{yacht.owner}}</td>
     <td>{{yacht.pricePerNight}}</td>
     <td>{{yacht.maxPeopleOnBoard}}</td>
     <td>

@@ -17,7 +17,6 @@ export default {
         return ajax(endpoint, 'POST', data);
     },
     put(endpoint, data) {
-        console.log('front http.service data:', data, 'endpoint:', endpoint)
         return ajax(endpoint, 'PUT', data);
     },
     delete(endpoint, data) {

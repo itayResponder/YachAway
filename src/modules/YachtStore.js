@@ -10,13 +10,13 @@ export default {
             state.yachts = context.yachts;
         },
 
-        updateYacht({ yachts }, {yacht}) {
-            const idx = yachts.findIndex(currYacht => currYacht._id === yacht._id);
-            yachts.splice(idx, 1, yacht);
+        updateYacht({ yachts }, {saveYacht}) {
+            const idx = yachts.findIndex(currYacht => currYacht._id === saveYacht._id);
+            yachts.splice(idx, 1, saveYacht);
         },
 
-        addNewYacht({ yachts }, { yacht }) {
-            yachts.unshift(yacht);
+        addNewYacht({ yachts }, { saveYacht }) {
+            yachts.unshift(saveYacht);
         },
 
         removeYacht({ yachts }, { yachtId }) {
@@ -65,15 +65,15 @@ export default {
                 var saveYacht;
                 if (yacht._id) {
                     saveYacht = await yachtService.save(yacht)
-                    console.log('YachtStore saveYacht:',saveYacht)
                     commit({ type: 'updateYacht', saveYacht })
                 } else {
+                    console.log('yachtStore add new yacht:', yacht)
                     saveYacht = await yachtService.save(yacht)
                     commit({ type: 'addNewYacht', saveYacht })
                 }
                 return saveYacht;
-            } catch {
-                console.log('Could not save yacht')
+            } catch (err) {
+                console.log('Could not save yacht err:', err)
             }
         }
     }
