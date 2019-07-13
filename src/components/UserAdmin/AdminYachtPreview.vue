@@ -7,6 +7,7 @@
     <td>{{yacht.maxPeopleOnBoard}}</td>
     <td>
       <a @click="editYacht(yacht._id)" class="card-footer-item">Edit</a>
+      <a @click="detailsYacht(yacht._id)" class="card-footer-item">Details</a>
       <a @click="removeYacht(yacht._id)" class="card-footer-item">Delete</a>
     </td>
   </tr>
@@ -40,6 +41,10 @@ export default {
     },
     editYacht(yachtId) {
         this.$router.push(`/admin/edit/${yachtId}`);
+    },
+    detailsYacht(yachtId) {
+      console.log('in the details',yachtId)
+        this.$router.push(`/admin/${yachtId}`);
     }
   },
 
