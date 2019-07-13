@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import YachtList from "@/components/Yachts/YachtList";
+import YachtList from "@/components/yachts/YachtList";
 import AdminYachtList from "@/components/UserAdmin/AdminYachtList";
 // import YachtFilter from "@/components/YachtFilter.vue";
 
