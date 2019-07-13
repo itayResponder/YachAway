@@ -17,17 +17,8 @@ export default {
 	data() {
 		return {};
 	},
-	created() {
-		console.log("YachtList yachts:", this.yachts);
-		console.log('testasdasdasd')
-	},
-
-	computed: {},
 	components: {
 		YachtPreview
 	}
 };
 </script>
-
-<style>
-</style>

@@ -31,7 +31,6 @@ export default {
   },
   methods: {
     async login() {
-        console.log("login clicked!");
         let cpyUser = JSON.parse(JSON.stringify(this.user));
         try {
           let validUser = this.$store.dispatch({

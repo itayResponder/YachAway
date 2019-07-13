@@ -8,7 +8,6 @@ export default {
     mutations: {
         setYachts(state, context) {
             state.yachts = context.yachts;
-            console.log('YachtStore setYachts:',state.yachts)
         },
 
         updateYacht({ yachts }, {yacht}) {
@@ -44,7 +43,6 @@ export default {
         },
 
         async getYachtById(context,  {yachtId} ) {
-            console.log('YachtStore getYachtById yachtId:', yachtId)
             try {
                 var yacht = await yachtService.getById(yachtId)
                 return yacht;
@@ -55,7 +53,6 @@ export default {
 
         async removeYacht({commit}, { yachtId }) {
             try {
-                await console.log('store item deleted')
                 await yachtService.remove(yachtId)
                 commit({type: 'removeYacht', yachtId})
             } catch {
@@ -66,7 +63,6 @@ export default {
         async saveYacht({commit}, { yacht }) {
             try {
                 var saveYacht;
-                console.log('yachtStore saveYacht exist: saveYacht',yacht)
                 if (yacht._id) {
                     saveYacht = await yachtService.save(yacht)
                     commit({ type: 'updateYacht', yacht })

@@ -1,6 +1,5 @@
 <template>
 	<section v-if="yacht">
-
 		<div class="tile is-parent">
 			<article class="tile is-child box">
 				<p class="title">Side column</p>
@@ -21,8 +20,6 @@
 				</div>
 			</article>
 		</div>
-
-		<!--  -->
 	</section>
 </template>
 
@@ -34,14 +31,6 @@ export default {
 	data() {
 		return {};
 	},
-	created() {},
-	computed: {
-		imgUrl() {
-			// if (imgs.imgUrl !== imgUrl) return imgs.imgUrl;
-			// else return "@/src/assets/img/singleYacht/3.jpg";
-		}
-	},
-	components: {}
 };
 </script>
 
@@ -54,4 +43,3 @@ export default {
 	box-shadow: none !important;
 }
 </style>
-

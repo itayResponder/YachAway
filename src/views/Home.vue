@@ -9,7 +9,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 
 import hero from "@/components/Hero";
 import citeis from "@/components/Citeis";

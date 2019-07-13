@@ -33,22 +33,6 @@ export default {
 			this.$store.dispatch({ type: "removeYacht", yachtId: yachtId });
 		}
 	},
-	// deleteYacht(yachtId) {
-	//   this.$store.dispatch({
-	//     type: "deleteYacht",
-	//     yachtId
-	//   });
-	// },
-	//   setFilter(filterBy) {
-	//     this.$store.commit("setFilter", filterBy);
-	//   }
-	// },
-
-	// computed: {
-	//   yachts() {
-	//     return this.$store.getters.yachtsToShow;
-	//   }
-	// },
 	components: {
 		AdminYachtList
 		// AdminYachtTable

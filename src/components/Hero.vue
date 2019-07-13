@@ -1,16 +1,12 @@
 <template>
-
 	<header class="hero is-fullheight is-large video" style="backgroung-image:url('https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg')">
 		<section class="hero-video">
 			<video poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg" id="bgvid" playsinline autoplay muted loop>
 				<source src="https://res.cloudinary.com/nivb/video/upload/v1562858364/hero/under-the-sea-wprentals_dn2vrm.mp4" type="video/mp4">
 			</video>
-
 			<div class="hero-head">
 				<my-header />
-
 			</div>
-
 			<div class="hero-body">
 				<div class="container has-text-centered">
 					<p class="title has-text-white">

@@ -8,23 +8,8 @@
         <b-input v-model="yacht.maxPeopleOnBoard" placeholder="maxPeopleOnBoard" rounded></b-input>
         <b-input v-model="yacht.owner.userFirstName" placeholder="Owner's Name" rounded></b-input>
         <b-input v-model="yacht.imgs.imgUrl" placeholder="insert img Url" rounded></b-input>
-        <label for="facilities">
-          <input
-          type="checkbox"
-          id="wifi"
-          value="facilities"
-          v-model="facilities">Wifi
-          </label>
-          <input
-          type="checkbox"
-          id="wifi"
-          value="facilities"
-          v-model="facilities">pool
-          </label>
-          <p>dkjdfkjdfkj</p>
-          <p>{{facilities}}</p>
-          <!-- <li v-for="item in facilities">{{item}}</li> -->
       <b-button @click="saveYacht" type="is-info">Save</b-button>
+      <b-button @click="back" type="is-info">Back</b-button>
     </form>
   </section>
 </template>
@@ -38,10 +23,11 @@ export default {
       yacht: {
         name: "",
         pricePerNight: 0,
+        owner: {userId: '', userFirstName: ''},
+        imgs: [''],
         description: "",
         type: "",
         maxPeopleOnBoard: 0,
-        facilities: []
       }
     };
   },
@@ -58,9 +44,11 @@ export default {
     }
   },
   methods: {
+    back() {
+      this.$router.push('/admin')
+    },
     async saveYacht() {
       let message = "Yacht has Updated";
-      console.log('save clicked!')
       try {
         if (this.yacht._id) {
           this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
@@ -77,6 +65,3 @@ export default {
   }
 };
 </script>
-
-
-

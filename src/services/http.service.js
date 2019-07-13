@@ -31,7 +31,6 @@ async function ajax(endpoint, method = 'get', data = null) {
             method,
             data
         })
-        console.log('front http.service res.data:', res.data)
         return res.data;
     } catch (err) {
         if (err.response.status === 401) {

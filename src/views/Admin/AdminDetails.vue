@@ -1,27 +1,42 @@
 <template>
   <section>
-<!-- <h2><b>Yacht details</b></h2>   -->
-<button style="width:200px" @click="backToAdminPage">Back</button><br>
-<img :src="yacht.imgs.imgUrl"/>
-<p><b>Name</b> {{yacht.name}}</p>
-<p><b>Per night$ </b>{{yacht.pricePerNight}}</p>
-<p><b>Description</b> {{yacht.description}}</p>
-<p><b>Type</b> {{yacht.type}}</p>
-<p><b>Max Pepole On Board </b> {{yacht.type}}</p>
-<p><b>Boat Owner </b> {{yacht.owner.userFirstName}}</p>
-<p><b>Location </b> {{yacht.location.city}},{{yacht.location.country}}</p>
-<div>
-<h1>facilities</h1>
-<ul>
-<li v-for= "facility in yacht.facilities" :key="facility.id">{{facility}}
-</li>
-
-</ul>
-</div>
-
-
-
-
+    <button style="width:200px" @click="backToAdminPage">Back</button>
+    <br />
+    <img :src="yacht.imgs.imgUrl" />
+    <p>
+      <b>Name</b>
+      {{yacht.name}}
+    </p>
+    <p>
+      <b>Per night$</b>
+      {{yacht.pricePerNight}}
+    </p>
+    <p>
+      <b>Description</b>
+      {{yacht.description}}
+    </p>
+    <p>
+      <b>Type</b>
+      {{yacht.type}}
+    </p>
+    <p>
+      <b>Max Pepole On Board</b>
+      {{yacht.type}}
+    </p>
+    <p>
+      <b>Boat Owner</b>
+      {{yacht.owner.userFirstName}}
+    </p>
+    <p>
+      <b>Location</b>
+      {{yacht.location.city}},{{yacht.location.country}}
+    </p>
+    <div>
+      <h1>facilities</h1>
+      <ul>
+        <li v-for="facility in yacht.facilities" :key="facility.id">{{facility}}</li>
+      </ul>
+    </div>
   </section>
 </template>
 
@@ -33,29 +48,32 @@ export default {
       id: "",
       yacht: {
         name: "",
-        pricePerNight: '',
+        pricePerNight: "",
         description: "",
         type: "",
         maxPeopleOnBoard: 0,
-        facilities:'',
-        owner:{
-          userFirstName:'',
+        facilities: "",
+        owner: {
+          userFirstName: ""
         },
-        location:{
-          country:'',
-          city:''
+        location: {
+          country: "",
+          city: ""
         },
-        imgs:{
-          imgUrl:''
+        imgs: {
+          imgUrl: ""
         }
       }
     };
   },
- async created() {
+  async created() {
     this.id = this.$route.params.id;
     if (this.id) {
       try {
-        var yacht = await this.$store.dispatch({type: "getYachtById", yachtId: this.id})
+        var yacht = await this.$store.dispatch({
+          type: "getYachtById",
+          yachtId: this.id
+        });
         this.yacht._id = yacht._id;
         this.yacht = JSON.parse(JSON.stringify(yacht));
       } catch {
@@ -63,15 +81,11 @@ export default {
       }
     }
   },
-  
+
   methods: {
-    backToAdminPage(){
-   
-      this.$router.push(`/admin`)
+    backToAdminPage() {
+      this.$router.push(`/admin`);
     }
   }
 };
 </script>
-
-
-
