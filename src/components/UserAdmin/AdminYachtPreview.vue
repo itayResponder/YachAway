@@ -6,9 +6,9 @@
     <td>{{yacht.pricePerNight}}</td>
     <td>{{yacht.maxPeopleOnBoard}}</td>
     <td>
-      <a @click="editYacht(yacht._id)" class="card-footer-item">Edit</a>
-      <a @click="detailsYacht(yacht._id)" class="card-footer-item">Details</a>
-      <a @click="removeYacht(yacht._id)" class="card-footer-item">Delete</a>
+      <b-button type="is-success" @click="editYacht(yacht._id)" class="card-footer-item">Edit</b-button>
+      <b-button type="is-info" @click="detailsYacht(yacht._id)" class="card-footer-item">Details</b-button>
+      <b-button type="is-danger" icon-left="delete" @click="removeYacht(yacht._id)" class="card-footer-item">Delete</b-button>
     </td>
   </tr>
 </template>
