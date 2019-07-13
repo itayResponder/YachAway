@@ -1,7 +1,11 @@
 @import url('./HomePage.css');
 @import url('./MyHeader.css');
 @import url('./Admin.css');
+@import url('./LoginPage.css');
+@import '~vuetify/src/stylus/main';
+
 body {
+    background-color: blue;
     padding: 0;
     margin: 0;
 }

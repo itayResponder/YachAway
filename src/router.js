@@ -6,12 +6,14 @@ import YachtApp from '@/views/YachtApp.vue'
 import Admin from '@/views/Admin.vue'
 import AdminDetails from '@/views/Admin/AdminDetails.vue'
 import AdminEdit from './views/Admin/AdminEdit.vue'
+import Login from './views/Login.vue'
 
 Vue.use(Router)
 
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
+
     routes: [{
             path: '/',
             name: 'Home',
@@ -42,5 +44,4 @@ export default new Router({
             name: 'AdminDetails',
             component: AdminDetails
         }
-    ]
 })

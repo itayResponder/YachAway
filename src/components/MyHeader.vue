@@ -27,7 +27,7 @@
 					<router-link class="navbar-item  has-text-black is-medium" to="/admin">Admin
 					</router-link>
 
-					<router-link class="navbar-item has-text-white" to="/About">
+					<router-link class="navbar-item has-text-white" to="/login">
 						<span class="icon"> </span>
 						Login / SignUp
 					</router-link>
