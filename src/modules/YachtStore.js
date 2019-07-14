@@ -53,10 +53,12 @@ export default {
 
         async removeYacht({commit}, { yachtId }) {
             try {
-                await yachtService.remove(yachtId)
+                const yachtRemoved = await yachtService.remove(yachtId)
                 commit({type: 'removeYacht', yachtId})
+                return yachtRemoved
             } catch {
                 console.log('Could not delete yacht')
+                // throw Error('')
             }
         },
 
