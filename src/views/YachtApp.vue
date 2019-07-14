@@ -5,7 +5,7 @@
 			</div>
 		 </div> -->
 	<section>
-		<h1 class="is-size-1"> Here Goes City Name </h1>
+		<h1 class="is-size-1"> {{cityName}} </h1>
 
 		<b-button type="button field  is-white" @click="isGrid=!isGrid">
 			<img type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
@@ -35,13 +35,16 @@ export default {
 	name: "YachtApp",
 	data() {
 		return {
-			isGrid: true,
+			isGrid: false,
 			newYacht: ""
 		};
 	},
 	computed: {
 		yachts() {
 			return this.$store.getters.yachtsToShow;
+		},
+		cityName() {
+			return this.$route.name.city || "Unknowen City";
 		}
 	},
 	components: {
