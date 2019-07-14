@@ -45,13 +45,18 @@
 					<img src="@/assets/icons/delete-forever-outline.svg" alt="delete" />
 				</b-button>
 			</div>
+			<div class="control">
+				<b-button type="button field is-white" @click="addYacht()">
+					<img src="@/assets/icons/plus-circle-outline.svg" alt="add" />
+				</b-button>
+			</div>
 			<!-- end EDIT / DELETE / DETAILS -->
 
 		</b-field>
 
 		<!-- THE SORTING HERE ARE NOT BY THE SERVER-->
 		<!-- TABLE -->
-		<b-table :data="yachts" :columns="columns" :paginated="isPaginated" :per-page="perPage" :current-page.sync="currentPage" :default-sort-direction="defaultSortDirection" sortable="true" default-sort="owner" :hoverable="true" :selected.sync="selected" :loading="isLoading" :mobile-cards="true" :bordered="isBordered">
+		<b-table	 :data="yachts" :columns="columns" :paginated="isPaginated" :per-page="perPage" :current-page.sync="currentPage" :default-sort-direction="defaultSortDirection" sortable="true" default-sort="owner" :hoverable="true" :selected.sync="selected" :loading="isLoading" :mobile-cards="true" :bordered="isBordered">
 
 			<!-- HEADER -->
 			<template slot-scope="props" slot="header">
@@ -108,6 +113,9 @@ export default {
 		detailsYacht() {
 			if (!this.selected) return;
 			this.$router.push(`/admin/${this.selected._id}`);
+		},
+		addYacht() {
+			this.$router.push(`/admin/edit`);
 		}
 	},
 
@@ -125,7 +133,7 @@ export default {
 					field: "_id",
 					label: "Id",
 					width: "40",
-					numeric: true,
+					numeric: false,
 					sortable: true
 				},
 				{ field: "name", label: "Yacht Name", centered: true, sortable: true },

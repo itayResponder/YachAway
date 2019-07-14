@@ -7,6 +7,8 @@
         <b-input v-model="yacht.type" placeholder="type" rounded></b-input>
         <b-input v-model="yacht.maxPeopleOnBoard" placeholder="maxPeopleOnBoard" rounded></b-input>
         <b-input v-model="yacht.owner.userFirstName" placeholder="Owner's Name" rounded></b-input>
+        <b-input v-model="yacht.location.country" placeholder="Country" rounded></b-input>
+        <b-input v-model="yacht.location.city" placeholder="City" rounded></b-input>
         <b-input v-model="yacht.imgs.imgUrl" placeholder="insert img Url" rounded></b-input>
       <b-button @click="saveYacht" type="is-info">Save</b-button>
       <b-button @click="back" type="is-info">Back</b-button>
@@ -26,6 +28,7 @@ export default {
         owner: {userId: '', userFirstName: ''},
         imgs: [''],
         description: "",
+        location: {country: '', city: '', lat: '', lng: ''},
         type: "",
         maxPeopleOnBoard: 0,
       }
@@ -36,10 +39,11 @@ export default {
     if (this.id) {
       try {
         var yacht = await this.$store.dispatch({type: "getYachtById", yachtId: this.id})
+        console.log('Admine Edit created yacht:', yacht)
         this.yacht._id = yacht._id;
         this.yacht = JSON.parse(JSON.stringify(yacht));
       } catch {
-        console.log("AdminEdit Could not find yacht");
+        console.log('Couldnt find yacht')
       }
     }
   },
@@ -51,17 +55,18 @@ export default {
       let message = "Yacht has Updated";
       try {
         if (this.yacht._id) {
-          this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
+          console.log('AdminEdit saveyacht this.yacht', this.yacht)
+          await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
         } else {
           this.yacht.createdAt = Date.now();
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
           console.log('AdminEdit add new yacht:', this.yacht)
-          this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
+          await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
         }
-      } catch {}
+        this.$router.push("/admin");
+      } catch {console.log('Could not save yacht')}
       Swal.fire("Allright", message, "success");
-      this.$router.push("/admin");
     }
   }
 };

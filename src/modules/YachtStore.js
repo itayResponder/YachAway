@@ -10,13 +10,13 @@ export default {
             state.yachts = context.yachts;
         },
 
-        updateYacht({ yachts }, {saveYacht}) {
-            const idx = yachts.findIndex(currYacht => currYacht._id === saveYacht._id);
-            yachts.splice(idx, 1, saveYacht);
+        updateYacht({ yachts }, {savedYacht}) {
+            const idx = yachts.findIndex(currYacht => currYacht._id === savedYacht._id);
+            yachts.splice(idx, 1, savedYacht);
         },
 
-        addNewYacht({ yachts }, { saveYacht }) {
-            yachts.unshift(saveYacht);
+        addNewYacht({ yachts }, { savedYacht }) {
+            yachts.unshift(savedYacht);
         },
 
         removeYacht({ yachts }, { yachtId }) {
@@ -62,16 +62,15 @@ export default {
 
         async saveYacht({commit}, { yacht }) {
             try {
-                var saveYacht;
+                var savedYacht;
                 if (yacht._id) {
-                    saveYacht = await yachtService.save(yacht)
-                    commit({ type: 'updateYacht', saveYacht })
+                    savedYacht = await yachtService.save(yacht)
+                    commit({ type: 'updateYacht', savedYacht })
                 } else {
-                    console.log('yachtStore add new yacht:', yacht)
-                    saveYacht = await yachtService.save(yacht)
-                    commit({ type: 'addNewYacht', saveYacht })
+                    savedYacht = await yachtService.save(yacht)
+                    commit({ type: 'addNewYacht', savedYacht })
                 }
-                return saveYacht;
+                return savedYacht;
             } catch (err) {
                 console.log('Could not save yacht err:', err)
             }

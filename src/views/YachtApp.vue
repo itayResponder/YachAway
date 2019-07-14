@@ -27,14 +27,14 @@ export default {
 	},
 	async created() {
 		try {
-			this.yachts = await this.$store.dispatch("loadYachts");
+			return await this.$store.dispatch("loadYachts");
 		} catch {
 			console.log("Could not found yachts");
 		}
 	},
 	computed: {
 		yachts() {
-			return this.$store.getters.yachtsToShow;
+			this.yachts = this.$store.getters.yachtsToShow;
 		}
 	},
 	components: {

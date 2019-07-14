@@ -24,6 +24,7 @@ function save(yacht) {
     if (yacht._id) {
         return httpService.put(_getUrl(yacht._id), yacht);
     } else {
+        console.log('front yacht service save new yacht:', yacht)
         return httpService.post(_getUrl(), yacht);
     }
 }

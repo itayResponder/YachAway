@@ -1,6 +1,6 @@
 <template>
 
-	<section v-if="yachts">
+	<section>
 		<div class="add-filter">
 			<div class="add-yachts">
 				<!-- <admin-yacht-list @emitRemoveYacht="removeYacht" :yachts="yachts"></admin-yacht-list> -->
@@ -25,7 +25,8 @@ export default {
 	created() {},
 	computed: {
 		yachts() {
-			return this.$store.getters.yachtsToShow;
+			console.log('front admin.vue yachts has updated')
+				return this.$store.getters.yachtsToShow;
 		}
 	},
 	methods: {
