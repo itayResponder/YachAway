@@ -24,7 +24,6 @@ export default {
 	},
 	created() {
 		console.log("App.vue created!");
-
 		this.$store.dispatch("loadYachts");
 	}
 };

@@ -25,16 +25,9 @@ export default {
 			newYacht: ""
 		};
 	},
-	async created() {
-		try {
-			return await this.$store.dispatch("loadYachts");
-		} catch {
-			console.log("Could not found yachts");
-		}
-	},
 	computed: {
 		yachts() {
-			this.yachts = this.$store.getters.yachtsToShow;
+			return this.$store.getters.yachtsToShow;
 		}
 	},
 	components: {
