@@ -56,7 +56,7 @@
 
 		<!-- THE SORTING HERE ARE NOT BY THE SERVER-->
 		<!-- TABLE -->
-		<b-table	 :data="yachts" :columns="columns" :paginated="isPaginated" :per-page="perPage" :current-page.sync="currentPage" :default-sort-direction="defaultSortDirection" sortable="true" default-sort="owner" :hoverable="true" :selected.sync="selected" :loading="isLoading" :mobile-cards="true" :bordered="isBordered">
+		<b-table  :data="yachts" :columns="columns" :paginated="isPaginated" :per-page="perPage" :current-page.sync="currentPage" :default-sort-direction="defaultSortDirection" sortable="true" default-sort="owner" :hoverable="true" :selected.sync="selected" :loading="isLoading" :mobile-cards="true" :bordered="isBordered">
 
 			<!-- HEADER -->
 			<template slot-scope="props" slot="header">

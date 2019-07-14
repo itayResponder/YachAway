@@ -19,7 +19,7 @@
     </p>
     <p>
       <b>Max Pepole On Board</b>
-      {{yacht.type}}
+      {{yacht.maxPeopleOnBoard}}
     </p>
     <p>
       <b>Boat Owner</b>
