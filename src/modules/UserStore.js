@@ -17,7 +17,6 @@ export default {
     },
     actions: {
         async checkValidUser(context, {user}) {
-            console.log('UserStore checkValidUser:', user)
             var checkedUser;
             try {
                 checkedUser =  await userService.login(user)
