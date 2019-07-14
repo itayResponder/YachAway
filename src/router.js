@@ -19,6 +19,7 @@ export default new Router({
     { path: '/yachts', name: 'YachtApp', component: YachtApp },
     { path: '/admin', name: 'Admin', component: Admin },
     { path: '/admin/edit/:id?', name: 'AdminEdit', component: AdminEdit },
-    { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails }
+    { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails },
+    { path: '/login', name: 'Login', component: Login }
     ]
 })

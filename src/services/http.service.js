@@ -34,7 +34,7 @@ async function ajax(endpoint, method = 'get', data = null) {
         return res.data;
     } catch (err) {
         if (err.response.status === 401) {
-            router.push('/');
+            router.push('/login');
             throw err
         }
     }
