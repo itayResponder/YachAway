@@ -1,26 +1,17 @@
 <template>
-	<section v-if="yacht">
-		<div class="tile is-parent">
-			<article class="tile is-child box">
-				<p class="title">Side column</p>
-				<p class="subtitle">With some content</p>
-				<div class="content">
-					<figure class="image is-4by3">
-						<img src="@/assets/img/singleYacht/3.jpg" />
-					</figure>
-				</div>
-			</article>
-		</div>
-		<div class="tile is-parent is-8">
-			<article class="tile is-child box">
+	<article class="media" v-if="yacht">
+		<figure class="image cover-empty ">
+			<img src="@/assets/img/yacht/3.jpg" style="width:240px" class="cover" />
+		</figure>
+		<div class="media-content">
+			<div class="content">
 				<p class="title">{{yacht.name}}</p>
 				<p class="subtitle">{{yacht.pricePerNight}}</p>
-				<div class="content">
-					<p>{{yacht.maxPeopleOnBoard}}</p>
-				</div>
-			</article>
+				<p>{{yacht.maxPeopleOnBoard}}</p>
+			</div>
 		</div>
-	</section>
+	</article>
+
 </template>
 
 <script>
@@ -30,7 +21,7 @@ export default {
 	props: ["yacht"],
 	data() {
 		return {};
-	},
+	}
 };
 </script>
 

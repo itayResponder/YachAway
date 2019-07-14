@@ -1,22 +1,25 @@
 
 <template>
-	<section>
-		<!-- <div class="add-filter">
+	<!-- <div class="add-filter">
 			<div class="add-yachts">
 			</div>
-			<YachtFilter @set-filter="setFilter"></YachtFilter> -->
-		<!-- </div> -->
+		 </div> -->
+	<section>
+		<h1 class="is-size-1"> City Name </h1>
 
-		<h1 class="is-size-1"> Some Headline </h1>
-
-		<yacht-List :yachts="yachts"></yacht-List>
+		<div class="container grid">
+			<YachtFilter></YachtFilter>
+			<div></div>
+			<yacht-List :yachts="yachts"></yacht-List>
+			<!-- @set-filter="setFilter"-->
+		</div>
 	</section>
 </template>
 
 <script>
 import YachtList from "@/components/Yachts/YachtList";
 import AdminYachtList from "@/components/UserAdmin/AdminYachtList";
-// import YachtFilter from "@/components/YachtFilter.vue";
+import YachtFilter from "@/components/Yachts/YachtFilter";
 
 export default {
 	name: "YachtApp",
@@ -32,8 +35,16 @@ export default {
 	},
 	components: {
 		YachtList,
-		AdminYachtList
-		// YachtFilter
+		AdminYachtList,
+		YachtFilter
 	}
 };
 </script>
+
+<style>
+.grid {
+	display: grid;
+	grid-template-columns: 1fr 1.5rem minmax(224px, 5fr);
+}
+</style>
+

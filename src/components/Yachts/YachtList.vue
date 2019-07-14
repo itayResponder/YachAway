@@ -1,7 +1,7 @@
 <template>
 	<section v-if="yachts">
 
-		<yacht-preview class="tile is-ancestor" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht">
+		<yacht-preview v-for="yacht in yachts" :key="yacht._id" :yacht="yacht">
 		</yacht-preview>
 
 	</section>
