@@ -1,7 +1,7 @@
 <template>
 	<article class="media" v-if="yacht">
-		<figure class="image cover-empty ">
-			<img src="@/assets/img/yacht/3.jpg" style="width:240px" class="cover" />
+		<figure class="media-left image">
+			<img :src=yacht.imgs[0] style="max-width:20vw; max-height:160px; object-fit: cover;" />
 		</figure>
 		<div class="media-content">
 			<div class="content">

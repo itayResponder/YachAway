@@ -5,9 +5,18 @@
 			</div>
 		 </div> -->
 	<section>
-		<h1 class="is-size-1"> City Name </h1>
+		<h1 class="is-size-1"> Here Goes City Name </h1>
 
-		<div class="container grid">
+		<b-button type="button field  is-white" @click="isGrid=!isGrid">
+			<img type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
+		</b-button>
+		<b-button type="button field is-white" @click="isGrid=!isGrid">
+			<img class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
+		</b-button>
+
+		<yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
+
+		<div class="container grid" v-show="!isGrid">
 			<YachtFilter></YachtFilter>
 			<div></div>
 			<yacht-List :yachts="yachts"></yacht-List>
@@ -18,6 +27,7 @@
 
 <script>
 import YachtList from "@/components/Yachts/YachtList";
+import YachtGrid from "@/components/Yachts/YachtGrid";
 import AdminYachtList from "@/components/UserAdmin/AdminYachtList";
 import YachtFilter from "@/components/Yachts/YachtFilter";
 
@@ -25,6 +35,7 @@ export default {
 	name: "YachtApp",
 	data() {
 		return {
+			isGrid: true,
 			newYacht: ""
 		};
 	},
@@ -35,6 +46,7 @@ export default {
 	},
 	components: {
 		YachtList,
+		YachtGrid,
 		AdminYachtList,
 		YachtFilter
 	}
