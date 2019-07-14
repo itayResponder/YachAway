@@ -3,7 +3,7 @@ import httpService from './http.service';
 export default {
     login,
     getLoggedInUser,
-    logOut,
+    logout,
     signUp
 }
 
@@ -19,7 +19,7 @@ async function login(user) {
      return _handleSuccessfulRegister(validUser);
  }
  
- async function logOut() {
+ async function logout() {
      await httpService.post(_getUrl('logout'))
      try {
          sessionStorage.clear()
