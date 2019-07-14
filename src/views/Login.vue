@@ -12,8 +12,8 @@
           password-reveal
         ></b-input>
       </b-field>
-      <button @click="login">Login</button>
-      <button @click="signup">Sign-Up</button>
+      <b-button @click="login" type="is-info">Login</b-button>
+      <b-button @click="signup" type="is-info">Sign-Up</b-button>
     </form>
   </section>
 </template>
@@ -33,10 +33,7 @@ export default {
     async login() {
         let cpyUser = JSON.parse(JSON.stringify(this.user));
         try {
-          let validUser = this.$store.dispatch({
-            type: "checkValidUser",
-            user: cpyUser
-          });
+          let validUser = await this.$store.dispatch({ type: "checkValidUser", user: cpyUser })
           this.$router.push("/yachts");
         } catch {
           console.log("not valid user");
