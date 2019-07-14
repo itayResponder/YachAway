@@ -10,24 +10,24 @@
 					<span></span>
 					<span></span>
 					<span></span>
-
 				</span>
+
 			</div>
 			<div id="navbarMenuHeroB" class="navbar-menu ">
 				<div class="navbar-end ">
-					<router-link class="navbar-item  has-text-white" active-class="is-active" to="/">
+					<router-link :class="[menuClass]" active-class="is-active" to="/">
 						Home
 					</router-link>
-					<router-link class="navbar-item  has-text-white" to="/yachts">
+					<router-link :class="[menuClass]" to="/yachts">
 						Yachts
 					</router-link>
-					<router-link class="navbar-item has-text-white" to="/About">
+					<router-link :class="[menuClass]" to="/About">
 						About / Help
 					</router-link>
-					<router-link class="navbar-item  has-text-black is-medium" to="/admin">Admin
+					<router-link :class="[menuClass]" to="/admin">Admin
 					</router-link>
 
-					<router-link class="navbar-item has-text-white" to="/login">
+					<router-link :class="[menuClass]" to="/login">
 						<span class="icon"> </span>
 						Login / SignUp
 					</router-link>
@@ -39,6 +39,12 @@
 
 <script>
 export default {
-	name: "MyHeader"
+	name: "MyHeader",
+	computed: {
+		menuClass() {
+			if (this.$route.name === "Home") return "navbar-item  has-text-white";
+			else return "navbar-item  has-text-black";
+		}
+	}
 };
 </script>

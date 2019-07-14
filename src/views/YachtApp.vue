@@ -34,7 +34,7 @@ export default {
 	},
 	computed: {
 		yachts() {
-			this.yachts = this.$store.getters.yachtsToShow;
+			return this.$store.getters.yachtsToShow;
 		}
 	},
 	components: {

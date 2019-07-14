@@ -8,8 +8,9 @@
 		<div>
 		</div>
 		<div style="overflow: hidden;">
-			<div class="columns transition is-mobile prevent-multiline-mobile">
-				<div v-for="index in 4" :key="index" class="column is-two-sevenths-mobile is-one-third-tablet is-one-quarter-desktop">
+			<div class="columns transition is-multiline">
+				<div v-for="index in 6" :key="index" class="column 
+				is-one-third-desktop is-one-third-tablet  ">
 					<OneCardItem />
 				</div>
 			</div>
