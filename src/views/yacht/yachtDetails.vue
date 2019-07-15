@@ -16,7 +16,7 @@
 		<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
 		<datePicker />
 		<showFreeDates />
-		<img src="@/assets/img/temp/details-calan.jpg" />
+		<!-- <img src="@/assets/img/temp/details-calan.jpg" /> -->
 		<img src="@/assets/img/temp/details-reviews.jpg" />
 	</div>
 
