@@ -12,7 +12,7 @@ import VRangeSelector from "vuelendar/components/vl-range-selector";
 export default {
 	data() {
 		return {
-			t: { to: "2019-07-21" }
+			//t: { to: "2019-07-21" }
 		};
 	},
 	components: {
