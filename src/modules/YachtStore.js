@@ -46,14 +46,15 @@ export default {
                     yacht.location.city.toLowerCase().includes(txt))
             }
             else if (facilities.length > 0) {
-                var newYachts = facilities.forEach(facility => {
+                var yachts = []
+                 yachts = facilities.forEach(facility => {
                     return yachts.filter(yacht => {
-                       return  yacht.facilities.includes(facility)
+                        if (yacht.facilities.includes(facility)) yachts.push(y acht)
                         console.log('yacht.facilities.includes(facility)', yacht.facilities.includes(facility))
                         console.log('facility is = ', facility)
                     })
                 })
-                console.log('newYachts are ', newYachts)
+                console.log('newYachts are ', yachts)
             }
             return yachts;
         }
