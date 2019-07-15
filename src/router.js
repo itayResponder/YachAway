@@ -24,6 +24,6 @@ export default new Router({
         { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails },
         { path: '/login', name: 'Login', component: Login },
         { path: '/yacht/details', name: 'YachtDetails', component: YachtDetails },
-        { path: '/owner/yachts' , name: OwnerYachts, component: OwnerYachts }
+        { path: '/owner/yachts', name: OwnerYachts, component: OwnerYachts }
     ]
 })
