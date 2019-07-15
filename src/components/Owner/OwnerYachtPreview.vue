@@ -13,8 +13,8 @@
         </figure>
       </div>
       <div class="media-content">
-        <p class="title is-4">John Smith</p>
-        <p class="subtitle is-6">@johnsmith</p>
+        <p class="title is-4">{{yacht.owner.userFirstName}}</p>
+        <p class="subtitle is-6">Email</p>
       </div>
     </div>
 

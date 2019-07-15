@@ -1,6 +1,5 @@
 <template>
   <section v-if="yachts">
-    <h1>OwnerYachts</h1>
     <owner-yacht-list :yachts="yachts"></owner-yacht-list>
   </section>
 </template>

@@ -1,6 +1,5 @@
 <template>
 	<section v-if="yachts">
-        <h1>OwnerYachtList</h1>
 		<owner-yacht-preview v-for="yacht in yachts" :key="yacht._id" :yacht="yacht">
 		</owner-yacht-preview>
 
