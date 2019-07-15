@@ -44,11 +44,15 @@ export default {
 	font-weight: 400 !important;
 }
 .vl-calendar-month__day:hover,
-.vl-calendar-month__day > .selected--first,
-.vl-calendar-month__day > .selected--last,
 .vl-flex .selected {
 	background: #4d9989 !important;
 	font-weight: 600 !important;
+}
+.vl-calendar-month__day.selected--first {
+	border-bottom-right-radius: 0 !important;
+}
+.vl-calendar-month__day.selected--last {
+	border-top-left-radius: 0 !important;
 }
 .enable-single-date {
 	background: #222b29 !important;
