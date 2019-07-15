@@ -47,6 +47,7 @@ export default {
           type: "checkValidUser",
           user: cpyUser
         });
+        
         this.$router.push("/yachts");
       } catch (err){
         console.log("not valid user error:", err);
