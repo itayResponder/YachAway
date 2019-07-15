@@ -6,7 +6,7 @@
 				<p class="subtitle">With some content</p>
 				<div class="content">
 					<figure class="image is-4by3">
-						<img src="@/assets/img/singleYacht/3.jpg" />
+						<img src="@/assets/img/yacht/3.jpg" />
 					</figure>
 				</div>
 			</article>
