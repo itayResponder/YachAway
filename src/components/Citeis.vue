@@ -9,7 +9,7 @@
 		</div>
 		<div style="overflow: hidden;">
 			<div class="columns transition is-multiline">
-				<div v-for="index in 7" :key="index" class="column 
+				<div v-for="index in 6" :key="index" class="column 
 				is-one-third-desktop is-one-third-tablet  ">
 					<OneCardItem />
 				</div>

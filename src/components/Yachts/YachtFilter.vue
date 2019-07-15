@@ -4,7 +4,9 @@
 		<p class="title">Filter Side column</p>
 		<p class="subtitle">With filter content</p>
 		<div class="content">
-
+			<img src="@/assets/img/temp/filter-top.jpg" />
+			<img src="@/assets/img/temp/filer-checkbox-1.jpg" />
+			<img src="@/assets/img/temp/filer-checkbox-2.jpg" />
 		</div>
 
 	</section>

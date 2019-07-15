@@ -59,7 +59,7 @@ export default {
 <style>
 .grid {
 	display: grid;
-	grid-template-columns: 1fr 1.5rem minmax(224px, 5fr);
+	grid-template-columns: 1fr 1rem minmax(224px, 3fr);
 }
 </style>
 

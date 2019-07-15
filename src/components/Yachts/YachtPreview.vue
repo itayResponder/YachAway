@@ -37,7 +37,7 @@
 					{{yacht.reviews.score}}
 				</p>
 				<small class="has-text-grey">{{numberOfReviews}} Reviews</small>
-				<router-link to="/details" class="button is-info is-6 margin-min">
+				<router-link to="yacht/details" class="button is-info is-6 margin-min">
 					Show Prices
 				</router-link>
 
