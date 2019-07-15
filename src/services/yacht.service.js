@@ -5,11 +5,16 @@ export default {
     getById,
     remove,
     save,
-    update
+    update,
+    queryByOwner
 }
 
 function query() {
     return httpService.get(_getUrl());
+}
+
+function queryByOwner(ownerId) {
+    return httpService.get(_getUrl(ownerId))
 }
 
 function remove(yachtId) {
@@ -24,7 +29,6 @@ function save(yacht) {
     if (yacht._id) {
         return httpService.put(_getUrl(yacht._id), yacht);
     } else {
-        console.log('front yacht service save new yacht:', yacht)
         return httpService.post(_getUrl(), yacht);
     }
 }

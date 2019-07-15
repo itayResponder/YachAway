@@ -2,12 +2,17 @@ import yachtService from '@/services/yacht.service';
 
 export default {
     state: {
-        yachts: []
+        yachts: [],
+        yachtsByOwner: []
     },
 
     mutations: {
         setYachts(state, context) {
             state.yachts = context.yachts;
+        },
+
+        setYachtsByOwner(state, context) {
+            state.yachtsByOwner = context.yachtsByOwner;
         },
 
         updateYacht({ yachts }, { savedYacht }) {
@@ -28,10 +33,24 @@ export default {
     getters: {
         yachtsToShow({ yachts }) {
             return yachts;
+        },
+        yachtsByOwnerToShow({yachtsByOwner}) {
+            return yachtsByOwner;
         }
     },
 
     actions: {
+        async loadYachtsByOwner({commit}, {ownerId}) {
+            try {
+                var yachtsByOwner = await yachtService.queryByOwner(ownerId)
+                commit({type: 'setYachtsByOwner', yachtsByOwner})
+                return yachtsByOwner
+            } catch (err) {
+                console.log("Could not find yachts by owner error:", err);
+                return err;
+            }
+        },
+
         async loadYachts({ commit }) {
             try {
                 var yachts = await yachtService.query()

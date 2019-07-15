@@ -11,7 +11,8 @@ import MyHeader from "./components/MyHeader.vue";
 export default {
 	name: "App",
 	data() {
-		return {};
+		return {
+		};
 	},
 	components: {
 		MyHeader

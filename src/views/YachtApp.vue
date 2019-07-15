@@ -44,7 +44,7 @@ export default {
 			return this.$store.getters.yachtsToShow;
 		},
 		cityName() {
-			return this.$route.name.city || "Unknowen City";
+			return this.$route.name.city || "Unknown City";
 		}
 	},
 	components: {
