@@ -1,6 +1,6 @@
 <template>
 
-	<v-range-selector :start-date.sync="range.start" :end-date.sync="range.end" :is-disabled="d => d > '2019-07-27'" enable-single-date />
+	<v-range-selector :start-date.sync="range.start" :end-date.sync="range.end" :is-disabled="d => d > '2019-07-15'" enable-single-date />
 
 </template>
 
@@ -33,5 +33,17 @@ export default {
 </script>
 
 <style>
-/* @import "./vuelendar/scss/vuelendar.scss"; */
+.vl-calendar {
+	background: #ffffff;
+}
+.vl-calendar-month__day:hover,
+.vl-calendar-month__day > selected--first,
+.vl-calendar-month__day > selected--last,
+.vl-flex .selected {
+	background: #4d9989 !important;
+	font-weight: 600 !important;
+}
+.enable-single-date {
+	background: #222b29 !important;
+}
 </style>
