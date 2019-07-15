@@ -45,7 +45,7 @@ export default {
 </script>
 <style>
 .card {
-  width: 40%;
+  width: 30%;
 }
 .card:hover {
       box-shadow: 0 0 15px 2px black;
