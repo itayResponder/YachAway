@@ -7,7 +7,7 @@ import Admin from '@/views/Admin.vue'
 import AdminDetails from '@/views/Admin/AdminDetails.vue'
 import YachtEdit from '@/views/yacht/YachtEdit.vue'
 import Login from '@/views/Login.vue'
-import YachtDetails from '@/views/yacht/yachtDetails.vue'
+import YachtDetails from '@/views/yacht/YachtDetails.vue'
 
 Vue.use(Router)
 
