@@ -1,15 +1,15 @@
 <template>
-  <section>
-    <form>
+  <section v-if="userLoggedIn">
+    <form class="yacht-edit">
       <b-input v-model="yacht.name" placeholder="Name" rounded></b-input>
-      <b-input v-model="yacht.pricePerNight" placeholder="pricePerNight" rounded></b-input>
-      <b-input v-model="yacht.description" placeholder="description" rounded></b-input>
-      <b-input v-model="yacht.type" placeholder="type" rounded></b-input>
-      <b-input v-model="yacht.maxPeopleOnBoard" placeholder="maxPeopleOnBoard" rounded></b-input>
-      <b-input v-model="yacht.owner.userFirstName" placeholder="Owner's Name" rounded></b-input>
+      <b-input v-model="yacht.pricePerNight" placeholder="Price Per Night" rounded></b-input>
+      <b-input v-model="yacht.reviews.description" placeholder="Description" rounded></b-input>
+      <!-- <b-input v-model="yacht.type" placeholder="type" rounded></b-input> -->
+      <b-input v-model="yacht.maxPeopleOnBoard" placeholder="Max People On Board" rounded></b-input>
+      <!-- <b-input v-model="yacht.owner.userFirstName" placeholder="Owner's Name" rounded></b-input> -->
       <b-input v-model="yacht.location.country" placeholder="Country" rounded></b-input>
       <b-input v-model="yacht.location.city" placeholder="City" rounded></b-input>
-      <b-input v-model="yacht.imgs.imgUrl" placeholder="insert img Url" rounded></b-input>
+      <b-input v-model="yacht.imgs[0]" placeholder="Insert Img Url" rounded></b-input>
       <div class="block">
         <br />
         <b-checkbox v-model="yacht.facilities" native-value="Wifi" type="is-info">Wifi</b-checkbox>
@@ -28,8 +28,10 @@
         <b>Selection:</b>
         {{yacht.facilities}}
       </p>
+      <div class="edit-buttons">
       <b-button @click="saveYacht" type="is-info">Save</b-button>
       <b-button @click="back" type="is-info">Back</b-button>
+      </div>
     </form>
   </section>
 </template>
@@ -39,22 +41,32 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
+      userLoggedIn: null,
       id: "",
       yacht: {
-        name: "",
-        pricePerNight: null,
+        name: "test",
+        pricePerNight: 500,
         owner: { userId: "", userFirstName: "" },
-        imgs: [""],
-        description: "",
-        location: { country: "", city: "", lat: "", lng: "" },
-        type: "",
-        maxPeopleOnBoard: "",
+        imgs: [],
+        location: { country: "Israel", city: "Eilat", lat: "", lng: "" },
+        // type: "",
+        reviews: {title: "best", description: "Awosme yacht", date: "", score: 4.5},
+        maxPeopleOnBoard: "20",
         facilities: []
       }
     };
   },
 
   async created() {
+    this.userLoggedIn = this.$store.getters.userLoggedIn;
+    if(!this.userLoggedIn) {
+      try{
+        await Swal.fire("Sorry", "You need to login first", "error");
+      } catch {
+        console.log('error')
+      }
+      this.$router.push("/login")
+    }
     this.id = this.$route.params.id;
     if (this.id) {
       try {
@@ -72,27 +84,39 @@ export default {
   },
   methods: {
     back() {
-      this.$router.push("/admin");
+      this.$router.push("/yachts");
     },
     async saveYacht() {
       let message = "Yacht has Updated";
       try {
         if (this.yacht._id) {
-          console.log("AdminEdit saveyacht this.yacht", this.yacht);
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
         } else {
           this.yacht.createdAt = Date.now();
+          console.log('YachtEdit this.user:', this.userLoggedIn)
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
-          console.log("AdminEdit add new yacht:", this.yacht);
+          this.yacht.owner.userId = this.userLoggedIn._id;
+          this.yacht.owner.userFirstName = this.userLoggedIn.firstName;
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
         }
-        this.$router.push("/admin");
-      } catch {
-        console.log("Could not save yacht");
+        this.$router.push("/yachts");
+      } catch (err){
+        console.log("Could not save yacht error:", err);
       }
       Swal.fire("Allright", message, "success");
     }
   }
 };
 </script>
+
+<style>
+.yacht-edit {
+  width: 20rem;
+  margin: auto;
+  margin-top: 100px;
+}
+.edit-buttons button {
+  margin-right: 20px;
+}
+</style>
