@@ -27,6 +27,11 @@
           <br />
           <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
         </div>
+        <div class="buttons">
+          <b-button type="is-info">Details</b-button>
+          <b-button type="is-success">Edit</b-button>
+          <b-button type="is-danger">Delete</b-button>
+        </div>
       </div>
     </div>
 </template>
