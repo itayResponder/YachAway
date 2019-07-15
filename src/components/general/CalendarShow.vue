@@ -39,6 +39,10 @@ export default {
 .vl-calendar-month__week-day {
 	color: #4d9989 !important;
 }
+.vl-calendar-month__title {
+	font-size: 1.25rem !important;
+	font-weight: 400 !important;
+}
 .vl-calendar-month__day:hover,
 .vl-calendar-month__day > .selected--first,
 .vl-calendar-month__day > .selected--last,
