@@ -9,9 +9,13 @@
 			</div>
 			<div class="hero-body">
 				<div class="container has-text-centered">
-					<p class="title has-text-white">
-						Title
-					</p>
+
+					<div id="custom-search-input">
+						<div class="input-group">
+							<input ref="autocomplete" onfocus="value = ''" type="text" class=" search-query" placeholder="Your next vacation" @keydown.enter="search">
+						</div>
+					</div>
+
 					<p class="subtitle has-text-white">
 						Subtitle
 					</p>
@@ -25,8 +29,12 @@
 import myHeader from "@/components/MyHeader";
 
 export default {
+	mounted() {},
 	components: {
 		myHeader
+	},
+	methods: {
+		clickMe() {}
 	}
 };
 </script>
@@ -41,6 +49,16 @@ export default {
 }
 .hero-head {
 	z-index: 5;
+}
+
+#custom-search-input .search-query {
+	width: 650px;
+	padding: 15px 30px;
+	border: 0;
+	border-radius: 30px;
+	box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.75);
+	font-weight: 600;
+	color: #444;
 }
 </style>
 <!--   

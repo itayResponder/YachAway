@@ -10,7 +10,7 @@ export default {
             state.yachts = context.yachts;
         },
 
-        updateYacht({ yachts }, {savedYacht}) {
+        updateYacht({ yachts }, { savedYacht }) {
             const idx = yachts.findIndex(currYacht => currYacht._id === savedYacht._id);
             yachts.splice(idx, 1, savedYacht);
         },
@@ -32,35 +32,39 @@ export default {
     },
 
     actions: {
-        async loadYachts({commit}) {
+        async loadYachts({ commit }) {
             try {
                 var yachts = await yachtService.query()
                 commit({ type: "setYachts", yachts })
                 return yachts;
-            } catch {
-                console.log("Could not find yachts");
+            } catch (err) {
+                console.log("Could not find yachts  error:", err);
+                return err;
             }
         },
 
-        async getYachtById(context,  {yachtId} ) {
+        async getYachtById(context, { yachtId }) {
             try {
                 var yacht = await yachtService.getById(yachtId)
                 return yacht;
-            } catch {
-                console.log('YachtStore getById Could not find yacht')
+            } catch (err) {
+                console.log('YachtStore getById Could not find yacht error:', err)
+                return err;
             }
         },
 
-        async removeYacht({commit}, { yachtId }) {
+        async removeYacht({ commit }, { yachtId }) {
             try {
-                await yachtService.remove(yachtId)
-                commit({type: 'removeYacht', yachtId})
-            } catch {
-                console.log('Could not delete yacht')
+                const yachtRemoved = await yachtService.remove(yachtId)
+                commit({ type: 'removeYacht', yachtId })
+                return yachtRemoved;
+            } catch (err) {
+                console.log('Could not delete yacht error:', err);
+                return err;
             }
         },
 
-        async saveYacht({commit}, { yacht }) {
+        async saveYacht({ commit }, { yacht }) {
             try {
                 var savedYacht;
                 if (yacht._id) {
@@ -72,7 +76,8 @@ export default {
                 }
                 return savedYacht;
             } catch (err) {
-                console.log('Could not save yacht err:', err)
+                console.log('Could not save yacht err:', err);
+                return err;
             }
         }
     }

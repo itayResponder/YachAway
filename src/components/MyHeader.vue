@@ -24,13 +24,17 @@
 					<router-link :class="[menuClass]" to="/About">
 						About / Help
 					</router-link>
-					<router-link :class="[menuClass]" to="/admin">Admin
+					<router-link v-if="loggedUser" :class="[menuClass]" to="/admin">Admin
 					</router-link>
 
-					<router-link :class="[menuClass]" to="/login">
+					<router-link v-if="!loggedUser" :class="[menuClass]" to="/login">
 						<span class="icon"> </span>
 						Login / SignUp
 					</router-link>
+					<!-- <router-link v-else :class="[menuClass]" to="/"> -->
+					<!-- <button @click="logout" class="is-light">Log-Out</button> -->
+					<!-- </router-link> -->
+					<b-button v-if="loggedUser" @click="logout" type="is-danger">Log-Out</b-button>
 				</div>
 			</div>
 		</div>
@@ -39,11 +43,22 @@
 
 <script>
 export default {
+	props: ["loggedUser"],
 	name: "MyHeader",
 	computed: {
 		menuClass() {
 			if (this.$route.name === "Home") return "navbar-item  has-text-white";
 			else return "navbar-item  has-text-black";
+		}
+	},
+	methods: {
+		async logout() {
+			try {
+				this.$store.dispatch({type: "logout", loggedUser: this.loggedUser })
+				this.$router.push('/');
+			} catch {
+				console.log('Could not log out')
+			}
 		}
 	}
 };

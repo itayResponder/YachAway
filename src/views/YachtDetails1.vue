@@ -19,7 +19,7 @@
     <p class="white">Number of people : yacht.maxPeopleOnBoard </p>
 </div>
 <h1 class="title  is-1">Availability</h1>
-     <datepicker :value="state.date" placeholder="Select Date">
+     <datepicker :format="customFormatter" name="uniquename" placeholder="Select Date">
        <p>here is the date picked </p>
      </datepicker>
 
@@ -40,13 +40,14 @@
 import Swal from "sweetalert2";
 import carousel from 'vue-owl-carousel';
 import Datepicker from 'vuejs-datepicker'
+const moment = require('moment')
 
 export default {
   data() {
     return {
-      state = {
-  date: new Date(2016, 9,  16)
-},
+      // state : {
+      //   date: new Date(2016, 9,  16)},
+
       id: "",
         date:'',
       yacht: {
@@ -91,11 +92,14 @@ export default {
   //   }
   // },
   
-  // methods: {
-  //   backToAdminPage() {
-  //     this.$router.push('/admin')
-  //   }
-  // },
+  methods: {
+    // backToAdminPage() {
+    //   this.$router.push('/admin')
+    // },
+    customFormatter(date) {
+      return moment(date).format('MM DD YYYY');
+    }
+  },
   computed:{
 
   },

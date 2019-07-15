@@ -6,7 +6,7 @@ export default {
         loggedInUser: userService.getLoggedInUser()
     },
     getters: {
-        userLoggedIn({loggedInUser}) {
+        userLoggedIn({ loggedInUser }) {
             return loggedInUser
         }
     },
@@ -16,16 +16,26 @@ export default {
         }
     },
     actions: {
-        async checkValidUser(context, {user}) {
-            console.log('UserStore checkValidUser:', user)
+        async checkValidUser(context, { user }) {
             var checkedUser;
             try {
-                checkedUser =  await userService.login(user)
-                if(checkedUser) {
-                    context.commit({type: 'setUser', user})
+                checkedUser = await userService.login(user)
+                if (checkedUser) {
+                    context.commit({ type: 'setUser', user })
                 }
                 return checkedUser;
-            } catch {
+            } catch (err) {
+                console.log('error with checkValudUser err:', err);
+                return err;
+            }
+        },
+        async logout(context, { loggedUser }) {
+            try {
+                const loggedInUser = await userService.logout(loggedUser)
+                context.commit.status.loggedInUser = null;
+                return loggedInUser;
+            } catch (err) {
+                console.log('error with logout err:', err);
                 return err;
             }
         }
