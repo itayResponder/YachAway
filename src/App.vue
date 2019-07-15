@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 
-		<my-header @ :loggedUser="getLoggedUser" v-if="!headerType"></my-header>
+		<my-header :loggedUser="getLoggedUser" v-if="!headerType"></my-header>
 		<router-view></router-view>
 	</div>
 </template>
@@ -27,7 +27,6 @@ export default {
 		}
 	},
 	created() {
-		console.log("App.vue created!");
 		this.$store.dispatch("loadYachts");
 	}
 };

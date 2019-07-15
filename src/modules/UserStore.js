@@ -25,6 +25,7 @@ export default {
                 }
                 return checkedUser;
             } catch (err) {
+                console.log('error with checkValudUser err:', err);
                 return err;
             }
         },
@@ -34,6 +35,7 @@ export default {
                 context.commit.status.loggedInUser = null;
                 return loggedInUser;
             } catch (err) {
+                console.log('error with logout err:', err);
                 return err;
             }
         }
