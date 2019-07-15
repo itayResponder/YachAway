@@ -1,6 +1,9 @@
 <template>
 	<div class="content">
-		<img src="@/assets/img/temp/details-yacht-pics.jpg" />
+		<a target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
+
+			<img src="@/assets/img/temp/details-yacht-pics.jpg" />
+		</a>
 		<img src="@/assets/img/temp/details-top-bnb.jpg" />
 
 		<img @ v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
