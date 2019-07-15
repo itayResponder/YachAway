@@ -17,6 +17,7 @@
           <router-link :class="[menuClass]" active-class="is-active" to="/">Home</router-link>
           <router-link :class="[menuClass]" to="/yachts">Yachts</router-link>
           <router-link :class="[menuClass]" to="/About">About / Help</router-link>
+          <router-link v-if="loggedInUser" :class="[menuClass]" to="/owner/yachts">Owner Yachts</router-link>
           <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link>
           <router-link :class="[menuClass]" to="/edit">List Your Yacht</router-link>
           <router-link v-if="!loggedInUser" :class="[menuClass]" to="/login">Login / SignUp</router-link>
@@ -31,9 +32,6 @@
 export default {
   props: ["loggedInUser"],
   name: "MyHeader",
-  created() {
-	  console.log('MyHeader created! loggedInUser:', this.loggedInUser)
-  },
   computed: {
     menuClass() {
       if (this.$route.name === "Home") return "navbar-item  has-text-white";
@@ -52,3 +50,9 @@ export default {
   }
 };
 </script>
+
+<style>
+b-button {
+	    padding: 0.5rem 0.75rem;
+}
+</style>

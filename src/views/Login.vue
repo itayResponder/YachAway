@@ -20,8 +20,10 @@
       <div class="field">
         <p class="control"></p>
       </div>
+      <div class="login-buttons">
       <b-button @click="login" type="is-info">Login</b-button>
       <b-button @click="signup" type="is-info">Sign-Up</b-button>
+      </div>
     </form>
   </section>
 </template>
@@ -64,5 +66,9 @@ export default {
   width: 20rem;
   margin: auto;
   margin-top: 100px;
+}
+
+.login-buttons button {
+  margin-right: 20px;
 }
 </style>
