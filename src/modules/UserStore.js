@@ -32,7 +32,7 @@ export default {
         async logout(context, { loggedUser }) {
             try {
                 const loggedInUser = await userService.logout(loggedUser)
-                context.commit.status.loggedInUser = null;
+                context.commit({type: 'setUser', user: null})
                 return loggedInUser;
             } catch (err) {
                 console.log('error with logout err:', err);

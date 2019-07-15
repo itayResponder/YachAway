@@ -10,14 +10,15 @@
 		<b-button type="button field  is-white" @click="isGrid=!isGrid">
 			<img type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
 		</b-button>
-		<b-button type="button field is-white" @click="isGrid=!isGrid">
+		<b-button type="button field is-wh
+		ite" @click="isGrid=!isGrid">
 			<img class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
 		</b-button>
 
 		<yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
 
 		<div class="container grid" v-show="!isGrid">
-			<YachtFilter></YachtFilter>
+			<yacht-filter @set-filter="setFilter"></yacht-filter>
 			<div></div>
 			<yacht-List :yachts="yachts"></yacht-List>
 			<!-- @set-filter="setFilter"-->
@@ -38,6 +39,11 @@ export default {
 			isGrid: false,
 			newYacht: ""
 		};
+	},
+	methods:{
+		  setFilter(filterBy) {
+            this.$store.commit('setFilter', filterBy)
+        },
 	},
 	computed: {
 		yachts() {

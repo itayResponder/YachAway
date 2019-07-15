@@ -2,10 +2,17 @@ import yachtService from '@/services/yacht.service';
 
 export default {
     state: {
-        yachts: []
+        yachts: [],
+        filterBy: {
+            txt: '',
+            facilities: []
+        }
     },
 
     mutations: {
+        setFilter(state, filter) {
+            state.filterBy = filter
+        },
         setYachts(state, context) {
             state.yachts = context.yachts;
         },
@@ -26,7 +33,28 @@ export default {
     },
 
     getters: {
-        yachtsToShow({ yachts }) {
+        yachtsToShow(state) {
+            var facilities = state.filterBy.facilities
+            var yachts = [...state.yachts]
+            var txt = state.filterBy.txt.toLowerCase()
+            //if not filtert at all
+            if (!state.filterBy) return yachts
+            // filter by only txt (city or country)
+            else if (facilities.length === 0 && state.filterBy.txt) {
+                yachts = state.yachts.filter(yacht =>
+                    yacht.location.country.toLowerCase().includes(txt) ||
+                    yacht.location.city.toLowerCase().includes(txt))
+            }
+            else if (facilities.length > 0) {
+                var newYachts = facilities.forEach(facility => {
+                    return yachts.filter(yacht => {
+                       return  yacht.facilities.includes(facility)
+                        console.log('yacht.facilities.includes(facility)', yacht.facilities.includes(facility))
+                        console.log('facility is = ', facility)
+                    })
+                })
+                console.log('newYachts are ', newYachts)
+            }
             return yachts;
         }
     },

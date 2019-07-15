@@ -43,6 +43,7 @@ import Datepicker from 'vuejs-datepicker'
 const moment = require('moment')
 
 export default {
+  name:"yacht-details",
   data() {
     return {
       // state : {

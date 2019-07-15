@@ -1,7 +1,7 @@
 <template>
 	<div id="app">
 
-		<my-header :loggedUser="getLoggedUser" v-if="!headerType"></my-header>
+		<my-header :loggedInUser="getLoggedUser" v-if="!headerType"></my-header>
 		<router-view></router-view>
 	</div>
 </template>
