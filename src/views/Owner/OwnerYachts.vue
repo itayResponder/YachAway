@@ -17,6 +17,7 @@ export default {
   async created() {
     try {
       this.loggedInUser = await this.$store.getters.userLoggedIn;
+      console.log('OwnerYachts created loddedInUser:', this.loggedInUser)
       this.yachtsByOwner = await this.$store.dispatch({type: "loadYachtsByOwner", ownerId: this.loggedInUser._id})
     } catch (err){
         console.log('errpr:',err)

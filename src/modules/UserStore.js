@@ -12,7 +12,7 @@ export default {
     },
     mutations: {
         setUser(state, context) {
-            state.loggedInUser = context.user
+            state.loggedInUser = context.checkedUser
         }
     },
     actions: {
@@ -21,7 +21,7 @@ export default {
             try {
                 checkedUser = await userService.login(user)
                 if (checkedUser) {
-                    context.commit({ type: 'setUser', user })
+                    context.commit({ type: 'setUser', checkedUser })
                 }
                 return checkedUser;
             } catch (err) {

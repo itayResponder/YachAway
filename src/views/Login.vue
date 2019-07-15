@@ -48,8 +48,8 @@ export default {
           user: cpyUser
         });
         this.$router.push("/yachts");
-      } catch {
-        console.log("not valid user");
+      } catch (err){
+        console.log("not valid user error:", err);
         Swal.fire({ type: "error", text: "Wrong User Name or password!" });
         this.user.email = "";
         this.user.password = "";
