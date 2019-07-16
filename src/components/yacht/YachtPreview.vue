@@ -50,9 +50,6 @@ export default {
     return {};
   },
   methods: {
-    test() {
-      console.log("CLICKED");
-    }
   },
   computed: {
     numberOfReviews() {
