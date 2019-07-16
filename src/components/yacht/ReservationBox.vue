@@ -2,7 +2,7 @@
 	<div>
 		<!-- <nav class="navbar is-fixed-top" style="top:4px; right:inherit; left:inherit;"> -->
 		<nav class="panel" style="position: sticky;  z-index: 30; top:4px; right:inherit; left:inherit;">
-			<p class="panel-heading is-black  has-background-white-bis">
+			<p class="panel-heading is-black  has-background-white">
 				PRICE PER NIGHT
 			</p>
 			<div class="panel-block">
@@ -47,8 +47,8 @@ export default {
 	data() {
 		return {
 			openCalendar: false,
-			startDate: null,
-			endDate: null,
+			startDate: "2019-07-17", //null,
+			endDate: "2019-07-18", //null,
 			guest: 1
 		};
 	},
@@ -61,7 +61,6 @@ export default {
 			if (startDate && endDate && guest > 0) {
 				// CHECK IF IT IS  A REAL DATE :
 				// if(!isNaN(Date.parse(startDate))  && !isNaN(Date.parse(endDate)) )
-				console.log("do reservation local component: ", wantedReservation);
 				this.$store.dispatch({ type: "doReservation", wantedReservation });
 			} else {
 				this.$toast.open({

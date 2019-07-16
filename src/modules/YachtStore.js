@@ -63,6 +63,7 @@ export default {
             try {
                 const yacht = await yachtService.getById(yachtId)
                 commit({type: 'setYacht', yacht})
+                console.log('YachtStore yacht:', yacht)
                 return yacht;
             } catch (err) {
                 console.log('Could not find yacht byId error:', err)

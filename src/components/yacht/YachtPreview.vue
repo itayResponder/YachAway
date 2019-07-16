@@ -6,7 +6,7 @@
 			</p>
 		</figure>
 		<div class="media-content">
-			<router-link :to=getUrl>
+			<router-link :to="getUrlWithYachtId">
 
 				<div class="content">
 					<strong class="title is-4">{{yacht.name}}</strong>
@@ -34,7 +34,7 @@
 			<div>
 				<p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">{{yacht.reviews.score}}</p>
 				<small class="has-text-grey">{{numberOfReviews}} Reviews</small>
-				<router-link :to=getUrl class="button is-info is-6 margin-min">Show Prices</router-link>
+				<router-link :to=getUrlWithYachtId class="button is-info is-6 margin-min">Show Prices</router-link>
 			</div>
 		</div>
 	</article>
@@ -53,8 +53,8 @@ export default {
 		numberOfReviews() {
 			return 1;
 		},
-		getUrl() {
-			return "yacht/details/" + this.yacht._id;
+		getUrlWithYachtId() {
+			return "/yacht/" + this.yacht._id;
 		}
 	}
 };

@@ -1,32 +1,29 @@
+import reservationService from '@/services/reservation.service';
+
+
 export default {
     state: {
-        reservation: null,
+        wantedReservation: null,
         //  loggedInUser: userService.getLoggedInUser()
     },
-    getters: {
-        //  userLoggedIn({ loggedInUser }) {
-        //      return loggedInUser
-        //  }
-    },
+
     mutations: {
         //  setUser(state, context) {
         //      state.loggedInUser = context.checkedUser
         //  }
+
+        updateWantedReservation(state, context) {
+            state.reservation = context.wantedReservation;
+        },
     },
     actions: {
-        //  async checkValidUser(context, { user }) {
-        //      var checkedUser;
-        //      try {
-        //          checkedUser = await userService.login(user)
-        //          if (checkedUser) {
-        //              context.commit({ type: 'setUser', checkedUser })
-        //          }
-        //          return checkedUser;
-        //      } catch (err) {
-        //          console.log('error with checkValudUser err:', err);
-        //          return err;
-        //      }
-        //  },
+        doReservation({ commit }, { wantedReservation }) {
+            // console.log("do reservation store: ");
+            console.log("do reservation store: ", wantedReservation);
+            reservationService.makeReservation(wantedReservation)
+                // commit({ type: 'updateWantedReservation', wantedReservation })
+        }
+
         //  async logout(context, { loggedUser }) {
         //      try {
         //          const loggedInUser = await userService.logout(loggedUser)
@@ -37,5 +34,10 @@ export default {
         //          return err;
         //     }
         // }
+    },
+    getters: {
+        //  userLoggedIn({ loggedInUser }) {
+        //      return loggedInUser
+        //  }
     }
 }
