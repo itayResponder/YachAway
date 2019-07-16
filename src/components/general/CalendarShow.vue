@@ -1,6 +1,6 @@
 <template>
 
-	<v-range-selector :start-date.sync="range.start" :end-date.sync="range.end" :is-disabled="d => d > '2019-07-15'" enable-single-date />
+	<v-range-selector :start-date.sync="range.start" :end-date.sync="range.end" :is-disabled="d => d > '2019-07-21'" enable-single-date />
 
 </template>
 
