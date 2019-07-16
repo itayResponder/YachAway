@@ -1,5 +1,4 @@
 <template>
-<div class="yachts-prev" @onclick="test">
   <article class="media">
       <figure class="media-left">
         <p class="image">
@@ -40,7 +39,6 @@
         </div>
       </div>
   </article>
-  </div>
 </template>
 
 <script>

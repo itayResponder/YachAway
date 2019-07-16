@@ -3,12 +3,17 @@ import yachtService from '@/services/yacht.service';
 export default {
     state: {
         yachts: [],
-        yachtsByOwner: []
+        yachtsByOwner: [],
+        yacht: {}
     },
 
     mutations: {
         setYachts(state, context) {
             state.yachts = context.yachts;
+        },
+
+        setYacht(state, context) {
+            state.yacht = context.yacht;
         },
 
         setYachtsByOwner(state, context) {
@@ -34,20 +39,33 @@ export default {
         yachtsToShow({ yachts }) {
             return yachts;
         },
-        yachtsByOwnerToShow({yachtsByOwner}) {
+        yachtsByOwnerToShow({ yachtsByOwner }) {
             return yachtsByOwner;
+        },
+        getyacht({ yacht }) {
+            return yacht;
         }
     },
 
     actions: {
-        async loadYachtsByOwner({commit}, {ownerId}) {
+        async loadYachtsByOwner({ commit }, { ownerId }) {
             try {
                 var yachtsByOwner = await yachtService.queryByOwner(ownerId)
-                commit({type: 'setYachtsByOwner', yachtsByOwner})
+                commit({ type: 'setYachtsByOwner', yachtsByOwner })
                 return yachtsByOwner
             } catch (err) {
                 console.log("Could not find yachts by owner error:", err);
                 return err;
+            }
+        },
+
+        async loadYacht({commit}, {yachtId}) {
+            try {
+                const yacht = await yachtService.getById(yachtId)
+                commit({type: 'setYacht', yacht})
+                return yacht;
+            } catch (err) {
+                console.log('Could not find yacht byId error:', err)
             }
         },
 

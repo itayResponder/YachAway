@@ -38,8 +38,23 @@ export default {
 		return {
 			//FOR DEMONSTARATION PERPUSES
 			toggleDesc: true,
-			toggleFacility: true
+			toggleFacility: true,
+			yacht: {}
 		};
+	},
+	async created() {
+		const yachtId = this.$route.params.id
+		try{
+			this.yacht = await this.$store.dispatch({type: 'loadYacht', yachtId})
+			console.log('front yachtDetail: yacht:',this.yacht)
+		} catch (err){
+			console.log("Couldnt get yacht err:", err)
+		}
+	},
+	methods: {
+		goBack() {
+			this.$router.push("/yachts")
+		}
 	},
 	components: {
 		calendarShow,
