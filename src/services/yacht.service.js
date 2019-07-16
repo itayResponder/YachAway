@@ -14,7 +14,7 @@ function query(filterBy = {}) {
 }
 
 function queryByOwner(ownerId) {
-    return httpService.get(_getUrl(ownerId))
+    return httpService.get(_getUrl('owner'+ownerId))
 }
 
 function remove(yachtId) {
