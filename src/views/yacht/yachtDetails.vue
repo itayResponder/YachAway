@@ -9,14 +9,15 @@
 			<img src="@/assets/img/temp/details-top-bnb.jpg" />
 		</a>
 
-		<img @ v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
+		<img v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
 		<img v-show="!toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption.jpg" />
 
-		<img @ v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
+		<img v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
 		<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
 		<datePicker />
 		<showFreeDates />
-		<!-- <img src="@/assets/img/temp/details-calan.jpg" /> -->
+
+		<previewReview />
 		<img src="@/assets/img/temp/details-reviews.jpg" />
 	</div>
 
@@ -25,6 +26,7 @@
 <script>
 import datePicker from "@/components/general/DatePicker";
 import showFreeDates from "@/components/general/CalendarShow";
+import previewReview from "@/components/Yachts/PreviewReview";
 export default {
 	data() {
 		return {
@@ -35,7 +37,8 @@ export default {
 	},
 	components: {
 		datePicker,
-		showFreeDates
+		showFreeDates,
+		previewReview
 	}
 };
 </script>
