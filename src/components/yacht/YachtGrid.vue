@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import YachtGridPreview from "@/components/Yachts/YachtGridPreview";
+import YachtGridPreview from "@/components/yacht/YachtGridPreview";
 export default {
 	name: "YachtGrid",
 	props: ["yachts"],

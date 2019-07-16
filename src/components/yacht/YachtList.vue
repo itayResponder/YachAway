@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import YachtPreview from "@/components/Yachts/YachtPreview";
+import YachtPreview from "@/components/yacht/YachtPreview";
 
 export default {
 	name: "YachtList",

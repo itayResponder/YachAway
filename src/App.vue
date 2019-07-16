@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import MyHeader from "./components/MyHeader.vue";
+import MyHeader from "@/components/MyHeader.vue";
 export default {
   name: "App",
   data() {
@@ -24,9 +24,7 @@ export default {
       return this.$route.name === "Home";
     },
     getLoggedInUser() {
-		const user =  this.$store.getters.userLoggedIn;
-	  console.log("checking comp", user);
-	  return user
+		return this.$store.getters.userLoggedIn;
     }
   }
 };

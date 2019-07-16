@@ -49,7 +49,6 @@ export default {
         name: "",
         pricePerNight: "",
         description: "",
-        type: "",
         maxPeopleOnBoard: 0,
         facilities: "",
         owner: {

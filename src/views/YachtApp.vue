@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import YachtList from "@/components/Yachts/YachtList";
-import YachtGrid from "@/components/Yachts/YachtGrid";
-import AdminYachtList from "@/components/UserAdmin/AdminYachtList";
-import YachtFilter from "@/components/Yachts/YachtFilter";
+import YachtList from "@/components/yacht/YachtList";
+import YachtGrid from "@/components/yacht/YachtGrid";
+import AdminYachtList from "@/components/admin/AdminYachtList";
+import YachtFilter from "@/components/yacht/YachtFilter";
 
 export default {
 	name: "YachtApp",

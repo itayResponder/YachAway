@@ -34,15 +34,7 @@ export default {
 props:['loggedInUser'],
   data() {
     return {
-      // loggedInUser: null
     }
-  },
-  created() {
-		// this.loggedInUser =  this.$store.getters.userLoggedIn;
-
-  },
-  mounted() {
-    
   },
   computed: {
     menuClass() {
@@ -68,6 +60,6 @@ b-button {
 	    padding: 0.5rem 0.75rem 0 0.75rem;
 }
 .router-link-exact-active {
-    border-bottom: 2px solid #8c67ef !important;
+    border-bottom: 3px solid #8c67ef !important;
 }
 </style>
