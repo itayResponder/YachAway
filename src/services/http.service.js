@@ -11,7 +11,7 @@ const BASE_URL = process.env.NODE_ENV === 'production' ?
 
 export default {
     get(endpoint, data) {
-        return ajax(endpoint, 'GET', data);
+        return ajax(endpoint, 'GET', null, data);
     },
     post(endpoint, data) {
         return ajax(endpoint, 'POST', data);
@@ -24,12 +24,13 @@ export default {
     }
 }
 
-async function ajax(endpoint, method = 'get', data = null) {
+async function ajax(endpoint, method = 'get', data = null, params = null) {
     try {
         const res = await axios({
             url: `${BASE_URL}${endpoint}`,
             method,
-            data
+            data,
+            params
         })
         return res.data;
     } catch (err) {

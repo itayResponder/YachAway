@@ -9,8 +9,9 @@ export default {
     queryByOwner
 }
 
-function query() {
-    return httpService.get(_getUrl());
+function query(filterBy = {}) {
+    console.log('front yacht.service filterBy:', filterBy)
+    return httpService.get(_getUrl(), filterBy);
 }
 
 function queryByOwner(ownerId) {
