@@ -34,7 +34,7 @@
 			<div>
 				<p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">{{yacht.reviews.score}}</p>
 				<small class="has-text-grey">{{numberOfReviews}} Reviews</small>
-				<router-link to="yacht/details" class="button is-info is-6 margin-min">Show Prices</router-link>
+				<router-link :to=getUrl class="button is-info is-6 margin-min">Show Prices</router-link>
 			</div>
 		</div>
 	</article>

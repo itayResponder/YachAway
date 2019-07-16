@@ -57,8 +57,19 @@ export default {
 			const startDate = this.startDate;
 			const endDate = this.endDate;
 			const guest = this.guest;
+			const wantedReservation = { guest, startDate, endDate };
 			if (startDate && endDate && guest > 0) {
-				console.log("do reservation: ", startDate, endDate);
+				// CHECK IF IT IS  A REAL DATE :
+				// if(!isNaN(Date.parse(startDate))  && !isNaN(Date.parse(endDate)) )
+				console.log("do reservation local component: ", wantedReservation);
+				this.$store.dispatch({ type: "doReservation", wantedReservation });
+			} else {
+				this.$toast.open({
+					duration: 4050,
+					message: `Check you have dates and number of guests`,
+					position: "is-top-left",
+					type: "is-warning"
+				});
 			}
 		}
 	},
