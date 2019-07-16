@@ -1,72 +1,38 @@
 <template>
-	<section>
-	<!-- Yacht Details -->
-	  <div class="card">
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img :src="yacht.imgs[0]" alt="Placeholder image" />
-        </figure>
-      </div>
-      <div class="card-content">
-        <div class="media">
-          <div class="media-left">
-            <figure class="image is-48x48">
-              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image" />
-            </figure>
-          </div>
-          <div class="media-content">
-            <p class="title is-4">Name: {{yacht.name}}</p>
-            <p class="subtitle is-6">Facilities: {{yacht.facilities}}</p>
-          </div>
-        </div>
+	<!-- IT MAYBE NEED TO USE TILES AND NOT GRID FOR RESPONSIVE -->
+	<div class="container grid">
 
-        <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Phasellus nec iaculis mauris.
-          <a>@bulmaio</a>.
-          <a href="#">#css</a>
-          <a href="#">#responsive</a>
-          <br />
-          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
-        </div>
-        <div class="buttons">
-          <b-button type="is-info">Details</b-button>
-          <b-button type="is-success">Edit</b-button>
-          <b-button type="is-danger">Delete</b-button>
-        </div>
-      </div>
-    </div>
+		<reservationBox /> <!-- is slots possible ?? -->
+		<div></div>
+		<div class="content ">
+			<a target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
 
+				<img src="@/assets/img/temp/details-yacht-pics.jpg" />
+				<!-- <figure class="image is-4by3">
+				<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+			</figure> -->
+			</a>
+			<a target="_blank" href="https://demo03.gethomey.io/listing/large-and-modern-bedroom/">
+				<img src="@/assets/img/temp/details-top-bnb.jpg" />
+			</a>
 
+			<img v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
+			<img v-show="!toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption.jpg" />
 
-	<!-- Booking Example -->
-	<div class="content">
-		<a target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
+			<img v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
+			<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
+			<calendarShow />
 
-			<img src="@/assets/img/temp/details-yacht-pics.jpg" />
-		</a>
-		<a target="_blank" href="https://demo03.gethomey.io/listing/large-and-modern-bedroom/">
-			<img src="@/assets/img/temp/details-top-bnb.jpg" />
-		</a>
-
-		<img v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
-		<img v-show="!toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption.jpg" />
-
-		<img v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
-		<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
-		<datePicker />
-		<showFreeDates />
-
-		<previewReview />
-		<img src="@/assets/img/temp/details-reviews.jpg" />
+			<previewReview />
+			<img src="@/assets/img/temp/details-reviews.jpg" />
+		</div>
 	</div>
-</section>
 </template>
 
 <script>
-import datePicker from "@/components/general/DatePicker";
-import showFreeDates from "@/components/general/CalendarShow";
-import previewReview from "@/components/yacht/PreviewReview";
+import calendarShow from "@/components/general/CalendarShow";
+import previewReview from "@/components/Yachts/PreviewReview";
+import reservationBox from "@/components/Yachts/ReservationBox";
 export default {
 	data() {
 		return {
@@ -91,9 +57,9 @@ export default {
 		}
 	},
 	components: {
-		datePicker,
-		showFreeDates,
-		previewReview
+		calendarShow,
+		previewReview,
+		reservationBox
 	}
 };
 </script>

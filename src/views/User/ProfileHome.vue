@@ -2,14 +2,15 @@
 	<main class="bookings">
 		<div class="tabs is-nav is-taller scroll-h has-side-space">
 			<ul class="width-limit">
-				<li class="">
+				<!-- <li class="">
 					<router-link to="/travel" class="is-active">Discover</router-link>
-				</li>
+				</li> -->
 				<li class="is-active">
 					<router-link to="/travel/bookings" class="is-active">My bookings</router-link>
 				</li>
 				<li class="">
-					<router-link to="/travel/bookings/all" class="">All bookings</router-link>
+					<router-link to="/owner/yachts" class="">My Yachts</router-link>
+					<!-- <router-view></router-view> -->
 				</li>
 			</ul>
 		</div>
