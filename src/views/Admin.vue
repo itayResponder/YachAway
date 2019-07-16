@@ -2,7 +2,6 @@
   <section>
     <div class="add-filter">
       <div class="add-yachts">
-        <!-- <admin-yacht-list @emitRemoveYacht="removeYacht" :yachts="yachts"></admin-yacht-list> -->
         <AdminYachtTable :yachts="yachts" @removeYacht="removeYacht" />
       </div>
     </div>
@@ -10,8 +9,7 @@
 </template>
 
 <script>
-// import AdminYachtList from "@/components/UserAdmin/AdminYachtList.vue";
-import AdminYachtTable from "@/components/UserAdmin/AdminYachtTable";
+import AdminYachtTable from "@/components/admin/AdminYachtTable";
 
 export default {
   name: "YachtApp",
@@ -32,7 +30,6 @@ export default {
     }
   },
   components: {
-    // AdminYachtList,
     AdminYachtTable
   }
 };

@@ -5,27 +5,33 @@
 </template>
 
 <script>
-import OwnerYachtList from "@/components/Owner/OwnerYachtList";
+import OwnerYachtList from "@/components/owner/OwnerYachtList";
 export default {
   name: "OwnerYachts",
   data() {
     return {
       yachtsByOwner: null,
       loggedInUser: null,
+      // filterBy: { userId: "" }
     };
   },
   async created() {
     try {
       this.loggedInUser = await this.$store.getters.userLoggedIn;
-      console.log('OwnerYachts created loddedInUser:', this.loggedInUser)
-      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachtsByOwner", ownerId: this.loggedInUser._id})
-    } catch (err){
-        console.log('errpr:',err)
+      // this.filterBy.userId = this.$store.getters.userLoggedIn._id;
+      // this.yachts = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
+      this.yachtsByOwner = await this.$store.dispatch({
+        type: "loadYachtsByOwner",
+        ownerId: this.loggedInUser._id
+      });
+    } catch (err) {
+      console.log("errpr:", err);
     }
   },
   computed: {
     yachts() {
       return this.$store.getters.yachtsByOwnerToShow;
+      // return this.$store.getters.yachtsToShow
     }
   },
   components: {

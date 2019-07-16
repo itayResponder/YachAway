@@ -3,9 +3,9 @@
 	<!-- <div class="add-filter">
 			<div class="add-yachts">
 			</div>
-		 </div> -->
+  </div>-->
 	<section>
-		<h1 class="is-size-1"> {{cityName}} </h1>
+		<h1 class="is-size-1">{{cityName}}</h1>
 
 		<b-button type="button field  is-white" @click="isGrid=!isGrid">
 			<img type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
@@ -26,10 +26,10 @@
 </template>
 
 <script>
-import YachtList from "@/components/Yachts/YachtList";
-import YachtGrid from "@/components/Yachts/YachtGrid";
-import AdminYachtList from "@/components/UserAdmin/AdminYachtList";
-import YachtFilter from "@/components/Yachts/YachtFilter";
+import YachtList from "@/components/yacht/YachtList";
+import YachtGrid from "@/components/yacht/YachtGrid";
+// import AdminYachtList from "@/components/admin/AdminYachtList";
+import YachtFilter from "@/components/yacht/YachtFilter";
 
 export default {
 	name: "YachtApp",
@@ -50,7 +50,7 @@ export default {
 	components: {
 		YachtList,
 		YachtGrid,
-		AdminYachtList,
+		// AdminYachtList,
 		YachtFilter
 	}
 };

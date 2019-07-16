@@ -33,14 +33,8 @@ export default {
 	name: "MyHeader",
 	props: ["loggedInUser"],
 	data() {
-		return {
-			// loggedInUser: null
-		};
+		return {};
 	},
-	created() {
-		// this.loggedInUser =  this.$store.getters.userLoggedIn;
-	},
-	mounted() {},
 	computed: {
 		menuClass() {
 			if (this.$route.name === "Home") return "navbar-item  has-text-white";

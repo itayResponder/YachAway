@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import OwnerYachtPreview from "@/components/Owner/OwnerYachtPreview";
+import OwnerYachtPreview from "@/components/owner/OwnerYachtPreview";
 
 export default {
 	name: "OwnerYachtList",
