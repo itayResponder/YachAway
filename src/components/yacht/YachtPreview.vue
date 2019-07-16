@@ -6,7 +6,7 @@
 			</p>
 		</figure>
 		<div class="media-content">
-			<router-link to="yacht/details">
+			<router-link :to=getUrl>
 
 				<div class="content">
 					<strong class="title is-4">{{yacht.name}}</strong>
@@ -52,6 +52,9 @@ export default {
 	computed: {
 		numberOfReviews() {
 			return 1;
+		},
+		getUrl() {
+			return "yacht/details/" + this.yacht._id;
 		}
 	}
 };
