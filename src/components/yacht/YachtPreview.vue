@@ -54,7 +54,7 @@ export default {
 			return 1;
     },
     getUrlWithYachtId() {
-      return "/yacht/details/" + this.yacht._id;
+      return "/yacht/" + this.yacht._id;
     }
   }
 };
