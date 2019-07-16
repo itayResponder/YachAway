@@ -31,8 +31,8 @@
 
 <script>
 import calendarShow from "@/components/general/CalendarShow";
-import previewReview from "@/components/Yachts/PreviewReview";
-import reservationBox from "@/components/Yachts/ReservationBox";
+import previewReview from "@/components/yacht/PreviewReview";
+import reservationBox from "@/components/yacht/ReservationBox";
 export default {
 	data() {
 		return {
