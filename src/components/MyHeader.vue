@@ -14,8 +14,8 @@
       </div>
       <div id="navbarMenuHeroB" class="navbar-menu">
         <div class="navbar-end">
-          <router-link :class="[menuClass]" exact  to="/">Home</router-link>
-          <router-link :class="[menuClass]"  to="/yachts">Yachts</router-link>
+          <router-link :class="[menuClass]" exact to="/">Home</router-link>
+          <router-link :class="[menuClass]" to="/yachts">Yachts</router-link>
           <router-link :class="[menuClass]" to="/About">About / Help</router-link>
           <!-- <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link> -->
           <router-link :class="[menuClass]" to="/edit">List Your Yacht</router-link>
@@ -31,10 +31,9 @@
 <script>
 export default {
   name: "MyHeader",
-props:['loggedInUser'],
+  props: ["loggedInUser"],
   data() {
-    return {
-    }
+    return {};
   },
   computed: {
     menuClass() {
@@ -50,16 +49,16 @@ props:['loggedInUser'],
       } catch (err) {
         console.log("Could not log out err:", err);
       }
-    },
+    }
   }
 };
 </script>
 
 <style scoped>
 b-button {
-	    padding: 0.5rem 0.75rem 0 0.75rem;
+  padding: 0.5rem 0.75rem 0 0.75rem;
 }
 .router-link-exact-active {
-    border-bottom: 3px solid #8c67ef !important;
+  border-bottom: 3px solid #8c67ef !important;
 }
 </style>
