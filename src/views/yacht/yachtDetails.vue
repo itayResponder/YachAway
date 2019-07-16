@@ -26,7 +26,7 @@
 <script>
 import datePicker from "@/components/general/DatePicker";
 import showFreeDates from "@/components/general/CalendarShow";
-import previewReview from "@/components/Yachts/PreviewReview";
+import previewReview from "@/components/yacht/PreviewReview";
 export default {
 	data() {
 		return {
