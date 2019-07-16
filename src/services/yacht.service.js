@@ -10,7 +10,6 @@ export default {
 }
 
 function query(filterBy = {}) {
-    console.log('front yacht.service filterBy:', filterBy)
     return httpService.get(_getUrl(), filterBy);
 }
 

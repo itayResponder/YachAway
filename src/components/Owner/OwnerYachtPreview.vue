@@ -2,7 +2,7 @@
     <div class="card">
       <div class="card-image">
         <figure class="image is-4by3">
-          <img :src="yacht.imgs[0]" width="200" height="200" alt="Placeholder image" />
+          <img :src="yacht.imgs[0]" alt="Placeholder image" />
         </figure>
       </div>
       <div class="card-content">
