@@ -1,6 +1,6 @@
 <template>
   <section v-if="yachts">
-    <yacht-preview @onclick="test" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht"></yacht-preview>
+    <yacht-preview class="yachts-prev" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht"></yacht-preview>
   </section>
 </template>
 
@@ -15,9 +15,6 @@ export default {
     return {};
   },
   methods: {
-    test() {
-      console.log('CLICKED')
-    }
   },
   components: {
     YachtPreview

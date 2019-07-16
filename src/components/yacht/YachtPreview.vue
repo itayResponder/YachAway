@@ -48,11 +48,7 @@ export default {
 	data() {
 		return {};
 	},
-	methods: {
-		test() {
-			console.log("CLICKED");
-		}
-	},
+	methods: {},
 	computed: {
 		numberOfReviews() {
 			return 1;
