@@ -14,8 +14,8 @@
       </div>
       <div id="navbarMenuHeroB" class="navbar-menu">
         <div class="navbar-end">
-          <router-link :class="[menuClass]" active-class="is-active" to="/">Home</router-link>
-          <router-link :class="[menuClass]" to="/yachts">Yachts</router-link>
+          <router-link :class="[menuClass]" exact  to="/">Home</router-link>
+          <router-link :class="[menuClass]"  to="/yachts">Yachts</router-link>
           <router-link :class="[menuClass]" to="/About">About / Help</router-link>
           <!-- <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link> -->
           <router-link :class="[menuClass]" to="/edit">List Your Yacht</router-link>
@@ -65,6 +65,9 @@ props:['loggedInUser'],
 
 <style scoped>
 b-button {
-	    padding: 0.5rem 0.75rem;
+	    padding: 0.5rem 0.75rem 0 0.75rem;
+}
+.router-link-exact-active {
+    border-bottom: 2px solid #8c67ef !important;
 }
 </style>
