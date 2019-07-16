@@ -19,6 +19,6 @@ export default {
 	},
 	components: {
 		YachtPreview
-	}
+	},
 };
 </script>

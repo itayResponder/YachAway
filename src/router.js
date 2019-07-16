@@ -17,7 +17,8 @@ export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
 
-    routes: [{ path: '/', name: 'Home', component: Home },
+    routes: [
+        { path: '/', name: 'Home', component: Home },
         { path: '/About', name: 'About', component: About },
         { path: '/yachts', name: 'YachtApp', component: YachtApp },
         { path: '/admin', name: 'Admin', component: Admin },
@@ -25,7 +26,7 @@ export default new Router({
         { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails },
         { path: '/login', name: 'Login', component: Login },
         { path: '/yacht/details', name: 'YachtDetails', component: YachtDetails },
-        { path: '/owner/yachts', name: OwnerYachts, component: OwnerYachts },
-        { path: '/profile', name: ProfileHome, component: ProfileHome }
+        { path: '/owner/yachts', name: 'OwnerYachts', component: OwnerYachts },
+        { path: '/profile', name: 'ProfileHome', component: ProfileHome }
     ]
 })
