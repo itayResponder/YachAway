@@ -7,13 +7,15 @@
 			</p>
 		</figure>
 		<div class="media-content">
-			<div class="content">
-				<strong class="title is-4">{{yacht.name}}</strong>
-				<p class="has-gray-text is-small">
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
-				</p>
-				<!-- </div> -->
-			</div>
+			<router-link to="yacht/details">
+				<div class="content">
+					<strong class="title is-4">{{yacht.name}}</strong>
+					<p class="has-gray-text is-small">
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+					</p>
+					<!-- </div> -->
+				</div>
+			</router-link>
 
 			<nav class="level is-mobile">
 				<div class="level-left">
@@ -73,6 +75,9 @@ export default {
 }
 .margin-min {
 	margin: 1rem;
+}
+a {
+	color: inherit;
 }
 /* CSS OF NIV  ---- FOR DEBUG */
 /* *:not(path):not(g) {
