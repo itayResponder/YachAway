@@ -43,6 +43,7 @@ export default {
 		};
 	},
 	async created() {
+		console.log('YachtDetails created!!')
 		const yachtId = this.$route.params.id
 		try{
 			this.yacht = await this.$store.dispatch({type: 'loadYacht', yachtId})

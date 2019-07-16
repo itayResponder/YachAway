@@ -25,7 +25,7 @@ export default new Router({
         { path: '/edit/:id?', name: 'YachtEdit', component: YachtEdit },
         { path: '/admin/:id', name: 'AdminDetails', component: AdminDetails },
         { path: '/login', name: 'Login', component: Login },
-        { path: '/yacht/:id', name: 'YachtDetails', component: YachtDetails },
+        { path: '/yacht/details:id', name: 'YachtDetails', component: YachtDetails },
         { path: '/owner/yachts', name: 'OwnerYachts', component: OwnerYachts },
         { path: '/profile', name: 'ProfileHome', component: ProfileHome }
     ]
