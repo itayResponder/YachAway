@@ -1,35 +1,34 @@
 <template>
-	<div id="app">
-
-		<my-header :loggedInUser="getLoggedUser" v-if="!headerType"></my-header>
-		<router-view></router-view>
-	</div>
+  <div id="app">
+    <my-header :loggedInUser="getLoggedInUser" v-if="!headerType"></my-header>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
 import MyHeader from "./components/MyHeader.vue";
 export default {
-	name: "App",
-	data() {
-		return {
-		};
-	},
-	components: {
-		MyHeader
-	},
+  name: "App",
+  data() {
+    return {};
+  },
+  created() {
+    this.$store.dispatch("loadYachts");
+  },
+  components: {
+    MyHeader
+  },
 
-	computed: {
-		getLoggedUser() {
-			return this.$store.getters.userLoggedIn;
-		},
-
-		headerType() {
-			return this.$route.name === "Home";
-		}
-	},
-	created() {
-		this.$store.dispatch("loadYachts");
-	}
+  computed: {
+    headerType() {
+      return this.$route.name === "Home";
+    },
+    getLoggedInUser() {
+		const user =  this.$store.getters.userLoggedIn;
+	  console.log("checking comp", user);
+	  return user
+    }
+  }
 };
 </script>
 
@@ -43,37 +42,37 @@ export default {
 $primary: #8c67ef;
 
 #app {
-	// font-family: "Avenir", Helvetica, Arial, sans-serif;
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6,
-	.is-1,
-	.is-2 {
-		font-family: "EB Garamond", serif;
-	}
+  // font-family: "Avenir", Helvetica, Arial, sans-serif;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .is-1,
+  .is-2 {
+    font-family: "EB Garamond", serif;
+  }
 
-	body {
-		font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
-			"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-			"Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-	}
+  body {
+    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
+      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+      "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+  }
 
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
 }
 #nav {
-	padding: 30px;
-	a {
-		font-weight: bold;
-		color: #2c3e50;
-		&.router-link-exact-active {
-			color: #42b983;
-		}
-	}
+  padding: 30px;
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
