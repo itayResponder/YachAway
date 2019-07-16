@@ -57,9 +57,10 @@ export default {
 </script>
 
 <style>
-.grid {
+/* GETTING GRID STYLE FROM helpers.css */
+/* .grid {
 	display: grid;
 	grid-template-columns: 1fr 1rem minmax(224px, 3fr);
-}
+} */
 </style>
 
