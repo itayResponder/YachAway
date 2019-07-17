@@ -61,7 +61,4 @@ export default {
 b-button {
 	padding: 0.5rem 0.75rem 0 0.75rem;
 }
-.router-link-exact-active {
-	border-bottom: 2px solid #8c67ef !important;
-}
 </style>

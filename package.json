@@ -17,6 +17,7 @@
     "sweetalert2": "^8.13.4",
     "vue": "^2.6.10",
     "vue-airbnb-style-datepicker": "^2.7.1",
+    "vue-google-autocomplete": "^1.1.0",
     "vue-router": "^3.0.3",
     "vuelendar": "^1.0.15",
     "vuex": "^3.0.1"

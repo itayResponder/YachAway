@@ -47,6 +47,7 @@ import calendarShow from "@/components/general/CalendarShow";
 import previewReview from "@/components/yacht/PreviewReview";
 import reservationBox from "@/components/yacht/ReservationBox";
 export default {
+<<<<<<< HEAD
   data() {
     return {
       //FOR DEMONSTARATION PERPUSES
@@ -73,6 +74,34 @@ export default {
     previewReview,
     reservationBox
   }
+=======
+	data() {
+		return {
+			//FOR DEMONSTARATION PERPUSES
+			toggleDesc: true,
+			toggleFacility: true,
+			yacht: {}
+		};
+	},
+	async created() {
+		const yachtId = this.$route.params.id;
+		try {
+			this.yacht = await this.$store.dispatch({ type: "loadYacht", yachtId });
+		} catch (err) {
+			console.log("Couldnt get yacht err:", err);
+		}
+	},
+	methods: {
+		goBack() {
+			this.$router.push("/yachts");
+		}
+	},
+	components: {
+		calendarShow,
+		previewReview,
+		reservationBox
+	}
+>>>>>>> 09ff5a86bef6b8ce045d13fe78f970769923271c
 };
 </script>
 

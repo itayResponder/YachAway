@@ -2,4 +2,7 @@
 
 @import url('./helpers.css');
 
+.router-link-exact-active, .router-link-active {
+	border-bottom: 2px solid #8c67ef !important;
+}
 /* @import url('./LoginPage.css'); */
