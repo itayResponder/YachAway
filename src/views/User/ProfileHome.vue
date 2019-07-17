@@ -39,7 +39,4 @@ export default {
 </script>
 
 <style>
-.router-link-exact-active {
-	border-bottom: 2px solid #8c67ef !important;
-}
 </style>
