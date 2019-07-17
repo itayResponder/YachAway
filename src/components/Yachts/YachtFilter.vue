@@ -2,6 +2,13 @@
   <section>
     <input type="text" v-model="filterBy.txt" @input="emitFilter" />
 	<br>
+   <select v-model="filterBy.minPeople" @change="emitFilter">
+            <option value="">By people</option>
+            <option value="1">1-10</option>
+            <option value="11">11-20</option>
+            <option value="21">21-30</option>
+          
+       </select>
 	<h1 class="title">faclities</h1>
 	<b-checkbox v-model="filterBy.facilities" native-value="wifi" type="is-info"  @input="emitFilter" >Wifi</b-checkbox>
         <b-checkbox v-model="filterBy.facilities" native-value="tv" type="is-info"  @input="emitFilter">Tv</b-checkbox>
@@ -17,6 +24,13 @@
         <b-checkbox v-model="filterBy.facilities" native-value="nothing" type="is-info" @input="emitFilter">nothing</b-checkbox>
 	
 	<p>{{filterBy.facilities}}</p>
+
+   <select v-model="filterBy.sort" @change="emitFilter">
+            <option value="">Sort By</option>
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+          
+       </select>
     <!-- <select v-model="filterBy.type" @change="emitFilter">
       <option value>by type</option>
       <option value="Adult">Adult</option>
@@ -41,8 +55,11 @@ export default {
   data() {
     return {
       filterBy: {
-		txt: "",
-		facilities:[]
+    minPeople:'',
+		txt:'',
+    facilities:[],
+    sort:''
+   
       }
     };
   },

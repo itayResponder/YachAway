@@ -3,14 +3,14 @@ import yachtService from '@/services/yacht.service';
 export default {
     state: {
         yachts: [],
-<<<<<<< HEAD
         filterBy: {
+            category: '',
             txt: '',
-            facilities: []
-        }
-=======
-        yachtsByOwner: []
->>>>>>> 2bc36410e94162fce0dd1ca9217440392904fdff
+            minPeople: '',
+            facilities: [],
+            sort:''
+        },
+        //     yachtsByOwner: []
     },
 
     mutations: {
@@ -41,41 +41,45 @@ export default {
     },
 
     getters: {
+
         yachtsToShow(state) {
+
             var facilities = state.filterBy.facilities
             var yachts = [...state.yachts]
             var txt = state.filterBy.txt.toLowerCase()
-            //if not filtert at all
+            var minPeopple = state.filterBy.minPeople
             if (!state.filterBy) return yachts
-            // filter by only txt (city or country)
-            else if (facilities.length === 0 && state.filterBy.txt) {
-                yachts = state.yachts.filter(yacht =>
-                    yacht.location.country.toLowerCase().includes(txt) ||
-                    yacht.location.city.toLowerCase().includes(txt))
-            }
-            else if (facilities.length > 0) {
-                var yachts = []
-                 yachts = facilities.forEach(facility => {
-                    return yachts.filter(yacht => {
-                        if (yacht.facilities.includes(facility)) yachts.push(y acht)
-                        console.log('yacht.facilities.includes(facility)', yacht.facilities.includes(facility))
-                        console.log('facility is = ', facility)
-                    })
+            else if (true)
+                yachts = state.yachts.filter(yacht => {
+                    return yacht.location.country.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeopple && facilities.every(currFacil => yacht.facilities.includes(currFacil)) ||
+                        yacht.location.city.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeopple && facilities.every(currFacil => yacht.facilities.includes(currFacil))
+
                 })
-                console.log('newYachts are ', yachts)
-            }
+                if (state.filterBy.sort === 'name')
+                yachts.sort(function (a, b) {
+                  if (a.name < b.name) { return -1;}
+                  if (a.name > b.name) { return 1; }
+                  return 0;
+                })
+                else if (state.filterBy.sort === 'price')
+                yachts.sort(function (a, b) {
+                  if (a.pricePerNight < b.pricePerNight) { return 1;}
+                  if (a.pricePerNight > b.pricePerNight) { return -1; }
+                  return 0;
+                })
             return yachts;
         },
-        yachtsByOwnerToShow({yachtsByOwner}) {
+
+        yachtsByOwnerToShow({ yachtsByOwner }) {
             return yachtsByOwner;
         }
     },
 
     actions: {
-        async loadYachtsByOwner({commit}, {ownerId}) {
+        async loadYachtsByOwner({ commit }, { ownerId }) {
             try {
                 var yachtsByOwner = await yachtService.queryByOwner(ownerId)
-                commit({type: 'setYachtsByOwner', yachtsByOwner})
+                commit({ type: 'setYachtsByOwner', yachtsByOwner })
                 return yachtsByOwner
             } catch (err) {
                 console.log("Could not find yachts by owner error:", err);
