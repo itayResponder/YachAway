@@ -3,7 +3,6 @@ import yachtService from '@/services/yacht.service';
 export default {
     state: {
         yachts: [],
-<<<<<<< HEAD
         filterBy: {
             category: '',
             txt: '',
@@ -11,11 +10,8 @@ export default {
             facilities: [],
             sort:''
         },
-        //     yachtsByOwner: []
-=======
         yachtsByOwner: [],
         yacht: {}
->>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270
     },
 
     mutations: {
@@ -78,10 +74,6 @@ export default {
                 })
             return yachts;
         },
-<<<<<<< HEAD
-
-=======
->>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270
         yachtsByOwnerToShow({ yachtsByOwner }) {
             return yachtsByOwner;
         },
