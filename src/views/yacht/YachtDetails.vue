@@ -2,7 +2,7 @@
 	<!-- IT MAYBE NEED TO USE TILES AND NOT GRID FOR RESPONSIVE -->
 	<div class="container grid">
 
-		<reservationBox /> <!-- is slots possible ?? -->
+		<reservationBox :yacht="yacht" /> <!-- is slots possible ?? -->
 		<div></div>
 		<div class="content ">
 			<a alt="demo" target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">

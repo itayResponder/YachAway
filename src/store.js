@@ -5,7 +5,7 @@ import UserStore from '@/modules/UserStore'
 import ReservationStore from '@/modules/ReservationStore'
 
 Vue.use(Vuex)
-
+    // console.log('lalalallalas')
 const store = new Vuex.Store({
     strict: true,
     modules: {

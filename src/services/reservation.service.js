@@ -1,10 +1,16 @@
 import httpService from './http.service';
 
 export default {
-    makeReservation
+    addReservation,
+    query
 }
 
-function makeReservation(wantedReservation) {
+function query(filterBy = {}) {
+    console.log("front reservation service filterBy: ", filterBy);
+    return httpService.get(_getUrl(), filterBy)
+}
+
+function addReservation(wantedReservation) {
     console.log("do reservation service: ", wantedReservation);
     return httpService.post(_getUrl(), wantedReservation)
 }

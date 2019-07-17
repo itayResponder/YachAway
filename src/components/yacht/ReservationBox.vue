@@ -20,14 +20,14 @@
 			</div>
 			<div class="panel-block">
 				<p class="control has-icons-left">
-					<input v-model="guest" min="1" class="input is-small" type="number" placeholder="guests">
+					<input v-model="numOfGuest" min="1" class="input is-small" type="number" placeholder="guests">
 					<span class="icon is-small is-left">
 						<i class="fas fa-search" aria-hidden="true"></i>
 					</span>
 				</p>
 			</div>
 			<div class="panel-block is-active ">
-				<span class=" is-medium is-center is-centered"> 300$ </span>
+				<span class=" is-medium is-left"> {{yacht.pricePerNight}} $ </span>
 			</div>
 			<div class="panel-block">
 				<button @click="doReservation" class="button is-danger is-link is-outlined is-fullwidth">
@@ -44,22 +44,44 @@
 import calendarShow from "@/components/general/CalendarShow";
 
 export default {
+	props: ["yacht"],
 	data() {
 		return {
 			openCalendar: false,
-			startDate: "2019-07-17", //null,
-			endDate: "2019-07-18", //null,
-			guest: 1
+			startDate: "2019-07-19", //null,
+			endDate: "2019-07-20", //null,
+			numOfGuest: 1
 		};
 	},
 	methods: {
+		createUserObj() {
+			// create USER object
+			const { firstName, _id } = this.$store.getters.userLoggedIn;
+			const user = {};
+			user.firstName = firstName;
+			user._id = _id;
+			return user;
+		},
+		createYachtObj() {
+			// create YACHT object
+			const yacht = {};
+			yacht._id = this.$route.params.id;
+			yacht.name = this.yacht.name;
+			yacht.pricePerNight = this.yacht.pricePerNight;
+			return yacht;
+		},
 		doReservation() {
 			const startDate = this.startDate;
 			const endDate = this.endDate;
-			const guest = this.guest;
-			const yachtId = this.$route.params.id;
-			const wantedReservation = { guest, startDate, endDate, yachtId };
-			if (startDate && endDate && guest > 0) {
+			const numOfGuest = this.numOfGuest;
+
+			const user = this.createUserObj();
+			const yacht = this.createYachtObj();
+
+			// send wantedReservation
+			const wantedReservation = { numOfGuest, startDate, endDate, yacht, user };
+
+			if (startDate && endDate && numOfGuest > 0) {
 				// CHECK IF IT IS  A REAL DATE :
 				// if(!isNaN(Date.parse(startDate))  && !isNaN(Date.parse(endDate)) )
 				this.$store.dispatch({ type: "doReservation", wantedReservation });

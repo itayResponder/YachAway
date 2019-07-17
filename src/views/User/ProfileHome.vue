@@ -7,8 +7,9 @@
 				</li> -->
 				<li class="">
 					<router-link to="reservation" class="">My bookings</router-link>
-				</li><li class="">
-					<router-link   to="my-yachts" class="">My Yachts</router-link>
+				</li>
+				<li class="">
+					<router-link to="my-yachts" class="">My Yachts</router-link>
 				</li>
 			</ul>
 		</div>
@@ -21,8 +22,8 @@
 		</header> -->
 		<section class="width-limit has-space-h is-fullwidth-when-narrow">
 			<div class="box all-bookings is-light is-paddingless is-collapsed-when-narrow has-fade">
-					<router-view></router-view>
-				
+				<router-view></router-view>
+
 			</div>
 
 		</section>
@@ -32,8 +33,7 @@
 <script>
 export default {
 	data() {
-		return {
-		};
+		return {};
 	}
 };
 </script>
