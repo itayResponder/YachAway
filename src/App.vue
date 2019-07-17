@@ -10,10 +10,11 @@ import MyHeader from "@/components/MyHeader.vue";
 export default {
 	name: "App",
 	data() {
-		return {};
+		return {
+		};
 	},
 	created() {
-		this.$store.dispatch("loadYachts");
+		this.$store.dispatch({type:"loadYachts", filterBy: {}});
 	},
 	components: {
 		MyHeader

@@ -10,7 +10,7 @@ export default {
             facilities: [],
             sort:''
         },
-        yachtsByOwner: [],
+        // yachtsByOwner: [],
         yacht: {}
     },
 
@@ -26,9 +26,9 @@ export default {
             state.yacht = context.yacht;
         },
 
-        setYachtsByOwner(state, context) {
-            state.yachtsByOwner = context.yachtsByOwner;
-        },
+        // setYachtsByOwner(state, context) {
+        //     state.yachtsByOwner = context.yachtsByOwner;
+        // },
 
         updateYacht({ yachts }, { savedYacht }) {
             const idx = yachts.findIndex(currYacht => currYacht._id === savedYacht._id);
@@ -72,28 +72,28 @@ export default {
                 })
             return yachts;
         },
-        yachtsByOwnerToShow({ yachtsByOwner }) {
-            return yachtsByOwner;
-        },
+        // yachtsByOwnerToShow({ yachtsByOwner }) {
+        //     return yachtsByOwner;
+        // },
         getyacht({ yacht }) {
             return yacht;
         }
     },
 
     actions: {
-        async loadYachtsByOwner({ commit }, { ownerId }) {
-            try {
-                // console.log('ownerId in the front servics', ownerId)
-                var yachtsByOwner = await yachtService.queryByOwner(ownerId)
-                commit({ type: 'setYachtsByOwner', yachtsByOwner })
-                console.log('yachtsByOwner in the store ',yachtsByOwner )
-                console.log('ownerId in the store ',ownerId )
-                return yachtsByOwner
-            } catch (err) {
-                console.log("Could not find yachts by owner error:", err);
-                return err;
-            }
-        },
+        // async loadYachtsByOwner({ commit }, { ownerId }) {
+        //     try {
+        //         // console.log('ownerId in the front servics', ownerId)
+        //         var yachtsByOwner = await yachtService.queryByOwner(ownerId)
+        //         commit({ type: 'setYachtsByOwner', yachtsByOwner })
+        //         console.log('yachtsByOwner in the store ',yachtsByOwner )
+        //         console.log('ownerId in the store ',ownerId )
+        //         return yachtsByOwner
+        //     } catch (err) {
+        //         console.log("Could not find yachts by owner error:", err);
+        //         return err;
+        //     }
+        // },
 
         async loadYacht({commit}, {yachtId}) {
             try {
@@ -105,9 +105,9 @@ export default {
             }
         },
 
-        async loadYachts({ commit }) {
+        async loadYachts({ commit }, {filterBy}) {
             try {
-                var yachts = await yachtService.query()
+                const yachts = await yachtService.query(filterBy)
                 commit({ type: "setYachts", yachts })
                 return yachts;
             } catch (err) {
@@ -118,7 +118,7 @@ export default {
 
         async getYachtById(context, { yachtId }) {
             try {
-                var yacht = await yachtService.getById(yachtId)
+                const yacht = await yachtService.getById(yachtId)
                 return yacht;
             } catch (err) {
                 console.log('YachtStore getById Could not find yacht error:', err)
