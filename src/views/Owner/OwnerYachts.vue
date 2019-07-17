@@ -11,28 +11,27 @@ export default {
   data() {
     return {
       yachtsByOwner: null,
-      loggedInUser: null,
-      // filterBy: { userId: "" }
+      // loggedInUser: null,
+      filterBy: { userId: "" }
     };
   },
   async created() {
     try {
-      this.loggedInUser = this.$store.getters.userLoggedIn;
+      // this.loggedInUser = this.$store.getters.userLoggedIn;
       // console.log(this.loggedInUser)
-      // this.filterBy.userId = this.$store.getters.userLoggedIn._id;
-      // this.yachts = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
-      this.yachtsByOwner = await this.$store.dispatch({
-        type: "loadYachtsByOwner",
-        ownerId: this.loggedInUser._id
-      });
+      this.filterBy.userId = await this.$store.getters.userLoggedIn._id;
+      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
+      // this.yachtsByOwner = await this.$store.dispatch({
+      //   type: "loadYachtsByOwner",
+      //   ownerId: this.loggedInUser._id
+      // });
     } catch (err) {
       console.log("errpr:", err);
     }
   },
   computed: {
     yachts() {
-      return this.$store.getters.yachtsByOwnerToShow;
-      // return this.$store.getters.yachtsToShow
+      return this.$store.getters.yachtsToShow;
     }
   },
   methods: {
