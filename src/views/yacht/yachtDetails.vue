@@ -5,7 +5,7 @@
 		<reservationBox /> <!-- is slots possible ?? -->
 		<div></div>
 		<div class="content ">
-			<a target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
+			<a alt="demo" target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
 
 				<img src="@/assets/img/temp/details-yacht-pics.jpg" />
 				<!-- <figure class="image is-4by3">
