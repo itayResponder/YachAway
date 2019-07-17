@@ -16,11 +16,11 @@
         <b-checkbox v-model="filterBy.facilities" native-value="safe" type="is-info" @input="emitFilter">Safe</b-checkbox>
         <b-checkbox v-model="filterBy.facilities" native-value="AC" type="is-info" @input="emitFilter">AC</b-checkbox>
         <br />
-        <b-checkbox v-model="filterBy.facilities" native-value="golf court" type="is-info" @input="emitFilter">Golf court</b-checkbox>
+        <b-checkbox v-model="filterBy.facilities" native-value="golf court" type="is-info" @input="emitFilter">Golf Court</b-checkbox>
         <b-checkbox v-model="filterBy.facilities" native-value="pool" type="is-info" @input="emitFilter">Pool</b-checkbox>
         <b-checkbox v-model="filterBy.facilities" native-value="shnorkel" type="is-info" @input="emitFilter">Shnorkel</b-checkbox>
         <b-checkbox v-model="filterBy.facilities" native-value="kitchen" type="is-info" @input="emitFilter">Kitchen</b-checkbox>
-        <b-checkbox v-model="filterBy.facilities" native-value="fridge" type="is-info" @input="emitFilter">fridge</b-checkbox>
+        <b-checkbox v-model="filterBy.facilities" native-value="fridge" type="is-info" @input="emitFilter">Fridge</b-checkbox>
         <b-checkbox v-model="filterBy.facilities" native-value="nothing" type="is-info" @input="emitFilter">nothing</b-checkbox>
 	
 	<p>{{filterBy.facilities}}</p>
