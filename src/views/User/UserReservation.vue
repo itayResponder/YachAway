@@ -29,14 +29,15 @@
 						<p class="has-text-weight-semibold">upcoming bookings</p>
 
 						<div v-for="reservation in reservations" :key="reservation._id">
-							<p>start Date:</p>
-							<p>{{reservation.startDate}}</p>
-							<p>end Date:</p>
-							<p>{{reservation.endDate}}</p>
-							<p>yacht:</p>
-							<p>{{reservation.yacht.name}}</p>
-							<p>price per night: </p>
-							<p>{{reservation.yacht.pricePerNight}}</p>
+							<p><span>start Date:</span>
+								<span>{{reservation.startDate}}</span></p>
+							<p><span>end Date:</span>
+								<span>{{reservation.endDate}}</span></p>
+							<p><span>yacht:</span>
+								<span>{{reservation.yacht.name}}</span></p>
+							<p><span>price per night: </span>
+								{{reservation.yacht.pricePerNight}}</p>
+							<hr />
 						</div>
 
 						<p>Once you make a booking, your upcoming bookings will show up here.</p>
