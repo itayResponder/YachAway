@@ -4,14 +4,6 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import YachtApp from '@/views/YachtApp.vue'
 import Admin from '@/views/Admin.vue'
-<<<<<<< HEAD
-import AdminDetails from '@/views/Admin/AdminDetails.vue'
-import YachtEdit from '@/views/yacht/YachtEdit.vue'
-import Login from '@/views/Login.vue'
-import YachtDetails from '@/views/yacht/YachtDetails.vue'
-import OwnerYachts from '@/views/Owner/OwnerYachts.vue'
-import ProfileHome from '@/views/User/ProfileHome.vue'
-=======
 import AdminDetails from '@/views/admin/AdminDetails.vue'
 import YachtEdit from '@/views/yacht/YachtEdit.vue'
 import Login from '@/views/Login.vue'
@@ -19,7 +11,6 @@ import YachtDetails from '@/views/yacht/YachtDetails.vue'
 import OwnerYachts from '@/views/owner/OwnerYachts.vue'
 import ProfileHome from '@/views/user/ProfileHome.vue'
 import OwnerYachtDetails from '@/views/owner/OwnerYachtDetails.vue'
->>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270
 
 Vue.use(Router)
 
