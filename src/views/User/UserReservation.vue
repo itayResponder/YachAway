@@ -43,7 +43,7 @@
 						<p>Once you make a booking, your upcoming bookings will show up here.</p>
 					</div>
 					<!-- NO RESERVATION -->
-					<div v-else="!reservations[0]">
+					<div v-if="!reservations[0]">
 						<img src="@/assets/img/2b11c87.png" alt="no-upcoming-bookings" />
 						<p class="has-text-weight-semibold">No upcoming bookings</p>
 						<p>Once you make a booking, your upcoming bookings will show up here.</p>
