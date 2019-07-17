@@ -1,75 +1,104 @@
 <template>
-	<article class="media">
-		<figure class="media-left">
-			<p class="image">
-				<img :src="yacht.imgs[0]" style="max-width:20vw; max-height:160px; object-fit: cover;" />
-			</p>
-		</figure>
-		<div class="media-content">
-			<router-link :to="getUrlWithYachtId">
+  <article class="media">
+    <figure class="media-left">
+      <p class="image">
+        <img :src="yacht.imgs[0]" style="max-width:20vw; max-height:160px; object-fit: cover;" />
+      </p>
+    </figure>
+    <div class="media-content">
+      <router-link :to="getUrlWithYachtId">
+        <div class="content">
+          <strong class="title is-4">{{yacht.name}}</strong>
+          <p
+            class="has-gray-text is-small"
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+          <!-- </div> -->
+        </div>
+      </router-link>
 
-				<div class="content">
-					<strong class="title is-4">{{yacht.name}}</strong>
-					<p class="has-gray-text is-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-					<!-- </div> -->
-				</div>
-			</router-link>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <div class="level-item">
+            <p class="image is-32x32 margin-min">
+              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png" />
+            </p>
+            <small>{{yacht.owner.userFirstName}}</small>
 
-			<nav class="level is-mobile">
-				<div class="level-left">
-					<div class="level-item">
-						<p class="image is-32x32 margin-min">
-							<img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png" />
-						</p>
-						<small>{{yacht.owner.userFirstName}}</small>
+            <!-- facilites -->
+          </div>
+        </div>
+      </nav>
+    </div>
 
-						<!-- facilites -->
-					</div>
-				</div>
-			</nav>
-		</div>
-
-		<!-- Reviews and Price -->
-		<div class="media is-boxed has-bullet-separator" style="text-align: center">
-			<div>
-				<p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">{{yacht.reviews.score}}</p>
-				<small class="has-text-grey">{{numberOfReviews}} Reviews</small>
-				<router-link :to=getUrlWithYachtId class="button is-info is-6 margin-min">Show Prices</router-link>
-			</div>
-		</div>
-	</article>
+    <!-- Reviews and Price -->
+    <div class="media is-boxed has-bullet-separator" style="text-align: center">
+      <div>
+        <p
+          style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;"
+        >{{getAverageReviews}}<br> <span style="font-size:20px" v-html="showStars"></span></p>
+        <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
+        <router-link :to="getUrlWithYachtId" class="button is-info is-6 margin-min">Show Prices</router-link>
+      </div>
+    </div>
+  </article>
 </template>
 <script>
 import Swal from "sweetalert2";
 export default {
-	name: "YachtPreview",
-	props: ["yacht"],
-	data() {
-		return {};
+  name: "YachtPreview",
+  props: ["yacht"],
+  data() {
+    return {
+		avrage:''
+	};
+  },
+  created() {
+    // console.log("in the preview yacht are = ", this.yacht);
+  },
+  methods: {},
+  computed: {
+    getNumberOfReviews() {
+      return this.yacht.reviews.length + 1;
+    },
+    getAverageReviews() {
+	  var length = this.yacht.reviews.length;
+		  var sum = 0
+		  this.yacht.reviews.forEach(review => sum += review.score )
+		var average = sum/length
+		  var roundedAverage = Math.round( average * 10 ) / 10;
+		  this.average = roundedAverage
+		  return roundedAverage
 	},
-	methods: {},
-	computed: {
-		numberOfReviews() {
-			return 1;
-		},
-		getUrlWithYachtId() {
-			return "/yacht/" + this.yacht._id;
-		}
-	}
+	showStars(){
+		var stars = ''
+		// console.log('average is ',this.average)
+		if (this.average < 1 ) return ''
+		else if (this.average < 1.5 ) return stars ='&#11088'
+		else if (this.average < 2.5 ) return stars = '&#11088 &#11088'
+		else if (this.average < 3.5 ) return stars = '&#11088 &#11088 &#11088'
+		else if (this.average < 4.5 ) return stars ='&#11088 &#11088 &#11088 &#11088'
+		else  return stars = '*****'
+		return stars
+
+	},
+    getUrlWithYachtId() {
+      return "/yacht/" + this.yacht._id;
+    }
+  }
 };
 </script>
 <style scoped>
 a {
-	color: inherit;
+  color: inherit;
 }
 .score {
-    border-radius: 50%;
-    padding: 5px;
-    border: 2px solid #999;
-    color: #999;
+  border-radius: 50%;
+  padding: 5px;
+  border: 2px solid #999;
+  color: #999;
 }
 .margin-min {
-    margin: 1rem;
+  margin: 1rem;
 }
 /* CSS OF NIV  ---- FOR DEBUG */
 /* *:not(path):not(g) {
