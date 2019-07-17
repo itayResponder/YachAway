@@ -10,7 +10,6 @@ export default {
             facilities: [],
             sort:''
         },
-        //     yachtsByOwner: []
         yachtsByOwner: [],
         yacht: {}
     },
