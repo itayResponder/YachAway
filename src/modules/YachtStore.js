@@ -46,9 +46,7 @@ export default {
     },
 
     getters: {
-
         yachtsToShow(state) {
-
             var facilities = state.filterBy.facilities
             var yachts = [...state.yachts]
             var txt = state.filterBy.txt.toLowerCase()
