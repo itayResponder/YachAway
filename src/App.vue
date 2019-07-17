@@ -14,7 +14,7 @@ export default {
 		};
 	},
 	created() {
-		this.$store.dispatch({type:"loadYachts", filterBy: {}});
+		this.$store.dispatch({type:"loadYachts", userId: {}});
 	},
 	components: {
 		MyHeader

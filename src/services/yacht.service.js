@@ -6,16 +6,11 @@ export default {
     remove,
     save,
     update,
-    // queryByOwner
 }
 
-function query(filterBy = {}) {
-    return httpService.get(_getUrl(), filterBy);
+function query(owner = {}) {
+    return httpService.get(_getUrl(), owner);
 }
-
-// function queryByOwner(ownerId) {
-//     return httpService.get(_getUrl('owner/'+ownerId))
-// }
 
 function remove(yachtId) {
     return httpService.delete(_getUrl(yachtId));
