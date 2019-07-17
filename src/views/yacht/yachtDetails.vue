@@ -43,17 +43,18 @@ export default {
 		};
 	},
 	async created() {
-		const yachtId = this.$route.params.id
-		try{
-			this.yacht = await this.$store.dispatch({type: 'loadYacht', yachtId})
-			console.log('front yachtDetail: yacht:',this.yacht)
-		} catch (err){
-			console.log("Couldnt get yacht err:", err)
+		console.log("YachtDetails created!!");
+		const yachtId = this.$route.params.id;
+		try {
+			this.yacht = await this.$store.dispatch({ type: "loadYacht", yachtId });
+			console.log("front yachtDetail: yacht:", this.yacht);
+		} catch (err) {
+			console.log("Couldnt get yacht err:", err);
 		}
 	},
 	methods: {
 		goBack() {
-			this.$router.push("/yachts")
+			this.$router.push("/yachts");
 		}
 	},
 	components: {
