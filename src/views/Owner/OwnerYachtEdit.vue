@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     back() {
-      this.$router.push("/yachts");
+      this.$router.go(-1);
     },
     async saveYacht() {
       let message = "Yacht has Updated";

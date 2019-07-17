@@ -19,7 +19,7 @@
 					<router-link :class="[menuClass]" to="/About">About / Help</router-link>
 					<!-- <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link> -->
 					<router-link :class="[menuClass]" to="/edit">List Your Yacht</router-link>
-					<router-link v-if="loggedInUser" :class="[menuClass]" to="/owner/yachts">Owner Yachts</router-link>
+					<router-link v-if="loggedInUser" :class="[menuClass]" :to=getUrlId>Profile</router-link>
 					<router-link v-if="!loggedInUser" :class="[menuClass]" to="/login">Login / SignUp</router-link>
 					<b-button v-else @click="logout" class="is-link is-outlined" type="is-danger">Log-Out</b-button>
 				</div>
@@ -39,6 +39,9 @@ export default {
 		menuClass() {
 			if (this.$route.name === "Home") return "navbar-item  has-text-white";
 			else return "navbar-item  has-text-black";
+		},
+		getUrlId(){
+			return '/profile/reservation'//+this.loggedInUser._id
 		}
 	},
 	methods: {
