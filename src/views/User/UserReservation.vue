@@ -2,13 +2,13 @@
   <div class="b-tabs">
     <nav class="tabs is-medium is-taller has-side-space">
       <ul>
-        <li class="is-active">
+        <li :class="{'is-active' : showUpcoming}">
           <a>
             <!---->
             <span @click="showUpcoming=true">Upcoming</span>
           </a>
         </li>
-        <li class>
+        <li :class="{'is-active' : !showUpcoming}">
           <a>
             <!---->
             <span @click="showUpcoming=false">History</span>

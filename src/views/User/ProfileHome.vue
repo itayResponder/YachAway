@@ -5,11 +5,10 @@
 				<!-- <li class="">
 					<router-link to="/travel" class="is-active">Discover</router-link>
 				</li> -->
-				<li class="is-active">
-					<router-link to="reservation" class="is-active">My bookings</router-link>
-				</li>
 				<li class="">
-					<router-link to="my-yachts" class="">My Yachts</router-link>
+					<router-link to="reservation" class="">My bookings</router-link>
+				</li><li class="">
+					<router-link   to="my-yachts" class="">My Yachts</router-link>
 				</li>
 			</ul>
 		</div>
@@ -40,4 +39,7 @@ export default {
 </script>
 
 <style>
+.router-link-exact-active {
+	border-bottom: 2px solid #8c67ef !important;
+}
 </style>
