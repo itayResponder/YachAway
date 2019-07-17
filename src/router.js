@@ -5,10 +5,11 @@ import About from '@/views/About.vue'
 import YachtApp from '@/views/YachtApp.vue'
 import Admin from '@/views/Admin.vue'
 import AdminDetails from '@/views/Admin/AdminDetails.vue'
-import YachtEdit from '@/views/yacht/YachtEdit.vue'
+import YachtEdit from '@/views/Yacht/YachtEdit.vue'
 import Login from '@/views/Login.vue'
-import YachtDetails from '@/views/yacht/yachtDetails.vue'
-import YachtDetails1 from '@/views/YachtDetails1.vue'
+import YachtDetails from '@/views/Yacht/YachtDetails.vue'
+import OwnerYachts from '@/views/Owner/OwnerYachts.vue'
+import ProfileHome from '@/views/User/ProfileHome.vue'
 
 Vue.use(Router)
 
@@ -24,6 +25,7 @@ export default new Router({
         { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails },
         { path: '/login', name: 'Login', component: Login },
         { path: '/yacht/details', name: 'YachtDetails', component: YachtDetails },
-        { path: '/yacht/details1', name: 'YachtDetails1', component: YachtDetails1 }
+        { path: '/owner/yachts', name: OwnerYachts, component: OwnerYachts },
+        { path: '/profile', name: ProfileHome, component: ProfileHome }
     ]
 })

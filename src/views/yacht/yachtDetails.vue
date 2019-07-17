@@ -1,4 +1,5 @@
 <template>
+
 	<div class="content">
 		<a target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
 
@@ -13,19 +14,28 @@
 
 		<img @ v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
 		<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
-
-		<img src="@/assets/img/temp/details-calan.jpg" />
+		<datePicker />
+		<showFreeDates />
+		<!-- <img src="@/assets/img/temp/details-calan.jpg" /> -->
 		<img src="@/assets/img/temp/details-reviews.jpg" />
 	</div>
+
 </template>
 
 <script>
+import datePicker from "@/components/general/DatePicker";
+import showFreeDates from "@/components/general/CalendarShow";
 export default {
 	data() {
 		return {
+			//FOR DEMONSTARATION PERPUSES
 			toggleDesc: true,
 			toggleFacility: true
 		};
+	},
+	components: {
+		datePicker,
+		showFreeDates
 	}
 };
 </script>

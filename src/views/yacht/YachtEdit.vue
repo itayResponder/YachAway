@@ -97,6 +97,7 @@ export default {
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
           this.yacht.owner.userId = this.userLoggedIn._id;
           this.yacht.owner.userFirstName = this.userLoggedIn.firstName;
+          console.log('YachtEdit this.yacht:', this.yacht)
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
         }
