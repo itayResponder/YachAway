@@ -4,9 +4,7 @@
       <b-input v-model="yacht.name" placeholder="Name" rounded></b-input>
       <b-input v-model="yacht.pricePerNight" placeholder="Price Per Night" rounded></b-input>
       <b-input v-model="yacht.reviews.description" placeholder="Description" rounded></b-input>
-      <!-- <b-input v-model="yacht.type" placeholder="type" rounded></b-input> -->
       <b-input v-model="yacht.maxPeopleOnBoard" placeholder="Max People On Board" rounded></b-input>
-      <!-- <b-input v-model="yacht.owner.userFirstName" placeholder="Owner's Name" rounded></b-input> -->
       <b-input v-model="yacht.location.country" placeholder="Country" rounded></b-input>
       <b-input v-model="yacht.location.city" placeholder="City" rounded></b-input>
       <b-input v-model="yacht.imgs[0]" placeholder="Insert Img Url" rounded></b-input>
@@ -49,7 +47,6 @@ export default {
         owner: { userId: "", userFirstName: "" },
         imgs: [],
         location: { country: "Israel", city: "Eilat", lat: "", lng: "" },
-        // type: "",
         reviews: {title: "best", description: "Awosme yacht", date: "", score: 4.5},
         maxPeopleOnBoard: "20",
         facilities: []
@@ -74,7 +71,6 @@ export default {
           type: "getYachtById",
           yachtId: this.id
         });
-        console.log("Admine Edit created yacht:", yacht);
         this.yacht._id = yacht._id;
         this.yacht = JSON.parse(JSON.stringify(yacht));
       } catch {
@@ -93,11 +89,9 @@ export default {
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
         } else {
           this.yacht.createdAt = Date.now();
-          console.log('YachtEdit this.user:', this.userLoggedIn)
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
           this.yacht.owner.userId = this.userLoggedIn._id;
           this.yacht.owner.userFirstName = this.userLoggedIn.firstName;
-          console.log('YachtEdit this.yacht:', this.yacht)
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
         }

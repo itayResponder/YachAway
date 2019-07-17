@@ -1,34 +1,31 @@
 <template>
 	<div id="app">
-
-		<my-header :loggedInUser="getLoggedUser" v-if="!headerType"></my-header>
+		<my-header :loggedInUser="getLoggedInUser" v-if="!headerType"></my-header>
 		<router-view></router-view>
 	</div>
 </template>
 
 <script>
-import MyHeader from "./components/MyHeader.vue";
+import MyHeader from "@/components/MyHeader.vue";
 export default {
 	name: "App",
 	data() {
-		return {
-		};
+		return {};
+	},
+	created() {
+		this.$store.dispatch("loadYachts");
 	},
 	components: {
 		MyHeader
 	},
 
 	computed: {
-		getLoggedUser() {
-			return this.$store.getters.userLoggedIn;
-		},
-
 		headerType() {
 			return this.$route.name === "Home";
+		},
+		getLoggedInUser() {
+			return this.$store.getters.userLoggedIn;
 		}
-	},
-	created() {
-		this.$store.dispatch("loadYachts");
 	}
 };
 </script>
@@ -37,7 +34,8 @@ export default {
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 @import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
-// @import '../assets/css/main.css';
+// @import "assets/css/helpers.css";
+@import "assets/css/main.css";
 
 // Set your colors
 $primary: #8c67ef;

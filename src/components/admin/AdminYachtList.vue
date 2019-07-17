@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import AdminYachtPreview from "../UserAdmin/AdminYachtPreview.vue";
+import AdminYachtPreview from "@/components/admin/AdminYachtPreview.vue";
 
 export default {
 	name: "AdminYachtList",

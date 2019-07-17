@@ -4,12 +4,22 @@ import Home from '@/views/Home.vue'
 import About from '@/views/About.vue'
 import YachtApp from '@/views/YachtApp.vue'
 import Admin from '@/views/Admin.vue'
+<<<<<<< HEAD
 import AdminDetails from '@/views/Admin/AdminDetails.vue'
 import YachtEdit from '@/views/yacht/YachtEdit.vue'
 import Login from '@/views/Login.vue'
 import YachtDetails from '@/views/yacht/YachtDetails.vue'
 import OwnerYachts from '@/views/Owner/OwnerYachts.vue'
 import ProfileHome from '@/views/User/ProfileHome.vue'
+=======
+import AdminDetails from '@/views/admin/AdminDetails.vue'
+import YachtEdit from '@/views/yacht/YachtEdit.vue'
+import Login from '@/views/Login.vue'
+import YachtDetails from '@/views/yacht/YachtDetails.vue'
+import OwnerYachts from '@/views/owner/OwnerYachts.vue'
+import ProfileHome from '@/views/user/ProfileHome.vue'
+import OwnerYachtDetails from '@/views/owner/OwnerYachtDetails.vue'
+>>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270
 
 Vue.use(Router)
 
@@ -17,15 +27,17 @@ export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
 
-    routes: [{ path: '/', name: 'Home', component: Home },
+    routes: [
+        { path: '/', name: 'Home', component: Home },
         { path: '/About', name: 'About', component: About },
         { path: '/yachts', name: 'YachtApp', component: YachtApp },
-        { path: '/admin', name: 'Admin', component: Admin },
         { path: '/edit/:id?', name: 'YachtEdit', component: YachtEdit },
-        { path: '/admin/:id?', name: 'AdminDetails', component: AdminDetails },
+        { path: '/admin', name: 'Admin', component: Admin },
+        { path: '/admin/:id', name: 'AdminDetails', component: AdminDetails },
         { path: '/login', name: 'Login', component: Login },
-        { path: '/yacht/details', name: 'YachtDetails', component: YachtDetails },
-        { path: '/owner/yachts', name: OwnerYachts, component: OwnerYachts },
-        { path: '/profile', name: ProfileHome, component: ProfileHome }
+        { path: '/yacht/:id', name: 'YachtDetails', component: YachtDetails },
+        { path: '/owner/yachts', name: 'OwnerYachts', component: OwnerYachts },
+        { path: '/owner/:id', name: 'OwnerYachtDetails', component: OwnerYachtDetails },
+        { path: '/profile', name: 'ProfileHome', component: ProfileHome }
     ]
 })

@@ -1,41 +1,74 @@
 <template>
+	<!-- IT MAYBE NEED TO USE TILES AND NOT GRID FOR RESPONSIVE -->
+	<div class="container grid">
 
-	<div class="content">
-		<a target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
+		<reservationBox /> <!-- is slots possible ?? -->
+		<div></div>
+		<div class="content ">
+			<a alt="demo" target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
 
-			<img src="@/assets/img/temp/details-yacht-pics.jpg" />
-		</a>
-		<a target="_blank" href="https://demo03.gethomey.io/listing/large-and-modern-bedroom/">
-			<img src="@/assets/img/temp/details-top-bnb.jpg" />
-		</a>
+				<img src="@/assets/img/temp/details-yacht-pics.jpg" />
+				<!-- <figure class="image is-4by3">
+				<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+			</figure> -->
+			</a>
+			<a target="_blank" href="https://demo03.gethomey.io/listing/large-and-modern-bedroom/">
+				<img src="@/assets/img/temp/details-top-bnb.jpg" />
+			</a>
 
-		<img @ v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
-		<img v-show="!toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption.jpg" />
+			<img v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
+			<img v-show="!toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption.jpg" />
 
-		<img @ v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
-		<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
-		<datePicker />
-		<showFreeDates />
-		<!-- <img src="@/assets/img/temp/details-calan.jpg" /> -->
-		<img src="@/assets/img/temp/details-reviews.jpg" />
+			<img v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
+			<img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />
+			<calendarShow />
+
+			<previewReview />
+			<img src="@/assets/img/temp/details-reviews.jpg" />
+		</div>
 	</div>
-
 </template>
 
 <script>
-import datePicker from "@/components/general/DatePicker";
-import showFreeDates from "@/components/general/CalendarShow";
+import calendarShow from "@/components/general/CalendarShow";
+import previewReview from "@/components/yacht/PreviewReview";
+import reservationBox from "@/components/yacht/ReservationBox";
 export default {
 	data() {
 		return {
 			//FOR DEMONSTARATION PERPUSES
 			toggleDesc: true,
-			toggleFacility: true
+			toggleFacility: true,
+			yacht: {}
 		};
 	},
+	async created() {
+<<<<<<< HEAD
+		console.log("YachtDetails created!!");
+		const yachtId = this.$route.params.id;
+		try {
+			this.yacht = await this.$store.dispatch({ type: "loadYacht", yachtId });
+			console.log("front yachtDetail: yacht:", this.yacht);
+		} catch (err) {
+			console.log("Couldnt get yacht err:", err);
+=======
+		const yachtId = this.$route.params.id
+		try{
+			this.yacht = await this.$store.dispatch({type: 'loadYacht', yachtId})
+		} catch (err){
+			console.log("Couldnt get yacht err:", err)
+>>>>>>> 31fcddcb1bb4a310dbe9e945eb83b7838192f23c
+		}
+	},
+	methods: {
+		goBack() {
+			this.$router.push("/yachts");
+		}
+	},
 	components: {
-		datePicker,
-		showFreeDates
+		calendarShow,
+		previewReview,
+		reservationBox
 	}
 };
 </script>

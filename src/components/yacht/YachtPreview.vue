@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD:src/components/Yachts/YachtPreview.vue
     <article class="media">
         <figure class="media-left">
             <p class="image">
@@ -38,10 +39,52 @@
             </div>
         </div>
     </article>
+=======
+	<article class="media">
+		<figure class="media-left">
+			<p class="image">
+				<img :src="yacht.imgs[0]" style="max-width:20vw; max-height:160px; object-fit: cover;" />
+			</p>
+		</figure>
+		<div class="media-content">
+			<router-link :to="getUrlWithYachtId">
+
+				<div class="content">
+					<strong class="title is-4">{{yacht.name}}</strong>
+					<p class="has-gray-text is-small">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+					<!-- </div> -->
+				</div>
+			</router-link>
+
+			<nav class="level is-mobile">
+				<div class="level-left">
+					<div class="level-item">
+						<p class="image is-32x32 margin-min">
+							<img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png" />
+						</p>
+						<small>{{yacht.owner.userFirstName}}</small>
+
+						<!-- facilites -->
+					</div>
+				</div>
+			</nav>
+		</div>
+
+		<!-- Reviews and Price -->
+		<div class="media is-boxed has-bullet-separator" style="text-align: center">
+			<div>
+				<p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">{{yacht.reviews.score}}</p>
+				<small class="has-text-grey">{{numberOfReviews}} Reviews</small>
+				<router-link :to=getUrlWithYachtId class="button is-info is-6 margin-min">Show Prices</router-link>
+			</div>
+		</div>
+	</article>
+>>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270:src/components/yacht/YachtPreview.vue
 </template>
 <script>
 import Swal from "sweetalert2";
 export default {
+<<<<<<< HEAD:src/components/Yachts/YachtPreview.vue
     name: "AdminYachtPreview",
     props: ["yacht"],
     data() {
@@ -53,9 +96,28 @@ export default {
             return 1;
         }
     }
+=======
+	name: "YachtPreview",
+	props: ["yacht"],
+	data() {
+		return {};
+	},
+	methods: {},
+	computed: {
+		numberOfReviews() {
+			return 1;
+		},
+		getUrlWithYachtId() {
+			return "/yacht/" + this.yacht._id;
+		}
+	}
+>>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270:src/components/yacht/YachtPreview.vue
 };
 </script>
 <style scoped>
+a {
+	color: inherit;
+}
 .score {
     border-radius: 50%;
     padding: 5px;

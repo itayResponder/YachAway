@@ -9,12 +9,12 @@ export default {
     queryByOwner
 }
 
-function query() {
-    return httpService.get(_getUrl());
+function query(filterBy = {}) {
+    return httpService.get(_getUrl(), filterBy);
 }
 
 function queryByOwner(ownerId) {
-    return httpService.get(_getUrl(ownerId))
+    return httpService.get(_getUrl('owner'+ownerId))
 }
 
 function remove(yachtId) {

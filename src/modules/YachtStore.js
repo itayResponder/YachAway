@@ -3,6 +3,7 @@ import yachtService from '@/services/yacht.service';
 export default {
     state: {
         yachts: [],
+<<<<<<< HEAD
         filterBy: {
             category: '',
             txt: '',
@@ -11,6 +12,10 @@ export default {
             sort:''
         },
         //     yachtsByOwner: []
+=======
+        yachtsByOwner: [],
+        yacht: {}
+>>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270
     },
 
     mutations: {
@@ -19,6 +24,10 @@ export default {
         },
         setYachts(state, context) {
             state.yachts = context.yachts;
+        },
+
+        setYacht(state, context) {
+            state.yacht = context.yacht;
         },
 
         setYachtsByOwner(state, context) {
@@ -69,9 +78,15 @@ export default {
                 })
             return yachts;
         },
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75aabc9a1a70257b199e32ea0145c60fb45e9270
         yachtsByOwnerToShow({ yachtsByOwner }) {
             return yachtsByOwner;
+        },
+        getyacht({ yacht }) {
+            return yacht;
         }
     },
 
@@ -84,6 +99,16 @@ export default {
             } catch (err) {
                 console.log("Could not find yachts by owner error:", err);
                 return err;
+            }
+        },
+
+        async loadYacht({commit}, {yachtId}) {
+            try {
+                const yacht = await yachtService.getById(yachtId)
+                commit({type: 'setYacht', yacht})
+                return yacht;
+            } catch (err) {
+                console.log('Could not find yacht byId error:', err)
             }
         },
 
