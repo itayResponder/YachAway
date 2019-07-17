@@ -18,6 +18,7 @@ export default {
   async created() {
     try {
       this.loggedInUser = await this.$store.getters.userLoggedIn;
+      // console.log(this.loggedInUser)
       // this.filterBy.userId = this.$store.getters.userLoggedIn._id;
       // this.yachts = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
       this.yachtsByOwner = await this.$store.dispatch({
