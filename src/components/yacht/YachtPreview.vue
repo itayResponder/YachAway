@@ -39,7 +39,6 @@
 		</div>
 	</article>
 </template>
-
 <script>
 import Swal from "sweetalert2";
 export default {
@@ -59,25 +58,24 @@ export default {
 	}
 };
 </script>
-
 <style scoped>
 a {
 	color: inherit;
 }
 .score {
-	border-radius: 50%;
-	padding: 5px;
-	border: 2px solid #999;
-	color: #999;
+    border-radius: 50%;
+    padding: 5px;
+    border: 2px solid #999;
+    color: #999;
 }
 .margin-min {
-	margin: 1rem;
+    margin: 1rem;
 }
 /* CSS OF NIV  ---- FOR DEBUG */
 /* *:not(path):not(g) {
-	color: hsla(210, 100%, 100%, 0.9) !important;
-	background: hsla(210, 100%, 50%, 0.5) !important;
-	outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
-	box-shadow: none !important;
+    color: hsla(210, 100%, 100%, 0.9) !important;
+    background: hsla(210, 100%, 50%, 0.5) !important;
+    outline: solid 0.25rem hsla(210, 100%, 100%, 0.5) !important;
+    box-shadow: none !important;
 } */
 </style>

@@ -28,9 +28,15 @@
         <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
       </div>
       <div class="buttons">
-        <b-button @click="goToDetails" type="is-info">Details</b-button>
-        <b-button @click="editOwnerYacht" type="is-success">Edit</b-button>
-        <b-button @click="removeOwnerYacht" type="is-danger">Delete</b-button>
+        <b-button @click="goToDetails" type="button field">
+          <img src="@/assets/icons/information-outline.svg" alt="Details" />
+        </b-button>
+        <b-button @click="editOwnerYacht" type="button field">
+          <img src="@/assets/icons/file-document-edit-outline.svg" alt="edit" />
+        </b-button>
+        <b-button type="button field" @click="removeOwnerYacht">
+          <img src="@/assets/icons/delete-forever-outline.svg" alt="delete" />
+        </b-button>
       </div>
     </div>
   </div>
@@ -44,10 +50,10 @@ export default {
   },
   methods: {
     editOwnerYacht() {
-      this.$router.push(`/admin/edit/${this.yacht._id}`);
+      this.$router.push(`/owner/edit/${this.yacht._id}`);
     },
     goToDetails() {
-      this.$router.push(`/owner/${this.yacht._id}`);
+      this.$router.push(`/owner/details/${this.yacht._id}`);
     },
     async removeOwnerYacht() {
       try {
@@ -74,6 +80,7 @@ export default {
 <style scoped>
 .card {
   width: 30%;
+  margin-bottom:50px;
 }
 .card:hover {
   box-shadow: 0 0 15px 2px black;

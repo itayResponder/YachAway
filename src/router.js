@@ -9,8 +9,10 @@ import YachtEdit from '@/views/yacht/YachtEdit.vue'
 import Login from '@/views/Login.vue'
 import YachtDetails from '@/views/yacht/YachtDetails.vue'
 import OwnerYachts from '@/views/owner/OwnerYachts.vue'
+import UserReservation from '@/views/user/UserReservation.vue'
 import ProfileHome from '@/views/user/ProfileHome.vue'
 import OwnerYachtDetails from '@/views/owner/OwnerYachtDetails.vue'
+import OwnerYachtEdit from '@/views/owner/OwnerYachtEdit.vue'
 
 Vue.use(Router)
 
@@ -27,8 +29,15 @@ export default new Router({
         { path: '/admin/:id', name: 'AdminDetails', component: AdminDetails },
         { path: '/login', name: 'Login', component: Login },
         { path: '/yacht/:id', name: 'YachtDetails', component: YachtDetails },
-        { path: '/owner/yachts', name: 'OwnerYachts', component: OwnerYachts },
-        { path: '/owner/:id', name: 'OwnerYachtDetails', component: OwnerYachtDetails },
-        { path: '/profile', name: 'ProfileHome', component: ProfileHome }
+        // { path: '/owner/yachts', name: 'OwnerYachts', component: OwnerYachts },
+        { path: '/owner/details/:id', name: 'OwnerYachtDetails', component: OwnerYachtDetails },
+        { path: '/owner/edit/:id?', name: 'OwnerYachtEdit', component: OwnerYachtEdit },
+        { path: '/profile', name: 'ProfileHome', component: ProfileHome,
+        children: [
+            { path: 'my-yachts', component: OwnerYachts },
+            { path: 'reservation', component: UserReservation },
+
+        ],
+    },
     ]
 })

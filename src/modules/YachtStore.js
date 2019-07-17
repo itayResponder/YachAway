@@ -3,11 +3,21 @@ import yachtService from '@/services/yacht.service';
 export default {
     state: {
         yachts: [],
+        filterBy: {
+            category: '',
+            txt: '',
+            minPeople: '',
+            facilities: [],
+            sort:''
+        },
         yachtsByOwner: [],
         yacht: {}
     },
 
     mutations: {
+        setFilter(state, filter) {
+            state.filterBy = filter
+        },
         setYachts(state, context) {
             state.yachts = context.yachts;
         },
@@ -36,7 +46,30 @@ export default {
     },
 
     getters: {
-        yachtsToShow({ yachts }) {
+        yachtsToShow(state) {
+            var facilities = state.filterBy.facilities
+            var yachts = [...state.yachts]
+            var txt = state.filterBy.txt.toLowerCase()
+            var minPeople = state.filterBy.minPeople
+            if (!state.filterBy) return yachts
+            else if (true)
+                yachts = state.yachts.filter(yacht => {
+                    return yacht.location.country.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil)) ||
+                        yacht.location.city.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil))
+
+                })
+                if (state.filterBy.sort === 'name')
+                yachts.sort(function (a, b) {
+                  if (a.name < b.name) { return -1;}
+                  if (a.name > b.name) { return 1; }
+                  return 0;
+                })
+                else if (state.filterBy.sort === 'price')
+                yachts.sort(function (a, b) {
+                  if (a.pricePerNight < b.pricePerNight) { return 1;}
+                  if (a.pricePerNight > b.pricePerNight) { return -1; }
+                  return 0;
+                })
             return yachts;
         },
         yachtsByOwnerToShow({ yachtsByOwner }) {
@@ -50,8 +83,11 @@ export default {
     actions: {
         async loadYachtsByOwner({ commit }, { ownerId }) {
             try {
+                // console.log('ownerId in the front servics', ownerId)
                 var yachtsByOwner = await yachtService.queryByOwner(ownerId)
                 commit({ type: 'setYachtsByOwner', yachtsByOwner })
+                console.log('yachtsByOwner in the store ',yachtsByOwner )
+                console.log('ownerId in the store ',ownerId )
                 return yachtsByOwner
             } catch (err) {
                 console.log("Could not find yachts by owner error:", err);
