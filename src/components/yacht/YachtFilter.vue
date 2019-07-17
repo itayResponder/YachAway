@@ -76,3 +76,8 @@ export default {
   components: {}
 };
 </script>
+<style scoped>
+.facilities{
+  display:flex;
+}
+</style>

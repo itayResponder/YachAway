@@ -57,7 +57,8 @@ export default {
 			const startDate = this.startDate;
 			const endDate = this.endDate;
 			const guest = this.guest;
-			const wantedReservation = { guest, startDate, endDate };
+			const yachtId = this.$route.params.id;
+			const wantedReservation = { guest, startDate, endDate, yachtId };
 			if (startDate && endDate && guest > 0) {
 				// CHECK IF IT IS  A REAL DATE :
 				// if(!isNaN(Date.parse(startDate))  && !isNaN(Date.parse(endDate)) )
