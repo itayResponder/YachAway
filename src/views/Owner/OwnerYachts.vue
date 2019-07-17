@@ -1,6 +1,6 @@
 <template>
   <section v-if="yachts">
-    <owner-yacht-list :yachts="yachts"></owner-yacht-list>
+    <owner-yacht-list :yachts="yachts" @removeOwnerYacht="removeOwnerYacht"></owner-yacht-list>
   </section>
 </template>
 
@@ -32,6 +32,11 @@ export default {
     yachts() {
       return this.$store.getters.yachtsByOwnerToShow;
       // return this.$store.getters.yachtsToShow
+    }
+  },
+  methods: {
+    removeOwnerYacht(yachtId) {
+      this.$store.dispatch({type: "removeYacht", yachtId})
     }
   },
   components: {
