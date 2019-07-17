@@ -6,16 +6,16 @@ export default {
 
 function makeReservation(wantedReservation) {
     console.log("do reservation service: ", wantedReservation);
-    return httpService.post(_getUrl(wantedReservation))
+    return httpService.post(_getUrl(), wantedReservation)
 }
 
 
 
-function _getUrl(yachtId = '') {
-    return `reservation/${yachtId}`
+function _getUrl(reservationId = '') {
+    return `reservation/${reservationId}`
 }
 
-// IN CASE OF PAYMENT RETURN OFFER OTHER BOAT ??
+//TODO: IN CASE OF PAYMENT CANCELED/RETURN OFFER OTHER BOAT ??
 function _handleWantedDates(wantedDates) {
     // LOCAL STORAGE
     sessionStorage.setItem('wantedDates', JSON.stringify(wantedDates));
