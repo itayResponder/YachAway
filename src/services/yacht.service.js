@@ -14,6 +14,7 @@ function query(filterBy = {}) {
 }
 
 function queryByOwner(ownerId) {
+    // console.log('ownerId in thr service = ',ownerId)
     return httpService.get(_getUrl('owner/'+ownerId))
 }
 

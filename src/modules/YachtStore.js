@@ -52,12 +52,12 @@ export default {
             var facilities = state.filterBy.facilities
             var yachts = [...state.yachts]
             var txt = state.filterBy.txt.toLowerCase()
-            var minPeopple = state.filterBy.minPeople
+            var minPeople = state.filterBy.minPeople
             if (!state.filterBy) return yachts
             else if (true)
                 yachts = state.yachts.filter(yacht => {
-                    return yacht.location.country.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeopple && facilities.every(currFacil => yacht.facilities.includes(currFacil)) ||
-                        yacht.location.city.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeopple && facilities.every(currFacil => yacht.facilities.includes(currFacil))
+                    return yacht.location.country.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil)) ||
+                        yacht.location.city.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil))
 
                 })
                 if (state.filterBy.sort === 'name')
@@ -85,8 +85,11 @@ export default {
     actions: {
         async loadYachtsByOwner({ commit }, { ownerId }) {
             try {
+                // console.log('ownerId in the front servics', ownerId)
                 var yachtsByOwner = await yachtService.queryByOwner(ownerId)
                 commit({ type: 'setYachtsByOwner', yachtsByOwner })
+                console.log('yachtsByOwner in the store ',yachtsByOwner )
+                console.log('ownerId in the store ',ownerId )
                 return yachtsByOwner
             } catch (err) {
                 console.log("Could not find yachts by owner error:", err);
