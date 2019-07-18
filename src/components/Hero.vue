@@ -21,7 +21,7 @@
 						</div>
 					</div>
 
-					<p class="subtitle has-text-white">List yacht anywhere in the globe... </p>
+					<p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p>
 				</div>
 			</div>
 		</section>
