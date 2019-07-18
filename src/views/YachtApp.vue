@@ -6,7 +6,6 @@
   </div> -->
 	<section>
 		<h1 class="is-size-1">{{cityName}}</h1>
-		<h1>THIS IS YACHT APP!!!!!</h1>
 		<b-button type="button field  is-white" @click="isGrid=!isGrid">
 			<img type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
 		</b-button>
@@ -39,8 +38,12 @@ export default {
 			newYacht: ""
 		};
 	},
-	created() {
-		this.$store.dispatch({type: 'loadYachts', owner: {}})
+	async created() {
+		try {
+			const yachts = await this.$store.dispatch({type: 'loadYachts', owner: {}})
+		} catch (err) {
+			console.log('Could not load yachts error:', err)
+		}
 	},
 	methods:{
 		  setFilter(filterBy) {

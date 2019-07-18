@@ -1,5 +1,5 @@
 <template>
-  <section v-if="yachts">
+  <section>
     <yacht-preview class="yachts-prev" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht"></yacht-preview>
   </section>
 </template>
@@ -33,7 +33,7 @@ export default {
 }
 .yachts-prev:hover {
   cursor: pointer;
-  box-shadow: 0 0 15px 2px black;
+  box-shadow: 0 0 1px 1px gray;
   transition: 0.3s;
 }
 </style>

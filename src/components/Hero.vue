@@ -4,7 +4,7 @@
 	<header class="hero is-large is-fullheight">
 		<section class="hero-video ">
 			<video poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg" id="bgvid" playsinline autoplay muted loop>
-				<source src="https://res.cloudinary.com/nivb/video/upload/v1562858364/hero/under-the-sea-wprentals_dn2vrm.mp4" type="video/mp4" />
+				<source src="https://res.cloudinary.com/dopdel26f/video/upload/v1563442703/video/www.kizoa.com_y2mate.com_-_my_aspire_51m_video_OlXpmcyvPFE_1080p_exaq4d.mp4" type="video/mp4" />
 			</video>
 
 			<div class="hero-head">
