@@ -1,11 +1,7 @@
 <template>
-	<nav class="navbar">
+	<nav class="navbar is-fixed-top">
 		<div class="container">
 			<div class="navbar-brand">
-				<a class="navbar-item">
-					<img src="https://bulma.io/images/bulma-type-white.png" alt="Logo" />
-				</a>
-
 				<span class="navbar-burger burger" data-target="navbarMenuHeroB">
 					<span></span>
 					<span></span>
@@ -37,7 +33,7 @@ export default {
 	},
 	computed: {
 		menuClass() {
-			if (this.$route.name === "Home") return "navbar-item  has-text-white";
+			if (this.$route.name === "Home") return "navbar-item  has-text-black";
 			else return "navbar-item  has-text-black";
 		},
 		getUrlId(){
@@ -58,6 +54,10 @@ export default {
 </script>
 
 <style scoped>
+.navbar {
+	margin-bottom: 50px; 
+}
+
 b-button {
 	padding: 0.5rem 0.75rem 0 0.75rem;
 }

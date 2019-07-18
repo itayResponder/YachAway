@@ -9,7 +9,7 @@ export default {
             txt: '',
             minPeople: '',
             facilities: [],
-            sort:''
+            sort: ''
         },
     },
 
@@ -53,17 +53,17 @@ export default {
                         yacht.location.city.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil))
 
                 })
-                if (state.filterBy.sort === 'name')
+            if (state.filterBy.sort === 'name')
                 yachts.sort(function (a, b) {
-                  if (a.name < b.name) { return -1;}
-                  if (a.name > b.name) { return 1; }
-                  return 0;
+                    if (a.name < b.name) { return -1; }
+                    if (a.name > b.name) { return 1; }
+                    return 0;
                 })
-                else if (state.filterBy.sort === 'price')
+            else if (state.filterBy.sort === 'price')
                 yachts.sort(function (a, b) {
-                  if (a.pricePerNight < b.pricePerNight) { return 1;}
-                  if (a.pricePerNight > b.pricePerNight) { return -1; }
-                  return 0;
+                    if (a.pricePerNight < b.pricePerNight) { return 1; }
+                    if (a.pricePerNight > b.pricePerNight) { return -1; }
+                    return 0;
                 })
             return yachts;
         },
@@ -73,17 +73,17 @@ export default {
     },
 
     actions: {
-        async loadYacht({commit}, {yachtId}) {
+        async loadYacht({ commit }, { yachtId }) {
             try {
                 const yacht = await yachtService.getById(yachtId)
-                commit({type: 'setYacht', yacht})
+                commit({ type: 'setYacht', yacht })
                 return yacht;
             } catch (err) {
                 console.log('Could not find yacht byId error:', err)
             }
         },
 
-        async loadYachts({ commit }, {user}) {
+        async loadYachts({ commit }, { user }) {
             try {
                 const yachts = await yachtService.query(user)
                 commit({ type: "setYachts", yachts })

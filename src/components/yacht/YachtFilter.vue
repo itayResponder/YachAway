@@ -7,7 +7,7 @@
 			<label class="panel-block">
 				<p class="control has-icons-left">
 					<select class="input is-medium is-fullwidth" v-model="filterBy.minPeople" @change="emitFilter">
-						<option value="">Adults number</option>
+						<option value="" disabled selected>How Many Adults</option>
 						<option value="1">1-10</option>
 						<option value="11">11-20</option>
 						<option value="21">21-30</option>

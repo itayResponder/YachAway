@@ -64,9 +64,7 @@ export default {
 		 * @param {String} id Input container ID
 		 */
 		getAddressData: function(addressData, placeResultData, id) {
-			console.log('clicked')
 			this.address = addressData;
-			console.log(addressData);
 		}
 	},
 	computed: {}

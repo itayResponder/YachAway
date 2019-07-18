@@ -11,14 +11,12 @@ export default {
   data() {
     return {
       yachtsByUser: null,
-      // loggedInUser: null,
       user: { _id: "" }
     };
   },
   async created() {
     try {
       this.user._id = await this.$store.getters.userLoggedIn._id;
-      console.log('OwnerYachts user:', this.user)
       this.yachtsByUser = await this.$store.dispatch({type: "loadYachts", user: this.user})
     } catch (err) {
       console.log("errpr:", err);

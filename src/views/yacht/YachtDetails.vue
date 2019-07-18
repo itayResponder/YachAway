@@ -1,6 +1,6 @@
 <template>
 	<!-- IT MAYBE NEED TO USE TILES AND NOT GRID FOR RESPONSIVE -->
-	<div class="container grid">
+	<div class="container">
 		<reservationBox />
 		<!-- is slots possible ?? -->
 		<div></div>
