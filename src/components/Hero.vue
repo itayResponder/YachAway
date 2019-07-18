@@ -20,8 +20,7 @@
 							<!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
 						</div>
 					</div>
-
-					<p class="subtitle has-text-white">List yacht anywhere in the globe... </p>
+					<p class="subtitle has-text-white">Serch yacht anywhere in the globe... </p>
 				</div>
 			</div>
 		</section>
@@ -64,9 +63,7 @@ export default {
 		 * @param {String} id Input container ID
 		 */
 		getAddressData: function(addressData, placeResultData, id) {
-			console.log('clicked')
 			this.address = addressData;
-			console.log(addressData);
 		}
 	},
 	computed: {}
