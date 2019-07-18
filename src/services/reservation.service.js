@@ -10,12 +10,10 @@ function query(filterBy = {}) {
     return httpService.get(_getUrl(), filterBy)
 }
 
-function addReservation(wantedReservation) {
-    console.log("do reservation service: ", wantedReservation);
-    return httpService.post(_getUrl(), wantedReservation)
+function addReservation(currReservation) {
+    console.log("front addReservation service currReservation: ", currReservation);
+    return httpService.post(_getUrl(), currReservation)
 }
-
-
 
 function _getUrl(reservationId = '') {
     return `reservation/${reservationId}`

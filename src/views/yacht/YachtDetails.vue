@@ -1,7 +1,8 @@
 <template>
 	<!-- IT MAYBE NEED TO USE TILES AND NOT GRID FOR RESPONSIVE -->
-	<div class="container grid">
+	<div class="container">
 		<reservationBox />
+		<calendarShow />
 		<!-- is slots possible ?? -->
 		<div></div>
 		<div class="content">
@@ -12,13 +13,13 @@
         </figure>-->
 				<h1>{{yacht.name}}</h1>
 			</a>
-			<div v-for="img in yacht.imgs" :key=img>
-
 				<reservationBox :yacht="yacht" /> <!-- is slots possible ?? -->
+			<div v-for="img in yacht.imgs" :key=img.id>
+
 				<div></div>
 				<div class="content ">
 					<!-- <a alt="demo" target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/"> -->
-					<figure v-if="yacht" class="image is-1x1">
+					<figure class="image is-1x1">
 						<img :src="img" />
 					</figure>
 
@@ -34,8 +35,6 @@
 
 			<img v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
       <img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />-->
-				<calendarShow />
-
 				<previewReview />
 				<!-- <img src="@/assets/img/temp/details-reviews.jpg" /> -->
 			</div>

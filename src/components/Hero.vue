@@ -20,7 +20,8 @@
 							<!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
 						</div>
 					</div>
-					<p class="subtitle has-text-white">Serch yacht anywhere in the globe... </p>
+
+					<p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p>
 				</div>
 			</div>
 		</section>

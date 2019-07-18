@@ -4,8 +4,6 @@ import reservationService from '@/services/reservation.service';
 export default {
     state: {
         reservations: []
-            //  reservations: reservationService.getResrvation()
-            //  loggedInUser: userService.getLoggedInUser()
     },
 
     mutations: {
@@ -13,8 +11,8 @@ export default {
             state.reservations = context.reservations;
         },
 
-        updateWantedReservation(state, context) {
-            state.reservations.push(context.wantedReservation);
+        updateReservations(state, context) {
+            state.reservations.push(context.reservation);
         },
     },
     getters: {
@@ -23,14 +21,15 @@ export default {
         }
     },
     actions: {
-        async doReservation({ commit }, { wantedReservation }) {
+        async makeReservation({ commit }, { currReservation }) {
             // console.log("do reservation store: ");
             try {
-                console.log("do reservation store: ", wantedReservation);
-                const proccessedRes = await reservationService.addReservation(wantedReservation)
-                    // commit({ type: 'updateWantedReservation', proccessedRes })
+                console.log("make reservation store: ", currReservation);
+                const reservation = await reservationService.addReservation(currReservation)
+                    commit({ type: 'updateReservations', reservation })
             } catch (err) {
-                console.log('some err');
+                console.log(`reservationStore makeReservation Could not make
+                 reservation error:`, err);
                 throw err
             }
         },
@@ -41,7 +40,8 @@ export default {
                 return reservations;
 
             } catch (err) {
-                console.log('Had Problems:', err);
+                console.log(`reservationStore loadReservations Could not get reservations
+                 error:`, err);
                 throw err
             }
         }
