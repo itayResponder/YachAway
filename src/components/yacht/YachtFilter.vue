@@ -1,7 +1,12 @@
 <template>
 	<section class=" is-right">
 		<nav class="panel">
-
+			<p class="panel-heading">
+				<div class="field">
+					<b-switch>Pro Services</b-switch>
+					Skipper professionals, verified for quality.
+				</div>
+			</p>
 			<!-- FILTERS -->
 
 			<label class="panel-block">
