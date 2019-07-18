@@ -8,8 +8,8 @@ export default {
     update,
 }
 
-function query(owner = {}) {
-    return httpService.get(_getUrl(), owner);
+function query(user = {}) {
+    return httpService.get(_getUrl(), user);
 }
 
 function remove(yachtId) {

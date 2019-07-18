@@ -83,11 +83,10 @@ export default {
             }
         },
 
-        async loadYachts({ commit }, {owner}) {
+        async loadYachts({ commit }, {user}) {
             try {
-                const yachts = await yachtService.query(owner)
+                const yachts = await yachtService.query(user)
                 commit({ type: "setYachts", yachts })
-                console.log('YachtStore yachts:', yachts)
                 return yachts;
             } catch (err) {
                 console.log("Could not find yachts  error:", err);

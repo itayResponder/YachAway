@@ -1,4 +1,4 @@
-<template v-if="yacht">
+<template>
   <article class="media">
     <figure class="media-left">
       <p class="image">
@@ -35,7 +35,7 @@
       <div>
         <p
           style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;"
-        >{{getAverageReviews}}<br> <span style="font-size:20px" v-html="showStars"></span></p>
+        >{{getAverageReviews}}<br> <span style="font-size:15px" v-html="showStars"></span></p>
         <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
         <router-link :to="getUrlWithYachtId" class="button is-info is-6 margin-min">More Details</router-link>
       </div>
@@ -51,9 +51,6 @@ export default {
     return {
 		avrage:''
 	};
-  },
-  created() {
-    // console.log("in the preview yacht are = ", this.yacht);
   },
   methods: {},
   computed: {
@@ -79,7 +76,7 @@ export default {
 		else if (this.average < 2.5 ) return stars = '&#11088 &#11088'
 		else if (this.average < 3.5 ) return stars = '&#11088 &#11088 &#11088'
 		else if (this.average < 4.5 ) return stars ='&#11088 &#11088 &#11088 &#11088'
-		else  return stars = '*****'
+		else  return stars = '&#11088 &#11088 &#11088 &#11088 &#11088'
 		return stars
 
 	},

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="yachts">
+  <section>
     <yacht-preview class="yachts-prev" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht"></yacht-preview>
   </section>
 </template>
