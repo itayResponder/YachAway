@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div v-if="yacht">
 		<!-- <nav class="navbar is-fixed-top" style="top:4px; right:inherit; left:inherit;"> -->
 		<nav class="panel" style="position: sticky;  z-index: 30; top:4px; right:inherit; left:inherit;">
 			<p class="panel-heading is-black  has-background-white">
@@ -7,8 +7,8 @@
 			</p>
 			<div class="panel-block">
 				<p class="control has-icons-left">
-					<input v-model="startDate" class="input is-small" type="date" placeholder="dates">
-					<input v-model="endDate" class="input is-small" type="date" placeholder="dates">
+					<input v-model="fromDate" class="input is-small" type="date" placeholder="dates">
+					<input v-model="toDate" class="input is-small" type="date" placeholder="dates">
 
 					<!-- <input @click="openCalendar=!openCalendar" v-show="!openCalendar" style="z-index:40;" class="input is-small" />
 					<calendarShow @click="openCalendar=!openCalendar" v-show="openCalendar" style="z-index:50;" class="input is-small" /> -->
@@ -20,7 +20,7 @@
 			</div>
 			<div class="panel-block">
 				<p class="control has-icons-left">
-					<input v-model="numOfGuest" min="1" class="input is-small" type="number" placeholder="guests">
+					<input v-model="numOfGuest" min="1" class="input is-small" type="number" placeholder="How Many Guests">
 					<span class="icon is-small is-left">
 						<i class="fas fa-search" aria-hidden="true"></i>
 					</span>
@@ -48,8 +48,8 @@ export default {
 	data() {
 		return {
 			openCalendar: false,
-			startDate: "2019-07-19", //null,
-			endDate: "2019-07-20", //null,
+			fromDate: "2019-07-19", //null,
+			toDate: "2019-07-20", //null,
 			numOfGuest: 1
 		};
 	},
@@ -58,7 +58,7 @@ export default {
 			// create USER object
 			const { firstName, _id } = this.$store.getters.userLoggedIn;
 			const user = {};
-			user.firstName = firstName;
+			user.name = firstName;
 			user._id = _id;
 			return user;
 		},
@@ -70,21 +70,25 @@ export default {
 			yacht.pricePerNight = this.yacht.pricePerNight;
 			return yacht;
 		},
-		doReservation() {
-			const startDate = this.startDate;
-			const endDate = this.endDate;
+		async doReservation() {
+			const fromDate = this.fromDate;
+			const toDate = this.toDate;
 			const numOfGuest = this.numOfGuest;
 
 			const user = this.createUserObj();
 			const yacht = this.createYachtObj();
 
 			// send wantedReservation
-			const wantedReservation = { numOfGuest, startDate, endDate, yacht, user };
+			const currReservation = { numOfGuest, fromDate, toDate, yacht, user };
 
-			if (startDate && endDate && numOfGuest > 0) {
+			if (fromDate && toDate && numOfGuest > 0) {
 				// CHECK IF IT IS  A REAL DATE :
 				// if(!isNaN(Date.parse(startDate))  && !isNaN(Date.parse(endDate)) )
-				this.$store.dispatch({ type: "doReservation", wantedReservation });
+				try {
+					const reservation = await this.$store.dispatch({ type: "makeReservation", currReservation });
+				} catch (err) {
+					console.log('Coule not get reservation error:', err)
+				}
 			} else {
 				this.$toast.open({
 					duration: 4050,

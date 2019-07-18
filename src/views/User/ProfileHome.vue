@@ -23,9 +23,7 @@
 		<section class="width-limit has-space-h is-fullwidth-when-narrow">
 			<div class="box all-bookings is-light is-paddingless is-collapsed-when-narrow has-fade">
 				<router-view></router-view>
-
 			</div>
-
 		</section>
 	</main>
 </template>

@@ -110,7 +110,7 @@ export default {
                 commit({ type: 'removeYacht', yachtId })
                 return yachtRemoved;
             } catch (err) {
-                console.log('Could not delete yacht error:', err);
+                console.log('YachtStore removeYacht Could not remove yacht error:', err);
                 return err;
             }
         },
