@@ -1,4 +1,4 @@
-<template>
+<template v-if="yacht">
   <article class="media">
     <figure class="media-left">
       <p class="image">
@@ -15,14 +15,14 @@
           <!-- </div> -->
         </div>
       </router-link>
-
       <nav class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
             <p class="image is-32x32 margin-min">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png" />
-            </p>
-            <small>{{yacht.owner.userFirstName}}</small>
+              <img class="is-rounded" :src="yacht.user.img" />
+<p><b>{{yacht.location.country}}</b>,<b>{{yacht.location.city}}</b></p>
+           
+            <small>{{yacht.user.name}}</small>
 
             <!-- facilites -->
           </div>
@@ -37,7 +37,7 @@
           style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;"
         >{{getAverageReviews}}<br> <span style="font-size:20px" v-html="showStars"></span></p>
         <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
-        <router-link :to="getUrlWithYachtId" class="button is-info is-6 margin-min">Show Prices</router-link>
+        <router-link :to="getUrlWithYachtId" class="button is-info is-6 margin-min">More Details</router-link>
       </div>
     </div>
   </article>
@@ -58,13 +58,15 @@ export default {
   methods: {},
   computed: {
     getNumberOfReviews() {
-      return this.yacht.reviews.length + 1;
+      return this.yacht.reviews.length ;
     },
     getAverageReviews() {
-	  var length = this.yacht.reviews.length;
+    var length = this.yacht.reviews.length;
 		  var sum = 0
-		  this.yacht.reviews.forEach(review => sum += review.score )
-		var average = sum/length
+      this.yacht.reviews.forEach(review => { 
+          sum += review.score 
+      })
+    var average = sum/length
 		  var roundedAverage = Math.round( average * 10 ) / 10;
 		  this.average = roundedAverage
 		  return roundedAverage

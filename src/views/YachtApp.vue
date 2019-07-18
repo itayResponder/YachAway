@@ -3,7 +3,7 @@
 	<!-- <div class="add-filter">
 			<div class="add-yachts">
 			</div>
-  </div>-->
+  </div> -->
 	<section>
 		<h1 class="is-size-1">{{cityName}}</h1>
 
