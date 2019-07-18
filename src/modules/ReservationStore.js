@@ -32,9 +32,9 @@ export default {
                 throw err
             }
         },
-        async loadReservations({ commit }, { filterBy }) {
+        async loadReservations({ commit }, { user }) {
             try {
-                const reservations = await reservationService.query(filterBy)
+                const reservations = await reservationService.query(user)
                 commit({ type: 'setReservations', reservations })
                 return reservations;
 

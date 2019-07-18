@@ -6,12 +6,10 @@ export default {
 }
 
 function query(filterBy = {}) {
-    console.log("front reservation service filterBy: ", filterBy);
     return httpService.get(_getUrl(), filterBy)
 }
 
 function addReservation(currReservation) {
-    console.log("front addReservation service currReservation: ", currReservation);
     return httpService.post(_getUrl(), currReservation)
 }
 

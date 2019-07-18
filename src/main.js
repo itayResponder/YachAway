@@ -17,6 +17,7 @@ const datepickerOptions = {}
 
 Vue.use(AirbnbStyleDatepicker, datepickerOptions)
 Vue.use(Buefy)
+Vue.use(require('vue-moment'));
 
 Vue.config.productionTip = false
 

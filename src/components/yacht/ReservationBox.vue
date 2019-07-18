@@ -71,22 +71,27 @@ export default {
     },
     createYachtObj() {
       // create YACHT object
-      const yacht = {};
+      const yacht = {owner:{}};
+      console.log("reserBox yacht:",this.yacht)
       yacht._id = this.$route.params.id;
       yacht.name = this.yacht.name;
       yacht.pricePerNight = this.yacht.pricePerNight;
+      yacht.img = this.yacht.imgs[0];
+      yacht.owner.img = this.yacht.user.img;
+      yacht.owner.email = this.yacht.user.email;
+      yacht.owner.name = this.yacht.user.name;
       return yacht;
     },
     async makeReservation() {
       const fromDate = this.fromDate;
       const toDate = this.toDate;
       const numOfGuest = this.numOfGuest;
-
       const user = this.createUserObj();
       const yacht = this.createYachtObj();
+      const createdAt = Date.now();
 
       // send wantedReservation
-      const currReservation = { numOfGuest, fromDate, toDate, yacht, user };
+      const currReservation = { numOfGuest, fromDate, toDate, yacht, user, createdAt };
 
       if (fromDate && toDate && numOfGuest > 0) {
         // CHECK IF IT IS  A REAL DATE :
