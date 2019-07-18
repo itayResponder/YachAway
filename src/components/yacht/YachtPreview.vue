@@ -17,7 +17,7 @@
         <b>{{yacht.location.country}}</b>,
         <b>{{yacht.location.city}}</b>
       </p>
-      
+
       <nav class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
@@ -28,7 +28,7 @@
               <b>{{yacht.user.name}}</b>
               <!-- facilites -->
             </p>
-            <button @click="markAsLiked">LIke</button>
+            <button @click="markAsLiked">LIKE</button>
           </div>
         </div>
       </nav>
@@ -56,23 +56,21 @@ export default {
   data() {
     return {
       avrage: "",
-      likedYacht:{
-        _Id:'',
-        name:'',
-        img:''
+      likedYacht: {
+        _id: "",
+        name: "",
+        img: ""
       }
-      
     };
   },
-        // "favorites": [{"yachtId":"y103","yachtName":"Ronaldinho","yachtImage":"imgUrl"}
-// 
+  // "favorites": [{"yachtId":"y103","yachtName":"Ronaldinho","yachtImage":"imgUrl"}
+  //
   methods: {
-    markAsLiked(){
-      this.likedYacht._Id = this.yacht._id
-      this.likedYacht.name = this.yacht.name
-      this.likedYacht.img = this.yacht.imgs[0]
+    markAsLiked() {
+      this.likedYacht._id = this.yacht._id;
+      this.likedYacht.name = this.yacht.name;
+      this.likedYacht.img = this.yacht.imgs[0];
       this.$emit("emitLikedYacht", this.likedYacht);
-      // this.$store.dispatch({ type: "setLikedYacht", likedYacht: this.likedYacht });
     }
   },
   computed: {

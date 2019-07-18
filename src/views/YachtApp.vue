@@ -53,19 +53,16 @@ export default {
       this.$store.commit("setFilter", filterBy);
     },
     async emitLikedYacht(likedYacht) {
-      // let loogedInUser =  this.$store.getters.userLoggedIn;
       likedYacht.userId = this.$store.getters.userLoggedIn._id;
-      //   console.log("likeYacht", likedYacht);
+      console.log('yachtApp likedYacht:',likedYacht)
       try {
         const user = await this.$store.dispatch({
           type: "setLikedYacht",
           likedYacht: likedYacht
         });
-        console.log("updated user: ", user);
       } catch (err) {
-        console.log("coudlnt update user likedYacht error:", err);
+        console.log("Coudlnt update user likedYacht error:", err);
       }
-      //   console.log("user in the store ", user);
     }
   },
   computed: {

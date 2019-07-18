@@ -22,11 +22,10 @@ export default {
     },
     actions: {
         async makeReservation({ commit }, { currReservation }) {
-            // console.log("do reservation store: ");
             try {
-                console.log("make reservation store: ", currReservation);
                 const reservation = await reservationService.addReservation(currReservation)
                     commit({ type: 'updateReservations', reservation })
+                    return reservation
             } catch (err) {
                 console.log(`reservationStore makeReservation Could not make
                  reservation error:`, err);
