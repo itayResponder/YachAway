@@ -11,14 +11,14 @@
           <strong class="title is-4">{{yacht.name}}</strong>
           <p
             class="has-gray-text is-small"
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+          >{{yacht.description}}</p>
           <!-- </div> -->
         </div>
       </router-link>
       <nav class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
-            <p class="image is-32x32 margin-min">
+            <p class="image is-64x64 margin-min">
               <img class="is-rounded" :src="yacht.user.img" />
 <p><b>{{yacht.location.country}}</b>,<b>{{yacht.location.city}}</b></p>
            
