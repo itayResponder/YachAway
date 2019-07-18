@@ -15,13 +15,13 @@
 				<div class="container has-text-centered">
 					<div id="custom-search-input">
 						<div class="input-group">
-							<vue-google-autocomplete class="search-query" ref="address" id="map" classname="form-control" placeholder="Start typing" v-on:placechanged="getAddressData">
+							<vue-google-autocomplete class="search-query" ref="address" id="map" classname="form-control" placeholder="PIck Destination" v-on:placechanged="getAddressData">
 							</vue-google-autocomplete>
 							<!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
 						</div>
 					</div>
 
-					<p class="subtitle has-text-white">Subtitle</p>
+					<p class="subtitle has-text-white">List yacht anywhere in the globe... </p>
 				</div>
 			</div>
 		</section>
@@ -64,6 +64,7 @@ export default {
 		 * @param {String} id Input container ID
 		 */
 		getAddressData: function(addressData, placeResultData, id) {
+			console.log('clicked')
 			this.address = addressData;
 			console.log(addressData);
 		}
