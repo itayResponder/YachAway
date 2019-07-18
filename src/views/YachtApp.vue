@@ -29,7 +29,6 @@
 <script>
 import YachtList from "@/components/yacht/YachtList";
 import YachtGrid from "@/components/yacht/YachtGrid";
-// import AdminYachtList from "@/components/admin/AdminYachtList";
 import YachtFilter from "@/components/yacht/YachtFilter";
 
 export default {
