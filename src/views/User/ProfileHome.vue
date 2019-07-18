@@ -11,6 +11,9 @@
 				<li class="">
 					<router-link to="my-yachts" class="">My Yachts</router-link>
 				</li>
+				<li class="">
+					<router-link to="messages" class="">My Messages</router-link>
+				</li>
 			</ul>
 		</div>
 		<!-- <header class="width-limit has-space-h">

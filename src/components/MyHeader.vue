@@ -39,6 +39,11 @@
                 :class="[menuClass,'is-subtitle']"
                 to="/profile/reservation"
               >My Reservation</router-link>
+              <router-link
+                v-show="loggedInUser"
+                :class="[menuClass,'is-subtitle']"
+                to="/profile/messages"
+              >My Messages</router-link>
 
               <hr class="navbar-divider" />
               <span v-show="loggedInUser" @click="logout" class="navbar-item">

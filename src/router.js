@@ -13,6 +13,7 @@ import UserReservation from '@/views/user/UserReservation.vue'
 import ProfileHome from '@/views/user/ProfileHome.vue'
 import OwnerYachtDetails from '@/views/owner/OwnerYachtDetails.vue'
 import OwnerYachtEdit from '@/views/owner/OwnerYachtEdit.vue'
+import UserMessages from '@/views/user/UserMessages.vue'
 
 Vue.use(Router)
 
@@ -36,7 +37,7 @@ export default new Router({
         children: [
             { path: 'my-yachts', component: OwnerYachts },
             { path: 'reservation', component: UserReservation },
-
+            { path: 'messages', component: UserMessages },
         ],
     },
     ]
