@@ -98,7 +98,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 export default {
 	name: "yacht-filter",
 
@@ -116,7 +115,6 @@ export default {
 	methods: {
 		emitFilter() {
 			var filter = { ...this.filterBy };
-			//    console.log('filter is = ',filter)
 			this.$emit("set-filter", filter);
 		}
 	},
