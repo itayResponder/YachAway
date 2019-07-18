@@ -72,7 +72,6 @@ export default {
     createYachtObj() {
       // create YACHT object
       const yacht = {owner:{}};
-      console.log("reserBox yacht:",this.yacht)
       yacht._id = this.$route.params.id;
       yacht.name = this.yacht.name;
       yacht.pricePerNight = this.yacht.pricePerNight;
