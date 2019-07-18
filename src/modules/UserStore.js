@@ -32,12 +32,24 @@ export default {
         async logout(context, { loggedUser }) {
             try {
                 const loggedInUser = await userService.logout(loggedUser)
-                context.commit({type: 'setUser', user: null})
+                context.commit({ type: 'setUser', user: null })
                 return loggedInUser;
             } catch (err) {
                 console.log('error with logout err:', err);
                 return err;
             }
+        },
+        async setLikedYacht(context, { likedYacht }) {
+            const confirmedLike = await userService.addFavorite(likedYacht)
+            try {
+                console.log('in the store', likedYacht)
+                return confirmedLike
+
+            }
+            catch (err) {
+                console.log('error insert likedYacht')
+            }
+
         }
     }
 }
