@@ -13,9 +13,6 @@ export default {
 		return {
 		};
 	},
-	created() {
-		this.$store.dispatch({type:"loadYachts", filterBy: {}});
-	},
 	components: {
 		MyHeader
 	},

@@ -6,7 +6,7 @@
   </div> -->
 	<section>
 		<h1 class="is-size-1">{{cityName}}</h1>
-
+		<h1>THIS IS YACHT APP!!!!!</h1>
 		<b-button type="button field  is-white" @click="isGrid=!isGrid">
 			<img type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
 		</b-button>
@@ -29,7 +29,6 @@
 <script>
 import YachtList from "@/components/yacht/YachtList";
 import YachtGrid from "@/components/yacht/YachtGrid";
-// import AdminYachtList from "@/components/admin/AdminYachtList";
 import YachtFilter from "@/components/yacht/YachtFilter";
 
 export default {
@@ -39,6 +38,9 @@ export default {
 			isGrid: false,
 			newYacht: ""
 		};
+	},
+	created() {
+		this.$store.dispatch({type: 'loadYachts', owner: {}})
 	},
 	methods:{
 		  setFilter(filterBy) {
@@ -56,7 +58,6 @@ export default {
 	components: {
 		YachtList,
 		YachtGrid,
-		// AdminYachtList,
 		YachtFilter
 	}
 };

@@ -12,19 +12,13 @@ export default {
     return {
       yachtsByOwner: null,
       // loggedInUser: null,
-      filterBy: { userId: "" }
+      owner: { _id: "" }
     };
   },
   async created() {
     try {
-      // this.loggedInUser = this.$store.getters.userLoggedIn;
-      // console.log(this.loggedInUser)
-      this.filterBy.userId = await this.$store.getters.userLoggedIn._id;
-      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
-      // this.yachtsByOwner = await this.$store.dispatch({
-      //   type: "loadYachtsByOwner",
-      //   ownerId: this.loggedInUser._id
-      // });
+      this.owner._id = await this.$store.getters.userLoggedIn._id;
+      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", owner: this.owner})
     } catch (err) {
       console.log("errpr:", err);
     }
