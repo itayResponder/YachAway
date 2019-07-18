@@ -3,6 +3,7 @@ import yachtService from '@/services/yacht.service';
 export default {
     state: {
         yachts: [],
+        yacht: {},
         filterBy: {
             category: '',
             txt: '',
@@ -10,8 +11,6 @@ export default {
             facilities: [],
             sort:''
         },
-        // yachtsByOwner: [],
-        yacht: {}
     },
 
     mutations: {
@@ -25,10 +24,6 @@ export default {
         setYacht(state, context) {
             state.yacht = context.yacht;
         },
-
-        // setYachtsByOwner(state, context) {
-        //     state.yachtsByOwner = context.yachtsByOwner;
-        // },
 
         updateYacht({ yachts }, { savedYacht }) {
             const idx = yachts.findIndex(currYacht => currYacht._id === savedYacht._id);
@@ -72,29 +67,12 @@ export default {
                 })
             return yachts;
         },
-        // yachtsByOwnerToShow({ yachtsByOwner }) {
-        //     return yachtsByOwner;
-        // },
         getyacht({ yacht }) {
             return yacht;
         }
     },
 
     actions: {
-        // async loadYachtsByOwner({ commit }, { ownerId }) {
-        //     try {
-        //         // console.log('ownerId in the front servics', ownerId)
-        //         var yachtsByOwner = await yachtService.queryByOwner(ownerId)
-        //         commit({ type: 'setYachtsByOwner', yachtsByOwner })
-        //         console.log('yachtsByOwner in the store ',yachtsByOwner )
-        //         console.log('ownerId in the store ',ownerId )
-        //         return yachtsByOwner
-        //     } catch (err) {
-        //         console.log("Could not find yachts by owner error:", err);
-        //         return err;
-        //     }
-        // },
-
         async loadYacht({commit}, {yachtId}) {
             try {
                 const yacht = await yachtService.getById(yachtId)
@@ -105,9 +83,9 @@ export default {
             }
         },
 
-        async loadYachts({ commit }, {filterBy}) {
+        async loadYachts({ commit }, {user}) {
             try {
-                const yachts = await yachtService.query(filterBy)
+                const yachts = await yachtService.query(user)
                 commit({ type: "setYachts", yachts })
                 return yachts;
             } catch (err) {

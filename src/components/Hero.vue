@@ -4,7 +4,7 @@
 	<header class="hero is-large is-fullheight">
 		<section class="hero-video ">
 			<video poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg" id="bgvid" playsinline autoplay muted loop>
-				<source src="https://res.cloudinary.com/nivb/video/upload/v1562858364/hero/under-the-sea-wprentals_dn2vrm.mp4" type="video/mp4" />
+				<source src="https://res.cloudinary.com/dopdel26f/video/upload/v1563442703/video/www.kizoa.com_y2mate.com_-_my_aspire_51m_video_OlXpmcyvPFE_1080p_exaq4d.mp4" type="video/mp4" />
 			</video>
 
 			<div class="hero-head">
@@ -15,13 +15,12 @@
 				<div class="container has-text-centered">
 					<div id="custom-search-input">
 						<div class="input-group">
-							<vue-google-autocomplete class="search-query" ref="address" id="map" classname="form-control" placeholder="Start typing" v-on:placechanged="getAddressData">
+							<vue-google-autocomplete class="search-query" ref="address" id="map" classname="form-control" placeholder="PIck Destination" v-on:placechanged="getAddressData">
 							</vue-google-autocomplete>
 							<!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
 						</div>
 					</div>
-
-					<p class="subtitle has-text-white">Subtitle</p>
+					<p class="subtitle has-text-white">Serch yacht anywhere in the globe... </p>
 				</div>
 			</div>
 		</section>
@@ -65,7 +64,6 @@ export default {
 		 */
 		getAddressData: function(addressData, placeResultData, id) {
 			this.address = addressData;
-			console.log(addressData);
 		}
 	},
 	computed: {}
