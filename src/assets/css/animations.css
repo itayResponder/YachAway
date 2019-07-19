@@ -1,0 +1,49 @@
+/* Transition property for smooth transformation of images */
+.img-hover-zoom {
+    height: inherit;
+    overflow: hidden
+  }
+.img-hover-zoom img {
+    transition: transform .5s ease;
+  }
+  
+  /*Simple transforming the image when container gets hovered */
+  .img-hover-zoom:hover img {
+    transform: scale(1.2);
+  }
+
+/*----------Brightness ---------*/
+  /* Brightness-zoom Container */
+.img-hover--brightness img {
+    transition: transform 2s, filter 0.8s ease-in-out;
+    filter: brightness(95%);
+  }
+  
+  /* Brightness The Transformation */
+  .img-hover--brightness:hover img {
+    filter: brightness(140%);
+  }
+
+/*----------Contrast ---------*/
+    /* Contrast-zoom Container */
+.img-hover--contrast img {
+    transition: filter 0.8s ease-in-out;
+    filter: contrast(95%);
+  }
+  
+  /* Contrast The Transformation */
+  .img-hover--contrast:hover img {
+    filter: contrast(140%);
+  }
+
+  /*----------Saturate ---------*/
+    /* Saturate-zoom Container */
+.img-hover--saturate img {
+    transition: filter 0.8s ease-in-out;
+    filter: saturate(80%);
+  }
+  
+  /* Saturate The Transformation */
+  .img-hover--saturate:hover img {
+    filter: saturate(150%);
+  }
