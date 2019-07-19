@@ -4,12 +4,12 @@
     overflow: hidden
   }
 .img-hover-zoom img {
-    transition: transform .5s ease;
+    transition: transform .1s;
   }
   
   /*Simple transforming the image when container gets hovered */
   .img-hover-zoom:hover img {
-    transform: scale(1.2);
+    transform: scale(1.3);
   }
 
 /*----------Brightness ---------*/
