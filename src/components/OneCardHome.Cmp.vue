@@ -3,7 +3,7 @@
 		<router-link to="/yachts">
 			<div class="card-image" style="object-fit: cover;"><a>
 					<figure class="image">
-						<img src="https://res.cloudinary.com/nivb/image/upload/v1562862459/city/city-3227665_640_ulbvzb.jpg" class="">
+						<img class="picture" src="https://res.cloudinary.com/nivb/image/upload/v1562862459/city/city-3227665_640_ulbvzb.jpg">
 						<!---->
 					</figure>
 				</a>
@@ -29,5 +29,13 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+figure:hover {
+  opacity: 0.8;
+}
+picture {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
 </style>
