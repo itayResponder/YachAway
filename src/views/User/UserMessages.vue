@@ -4,8 +4,8 @@
     <h1 v-if="!this.userLoggedInReservations[0]">You dont have any reservations try to 
         improve your yachts!
     </h1>
-    <p v-else v-for="reservation in this.userLoggedInreservations" :key="reservation._id">
-        {{reservation}}
+    <p v-else >
+        You have got new messages
     </p>
     <p>{{this.userLoggedInReservations}}</p>
 </section>
