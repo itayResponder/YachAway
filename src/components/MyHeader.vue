@@ -1,19 +1,24 @@
 <template>
-  <nav class="navbar is-transparent  is-fixed-top is-fullheight-with-navbar">
+  <nav class="navbar is-transparent is-fixed-top is-fullheight-with-navbar">
     <div class="container">
       <div class="navbar-brand">
+                  <!-- @click="toggleNavbarBurger" -->
+
         <span
           class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarMenuHeroB"
+          @click="isBurgerMenuOpen = !isBurgerMenuOpen" v-bind:class="{'is-active': isBurgerMenuOpen}"
         >
           <span></span>
           <span></span>
           <span></span>
+          
+          
         </span>
       </div>
-      <div id="navbarMenuHeroB" class="navbar-menu">
+      <div id="navbarMenuHeroB" :class="[{'is-active': isBurgerMenuOpen}, 'navbar-menu']">
         <div class="navbar-start">
           <router-link :class="[menuClass]" exact to="/">Home</router-link>
           <router-link :class="[menuClass]" to="/yachts">Yachts</router-link>
@@ -57,7 +62,7 @@
           <!-- need to login or signup -->
           <div v-show="!loggedInUser" class="navbar-item">
             <span class="button is-primary navbar-content is-outlined">
-              <router-link  :class="[menuClass]" to="/login">Login</router-link>
+              <router-link :class="[menuClass]" to="/login">Login</router-link>
             </span>
           </div>
         </div>
@@ -71,7 +76,10 @@ export default {
   name: "MyHeader",
   props: ["loggedInUser"],
   data() {
-    return {};
+    return {
+            isBurgerMenuOpen: false
+
+    };
   },
   computed: {
     menuClass() {
@@ -90,34 +98,10 @@ export default {
       } catch (err) {
         console.log("Could not log out err:", err);
       }
-    }
-  }
+    },
+  },
+  mounted() {}
 };
-// TODO
-// MOVE IT TO VUE LATER
-document.addEventListener("DOMContentLoaded", () => {
-  // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(
-    document.querySelectorAll(".navbar-burger"),
-    0
-  );
-
-  // Check if there are any navbar burgers
-  if ($navbarBurgers.length > 0) {
-    // Add a click event on each of them
-    $navbarBurgers.forEach(el => {
-      el.addEventListener("click", () => {
-        // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
-
-        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-        el.classList.toggle("is-active");
-        $target.classList.toggle("is-active");
-      });
-    });
-  }
-});
 </script>
 
 <style scoped>
