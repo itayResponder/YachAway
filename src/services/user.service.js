@@ -5,7 +5,8 @@ export default {
     getLoggedInUser,
     logout,
     signUp,
-    addFavorite
+    addFavorite,
+    sendReservationToOwner
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
@@ -13,6 +14,24 @@ var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 async function login(user) {
     const validUser = await httpService.post(_getUrl('login'), user)
     return _handleSuccessfulRegister(validUser)
+}
+
+async function addFavorite(likedYacht) {
+    const updatedUser = await httpService.put(_getUrl(), likedYacht)
+    try {
+        return updatedUser
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function sendReservationToOwner(reservation) {
+    const msgSent = await httpService.put(_getUrl('sendMsg'), reservation)
+    try {
+        return msgSent
+    } catch (err) {
+        throw err;
+    }
 }
 
 async function signUp(user) {
@@ -25,14 +44,6 @@ async function logout() {
     try {
         sessionStorage.clear()
         loggedInUser = null
-    } catch (err) {
-        throw err;
-    }
-}
-async function addFavorite(likedYacht) {
-    const updatedUser = await httpService.put(_getUrl(), likedYacht)
-    try {
-        return updatedUser
     } catch (err) {
         throw err;
     }

@@ -2,15 +2,22 @@ import userService from '../services/user.service'
 
 export default {
     state: {
-        users: [],
+        userReservations: [],
         loggedInUser: userService.getLoggedInUser()
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
             return loggedInUser
+        },
+        userReservations({loggedInUser}) {
+            return loggedInUser.reservations;
         }
     },
     mutations: {
+        setOwnerReservations(state, context) {
+            state.userReservations = context.updatedOwner.reservations
+        },
+
         setUser(state, context) {
             state.loggedInUser = context.checkedUser
         }
@@ -29,6 +36,18 @@ export default {
                 return err;
             }
         },
+
+        async pendingReservation({commit}, {reservation}) {
+            try {
+                const updatedOwner = await userService.sendReservationToOwner(reservation)
+                console.log('userStore after reservation updatedOwner:', updatedOwner)
+                commit({type: 'setOwnerReservations', updatedOwner})
+                return updatedOwner
+            } catch (err) {
+                console.log('userStore could not send msg to owner error:',err)
+            }
+        },
+
         async logout(context, { loggedUser }) {
             try {
                 const loggedInUser = await userService.logout(loggedUser)
@@ -39,6 +58,7 @@ export default {
                 return err;
             }
         },
+
         async setLikedYacht(context, { likedYacht }) {
             const confirmedLike = await userService.addFavorite(likedYacht)
             try {

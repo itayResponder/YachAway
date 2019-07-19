@@ -57,7 +57,8 @@ export default {
       openCalendar: false,
       fromDate: "2019-07-19", //null,
       toDate: "2019-07-20", //null,
-      numOfGuest: 1
+      numOfGuest: 1,
+      reservation: null
     };
   },
   methods: {
@@ -96,17 +97,16 @@ export default {
         // CHECK IF IT IS  A REAL DATE :
         // if(!isNaN(Date.parse(startDate))  && !isNaN(Date.parse(endDate)) )
         try {
-          const reservation = await this.$store.dispatch({
+          this.reservation = await this.$store.dispatch({
             type: "makeReservation",
             currReservation
           });
           await Swal.fire(
             "Allright",
-            `Thank you! Your reservation confirmation is: ${reservation._id}
+            `Thank you! Your reservation confirmation is: ${this.reservation._id}
 		the owner yacht will contact you soon!`,
             "success"
           );
-          this.$router.push("/profile/reservation");
         } catch (err) {
           await Swal.fire(
             "Sorry",
@@ -115,7 +115,16 @@ export default {
             "error"
           );
           console.log("Coule not save reservation error:", err);
+          return;
         }
+      try {
+        //Send message to Owner yacht
+        this.reservation.yacht.owner._id = this.yacht.user._id;
+        const pendingReservation = await this.$store.dispatch({type: 'pendingReservation', reservation: this.reservation })
+      } catch (err) {
+        console.log('Could not send message error:', err)
+      }
+      this.$router.push("/profile/reservation");
       } else {
         this.$toast.open({
           duration: 4050,
