@@ -1,7 +1,7 @@
 <template>
   <article class="media">
     <figure class="media-left">
-      <p class="image img-hover-zoom img-hover-zoom ">
+      <p class="image img-hover-zoom img-hover-zoom">
         <img :src="yacht.imgs[0]" style="max-width:20vw; max-height:200px; object-fit: cover;" />
       </p>
     </figure>
@@ -38,12 +38,13 @@
     <div class="media is-boxed has-bullet-separator" style="text-align: center">
       <div>
         <p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">
-          {{getAverageReviews}}
+          {{yacht.pricePerNight}} $
+          <!-- BY NADAV: USED TO BE :  {{getAverageReviews}} -->
           <br />
-          <span style="font-size:15px" v-html="showStars"></span>
+          <span style="font-size:1rem" v-html="showStars"></span>
         </p>
         <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
-        <router-link :to="getUrlWithYachtId" class="button is-info is-6 margin-min">More Details</router-link>
+        <router-link :to="getUrlWithYachtId" class="button is-primary is-6 margin-min">More Details</router-link>
       </div>
     </div>
   </article>
@@ -84,20 +85,18 @@ export default {
         sum += review.score;
       });
       var average = sum / length;
-      var roundedAverage = Math.round(average * 10) / 10;
-      this.average = roundedAverage;
-      return roundedAverage;
+      this.average = average;
+      return average
     },
     showStars() {
+      this.averag  = this.getAverageReviews
       var stars = "";
-      // console.log('average is ',this.average)
-      if (this.average < 1) return "";
-      else if (this.average < 1.5) return (stars = "&#11088");
-      else if (this.average < 2.5) return (stars = "&#11088 &#11088");
-      else if (this.average < 3.5) return (stars = "&#11088 &#11088 &#11088");
-      else if (this.average < 4.5)
-        return (stars = "&#11088 &#11088 &#11088 &#11088");
-      else return (stars = "&#11088 &#11088 &#11088 &#11088 &#11088");
+      while (this.average > 0.5) {
+        stars += '<img src="/img/icons/star.svg"/>';
+        // stars += '&#11088 ';
+        this.average--;
+      }
+      if (this.average === 0.5) stars += '<img src="/img/icons/star-half.svg"/>';
       return stars;
     },
     getUrlWithYachtId() {
