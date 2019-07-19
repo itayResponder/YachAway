@@ -21,7 +21,7 @@
       <nav class="level is-mobile">
         <div class="level-left">
           <div class="level-item">
-            <p class="image is-64x64 margin-min">
+            <p class="image is-48x48 margin-min">
               <img class="is-rounded" :src="yacht.user.img" />
             </p>
             <p>
