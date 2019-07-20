@@ -152,7 +152,7 @@ a {
 /* margin: 0px 10px; */
 
 .max-height {
-  height: 220px;
+  height: 212px;
 }
 
 .img-boat {
