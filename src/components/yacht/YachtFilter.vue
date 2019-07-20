@@ -3,8 +3,8 @@
 		<nav class="panel">
 			<p class="panel-heading">
 				<div class="field">
-					<b-switch>Pro Services</b-switch>
-					Skipper professionals, verified for quality.
+					<b-switch>Pro Only</b-switch><br/>
+					 professionals, verified Owners and Skippers.
 				</div>
 			</p>
 			<!-- FILTERS -->
