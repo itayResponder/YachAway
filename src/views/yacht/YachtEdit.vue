@@ -7,6 +7,7 @@
       <b-input v-model="yacht.maxPeopleOnBoard" placeholder="Max People On Board" rounded></b-input>
       <b-input v-model="yacht.location.country" placeholder="Country" rounded></b-input>
       <b-input v-model="yacht.location.city" placeholder="City" rounded></b-input>
+      <b-input v-model="yacht.imgs[0]" placeholder="Image Url" rounded></b-input>
       <div class="block">
         <br />
         <b-checkbox v-model="yacht.facilities" native-value="wifi" type="is-info">Wifi</b-checkbox>
@@ -26,12 +27,15 @@
         {{yacht.facilities}}
       </p>
        <b-field class="file">
-        <b-upload v-model="yacht.file">
+        <b-upload v-model="file">
             <a class="button is-primary">
                 <b-icon icon="upload"></b-icon>
                 <span>Click to upload main image</span>
             </a>
         </b-upload>
+        <span class="file-name" v-if="file">
+            {{ file }}
+        </span>
     </b-field>
       <div class="edit-buttons">
       <b-button @click="saveYacht" type="is-info">Save</b-button>
@@ -46,10 +50,10 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
+      file: null,
       userLoggedIn: null,
       id: "",
       yacht: {
-        file: null,
         name: "",
         pricePerNight: null,
         owner: {_id: "" ,email: "", name: "", img: "" },

@@ -25,6 +25,7 @@ export default {
         },
 
         setUser(state, context) {
+<<<<<<< HEAD
             state.loggedInUser = context.sessionUser;
         },
         setLikedYachts(state,context){
@@ -34,6 +35,10 @@ export default {
             state.userReservations = context.userReservations;
         }
 
+=======
+            state.loggedInUser = context.checkedUser
+        },
+>>>>>>> a4fae38658327b4d682de1f4a9f9dc45609aab06
     },
     actions: {
         async checkValidUser({commit}, { user }) {
@@ -61,8 +66,12 @@ export default {
         async pendingReservation({ commit }, { reservation }) {
             try {
                 const updatedOwner = await userService.sendReservationToOwner(reservation)
+<<<<<<< HEAD
                 console.log('userStore after reservation updatedOwner:', updatedOwner)
                 commit({ type: 'setOwnerReservations', updatedOwner })
+=======
+                commit({type: 'setOwnerReservations', updatedOwner})
+>>>>>>> a4fae38658327b4d682de1f4a9f9dc45609aab06
                 return updatedOwner
             } catch (err) {
                 console.log('userStore could not send msg to owner error:', err)
@@ -72,7 +81,7 @@ export default {
         async logout(context, { loggedUser }) {
             try {
                 const loggedInUser = await userService.logout(loggedUser)
-                context.commit({ type: 'setUser', user: null })
+                context.commit({ type: 'setUser', loggedInUser: null })
                 return loggedInUser;
             } catch (err) {
                 console.log('error with logout err:', err);
