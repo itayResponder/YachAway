@@ -2,7 +2,7 @@
   <nav class="navbar is-transparent is-fixed-top is-fullheight-with-navbar">
     <div class="container">
       <div class="navbar-brand">
-                  <!-- @click="toggleNavbarBurger" -->
+      <img src="@/assets/img/logo/yacht.png" width="45" >
 
         <span
           class="navbar-burger burger"
