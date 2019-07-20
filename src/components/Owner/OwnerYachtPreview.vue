@@ -29,13 +29,13 @@
 			</div>
 			<div class=" is-bottom ">
 				<b-button @click="goToDetails" type="button field">
-					<img src="@/assets/icons/information-outline.svg" alt="Details" />
+					<img src="@/assets/icons/baseline-info.svg" alt="Details" />
 				</b-button>
 				<b-button @click="editOwnerYacht" type="button field">
-					<img src="@/assets/icons/file-document-edit-outline.svg" alt="edit" />
+					<img src="@/assets/icons/baseline-edit.svg" alt="edit" />
 				</b-button>
 				<b-button type="button field" @click="removeOwnerYacht">
-					<img src="@/assets/icons/delete-forever-outline.svg" alt="delete" />
+					<img src="@/assets/icons/baseline-delete.svg" alt="delete" />
 				</b-button>
 			</div>
 		</div>

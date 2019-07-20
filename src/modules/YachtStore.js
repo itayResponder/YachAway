@@ -73,6 +73,18 @@ export default {
     },
 
     actions: {
+        async loadYachts({ commit }, { owner }) {
+            try {
+                console.log('yacthStore owner:', owner)
+                const yachts = await yachtService.query(owner)
+                commit({ type: "setYachts", yachts })
+                return yachts;
+            } catch (err) {
+                console.log("Could not find yachts  error:", err);
+                return err;
+            }
+        },
+
         async loadYacht({ commit }, { yachtId }) {
             try {
                 const yacht = await yachtService.getById(yachtId)
@@ -80,17 +92,6 @@ export default {
                 return yacht;
             } catch (err) {
                 console.log('Could not find yacht byId error:', err)
-            }
-        },
-
-        async loadYachts({ commit }, { user }) {
-            try {
-                const yachts = await yachtService.query(user)
-                commit({ type: "setYachts", yachts })
-                return yachts;
-            } catch (err) {
-                console.log("Could not find yachts  error:", err);
-                return err;
             }
         },
 
@@ -117,7 +118,7 @@ export default {
 
         async saveYacht({ commit }, { yacht }) {
             try {
-                var savedYacht;
+                let savedYacht;
                 if (yacht._id) {
                     savedYacht = await yachtService.save(yacht)
                     commit({ type: 'updateYacht', savedYacht })

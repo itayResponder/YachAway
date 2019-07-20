@@ -22,13 +22,15 @@
         <div class="level-left">
           <div class="level-item">
             <p class="image is-48x48 margin-min">
-              <img class="is-rounded" :src="yacht.user.img" />
+              <img class="is-rounded" :src="yacht.owner.img" />
             </p>
             <p>
-              <b>{{yacht.user.name}}</b>
+              <b>{{yacht.owner.name}}</b>
               <!-- facilites -->
             </p>
-            <button @click="markAsLiked">LIKE</button>
+            <b-button type="button field" @click="markAsLiked">
+              <img src="@/assets/icons/baseline-thumb_up.svg" style="color:blue;" alt="thumb" />
+            </b-button>
           </div>
         </div>
       </nav>
@@ -86,17 +88,18 @@ export default {
       });
       var average = sum / length;
       this.average = average;
-      return average
+      return average;
     },
     showStars() {
-      this.averag  = this.getAverageReviews
+      this.averag = this.getAverageReviews;
       var stars = "";
       while (this.average > 0.5) {
         stars += '<img src="/img/icons/star.svg"/>';
         // stars += '&#11088 ';
         this.average--;
       }
-      if (this.average === 0.5) stars += '<img src="/img/icons/star-half.svg"/>';
+      if (this.average === 0.5)
+        stars += '<img src="/img/icons/star-half.svg"/>';
       return stars;
     },
     getUrlWithYachtId() {

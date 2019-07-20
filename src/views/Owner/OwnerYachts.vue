@@ -10,16 +10,16 @@ export default {
   name: "OwnerYachts",
   data() {
     return {
-      yachtsByUser: null,
-      user: { _id: "" }
+      yachtsByOwner: null,
+      owner: { _id: "" }
     };
   },
   async created() {
     try {
-      this.user._id = await this.$store.getters.userLoggedIn._id;
-      this.yachtsByUser = await this.$store.dispatch({type: "loadYachts", user: this.user})
+      this.owner._id = await this.$store.getters.userLoggedIn._id;
+      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", owner: this.owner})
     } catch (err) {
-      console.log("errpr:", err);
+      console.log("Could not get Owner yachts error:", err);
     }
   },
   computed: {

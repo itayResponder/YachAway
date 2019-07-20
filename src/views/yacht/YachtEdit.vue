@@ -3,11 +3,10 @@
     <form class="yacht-edit">
       <b-input v-model="yacht.name" placeholder="Name" rounded></b-input>
       <b-input v-model="yacht.pricePerNight" placeholder="Price Per Night" rounded></b-input>
-      <b-input v-model="yacht.reviews.description" placeholder="Description" rounded></b-input>
+      <b-input v-model="yacht.description" placeholder="Description" rounded></b-input>
       <b-input v-model="yacht.maxPeopleOnBoard" placeholder="Max People On Board" rounded></b-input>
       <b-input v-model="yacht.location.country" placeholder="Country" rounded></b-input>
       <b-input v-model="yacht.location.city" placeholder="City" rounded></b-input>
-      <b-input v-model="yacht.imgs[0]" placeholder="Insert Img Url" rounded></b-input>
       <div class="block">
         <br />
         <b-checkbox v-model="yacht.facilities" native-value="wifi" type="is-info">Wifi</b-checkbox>
@@ -26,6 +25,14 @@
         <b>Selection:</b>
         {{yacht.facilities}}
       </p>
+       <b-field class="file">
+        <b-upload v-model="yacht.file">
+            <a class="button is-primary">
+                <b-icon icon="upload"></b-icon>
+                <span>Click to upload main image</span>
+            </a>
+        </b-upload>
+    </b-field>
       <div class="edit-buttons">
       <b-button @click="saveYacht" type="is-info">Save</b-button>
       <b-button @click="back" type="is-info">Back</b-button>
@@ -42,13 +49,15 @@ export default {
       userLoggedIn: null,
       id: "",
       yacht: {
-        name: "test",
-        pricePerNight: 500,
-        owner: { userId: "", userFirstName: "" },
+        file: null,
+        name: "",
+        pricePerNight: null,
+        owner: {_id: "" ,email: "", name: "", img: "" },
         imgs: [],
-        location: { country: "Israel", city: "Eilat", lat: "", lng: "" },
-        reviews: {title: "best", description: "Awosme yacht", date: "", score: 4.5},
-        maxPeopleOnBoard: "20",
+        location: { country: "", city: "", lat: "", lng: "" },
+        reviews: [],
+        maxPeopleOnBoard: "",
+        description: "",
         facilities: []
       }
     };
@@ -67,7 +76,7 @@ export default {
     this.id = this.$route.params.id;
     if (this.id) {
       try {
-        var yacht = await this.$store.dispatch({
+        const yacht = await this.$store.dispatch({
           type: "getYachtById",
           yachtId: this.id
         });
@@ -82,20 +91,22 @@ export default {
     back() {
       this.$router.push("/yachts");
     },
+
     async saveYacht() {
       let message = "Yacht has Updated";
       try {
         if (this.yacht._id) {
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
         } else {
-          this.yacht.createdAt = Date.now();
+          this.yacht.createdAt = Date.now().toString();
           this.yacht.pricePerNight = +this.yacht.pricePerNight;
-          this.yacht.owner.userId = this.userLoggedIn._id;
-          this.yacht.owner.userFirstName = this.userLoggedIn.firstName;
+          this.yacht.owner._id = this.userLoggedIn._id;
+          this.yacht.owner.name = this.userLoggedIn.firstName;
+          this.yacht.owner.email = this.userLoggedIn.email
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
         }
-        this.$router.push("/yachts");
+        this.$router.push("/profile/my-yachts");
       } catch (err){
         console.log("Could not save yacht error:", err);
       }

@@ -8,7 +8,6 @@ import Buefy from 'buefy'
 // import './assets/css/main.scss'
 import 'buefy/dist/buefy.css'
 import 'vuelendar/scss/vuelendar.scss'
-
 import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker'
 import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css'
 
