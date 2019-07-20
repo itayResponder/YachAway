@@ -1,5 +1,5 @@
 <template>
-	<section class="yacht-list-preview-margin is-right">
+	<section class="yacht-list-preview-margin ">
 		<nav class="panel">
 			<p class="panel-heading">
 				<div class="field">

@@ -10,13 +10,14 @@
       <img v-show="!isGrid" class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
     </b-button>
 
-    <yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
 
-    <div class="container grid" v-show="!isGrid">
-      <yacht-filter class="is-desktop is-tablet" @set-filter="setFilter"></yacht-filter>
+    <div class="columns is-multiline is-mobile" v-show="!isGrid">
+      <yacht-filter class="column is-one-fifth is-hidden-mobile	is-3" @set-filter="setFilter"></yacht-filter>
       <div></div>
-      <yacht-List :likedYachts="likedYachts" @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
+      <yacht-List class="column" :likedYachts="likedYachts" @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
     </div>
+
+    <yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
 
   </section>
 </template>
@@ -73,7 +74,7 @@ export default {
     // },
 
     cityName() {
-      return this.$route.name.city || "Venice";
+      return this.$route.name.city || "Italy, Venice";
     }
   },
   components: {

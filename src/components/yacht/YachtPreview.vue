@@ -1,5 +1,5 @@
 <template>
-  <div class="columns row-shadow yacht-list-preview-margin max-height">
+  <div class="columns is-mobile row-shadow yacht-list-preview-margin max-height">
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
@@ -33,7 +33,7 @@
             <b-button type="button field" @click="markAsLiked">
               <img src="@/assets/icons/baseline-thumb_up.svg" style="color:blue;" alt="thumb" />
             </b-button>
-            <p>
+            <p  class="is-hidden-mobile">
               <b>{{yacht.location.country}}</b>,
               <b>{{yacht.location.city}}</b>
             </p>
@@ -51,7 +51,8 @@
             <span style="font-size:1rem" v-html="showStars"></span>
           </p>
           <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
-          <router-link :to="getUrlWithYachtId" class="button is-primary is-6 margin-min">Save It!</router-link>
+          <router-link :to="getUrlWithYachtId" class="button is-primary is-hidden-mobile	
+ is-6 margin-min">Save It!</router-link>
         </div>
       </div>
     </div>
@@ -152,7 +153,7 @@ a {
 /* margin: 0px 10px; */
 
 .max-height {
-  height: 212px;
+  height: 215px;
 }
 
 .img-boat {
