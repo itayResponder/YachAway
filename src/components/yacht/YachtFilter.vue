@@ -1,5 +1,5 @@
 <template>
-	<section class=" is-right">
+	<section class="yacht-list-preview-margin is-right">
 		<nav class="panel">
 			<p class="panel-heading">
 				<div class="field">
@@ -20,7 +20,7 @@
 				</p>
 			</label>
 			<!-- TABS -->
-			<p class="panel-tabs" style="margin-left:16px;">
+			<p class="panel-tabs" style="padding-left:2.25em;">
 				<a class="is-active">all</a>
 				<a>star</a>
 				<a>room facilities</a>
