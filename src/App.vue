@@ -30,25 +30,32 @@ export default {
 
 <style lang="scss">
 // Import Bulma's core
+/* Import Bulma and Buefy styles */
 @import "~bulma/sass/utilities/_all";
-@import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
-// @import "assets/css/helpers.css";
+@import "~bulma";
+@import "~buefy/src/scss/buefy";
+
+// @import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+
 @import "assets/css/main.css";
 
 // Set your colors
-$primary: #8c67ef;
+$primary: #b9ced1;
+// $primary-invert: findColorInvert($primary);
+
 
 #app {
 	// font-family: "Avenir", Helvetica, Arial, sans-serif;
 	h1,
 	h2,
 	h3,
-	h4,
-	h5,
-	h6,
+	// h4,
+	// h5,
+	// h6,
 	.is-1,
 	.is-2 {
-		font-family: "EB Garamond", serif;
+		font-family: "Dosis", serif;
 	}
 
 	body {
@@ -69,7 +76,10 @@ $primary: #8c67ef;
 		color: #2c3e50;
 		&.router-link-exact-active {
 			color: #42b983;
+				border-bottom: 2px solid $primary !important;
+
 		}
 	}
 }
 </style>
+
