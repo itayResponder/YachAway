@@ -12,13 +12,22 @@ export default {
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 
 async function login(user) {
-    const validUser = await httpService.post(_getUrl('login'), user)
-    return _handleSuccessfulRegister(validUser)
+    let validUser = await httpService.post(_getUrl('login'), user)
+    console.log('validUser is ',validUser)
+    const userLIkedYachts = validUser.likedYachts;
+    const userReservations = validUser.reservations;
+    delete validUser.reservations;
+    delete validUser.likedYachts;
+
+    validUser = _handleSuccessfulRegister(validUser)
+    return [validUser, { userLIkedYachts }, { userReservations }]
+
 }
 
 async function addFavorite(likedYacht) {
     const updatedUser = await httpService.put(_getUrl(), likedYacht)
     try {
+        console.log('updatedUser', updatedUser)
         return updatedUser
     } catch (err) {
         throw err;

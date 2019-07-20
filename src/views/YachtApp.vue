@@ -19,7 +19,7 @@
     <div class="container grid" v-show="!isGrid">
       <yacht-filter @set-filter="setFilter"></yacht-filter>
       <div></div>
-      <yacht-List @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
+      <yacht-List :likedYachts="likedYachts" @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
       <!-- @set-filter="setFilter"-->
     </div>
   </section>
@@ -36,9 +36,12 @@ export default {
     return {
       isGrid: false,
       newYacht: ""
+
     };
   },
   async created() {
+    console.log('yachtApp liked:',this.$store.getters.likedYachts)
+      this.likedYachts = this.$store.getters.likedYachts
     try {
       const yachts = await this.$store.dispatch({
         type: "loadYachts",
@@ -69,6 +72,11 @@ export default {
     yachts() {
       return this.$store.getters.yachtsToShow;
     },
+
+    // likedYachts() {
+    //   return this.$store.getters.likedYachts;
+    // },
+
     cityName() {
       return this.$route.name.city || "Unknown City";
     }

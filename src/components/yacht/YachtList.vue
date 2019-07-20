@@ -9,10 +9,13 @@ import YachtPreview from "@/components/yacht/YachtPreview";
 
 export default {
   name: "YachtList",
-  props: ["yachts"],
+  props: ["yachts", "likedYachts"],
 
   data() {
     return {};
+  },
+  created() {
+    console.log('yachtList cretaeed likedYachtes:', this.likedYachts)
   },
   methods: {
     emitLikedYacht(likedYacht){

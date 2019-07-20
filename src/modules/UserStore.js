@@ -3,14 +3,20 @@ import userService from '../services/user.service'
 export default {
     state: {
         userReservations: [],
+        likedYachts: [],
         loggedInUser: userService.getLoggedInUser()
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
             return loggedInUser
         },
-        userReservations({loggedInUser}) {
+
+        userReservations({ loggedInUser }) {
             return loggedInUser.reservations;
+        },
+
+        likedYachts({likedYachts}) {
+            return likedYachts;
         }
     },
     mutations: {
@@ -19,32 +25,47 @@ export default {
         },
 
         setUser(state, context) {
-            state.loggedInUser = context.checkedUser
+            state.loggedInUser = context.sessionUser;
+        },
+        setLikedYachts(state,context){
+            state.likedYachts = context.likedYachts;
+        },
+        setReservations(state,context){
+            state.userReservations = context.userReservations;
         }
+
     },
     actions: {
-        async checkValidUser(context, { user }) {
+        async checkValidUser({commit}, { user }) {
             var checkedUser;
             try {
                 checkedUser = await userService.login(user)
-                if (checkedUser) {
-                    context.commit({ type: 'setUser', checkedUser })
+                let sessionUser = checkedUser[0];
+                console.log('userStore after  checkedUser',checkedUser)
+                if (sessionUser) {
+                    console.log('in the iffff', sessionUser)
+                    commit({ type: 'setUser', sessionUser })
+                    let likedYachts = checkedUser[1];
+                    commit({ type: 'setLikedYachts', likedYachts })
+                    let userReservations = checkedUser[2];
+                    commit({ type: 'setReservations', userReservations })
+                    
+                    return sessionUser;
                 }
-                return checkedUser;
             } catch (err) {
                 console.log('error with checkValudUser err:', err);
                 return err;
             }
         },
 
-        async pendingReservation({commit}, {reservation}) {
+        async pendingReservation({ commit }, { reservation }) {
             try {
                 const updatedOwner = await userService.sendReservationToOwner(reservation)
                 console.log('userStore after reservation updatedOwner:', updatedOwner)
-                commit({type: 'setOwnerReservations', updatedOwner})
+                commit({ type: 'setOwnerReservations', updatedOwner })
                 return updatedOwner
             } catch (err) {
-                console.log('userStore could not send msg to owner error:',err)
+                console.log('userStore could not send msg to owner error:', err)
             }
         },
 
@@ -62,12 +83,11 @@ export default {
         async setLikedYacht(context, { likedYacht }) {
             const confirmedLike = await userService.addFavorite(likedYacht)
             try {
-                console.log('in the store', likedYacht)
+                console.log('confirmedLike', confirmedLike)
                 return confirmedLike
-
             }
             catch (err) {
-                console.log('error insert likedYacht')
+                console.log('error liked yacht in the UserStore error = ', err)
             }
 
         }
