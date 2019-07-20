@@ -64,10 +64,11 @@ export default {
   methods: {
     createUserObj() {
       // create USER object
-      const { firstName, _id } = this.$store.getters.userLoggedIn;
+      const { firstName, _id, img } = this.$store.getters.userLoggedIn;
       const user = {};
       user.name = firstName;
       user._id = _id;
+      user.img = img;
       return user;
     },
     createYachtObj() {
@@ -77,9 +78,9 @@ export default {
       yacht.name = this.yacht.name;
       yacht.pricePerNight = this.yacht.pricePerNight;
       yacht.img = this.yacht.imgs[0];
-      yacht.owner.img = this.yacht.user.img;
-      yacht.owner.email = this.yacht.user.email;
-      yacht.owner.name = this.yacht.user.name;
+      yacht.owner.img = this.yacht.owner.img;
+      yacht.owner.email = this.yacht.owner.email;
+      yacht.owner.name = this.yacht.owner.name;
       return yacht;
     },
     async makeReservation() {
@@ -119,7 +120,7 @@ export default {
         }
       try {
         //Send message to Owner yacht
-        this.reservation.yacht.owner._id = this.yacht.user._id;
+        this.reservation.yacht.owner._id = this.yacht.owner._id;
         const pendingReservation = await this.$store.dispatch({type: 'pendingReservation', reservation: this.reservation })
       } catch (err) {
         console.log('Could not send message error:', err)

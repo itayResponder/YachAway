@@ -20,7 +20,7 @@ export default {
 
         setUser(state, context) {
             state.loggedInUser = context.checkedUser
-        }
+        },
     },
     actions: {
         async checkValidUser(context, { user }) {
@@ -40,7 +40,6 @@ export default {
         async pendingReservation({commit}, {reservation}) {
             try {
                 const updatedOwner = await userService.sendReservationToOwner(reservation)
-                console.log('userStore after reservation updatedOwner:', updatedOwner)
                 commit({type: 'setOwnerReservations', updatedOwner})
                 return updatedOwner
             } catch (err) {
@@ -51,7 +50,7 @@ export default {
         async logout(context, { loggedUser }) {
             try {
                 const loggedInUser = await userService.logout(loggedUser)
-                context.commit({ type: 'setUser', user: null })
+                context.commit({ type: 'setUser', loggedInUser: null })
                 return loggedInUser;
             } catch (err) {
                 console.log('error with logout err:', err);
