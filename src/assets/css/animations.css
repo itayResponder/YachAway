@@ -1,10 +1,11 @@
 /* Transition property for smooth transformation of images */
 .img-hover-zoom {
     height: inherit;
-    overflow: hidden
+    overflow: hidden;
   }
 .img-hover-zoom img {
     transition: transform .1s;
+    overflow: hidden;
   }
   
   /*Simple transforming the image when container gets hovered */
