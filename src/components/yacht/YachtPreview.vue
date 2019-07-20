@@ -1,56 +1,70 @@
 <template>
-  <article class="media">
-    <figure class="media-left">
-      <p class="image img-hover-zoom img-hover-zoom">
-        <img :src="yacht.imgs[0]" style="max-width:20vw; max-height:200px; object-fit: cover;" />
-      </p>
-    </figure>
-    <div class="media-content">
-      <router-link :to="getUrlWithYachtId">
-        <div class="content">
-          <strong class="title is-4">{{yacht.name}}</strong>
-          <p class="has-gray-text is-small">{{yacht.description}}</p>
-          <!-- </div> -->
-        </div>
-      </router-link>
-      <p>
-        <b>{{yacht.location.country}}</b>,
-        <b>{{yacht.location.city}}</b>
-      </p>
+  <div class="columns row-shadow yacht-list-preview-margin max-height">
+    <div class="column is-one-third">
+      <!-- image is-4by5 -->
+      <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
+        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
+      </figure>
+      <div style="position:relative;"></div>
+    </div>
+
+    <!-- TEXT -->
+    <div class="column is-two-fifths horiznal-shadow">
+      <div class="media-content">
+        <router-link :to="getUrlWithYachtId">
+          <div class="content">
+            <strong class="title is-4">{{yacht.name}}</strong>
+            <p class="has-gray-text is-small">{{yacht.description}}</p>
+          </div>
+        </router-link>
+      </div>
 
       <nav class="level is-mobile">
-        <div class="level-left">
-          <div class="level-item">
-            <p class="image is-48x48 margin-min">
+        <!-- <div class="level-left">
+          <div class="level-item"> -->
+            <figure class="image is-48x48 margin-min ">
               <img class="is-rounded" :src="yacht.owner.img" />
-            </p>
+            </figure>
+        <!-- </div> -->
             <p>
               <b>{{yacht.owner.name}}</b>
-              <!-- facilites -->
+              <!-- THE FACILITES -->
             </p>
             <b-button type="button field" @click="markAsLiked">
               <img src="@/assets/icons/baseline-thumb_up.svg" style="color:blue;" alt="thumb" />
             </b-button>
-          </div>
-        </div>
+            <p>
+              <b>{{yacht.location.country}}</b>,
+              <b>{{yacht.location.city}}</b>
+            </p>
+        <!-- </div> -->
       </nav>
     </div>
 
-    <!-- Reviews and Price -->
-    <div class="media is-boxed has-bullet-separator" style="text-align: center">
-      <div>
-        <p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">
-          {{yacht.pricePerNight}} $
-          <!-- BY NADAV: USED TO BE :  {{getAverageReviews}} -->
-          <br />
-          <span style="font-size:1rem" v-html="showStars"></span>
-        </p>
-        <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
-        <router-link :to="getUrlWithYachtId" class="button is-primary is-6 margin-min">More Details</router-link>
+    <!-- REVIEWS AND PRICE -->
+    <div class="column">
+      <div class="media is-boxed has-bullet-separator" style="text-align: center">
+        <div>
+          <p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">
+            {{yacht.pricePerNight}} $
+            <br />
+            <span style="font-size:1rem" v-html="showStars"></span>
+          </p>
+          <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
+          <router-link :to="getUrlWithYachtId" class="button is-primary is-6 margin-min">Save It!</router-link>
+        </div>
       </div>
     </div>
-  </article>
+
+    <!-- END columns -->
+  </div>
 </template>
+
+
+
+
+
+
 <script>
 import Swal from "sweetalert2";
 export default {
@@ -93,14 +107,23 @@ export default {
     showStars() {
       this.averag = this.getAverageReviews;
       var stars = "";
+      var emptyStar = 5 - this.average;
+      //FULL STARS
       while (this.average > 0.5) {
         stars += '<img src="/img/icons/star.svg"/>';
-        // stars += '&#11088 ';
         this.average--;
       }
+      //HALF STAR
       if (this.average === 0.5)
         stars += '<img src="/img/icons/star-half.svg"/>';
+      //EMPTY STARS
+      while (emptyStar > 0.5) {
+        stars += '<img src="/img/icons/star-outline.svg"/>';
+        emptyStar--;
+      }
       return stars;
+      // END
+      // OLD HTML star CODE = '&#11088 ';
     },
     getUrlWithYachtId() {
       return "/yacht/" + this.yacht._id;
@@ -108,6 +131,10 @@ export default {
   }
 };
 </script>
+
+
+
+
 <style scoped>
 a {
   color: inherit;
@@ -120,5 +147,28 @@ a {
 }
 .margin-min {
   margin: 1rem;
+}
+
+/* margin: 0px 10px; */
+
+.max-height {
+  height: 220px;
+}
+
+.img-boat {
+  /* max-width: 20vw; */
+  min-height: 220px;
+  margin-top: -1.7rem;
+}
+.img-owner {
+  position: absolute;
+  left: 48%;
+  margin-top: 6%;
+}
+
+.img-wrap {
+  /* background: #A00; */
+  height: auto;
+  overflow: auto;
 }
 </style>
