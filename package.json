@@ -19,8 +19,10 @@
     "vue": "^2.6.10",
     "vue-airbnb-style-datepicker": "^2.7.1",
     "vue-google-autocomplete": "^1.1.0",
+    "vue-l-lazyload": "^1.1.1",
     "vue-moment": "^4.0.0",
     "vue-router": "^3.0.3",
+    "vue-tiny-slider": "^0.1.35",
     "vuelendar": "^1.0.15",
     "vuex": "^3.0.1"
   },
