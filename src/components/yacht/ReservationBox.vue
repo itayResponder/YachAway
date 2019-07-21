@@ -1,47 +1,51 @@
 <template>
   <!-- <div class="content" v-if="yacht"> -->
-    <nav v-if="yacht"
-      class="panel"
-      style="position: sticky;  z-index: 30; top:4px; right:inherit; left:inherit;"
-    >
-      <p class="panel-heading is-black has-background-white">PRICE PER NIGHT</p>
-      <div class="panel-block">
-        <p class="control has-icons-left">
-          <input v-model="fromDate" class="input is-small" type="date" placeholder="dates" />
-          <input v-model="toDate" class="input is-small" type="date" placeholder="dates" />
+  <nav
+    v-if="yacht"
+    class="panel"
+    style="position: sticky;  z-index: 30; top:4px; right:inherit; left:inherit;"
+  >
+    <p class="panel-heading is-black has-background-white">PRICE PER NIGHT</p>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+        <input v-model="fromDate" class="input is-small" type="date" placeholder="dates" />
+        <input v-model="toDate" class="input is-small" type="date" placeholder="dates" />
 
-          <!-- <input @click="openCalendar=!openCalendar" v-show="!openCalendar" style="z-index:40;" class="input is-small" />
-          <calendarShow @click="openCalendar=!openCalendar" v-show="openCalendar" style="z-index:50;" class="input is-small" />-->
+        <!-- <input @click="openCalendar=!openCalendar" v-show="!openCalendar" style="z-index:40;" class="input is-small" />
+        <calendarShow @click="openCalendar=!openCalendar" v-show="openCalendar" style="z-index:50;" class="input is-small" />-->
 
-          <span class="icon is-small is-left">
-            <i class="fas fa-search" aria-hidden="true"></i>
-          </span>
-        </p>
-      </div>
-      <div class="panel-block">
-        <p class="control has-icons-left">
-          <input
-            v-model="numOfGuest"
-            min="1"
-            class="input is-small"
-            type="number"
-            placeholder="How Many Guests"
-          />
-          <span class="icon is-small is-left">
-            <i class="fas fa-search" aria-hidden="true"></i>
-          </span>
-        </p>
-      </div>
-      <div class="panel-block is-active">
-        <span class="is-medium is-left">{{yacht.pricePerNight}} $</span>
-      </div>
-      <div class="panel-block">
-        <button
-          @click="makeReservation"
-          class="button is-danger is-link is-fullwidth"
-        >Book it now</button>
-      </div>
-    </nav>
+        <span class="icon is-small is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span>
+      </p>
+    </div>
+    <div class="panel-block">
+      <p class="control has-icons-left">
+        <input
+          v-model="numOfGuest"
+          min="1"
+          class="input is-small"
+          type="number"
+          placeholder="How Many Guests"
+        />
+        <span class="icon is-small is-left">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </span>
+      </p>
+    </div>
+    <div class="panel-block is-active">
+      <span class="is-medium is-left">{{yacht.pricePerNight}} $</span>
+    </div>
+    <div class="panel-block">
+      <button @click="makeReservation" class="button is-danger is-link is-fullwidth">Book it now</button>
+    </div>
+    <div class="panel-block">
+      <a target="_blank"
+        :href="getWhatsappLink"
+        class="button is-success is-outlined is-but is-fullwidth"
+      >Contact the owner</a>
+    </div>
+  </nav>
   <!-- </div> -->
 </template>
 
@@ -133,6 +137,14 @@ export default {
           type: "is-warning"
         });
       }
+    }
+  },
+  computed: {
+    getWhatsappLink(){
+      const api = 'https://api.whatsapp.com/send?l=en'
+      const txt = 'Hi!%20I%27m%20interested%20in%20one%20of%20your%Yachts'
+      const phone = '972548082717'
+      return `${api}&text=${txt}&phone=${phone}`
     }
   },
   components: {
