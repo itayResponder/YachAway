@@ -14,7 +14,7 @@
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
       <yacht-filter class="column is-one-fifth is-hidden-mobile	is-3" @set-filter="setFilter"></yacht-filter>
       <div></div>
-      <yacht-List class="column" :likedYachts="likedYachts" @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
+      <yacht-List class="column" :loggedInUser="loggedInUser" @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
     </div>
 
     <yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
@@ -36,8 +36,6 @@ export default {
     };
   },
   async created() {
-    console.log("yachtApp liked:", this.$store.getters.likedYachts);
-    this.likedYachts = this.$store.getters.likedYachts;
     try {
       const yachts = await this.$store.dispatch({
         type: "loadYachts",
@@ -53,7 +51,6 @@ export default {
     },
     async emitLikedYacht(likedYacht) {
       likedYacht.userId = this.$store.getters.userLoggedIn._id;
-      console.log("yachtApp likedYacht:", likedYacht);
       try {
         const user = await this.$store.dispatch({
           type: "setLikedYacht",
@@ -69,8 +66,12 @@ export default {
       return this.$store.getters.yachtsToShow;
     },
 
+    loggedInUser() {
+      return this.$store.getters.userLoggedIn
+    },
+
     // likedYachts() {
-    //   return this.$store.getters.likedYachts;
+    //   let likedYachts = this.$store.getters.likedYachts;
     // },
 
     cityName() {
