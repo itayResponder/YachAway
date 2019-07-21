@@ -1,28 +1,30 @@
 <template>
   <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
-          
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
         <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
+        <div v-if="loggedInUser">
+          <div v-if="liked">
+            <img v-if="!like"
+              @click="likeClicked"
+              
+              src="@/assets/icons/heart-multiple-outline.svg"
+              alt="you don't like this yacht yet"
+              class="is-relative"
+              style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+            />
 
-          <img
-            @click="markAsLiked , isLike = !isLike"
-            v-show="! isLike"
-            src="@/assets/icons/heart-multiple-outline.svg"
-            alt="you don't like this yacht yet"
-            class="is-relative"
-            style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
-          />
-
-        <img
-          @click="markAsLiked , isLike = !isLike"
-          v-show=" isLike"
-          src="@/assets/icons/heart-multiple.svg"
-          alt="favorite yacht"
-          class="is-relative"
-          style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
-        />
+            <img v-if="like"
+              @click="likeClicked"
+              
+              src="@/assets/icons/heart-multiple.svg"
+              alt="favorite yacht"
+              class="is-relative"
+              style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+            />
+          </div>
+        </div>
       </figure>
       <div style="position:relative;"></div>
     </div>
@@ -48,18 +50,6 @@
             <b>{{yacht.owner.name}}</b>
             <!-- THE FACILITES -->
           </p>
-
-          <!-- ITAY THUMB BUTTON -->
-          <div v-if="loggedInUser">
-              <div v-if="liked">
-            <b-button v-if="like" type="button field" @click="likeClicked">
-              <img src="@/assets/icons/baseline-favorite.svg" alt="thumb" />
-            </b-button>
-            <b-button v-if="!like" type="button field" @click="likeClicked">
-              <img src="@/assets/icons/baseline-favorite_border.svg" alt="thumb" />
-            </b-button>
-              </div>
-            </div>
 
           <p class="is-hidden-mobile">
             <b>{{yacht.location.country}}</b>,
@@ -110,7 +100,7 @@ export default {
         _id: "",
         name: "",
         img: ""
-      },
+      }
     };
   },
   methods: {
@@ -118,13 +108,15 @@ export default {
       var updateLikedYachts = this.loggedInUser.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
-      console.log('yachtPrev:',updateLikedYachts)
+      console.log("yachtPrev:", updateLikedYachts);
       if (updateLikedYachts) {
         try {
-           let updatedLikedYachts = await this.$store.dispatch({type: 'updateUserLikedYachts', updateLikedYachts})
-
+          let updatedLikedYachts = await this.$store.dispatch({
+            type: "updateUserLikedYachts",
+            updateLikedYachts
+          });
         } catch (err) {
-          console.log('YachtPrev error:', err)
+          console.log("YachtPrev error:", err);
         }
         console.log("allready exist!");
       } else {
@@ -159,8 +151,8 @@ export default {
       return average;
     },
     like() {
-      return this.loggedInUser.likedYachts.find(likedYacht =>
-      likedYacht._id === this.yacht._id
+      return this.loggedInUser.likedYachts.find(
+        likedYacht => likedYacht._id === this.yacht._id
       );
     },
     showStars() {
