@@ -3,7 +3,7 @@
   <nav
     v-if="yacht"
     class="panel"
-    style="position: sticky;  z-index: 30; top:4px; right:inherit; left:inherit;"
+    style="position: sticky;  z-index: 30; top:64px; right:inherit; left:inherit;"
   >
     <p class="panel-heading is-black has-background-white">PRICE PER NIGHT</p>
     <div class="panel-block">
