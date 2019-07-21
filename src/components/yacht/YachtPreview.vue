@@ -45,7 +45,7 @@
     <div class="column">
       <div class="media is-boxed has-bullet-separator" style="text-align: center">
         <div>
-          <p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">
+          <p class="price-per-night">
             {{yacht.pricePerNight}} $
             <br />
             <span style="font-size:1rem" v-html="showStars"></span>
