@@ -5,40 +5,25 @@ export default {
     getLoggedInUser,
     logout,
     signUp,
-    addFavorite,
     sendReservationToOwner,
-    updateUserLikedYachts
+    updateUserLikedYachts,
+    setLoggedInUser
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 
 async function login(user) {
     let validUser = await httpService.post(_getUrl('login'), user)
-    // const userLikedYachts = validUser.likedYachts;
-    // const userReservations = validUser.reservations;
     delete validUser.reservations;
-    // delete validUser.likedYachts;
     return _handleSuccessfullRegister(validUser)
-    // return [validUser, { userReservations }]
 }
 
 async function updateUserLikedYachts(updateLikedYachts) {
     try {
         const updatedUserLikedYachts = await httpService.put(_getUrl('updateLikedYachts'), updateLikedYachts)
-        let currUserLoggedIn = loggedInUser;
+        let currUserLoggedIn = { ...loggedInUser };
         currUserLoggedIn.likedYachts = updatedUserLikedYachts;
-        return _handleSuccessfullRegister(currUserLoggedIn);
-    } catch (err) {
-        throw err;
-    }
-}
-
-async function addFavorite(likedYacht) {
-    const updatedUserLikedYachts = await httpService.put(_getUrl(), likedYacht)
-    try {
-        let currUserLoggedIn = loggedInUser;
-        currUserLoggedIn.likedYachts = updatedUserLikedYachts;
-        return _handleSuccessfullRegister(currUserLoggedIn);
+        return currUserLoggedIn;
     } catch (err) {
         throw err;
     }
@@ -66,6 +51,10 @@ async function logout() {
     } catch (err) {
         throw err;
     }
+}
+
+function setLoggedInUser(user) {
+    return _handleSuccessfullRegister(user);
 }
 
 function getLoggedInUser() {

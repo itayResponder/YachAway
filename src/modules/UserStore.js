@@ -4,7 +4,7 @@ export default {
     state: {
         userReservations: [],
         // likedYachts: [],
-        loggedInUser: userService.getLoggedInUser()
+        loggedInUser: userService.getLoggedInUser() //0x123
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
@@ -36,30 +36,11 @@ export default {
                 let sessionUser = checkedUser;
                 if (sessionUser) {
                     commit({ type: 'setUser', sessionUser })
-                    // let likedYachts = checkedUser[1].userLikedYachts;
-                    // commit({ type: 'setLikedYachts', likedYachts })
-                    // let userReservations = checkedUser[2].userReservations;
-                    // commit({ type: 'setReservations', userReservations })
                     return sessionUser;
                 }
             } catch (err) {
                 console.log('error with checkValudUser err:', err);
                 return err;
-            }
-        },
-
-        async updateUserLikedYachts(context, {updateLikedYachts}) {
-            try {
-                updateLikedYachts.userId = context.state.loggedInUser._id;
-                let cpyUpdateLikedYachts = JSON.parse(JSON.stringify(updateLikedYachts));
-                console.log('userStore updateUserLikedYachts cpyUpdateLikedYachts:', cpyUpdateLikedYachts)
-                console.log('userStore checkedIfLikeExist',cpyUpdateLikedYachts)
-                const sessionUser = await userService.updateUserLikedYachts(cpyUpdateLikedYachts)
-                console.log('UserStore update: sessionUser:',sessionUser )
-                context.commit({ type: 'setUser', sessionUser })
-                return sessionUser.likedYachts;
-            } catch (err) {
-                console.log('userStore could not update liked yachts to user error:', err)
             }
         },
 
@@ -84,19 +65,16 @@ export default {
             }
         },
 
-        async setLikedYacht({commit}, { likedYacht }) {
-            let cpyLikedYachts = JSON.parse(JSON.stringify(likedYacht));
-            console.log('userStore setLikedYacht cpyLikedYachts:', cpyLikedYachts)
-            const sessionUser = await userService.addFavorite(cpyLikedYachts)
+        async updateUserLikedYachts(context, { updateLikedYachts }) {
             try {
-                console.log('sessionUser', sessionUser)
-                commit({type: 'setUser', sessionUser})
+                updateLikedYachts.userId = context.state.loggedInUser._id;
+                let sessionUser = await userService.updateUserLikedYachts(updateLikedYachts)
+                context.commit({ type: 'setUser', sessionUser })
+                sessionUser = await userService.setLoggedInUser(sessionUser)
                 return sessionUser.likedYachts;
+            } catch (err) {
+                console.log('userStore could not update liked yachts to user error:', err)
             }
-            catch (err) {
-                console.log('error liked yacht in the UserStore error = ', err)
-            }
-
         }
     }
 }
