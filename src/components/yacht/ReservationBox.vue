@@ -39,11 +39,12 @@
     <div class="panel-block">
       <button @click="makeReservation" class="button is-danger is-link is-fullwidth">Book it now</button>
     </div>
-    <div class="panel-block">
-      <a target="_blank"
+    <div v-if="getWhatsappLink" class="panel-block">
+      <a
+        target="_blank"
         :href="getWhatsappLink"
         class="button is-success is-outlined is-but is-fullwidth"
-      >Contact the owner</a>
+      >{{phoneContactText}}</a>
     </div>
   </nav>
   <!-- </div> -->
@@ -61,7 +62,7 @@ export default {
       fromDate: "2019-07-19", //null,
       toDate: "2019-07-20", //null,
       numOfGuest: 1,
-      reservation: null
+      reservation: null,
     };
   },
   methods: {
@@ -76,7 +77,7 @@ export default {
     },
     createYachtObj() {
       // create YACHT object
-      const yacht = {owner:{}};
+      const yacht = { owner: {} };
       yacht._id = this.$route.params.id;
       yacht.name = this.yacht.name;
       yacht.pricePerNight = this.yacht.pricePerNight;
@@ -95,7 +96,14 @@ export default {
       const createdAt = Date.now();
 
       // send wantedReservation
-      const currReservation = { numOfGuest, fromDate, toDate, yacht, user, createdAt };
+      const currReservation = {
+        numOfGuest,
+        fromDate,
+        toDate,
+        yacht,
+        user,
+        createdAt
+      };
 
       if (fromDate && toDate && numOfGuest > 0) {
         // CHECK IF IT IS  A REAL DATE :
@@ -121,14 +129,17 @@ export default {
           console.log("Coule not save reservation error:", err);
           return;
         }
-      try {
-        //Send message to Owner yacht
-        this.reservation.yacht.owner._id = this.yacht.owner._id;
-        const pendingReservation = await this.$store.dispatch({type: 'pendingReservation', reservation: this.reservation })
-      } catch (err) {
-        console.log('Could not send message error:', err)
-      }
-      this.$router.push("/profile/reservation");
+        try {
+          //Send message to Owner yacht
+          this.reservation.yacht.owner._id = this.yacht.owner._id;
+          const pendingReservation = await this.$store.dispatch({
+            type: "pendingReservation",
+            reservation: this.reservation
+          });
+        } catch (err) {
+          console.log("Could not send message error:", err);
+        }
+        this.$router.push("/profile/reservation");
       } else {
         this.$toast.open({
           duration: 4050,
@@ -140,11 +151,21 @@ export default {
     }
   },
   computed: {
-    getWhatsappLink(){
-      const api = 'https://api.whatsapp.com/send?l=en'
-      const txt = 'Hi!%20I%27m%20interested%20in%20one%20of%20your%Yachts'
-      const phone = '972548082717'
-      return `${api}&text=${txt}&phone=${phone}`
+    getWhatsappLink() {
+      
+      if ( !this.yacht.owner.name  ) return false
+      const api = "https://api.whatsapp.com/send?l=en";
+      const txt = "Hi!%20I%27m%20interested%20in%20one%20of%20your%Yachts";
+      // for now we not load it from DB :
+      let phone = "";
+      // for now we not load it from DB :
+      if (this.yacht.owner.name.toLowerCase() === "niv") phone = "972548082717";
+      else if (this.yacht.owner.name.toLowerCase() === "nadav") phone = "972523831348";
+      else if (this.yacht.owner.name.toLowerCase() === "itay") phone = "972597161645";
+      else phone = "";
+
+      this.phoneContactText = "Contact the owner";
+      return `${api}&text=${txt}&phone=${phone}`;
     }
   },
   components: {
