@@ -2,17 +2,11 @@ import userService from '../services/user.service'
 
 export default {
     state: {
-        userReservations: [],
-        // likedYachts: [],
-        loggedInUser: userService.getLoggedInUser() //0x123
+        loggedInUser: userService.getLoggedInUser()
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
             return loggedInUser
-        },
-
-        userReservations({ loggedInUser }) {
-            return loggedInUser.reservations;
         },
     },
     mutations: {
@@ -41,6 +35,16 @@ export default {
             } catch (err) {
                 console.log('error with checkValudUser err:', err);
                 return err;
+            }
+        },
+
+        async replyUser(context, { replyUser }) {
+            try {
+                console.log('UserStore replyUser:', replyUser )
+                const sendUserMsg = userService.replyUserMsg(replyUser)
+                return sendUserMsg;
+            } catch (err) {
+                console.log('err', err)
             }
         },
 

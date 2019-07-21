@@ -7,15 +7,24 @@ export default {
     signUp,
     sendReservationToOwner,
     updateUserLikedYachts,
-    setLoggedInUser
+    setLoggedInUser,
+    replyUserMsg
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 
 async function login(user) {
     let validUser = await httpService.post(_getUrl('login'), user)
-    delete validUser.reservations;
     return _handleSuccessfullRegister(validUser)
+}
+
+async function replyUserMsg(replyUser) {
+    try {
+        let messageRecivedFromOwner = await httpService.put(_getUrl('sendMsgToUser'), replyUser)
+        return messageRecivedFromOwner;
+    } catch (err) {
+        throw err;
+    }
 }
 
 async function updateUserLikedYachts(updateLikedYachts) {
