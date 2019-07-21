@@ -1,26 +1,26 @@
 <template>
   <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
     <div class="column is-one-third">
-      <!-- image of yacht -->
-      <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
-        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
+      <!-- image is-4by5 -->
+      <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
+        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: fill;" />
         <div v-if="loggedInUser">
           <div v-if="liked">
-            <img v-if="!like"
+            <img
+              v-if="!like"
               @click="likeClicked"
-              
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
-              class="is-relative"
+              class="is-relative like"
               style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
             />
 
-            <img v-if="like"
+            <img
+              v-if="like"
               @click="likeClicked"
-              
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
-              class="is-relative"
+              class="is-relative like"
               style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
             />
           </div>
@@ -88,13 +88,8 @@
   </div>
 </template>
 
-
-
-
-
-
 <script>
-import Swal from "sweetalert2";
+// import Swal from "sweetalert2";
 export default {
   name: "YachtPreview",
   props: ["yacht", "loggedInUser"],
@@ -105,42 +100,30 @@ export default {
       likedYacht: {
         _id: "",
         name: "",
-        img: ""
+        img: "",
+        isLiked: false
       }
     };
   },
   methods: {
-    async likeClicked() {
-      if (!loggedInUser  || !liked) return
+    likeClicked() {
       var updateLikedYachts = this.loggedInUser.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
-      console.log("yachtPrev:", updateLikedYachts);
       if (updateLikedYachts) {
-        try {
-          let updatedLikedYachts = await this.$store.dispatch({
-            type: "updateUserLikedYachts",
-            updateLikedYachts
-          });
-        } catch (err) {
-          console.log("YachtPrev error:", err);
-        }
-        console.log("allready exist!");
+        var cpyUpdatedLikedYachts = JSON.parse(JSON.stringify(updateLikedYachts));
+        cpyUpdatedLikedYachts.isLiked = true;
+        this.$emit("emitUpdateLikedYacht", cpyUpdatedLikedYachts);
       } else {
         this.likedYacht._id = this.yacht._id;
         this.likedYacht.name = this.yacht.name;
         this.likedYacht.img = this.yacht.imgs[0];
-        let cpyLikedYacht = JSON.parse(JSON.stringify(this.likedYacht));
-
-        this.$emit("emitLikedYacht", cpyLikedYacht);
+        updateLikedYachts = this.likedYacht;
+        this.$emit("emitUpdateLikedYacht", updateLikedYachts);
       }
     }
   },
   computed: {
-    // user() {
-    //   console.log('user',this.$store.getters.userLoggedIn)
-    //   return this.$store.getters.userLoggedIn
-    // },
     liked() {
       return this.loggedInUser.likedYachts;
     },
@@ -200,6 +183,10 @@ export default {
   right: -93px;
   width: 30px;
   height: 30px;
+}
+
+.is-relative.like {
+  cursor: pointer;
 }
 
 a {
