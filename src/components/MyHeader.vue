@@ -2,20 +2,21 @@
   <nav class="navbar is-transparent is-fixed-top is-fullheight-with-navbar">
     <div class="container">
       <div class="navbar-brand">
-                  <!-- @click="toggleNavbarBurger" -->
+        <router-link class="navbar-item" exact to="/">
+          <img src="@/assets/img/logo/yacht.png" width="30"  />
+        </router-link>
 
         <span
           class="navbar-burger burger"
           aria-label="menu"
           aria-expanded="false"
           data-target="navbarMenuHeroB"
-          @click="isBurgerMenuOpen = !isBurgerMenuOpen" v-bind:class="{'is-active': isBurgerMenuOpen}"
+          @click="isBurgerMenuOpen = !isBurgerMenuOpen"
+          v-bind:class="{'is-active': isBurgerMenuOpen}"
         >
           <span></span>
           <span></span>
           <span></span>
-          
-          
         </span>
       </div>
       <div id="navbarMenuHeroB" :class="[{'is-active': isBurgerMenuOpen}, 'navbar-menu']">
@@ -77,8 +78,7 @@ export default {
   props: ["loggedInUser"],
   data() {
     return {
-            isBurgerMenuOpen: false
-
+      isBurgerMenuOpen: false
     };
   },
   computed: {
@@ -98,7 +98,7 @@ export default {
       } catch (err) {
         console.log("Could not log out err:", err);
       }
-    },
+    }
   },
   mounted() {}
 };

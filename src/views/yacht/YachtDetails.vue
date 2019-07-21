@@ -1,78 +1,96 @@
 <template>
-	<!-- IT MAYBE NEED TO USE TILES AND NOT GRID FOR RESPONSIVE -->
-	<div class="container">
-		<reservationBox />
-		<calendarShow />
-		<!-- is slots possible ?? -->
-		<div></div>
-		<div class="content">
-			<a alt="demo" target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/">
-				<!-- <img src="@/assets/img/temp/details-yacht-pics.jpg" /> -->
-				<!-- <figure class="image is-4by3">
-				<img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
-        </figure>-->
-				<h1>{{yacht.name}}</h1>
-			</a>
-				<reservationBox :yacht="yacht" /> <!-- is slots possible ?? -->
-			<div v-for="img in yacht.imgs" :key=img.id>
+  <div class="tile is-ancestor">
+    <!-- LEFT -->
+    <div class="tile is-parent is-vertical is-3">
+      <article class="tile is-child">
+        <reservationBox :yacht="yacht" />
+      </article>
+    </div>
 
-				<div></div>
-				<div class="content ">
-					<!-- <a alt="demo" target="_blank" href="https://demo07.gethomey.io/listing/large-and-modern-bedroom/"> -->
-					<figure class="image is-1x1">
-						<img :src="img" />
-					</figure>
+    <!-- RIGHT -->
+    <div class="tile is-parent is-9">
+      <article class="tile is-child">
+        <div class="content">
+          <!-- //SLIDER TESTS -->
+          <figure  class="image is-16by9">
+            <img v-if="yacht.imgs" :src="yacht.imgs[currImg]" @click="nextPicture" />
+          </figure>
 
-				</div>
-				<p><b>description:</b> {{yacht.description}}</p>
+          <!-- <div v-for="img in yacht.imgs" :key="img.id">
+            <div class="box">
+              <figure class="image is-16by9">
+                <img :src="img" />
+              </figure>
+            </div>
+          </div>-->
 
-				<!-- <a target="_blank" href="https://demo03.gethomey.io/listing/large-and-modern-bedroom/">
-				<img src="@/assets/img/temp/details-top-bnb.jpg" />
-      </a>-->
+          <!-- TITLE  -->
+          <h1>{{yacht.name}}</h1>
+          <p>
+            <b>description:</b>
+            {{yacht.description}}
+          </p>
+          <calendarShow />
+          <previewReview />
 
-				<!-- <img v-show="toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption-bnb.jpg" />
-			<img v-show="!toggleDesc" @click="toggleDesc=!toggleDesc" src="@/assets/img/temp/details-descreption.jpg" />
-
-			<img v-show="toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility-bnb.jpg" />
-      <img v-show="!toggleFacility" @click="toggleFacility=!toggleFacility" src="@/assets/img/temp/details-popular-facility.jpg" />-->
-				<previewReview />
-				<!-- <img src="@/assets/img/temp/details-reviews.jpg" /> -->
-			</div>
-		</div>
-	</div>
+          <!-- IMG UI EXAMPLES -->
+          <!-- <img  src="@/assets/img/temp/details-descreption-bnb.jpg" /> -->
+          <!-- <img  src="@/assets/img/temp/details-descreption.jpg" /> -->
+          <!-- <img src="@/assets/img/temp/details-popular-facility-bnb.jpg" /> -->
+          <!-- <img src="@/assets/img/temp/details-popular-facility.jpg" /> -->
+          <!-- <img src="@/assets/img/temp/details-reviews.jpg" />  -->
+          <!-- END -->
+        </div>
+      </article>
+    </div>
+  </div>
 </template>
 
 <script>
 import calendarShow from "@/components/general/CalendarShow";
 import previewReview from "@/components/yacht/PreviewReview";
 import reservationBox from "@/components/yacht/ReservationBox";
+
 export default {
-	data() {
-		return {
-			//FOR DEMONSTARATION PERPUSES
-			toggleDesc: true,
-			toggleFacility: true,
-			yacht: {}
-		};
-	},
-	async created() {
-		const yachtId = this.$route.params.id;
-		try {
-			this.yacht = await this.$store.dispatch({ type: "loadYacht", yachtId });
-		} catch (err) {
-			console.log("Couldnt get yacht err:", err);
-		}
-	},
-	methods: {
-		goBack() {
-			this.$router.push("/yachts");
-		}
-	},
-	components: {
-		calendarShow,
-		previewReview,
-		reservationBox
-	}
+  data() {
+    return {
+      //FOR DEMONSTARATION PERPUSES
+      toggleDesc: true,
+      toggleFacility: true,
+      yacht: {},
+      currImg: 0,
+      isMounted: false
+    };
+  },
+  async created() {
+    const yachtId = this.$route.params.id;
+    try {
+      this.yacht = await this.$store.dispatch({ type: "loadYacht", yachtId });
+    } catch (err) {
+      console.log("Couldnt get yacht err:", err);
+    }
+  },
+  methods: {
+    goBack() {
+      this.$router.push("/yachts");
+    },
+    nextPicture() {
+		console.log(this.yacht.imgs.length);
+		
+      if (this.isMounted && this.yacht.imgs) {
+        if (this.yacht.imgs.length < this.currImg) this.currImg++;
+        else this.currImg = 0;
+      }
+    }
+  },
+  mounted() {
+    this.isMounted = true;
+  },
+  components: {
+    calendarShow,
+    previewReview,
+    reservationBox
+  }
 };
 </script>
 

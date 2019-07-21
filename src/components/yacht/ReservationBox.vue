@@ -1,7 +1,6 @@
 <template>
-  <div v-if="yacht">
-    <!-- <nav class="navbar is-fixed-top" style="top:4px; right:inherit; left:inherit;"> -->
-    <nav
+  <!-- <div class="content" v-if="yacht"> -->
+    <nav v-if="yacht"
       class="panel"
       style="position: sticky;  z-index: 30; top:4px; right:inherit; left:inherit;"
     >
@@ -39,11 +38,11 @@
       <div class="panel-block">
         <button
           @click="makeReservation"
-          class="button is-danger is-link is-outlined is-fullwidth"
+          class="button is-danger is-link is-fullwidth"
         >Book it now</button>
       </div>
     </nav>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>

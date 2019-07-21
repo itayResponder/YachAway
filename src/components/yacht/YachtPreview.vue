@@ -1,34 +1,56 @@
 <template>
-  <article class="media">
-    <figure class="media-left">
-      <p class="image img-hover-zoom img-hover-zoom">
-        <img :src="yacht.imgs[0]" style="max-width:20vw; max-height:200px; object-fit: cover;" />
-      </p>
-    </figure>
-    <div class="media-content">
-      <router-link :to="getUrlWithYachtId">
-        <div class="content">
-          <strong class="title is-4">{{yacht.name}}</strong>
-          <p class="has-gray-text is-small">{{yacht.description}}</p>
-          <!-- </div> -->
-        </div>
-      </router-link>
-      <p>
-        <b>{{yacht.location.country}}</b>,
-        <b>{{yacht.location.city}}</b>
-      </p>
+  <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
+          
+    <div class="column is-one-third">
+      <!-- image is-4by5 -->
+      <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
+        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
 
-      <nav class="level is-mobile">
-        <div class="level-left">
-          <div class="level-item">
-            <p class="image is-48x48 margin-min">
-              <img class="is-rounded" :src="yacht.owner.img" />
-            </p>
-            <p>
-              <b style="margin-right:20px;">{{yacht.owner.name}}</b>
-              <!-- facilites -->
-            </p>
-            <div v-if="loggedInUser">
+          <img
+            @click="markAsLiked , isLike = !isLike"
+            v-show="! isLike"
+            src="@/assets/icons/heart-multiple-outline.svg"
+            alt="you don't like this yacht yet"
+            class="is-relative"
+            style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+          />
+
+        <img
+          @click="markAsLiked , isLike = !isLike"
+          v-show=" isLike"
+          src="@/assets/icons/heart-multiple.svg"
+          alt="favorite yacht"
+          class="is-relative"
+          style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+        />
+      </figure>
+      <div style="position:relative;"></div>
+    </div>
+
+    <!-- TEXT -->
+    <div class="column is-6 horiznal-shadow">
+      <router-link :to="getUrlWithYachtId">
+        <div class="media-content">
+          <div class="content">
+            <strong class="title is-4">{{yacht.name}}</strong>
+            <p class="has-gray-text is-small">{{yacht.description}}</p>
+          </div>
+        </div>
+
+        <nav class="level is-mobile">
+          <!-- <div class="level-left">
+          <div class="level-item">-->
+          <figure class="image is-48x48 margin-min">
+            <img class="is-rounded" :src="yacht.owner.img" />
+          </figure>
+          <!-- </div> -->
+          <p>
+            <b>{{yacht.owner.name}}</b>
+            <!-- THE FACILITES -->
+          </p>
+
+          <!-- ITAY THUMB BUTTON -->
+          <div v-if="loggedInUser">
               <div v-if="liked">
             <b-button v-if="like" type="button field" @click="likeClicked">
               <img src="@/assets/icons/baseline-favorite.svg" alt="thumb" />
@@ -38,26 +60,43 @@
             </b-button>
               </div>
             </div>
-          </div>
-        </div>
-      </nav>
+
+          <p class="is-hidden-mobile">
+            <b>{{yacht.location.country}}</b>,
+            <b>{{yacht.location.city}}</b>
+          </p>
+          <!-- </div> -->
+        </nav>
+      </router-link>
     </div>
 
-    <!-- Reviews and Price -->
-    <div class="media is-boxed has-bullet-separator" style="text-align: center">
-      <div>
-        <p style="font-size: 2rem; font-family: Montserrat,Arial,sans-serif;">
-          {{yacht.pricePerNight}} $
-          <!-- BY NADAV: USED TO BE :  {{getAverageReviews}} -->
-          <br />
-          <span style="font-size:1rem" v-html="showStars"></span>
-        </p>
-        <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
-        <router-link :to="getUrlWithYachtId" class="button is-primary is-6 margin-min">More Details</router-link>
+    <!-- REVIEWS AND PRICE -->
+    <div class="column">
+      <div class="media is-boxed has-bullet-separator" style="text-align: center">
+        <div>
+          <p class="price-per-night">
+            {{yacht.pricePerNight}} $
+            <br />
+          </p>
+          <span v-html="showStars"></span>
+          <small class="is-center is-clearfix has-text-grey">{{getNumberOfReviews}} Reviews</small>
+          <router-link
+            :to="getUrlWithYachtId"
+            class="button is-primary is-hidden-mobile is-3 margin-min"
+          >Sail !</router-link>
+        </div>
       </div>
     </div>
-  </article>
+
+    <!-- END columns -->
+  </div>
 </template>
+
+
+
+
+
+
 <script>
 import Swal from "sweetalert2";
 export default {
@@ -65,6 +104,7 @@ export default {
   props: ["yacht", "loggedInUser"],
   data() {
     return {
+      isLike: false,
       avrage: "",
       likedYacht: {
         _id: "",
@@ -126,14 +166,23 @@ export default {
     showStars() {
       this.averag = this.getAverageReviews;
       var stars = "";
+      var emptyStar = 5 - this.average;
+      //FULL STARS
       while (this.average > 0.5) {
         stars += '<img src="/img/icons/star.svg"/>';
-        // stars += '&#11088 ';
         this.average--;
       }
+      //HALF STAR
       if (this.average === 0.5)
         stars += '<img src="/img/icons/star-half.svg"/>';
+      //EMPTY STARS
+      while (emptyStar > 0.5) {
+        stars += '<img src="/img/icons/star-outline.svg"/>';
+        emptyStar--;
+      }
       return stars;
+      // END
+      // OLD HTML star CODE = '&#11088 ';
     },
     getUrlWithYachtId() {
       return "/yacht/" + this.yacht._id;
@@ -141,7 +190,19 @@ export default {
   }
 };
 </script>
+
+
+
+
 <style scoped>
+.like-it-symbole {
+  position: absolute;
+  top: -189px;
+  right: -93px;
+  width: 30px;
+  height: 30px;
+}
+
 a {
   color: inherit;
 }
@@ -153,5 +214,27 @@ a {
 }
 .margin-min {
   margin: 1rem;
+}
+
+/* margin: 0px 10px; */
+
+.max-height {
+  height: 215px;
+}
+
+.img-boat {
+  /* max-width: 20vw; */
+  min-height: 220px;
+  margin-top: -1.7rem;
+}
+.img-owner {
+  position: absolute;
+  left: 48%;
+  margin-top: 6%;
+}
+
+.img-wrap {
+  height: auto;
+  overflow: auto;
 }
 </style>

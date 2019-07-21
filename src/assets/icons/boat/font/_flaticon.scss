@@ -1,0 +1,135 @@
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+.fimanager:before {
+    display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+}
+
+.flaticon-001-ship:before { content: "\f100"; }
+.flaticon-002-barrel:before { content: "\f101"; }
+.flaticon-003-fish:before { content: "\f102"; }
+.flaticon-004-fish-hook:before { content: "\f103"; }
+.flaticon-005-submarine:before { content: "\f104"; }
+.flaticon-006-sun:before { content: "\f105"; }
+.flaticon-007-dolphin:before { content: "\f106"; }
+.flaticon-008-spyglass:before { content: "\f107"; }
+.flaticon-009-snorkel:before { content: "\f108"; }
+.flaticon-010-helm:before { content: "\f109"; }
+.flaticon-011-life-jacket:before { content: "\f10a"; }
+.flaticon-012-motorboat:before { content: "\f10b"; }
+.flaticon-013-boat-engine:before { content: "\f10c"; }
+.flaticon-014-paddles:before { content: "\f10d"; }
+.flaticon-015-map:before { content: "\f10e"; }
+.flaticon-016-sailor:before { content: "\f10f"; }
+.flaticon-017-shirt:before { content: "\f110"; }
+.flaticon-018-message-in-a-bottle:before { content: "\f111"; }
+.flaticon-019-pipe:before { content: "\f112"; }
+.flaticon-020-starfish:before { content: "\f113"; }
+.flaticon-021-oxygen:before { content: "\f114"; }
+.flaticon-022-windrose:before { content: "\f115"; }
+.flaticon-023-shark:before { content: "\f116"; }
+.flaticon-024-lighthouse:before { content: "\f117"; }
+.flaticon-025-radar:before { content: "\f118"; }
+.flaticon-026-binocular:before { content: "\f119"; }
+.flaticon-027-sailboat:before { content: "\f11a"; }
+.flaticon-028-captain:before { content: "\f11b"; }
+.flaticon-029-hat:before { content: "\f11c"; }
+.flaticon-030-seagull:before { content: "\f11d"; }
+.flaticon-031-whale:before { content: "\f11e"; }
+.flaticon-032-anchor:before { content: "\f11f"; }
+.flaticon-033-compass:before { content: "\f120"; }
+.flaticon-034-buoy:before { content: "\f121"; }
+.flaticon-035-lifesaver:before { content: "\f122"; }
+.flaticon-036-fishing-rod:before { content: "\f123"; }
+.flaticon-037-storm:before { content: "\f124"; }
+.flaticon-038-captain:before { content: "\f125"; }
+.flaticon-039-boat-porthole:before { content: "\f126"; }
+.flaticon-040-diving-helmet:before { content: "\f127"; }
+.flaticon-041-flag-pole:before { content: "\f128"; }
+.flaticon-042-fins:before { content: "\f129"; }
+.flaticon-043-cleaning:before { content: "\f12a"; }
+.flaticon-044-shell:before { content: "\f12b"; }
+.flaticon-045-worm:before { content: "\f12c"; }
+.flaticon-046-crab:before { content: "\f12d"; }
+.flaticon-047-box:before { content: "\f12e"; }
+.flaticon-048-bell-tower:before { content: "\f12f"; }
+.flaticon-049-sailor:before { content: "\f130"; }
+.flaticon-050-saber:before { content: "\f131"; }
+
+$font-Flaticon-001-ship: "\f100";
+$font-Flaticon-002-barrel: "\f101";
+$font-Flaticon-003-fish: "\f102";
+$font-Flaticon-004-fish-hook: "\f103";
+$font-Flaticon-005-submarine: "\f104";
+$font-Flaticon-006-sun: "\f105";
+$font-Flaticon-007-dolphin: "\f106";
+$font-Flaticon-008-spyglass: "\f107";
+$font-Flaticon-009-snorkel: "\f108";
+$font-Flaticon-010-helm: "\f109";
+$font-Flaticon-011-life-jacket: "\f10a";
+$font-Flaticon-012-motorboat: "\f10b";
+$font-Flaticon-013-boat-engine: "\f10c";
+$font-Flaticon-014-paddles: "\f10d";
+$font-Flaticon-015-map: "\f10e";
+$font-Flaticon-016-sailor: "\f10f";
+$font-Flaticon-017-shirt: "\f110";
+$font-Flaticon-018-message-in-a-bottle: "\f111";
+$font-Flaticon-019-pipe: "\f112";
+$font-Flaticon-020-starfish: "\f113";
+$font-Flaticon-021-oxygen: "\f114";
+$font-Flaticon-022-windrose: "\f115";
+$font-Flaticon-023-shark: "\f116";
+$font-Flaticon-024-lighthouse: "\f117";
+$font-Flaticon-025-radar: "\f118";
+$font-Flaticon-026-binocular: "\f119";
+$font-Flaticon-027-sailboat: "\f11a";
+$font-Flaticon-028-captain: "\f11b";
+$font-Flaticon-029-hat: "\f11c";
+$font-Flaticon-030-seagull: "\f11d";
+$font-Flaticon-031-whale: "\f11e";
+$font-Flaticon-032-anchor: "\f11f";
+$font-Flaticon-033-compass: "\f120";
+$font-Flaticon-034-buoy: "\f121";
+$font-Flaticon-035-lifesaver: "\f122";
+$font-Flaticon-036-fishing-rod: "\f123";
+$font-Flaticon-037-storm: "\f124";
+$font-Flaticon-038-captain: "\f125";
+$font-Flaticon-039-boat-porthole: "\f126";
+$font-Flaticon-040-diving-helmet: "\f127";
+$font-Flaticon-041-flag-pole: "\f128";
+$font-Flaticon-042-fins: "\f129";
+$font-Flaticon-043-cleaning: "\f12a";
+$font-Flaticon-044-shell: "\f12b";
+$font-Flaticon-045-worm: "\f12c";
+$font-Flaticon-046-crab: "\f12d";
+$font-Flaticon-047-box: "\f12e";
+$font-Flaticon-048-bell-tower: "\f12f";
+$font-Flaticon-049-sailor: "\f130";
+$font-Flaticon-050-saber: "\f131";

@@ -2,3 +2,41 @@
     display: grid;
     grid-template-columns: 1fr 1rem minmax(224px, 3fr);
 }
+
+
+.grid-container {
+    display: grid;
+
+  }
+
+
+.grid-auto {
+    grid-template-columns: auto auto auto;
+  }
+
+.grid-third {
+    grid-template-columns: 1fr 2fr 1fr;
+
+  }
+
+  .space-between {
+    align-content: space-between;
+  }
+
+  .align-center {
+      align-content: center;
+  }
+
+  /* SHADOW */
+
+  .row-shadow {
+    box-shadow: 4px 3px 8px 4px rgba(0, 0, 0, 0.12);
+  }
+  .horiznal-shadow {
+    box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.12);
+  }
+
+  /* Margins */
+.yacht-list-preview-margin{
+  margin: 30px 0;
+}
