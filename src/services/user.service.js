@@ -6,29 +6,39 @@ export default {
     logout,
     signUp,
     addFavorite,
-    sendReservationToOwner
+    sendReservationToOwner,
+    updateUserLikedYachts
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 
 async function login(user) {
     let validUser = await httpService.post(_getUrl('login'), user)
-    console.log('validUser is ',validUser)
-    const userLIkedYachts = validUser.likedYachts;
-    const userReservations = validUser.reservations;
+    // const userLikedYachts = validUser.likedYachts;
+    // const userReservations = validUser.reservations;
     delete validUser.reservations;
-    delete validUser.likedYachts;
+    // delete validUser.likedYachts;
+    return _handleSuccessfullRegister(validUser)
+    // return [validUser, { userReservations }]
+}
 
-    validUser = _handleSuccessfulRegister(validUser)
-    return [validUser, { userLIkedYachts }, { userReservations }]
-
+async function updateUserLikedYachts(updateLikedYachts) {
+    try {
+        const updatedUserLikedYachts = await httpService.put(_getUrl('updateLikedYachts'), updateLikedYachts)
+        let currUserLoggedIn = loggedInUser;
+        currUserLoggedIn.likedYachts = updatedUserLikedYachts;
+        return _handleSuccessfullRegister(currUserLoggedIn);
+    } catch (err) {
+        throw err;
+    }
 }
 
 async function addFavorite(likedYacht) {
-    const updatedUser = await httpService.put(_getUrl(), likedYacht)
+    const updatedUserLikedYachts = await httpService.put(_getUrl(), likedYacht)
     try {
-        console.log('updatedUser', updatedUser)
-        return updatedUser
+        let currUserLoggedIn = loggedInUser;
+        currUserLoggedIn.likedYachts = updatedUserLikedYachts;
+        return _handleSuccessfullRegister(currUserLoggedIn);
     } catch (err) {
         throw err;
     }
@@ -45,7 +55,7 @@ async function sendReservationToOwner(reservation) {
 
 async function signUp(user) {
     const validUser = await httpService.post(_getUrl('signup'), user)
-    return _handleSuccessfulRegister(validUser);
+    return _handleSuccessfullRegister(validUser);
 }
 
 async function logout() {
@@ -66,7 +76,7 @@ function _getUrl(userId = '') {
     return `user/${userId}`
 }
 
-function _handleSuccessfulRegister(user) {
+function _handleSuccessfullRegister(user) {
     loggedInUser = user
     sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
     return loggedInUser;

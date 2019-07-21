@@ -1,6 +1,10 @@
 <template>
   <section>
-    <yacht-preview @emitLikedYacht="emitLikedYacht" class="img-hover--brightness" v-for="yacht in yachts" :key="yacht._id" :yacht="yacht"></yacht-preview>
+    <yacht-preview @emitLikedYacht="emitLikedYacht" class="img-hover--brightness" v-for="yacht in yachts" :key="yacht._id"
+      :yacht="yacht"
+      :loggedInUser="loggedInUser"
+      >
+      </yacht-preview>
   </section>
 </template>
 
@@ -9,17 +13,14 @@ import YachtPreview from "@/components/yacht/YachtPreview";
 
 export default {
   name: "YachtList",
-  props: ["yachts", "likedYachts"],
+  props: ["yachts", "loggedInUser"],
 
   data() {
     return {};
   },
-  created() {
-    console.log('yachtList cretaeed likedYachtes:', this.likedYachts)
-  },
   methods: {
-    emitLikedYacht(likedYacht){
-      this.$emit("emitLikedYacht",likedYacht)
+    emitLikedYacht(likedYacht) {
+      this.$emit("emitLikedYacht", likedYacht);
     }
   },
   components: {
@@ -33,7 +34,7 @@ export default {
   box-shadow: 0 0 15px 2px black;
   transition: 0.3s;
 } */
-.yachts-prev{
+.yachts-prev {
   padding: 20px;
   margin-bottom: 40px;
 }

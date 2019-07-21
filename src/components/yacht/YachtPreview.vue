@@ -25,12 +25,19 @@
               <img class="is-rounded" :src="yacht.owner.img" />
             </p>
             <p>
-              <b>{{yacht.owner.name}}</b>
+              <b style="margin-right:20px;">{{yacht.owner.name}}</b>
               <!-- facilites -->
             </p>
-            <b-button type="button field" @click="markAsLiked">
-              <img src="@/assets/icons/baseline-thumb_up.svg" style="color:blue;" alt="thumb" />
+            <div v-if="loggedInUser">
+              <div v-if="liked">
+            <b-button v-if="like" type="button field" @click="likeClicked">
+              <img src="@/assets/icons/baseline-favorite.svg" alt="thumb" />
             </b-button>
+            <b-button v-if="!like" type="button field" @click="likeClicked">
+              <img src="@/assets/icons/baseline-favorite_border.svg" alt="thumb" />
+            </b-button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
@@ -55,7 +62,7 @@
 import Swal from "sweetalert2";
 export default {
   name: "YachtPreview",
-  props: ["yacht"],
+  props: ["yacht", "loggedInUser"],
   data() {
     return {
       avrage: "",
@@ -63,20 +70,41 @@ export default {
         _id: "",
         name: "",
         img: ""
-      }
+      },
     };
   },
-  // "favorites": [{"yachtId":"y103","yachtName":"Ronaldinho","yachtImage":"imgUrl"}
-  //
   methods: {
-    markAsLiked() {
-      this.likedYacht._id = this.yacht._id;
-      this.likedYacht.name = this.yacht.name;
-      this.likedYacht.img = this.yacht.imgs[0];
-      this.$emit("emitLikedYacht", this.likedYacht);
+    async likeClicked() {
+      var updateLikedYachts = this.loggedInUser.likedYachts.find(
+        likedYacht => likedYacht._id === this.yacht._id
+      );
+      console.log('yachtPrev:',updateLikedYachts)
+      if (updateLikedYachts) {
+        try {
+           let updatedLikedYachts = await this.$store.dispatch({type: 'updateUserLikedYachts', updateLikedYachts})
+
+        } catch (err) {
+          console.log('YachtPrev error:', err)
+        }
+        console.log("allready exist!");
+      } else {
+        this.likedYacht._id = this.yacht._id;
+        this.likedYacht.name = this.yacht.name;
+        this.likedYacht.img = this.yacht.imgs[0];
+        let cpyLikedYacht = JSON.parse(JSON.stringify(this.likedYacht));
+
+        this.$emit("emitLikedYacht", cpyLikedYacht);
+      }
     }
   },
   computed: {
+    // user() {
+    //   console.log('user',this.$store.getters.userLoggedIn)
+    //   return this.$store.getters.userLoggedIn
+    // },
+    liked() {
+      return this.loggedInUser.likedYachts;
+    },
     getNumberOfReviews() {
       return this.yacht.reviews.length;
     },
@@ -89,6 +117,11 @@ export default {
       var average = sum / length;
       this.average = average;
       return average;
+    },
+    like() {
+      return this.loggedInUser.likedYachts.find(likedYacht =>
+      likedYacht._id === this.yacht._id
+      );
     },
     showStars() {
       this.averag = this.getAverageReviews;

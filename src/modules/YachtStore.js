@@ -75,7 +75,6 @@ export default {
     actions: {
         async loadYachts({ commit }, { owner }) {
             try {
-                console.log('yacthStore owner:', owner)
                 const yachts = await yachtService.query(owner)
                 commit({ type: "setYachts", yachts })
                 return yachts;
