@@ -1,12 +1,14 @@
 <template>
 	<!-- mobile-->
 	<!-- desktop-->
-	<header class="hero is-large is-fullheight">
+	<header class="hero is-large is-fullheight-with-navbar">
 		<section class="hero-video ">
-			<video poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg" id="bgvid" playsinline autoplay muted loop>
+		<section class="has-bg-img">
+			<!-- <video class="is-hidden-mobile " poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg" id="bgvid" playsinline autoplay muted loop>
 				<source src="https://res.cloudinary.com/dopdel26f/video/upload/v1563442703/video/www.kizoa.com_y2mate.com_-_my_aspire_51m_video_OlXpmcyvPFE_1080p_exaq4d.mp4" type="video/mp4" />
-			</video>
+			</video> -->
 
+			
 			<div class="hero-head">
 				<my-header :loggedInUser="loggedInUser" />
 			</div>
@@ -25,6 +27,7 @@
 				</div>
 			</div>
 		</section>
+		</section>
 	</header>
 </template>
 
@@ -38,19 +41,6 @@ export default {
 	mounted() {
 		this.$refs.address.focus();
 
-		// OPTIN 2 for AUTOCOMPLATE  :
-		// PUT IN MOUNTED :
-		// this.autocomplete = new google.maps.places.Autocomplete(
-		// 	this.$refs.autocomplete,
-		// 	{ types: ["geocode"] }
-		// );
-		// this.autocomplete.addListener("place_changed", () => {
-		// 	let place = this.autocomplete.getPlace();
-		// 	let ac = place.address_components;
-		// 	this.location.lat = place.geometry.location.lat();
-		// 	this.location.lng = place.geometry.location.lng();
-		// 	this.address = ac[0]["short_name"] + ", " + ac[2]["long_name"];
-		// });
 	},
 	components: {
 		VueGoogleAutocomplete,
@@ -99,6 +89,9 @@ export default {
 	box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.75);
 	font-weight: 600;
 	color: #444;
+}
+.hero-video {
+	overflow: auto;
 }
 </style>
 
