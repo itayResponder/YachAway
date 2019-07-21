@@ -153,9 +153,9 @@ export default {
   computed: {
     getWhatsappLink() {
       
-      if ( !this.yacht.owner.name  ) return false
+      if ( !this.yacht || !this.yacht.owner || !this.yacht.owner.name  ) return false
       const api = "https://api.whatsapp.com/send?l=en";
-      const txt = "Hi!%20I%27m%20interested%20in%20one%20of%20your%Yachts";
+      const txt = `Hi!%20I%27m%20interested%20in%20$one%20of%20your%20Yachts,%20specifically%20in%20:%20${this.yacht.name}%20`;
       // for now we not load it from DB :
       let phone = "";
       // for now we not load it from DB :
