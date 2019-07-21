@@ -12,14 +12,18 @@
       <label class="panel-block">
         <p class="control has-icons-left">
           <select
-            class="input is-medium is-fullwidth"
+            class="input is-fullwidth is-medium"
             v-model="filterBy.minPeople"
             @change="emitFilter"
           >
-            <option value disabled selected>How Many Adults</option>
-            <option value="1">1-10</option>
-            <option value="11">11-20</option>
-            <option value="21">21-30</option>
+            <option value disabled selected>
+                     How Many?              
+              </option>
+            <option value="10">Adults 1-10</option>
+            <option value="16">Adults 10-15</option>
+            <option value="20">Adults 15-20</option>
+            <option value="25">Adults 20-25</option>
+            <option value="30">Adults 25-30</option>
           </select>
         </p>
       </label>
@@ -28,9 +32,9 @@
       <label class="panel-block">
         <p class="control has-icons-left">
           <select class="input is-small is-fullwidth" v-model="filterBy.sort" @change="emitFilter">
-            <option value>Sort By</option>
+            <option value>Sort</option>
             <option value="price">Sort By Price</option>
-            <!-- <option value="name">Name</option> -->
+            <option value="name">Sort By Name</option>
           </select>
         </p>
       </label>
@@ -197,6 +201,7 @@ export default {
     }
   },
   mounted() {
+    // HIDE SCROLL OF TABS:
     const elTabs = document.querySelector('.tabs')
     elTabs.style.overflow = "hidden"
   },
