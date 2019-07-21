@@ -7,7 +7,7 @@
         <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
 
           <img
-            @click="markAsLiked"
+            @click="markAsLiked , isLike = !isLike"
             v-show="! isLike"
             src="@/assets/icons/heart-multiple-outline.svg"
             alt="you don't like this yacht yet"
@@ -16,7 +16,7 @@
           />
 
         <img
-          @click="markAsLiked"
+          @click="markAsLiked , isLike = !isLike"
           v-show=" isLike"
           src="@/assets/icons/heart-multiple.svg"
           alt="favorite yacht"
