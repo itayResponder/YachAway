@@ -1,7 +1,7 @@
 <template>
   <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
     <div class="column is-one-third">
-      <!-- image is-4by5 -->
+      <!-- image of yacht -->
       <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
         <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
         <div v-if="loggedInUser">
@@ -28,37 +28,43 @@
       </figure>
       <div style="position:relative;"></div>
     </div>
-
+    
+    <!--#################### -->
+    <!-- TODO : SHOW IT IN A BETTER WAY -->
+    
     <!-- TEXT -->
-    <div class="column is-6 horiznal-shadow">
+    <!-- <div class="column is-6 horiznal-shadow"> -->
       <router-link :to="getUrlWithYachtId">
-        <div class="media-content">
-          <div class="content">
+        <!-- <div class="media-content"> -->
+          <!-- <div class="content"> -->
             <strong class="title is-4">{{yacht.name}}</strong>
             <p class="has-gray-text is-small">{{yacht.description}}</p>
-          </div>
-        </div>
-
-        <nav class="level is-mobile">
-          <!-- <div class="level-left">
-          <div class="level-item">-->
-          <figure class="image is-48x48 margin-min">
-            <img class="is-rounded" :src="yacht.owner.img" />
-          </figure>
           <!-- </div> -->
+        <!-- </div> -->
+
+        <!-- <nav class="level is-mobile"> -->
+          <!-- <div class="content"> -->
+          
+          <!-- <div class="level-left level-item"> -->
           <p>
             <b>{{yacht.owner.name}}</b>
             <!-- THE FACILITES -->
           </p>
-
-          <p class="is-hidden-mobile">
-            <b>{{yacht.location.country}}</b>,
-            <b>{{yacht.location.city}}</b>
-          </p>
           <!-- </div> -->
-        </nav>
+
+          <!-- <div class="level-left is-hidden-mobile"> -->
+          <p class="is-hidden-mobile">
+            <span class=" has-text-grey"> {{yacht.location.country}}</span>,
+            <span>{{yacht.location.city}}</span>
+          </p>
+          <figure class="image is-48x48 margin-min">
+            <img class="is-rounded" :src="yacht.owner.img" />
+          </figure>
+          <!-- </div> -->
+          <!-- </div> -->
+        <!-- </nav> -->
       </router-link>
-    </div>
+    <!-- </div> -->
 
     <!-- REVIEWS AND PRICE -->
     <div class="column">
@@ -105,6 +111,7 @@ export default {
   },
   methods: {
     async likeClicked() {
+      if (!loggedInUser  || !liked) return
       var updateLikedYachts = this.loggedInUser.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
@@ -204,9 +211,7 @@ a {
   border: 2px solid #999;
   color: #999;
 }
-.margin-min {
-  margin: 1rem;
-}
+
 
 /* margin: 0px 10px; */
 
