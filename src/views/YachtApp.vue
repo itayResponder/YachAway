@@ -10,15 +10,18 @@
       <img v-show="!isGrid" class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
     </b-button>
 
-
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
-      <yacht-filter class="column is-one-fifth is-hidden-mobile	is-3" @set-filter="setFilter"></yacht-filter>
+      <yacht-filter class="column is-one-fifth is-hidden-mobile is-3" @set-filter="setFilter"></yacht-filter>
       <div></div>
-      <yacht-List class="column" :loggedInUser="loggedInUser" @emitLikedYacht="emitLikedYacht" :yachts="yachts"></yacht-List>
+      <yacht-List
+        class="column"
+        :loggedInUser="loggedInUser"
+        @emitUpdateLikedYacht="emitUpdateLikedYacht"
+        :yachts="yachts"
+      ></yacht-List>
     </div>
 
     <yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
-
   </section>
 </template>
 
@@ -49,15 +52,13 @@ export default {
     setFilter(filterBy) {
       this.$store.commit("setFilter", filterBy);
     },
-    async emitLikedYacht(likedYacht) {
-      likedYacht.userId = this.$store.getters.userLoggedIn._id;
+
+    async emitUpdateLikedYacht(updateLikedYachts) {  
+      updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
       try {
-        const user = await this.$store.dispatch({
-          type: "setLikedYacht",
-          likedYacht: likedYacht
-        });
+        const updatedUser = await this.$store.dispatch({type: "updateUserLikedYachts", updateLikedYachts})
       } catch (err) {
-        console.log("Coudlnt update user likedYacht error:", err);
+        console.log("Coudlnt update user updateLikedYachts error:", err);
       }
     }
   },
@@ -67,12 +68,8 @@ export default {
     },
 
     loggedInUser() {
-      return this.$store.getters.userLoggedIn
+      return this.$store.getters.userLoggedIn;
     },
-
-    // likedYachts() {
-    //   let likedYachts = this.$store.getters.likedYachts;
-    // },
 
     cityName() {
       return this.$route.name.city || "Italy, Venice";

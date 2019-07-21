@@ -33,7 +33,7 @@
                 <figure class="image is-1by4">
 				  <p class="title is-4">{{reservation.yacht.name}}</p>
                   <img
-                    :src="reservation.yacht.img" style="max-width:50vw; max-height:300px; object-fit: fill;"
+                    :src="reservation.yacht.img" style="max-width:50vw; max-height:300px; object-fit: contain;"
                     alt="Placeholder image"
                   />
                 </figure>
@@ -135,11 +135,6 @@ export default {
       console.log("Couldent load reservations error:", err);
     }
   },
-  computed: {
-    // getReservations() {
-    // 	return this.$store.getters.reservationsToShow;
-    // }
-  }
 };
 </script>
 
