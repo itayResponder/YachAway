@@ -1,44 +1,66 @@
 <template>
-  <div class="columns is-mobile row-shadow yacht-list-preview-margin max-height">
+  <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
+          
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <figure class="image img-wrap img-hover-zoom img-hover-zoom" style="overflow: hidden;">
         <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: cover;" />
+
+          <img
+            @click="markAsLiked"
+            v-show="! isLike"
+            src="@/assets/icons/heart-multiple-outline.svg"
+            alt="you don't like this yacht yet"
+            class="is-relative"
+            style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+          />
+
+        <img
+          @click="markAsLiked"
+          v-show=" isLike"
+          src="@/assets/icons/heart-multiple.svg"
+          alt="favorite yacht"
+          class="is-relative"
+          style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+        />
       </figure>
       <div style="position:relative;"></div>
     </div>
 
     <!-- TEXT -->
-    <div class="column is-two-fifths horiznal-shadow">
-      <div class="media-content">
-        <router-link :to="getUrlWithYachtId">
+    <div class="column is-6 horiznal-shadow">
+      <router-link :to="getUrlWithYachtId">
+        <div class="media-content">
           <div class="content">
             <strong class="title is-4">{{yacht.name}}</strong>
             <p class="has-gray-text is-small">{{yacht.description}}</p>
           </div>
-        </router-link>
-      </div>
+        </div>
 
-      <nav class="level is-mobile">
-        <!-- <div class="level-left">
-          <div class="level-item"> -->
-            <figure class="image is-48x48 margin-min ">
-              <img class="is-rounded" :src="yacht.owner.img" />
-            </figure>
-        <!-- </div> -->
-            <p>
-              <b>{{yacht.owner.name}}</b>
-              <!-- THE FACILITES -->
-            </p>
-            <b-button type="button field" @click="markAsLiked">
-              <img src="@/assets/icons/baseline-thumb_up.svg" style="color:blue;" alt="thumb" />
-            </b-button>
-            <p  class="is-hidden-mobile">
-              <b>{{yacht.location.country}}</b>,
-              <b>{{yacht.location.city}}</b>
-            </p>
-        <!-- </div> -->
-      </nav>
+        <nav class="level is-mobile">
+          <!-- <div class="level-left">
+          <div class="level-item">-->
+          <figure class="image is-48x48 margin-min">
+            <img class="is-rounded" :src="yacht.owner.img" />
+          </figure>
+          <!-- </div> -->
+          <p>
+            <b>{{yacht.owner.name}}</b>
+            <!-- THE FACILITES -->
+          </p>
+
+          <!-- ITAY THUMB BUTTON -->
+          <!-- <b-button type="button field" @click="markAsLiked">
+            <img src="@/assets/icons/baseline-thumb_up.svg" style="color:blue;" alt="thumb" />
+          </b-button>-->
+
+          <p class="is-hidden-mobile">
+            <b>{{yacht.location.country}}</b>,
+            <b>{{yacht.location.city}}</b>
+          </p>
+          <!-- </div> -->
+        </nav>
+      </router-link>
     </div>
 
     <!-- REVIEWS AND PRICE -->
@@ -48,11 +70,13 @@
           <p class="price-per-night">
             {{yacht.pricePerNight}} $
             <br />
-            <span style="font-size:1rem" v-html="showStars"></span>
           </p>
-          <small class="has-text-grey">{{getNumberOfReviews}} Reviews</small>
-          <router-link :to="getUrlWithYachtId" class="button is-primary is-hidden-mobile	
- is-6 margin-min">Save It!</router-link>
+          <span v-html="showStars"></span>
+          <small class="is-center is-clearfix has-text-grey">{{getNumberOfReviews}} Reviews</small>
+          <router-link
+            :to="getUrlWithYachtId"
+            class="button is-primary is-hidden-mobile is-3 margin-min"
+          >Sail !</router-link>
         </div>
       </div>
     </div>
@@ -73,6 +97,7 @@ export default {
   props: ["yacht"],
   data() {
     return {
+      isLike: false,
       avrage: "",
       likedYacht: {
         _id: "",
@@ -137,6 +162,14 @@ export default {
 
 
 <style scoped>
+.like-it-symbole {
+  position: absolute;
+  top: -189px;
+  right: -93px;
+  width: 30px;
+  height: 30px;
+}
+
 a {
   color: inherit;
 }
@@ -168,7 +201,6 @@ a {
 }
 
 .img-wrap {
-  /* background: #A00; */
   height: auto;
   overflow: auto;
 }
