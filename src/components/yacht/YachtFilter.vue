@@ -52,7 +52,7 @@
       </label>
 
       <!-- TABS -->
-      <b-tabs v-model="activeTab" >
+      <b-tabs v-model="activeTab" class="b-tabs" >
         <hr />
         <h3 class="title is-3">Filter By</h3>
         <div v-show="showStars">
@@ -67,7 +67,7 @@
         <br />
         <!-- ####################### -->
         <!-- room faclities -->
-        <b-tab-item label="room faclities">
+        <b-tab-item  label="room faclities">
           <h4 class="subtitle">room faclities</h4>
           <label class="panel-block">
             <b-checkbox
@@ -196,6 +196,10 @@ export default {
       this.$emit("set-filter", filter);
     }
   },
+  mounted() {
+    const elTabs = document.querySelector('.tabs')
+    elTabs.style.overflow = "hidden"
+  },
 
   computed: {},
   components: {}
@@ -205,4 +209,5 @@ export default {
 .facilities {
   display: flex;
 }
+
 </style>
