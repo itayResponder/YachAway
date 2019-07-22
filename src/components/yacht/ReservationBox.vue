@@ -167,7 +167,7 @@ export default {
       if (!this.yacht || !this.yacht.owner || !this.yacht.owner.name)
         return false;
       const api = "https://api.whatsapp.com/send?l=en";
-      const txt = `Hi! I%27m interested in one of your Yachts, specifically in : ${this.yacht.name}`;
+      const txt = `Hi! I'm interested in one of your Yachts, specifically in : ${this.yacht.name}`;
       // for now we not load it from DB :
       let phone = "";
       // for now we not load it from DB :
@@ -175,11 +175,11 @@ export default {
       else if (this.yacht.owner.name.toLowerCase() === "nadav")
         phone = "972523831348";
       else if (this.yacht.owner.name.toLowerCase() === "itay")
-        phone = "972597161645";
+        phone = "972507161645";
       else phone = "";
 
       this.phoneContactText = "Contact the owner";
-      const whatsappLink = encodeURI(`${api}&phone=${phone}`); //&text=${txt} <--- NOT WORK
+      const whatsappLink = encodeURI(`${api}&phone=${phone}&text=${txt}`);
       return whatsappLink;
     }
   },
