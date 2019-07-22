@@ -3,13 +3,13 @@
     <nav class="panel">
       <div class="panel-heading">
         <div class="field">
-          <b-switch v-model="showStars">Pro Only</b-switch>
+          <b-switch v-model="showStars">Pros Only</b-switch>
           <br /><small>verified owners and professionals skippers.</small>
         </div>
       </div>
       <!-- FILTERS -->
 
-      <label class="panel-block">
+      <label class="panel-block"> 
         <p class="control has-icons-left">
           <select
             class="input is-fullwidth is-medium"
@@ -17,7 +17,7 @@
             @change="emitFilter"
           >
             <option value disabled selected>
-                     How Many?              
+                     Guests              
               </option>
             <option value="10">Adults 1-10</option>
             <option value="16">Adults 10-15</option>
@@ -84,7 +84,7 @@
           <label class="panel-block">
             <b-checkbox
               v-model="filterBy.facilities"
-              native-value="tv"
+              native-value="TV"
               type="is-info"
               @input="emitFilter"
             >Tv</b-checkbox>

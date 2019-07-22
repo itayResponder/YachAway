@@ -8,12 +8,23 @@
     <p class="panel-heading is-black has-background-white">PRICE PER NIGHT</p>
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input v-model="fromDate" class="input is-small" type="date" placeholder="dates" />
-        <input v-model="toDate" class="input is-small" type="date" placeholder="dates" />
+        <input v-model="fromDate" class="touch-only input is-small" type="date" placeholder="dates" />
+        <input v-model="toDate" class="touch-only input is-small" type="date" placeholder="dates" />
+        
 
-        <!-- <input @click="openCalendar=!openCalendar" v-show="!openCalendar" style="z-index:40;" class="input is-small" />
-        <calendarShow @click="openCalendar=!openCalendar" v-show="openCalendar" style="z-index:50;" class="input is-small" />-->
-
+        <!-- ################## 
+          ON GOING WORK : 
+        BUTTON TO SHOW THE CALENDAR YOU SEE IN THE DETAILS -->
+        <!-- <button
+          class=" is-fullwidth button is-white is-small"
+          @click="isCalendarShowModalActive = true"
+        >Pick a date</button>
+        <b-modal :active.sync="isCalendarShowModalActive" has-modal-card>
+          <calendar-show ></calendar-show>
+        </b-modal> -->
+        <!-- ############### -->
+        
+        
         <span class="icon is-small is-left">
           <i class="fas fa-search" aria-hidden="true"></i>
         </span>
@@ -24,7 +35,7 @@
         <input
           v-model="numOfGuest"
           min="1"
-          class="input is-small"
+          class="input is-medium"
           type="number"
           placeholder="How Many Guests"
         />
@@ -33,6 +44,7 @@
         </span>
       </p>
     </div>
+    
     <div class="panel-block is-active">
       <span class="is-medium is-left">{{yacht.pricePerNight}} $</span>
     </div>
@@ -58,11 +70,11 @@ export default {
   props: ["yacht"],
   data() {
     return {
-      openCalendar: false,
+      isCalendarShowModalActive: false,
       fromDate: "2019-07-19", //null,
       toDate: "2019-07-20", //null,
-      numOfGuest: 1,
-      reservation: null,
+      numOfGuest: null,
+      reservation: null
     };
   },
   methods: {
@@ -152,20 +164,23 @@ export default {
   },
   computed: {
     getWhatsappLink() {
-      
-      if ( !this.yacht || !this.yacht.owner || !this.yacht.owner.name  ) return false
+      if (!this.yacht || !this.yacht.owner || !this.yacht.owner.name)
+        return false;
       const api = "https://api.whatsapp.com/send?l=en";
-      const txt = `Hi!%20I%27m%20interested%20in%20$one%20of%20your%20Yachts,%20specifically%20in%20:%20${this.yacht.name}%20`;
+      const txt = `Hi! I%27m interested in one of your Yachts, specifically in : ${this.yacht.name}`;
       // for now we not load it from DB :
       let phone = "";
       // for now we not load it from DB :
       if (this.yacht.owner.name.toLowerCase() === "niv") phone = "972548082717";
-      else if (this.yacht.owner.name.toLowerCase() === "nadav") phone = "972523831348";
-      else if (this.yacht.owner.name.toLowerCase() === "itay") phone = "972597161645";
+      else if (this.yacht.owner.name.toLowerCase() === "nadav")
+        phone = "972523831348";
+      else if (this.yacht.owner.name.toLowerCase() === "itay")
+        phone = "972597161645";
       else phone = "";
 
       this.phoneContactText = "Contact the owner";
-      return `${api}&text=${txt}&phone=${phone}`;
+      const whatsappLink = encodeURI(`${api}&phone=${phone}`); //&text=${txt} <--- NOT WORK
+      return whatsappLink;
     }
   },
   components: {

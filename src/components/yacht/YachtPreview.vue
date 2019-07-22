@@ -2,8 +2,10 @@
   <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
     <div class="column is-one-third">
       <!-- image is-4by5 -->
+      <div class="container">
+
       <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
-        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: fill;" />
+        <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" />
         <div v-if="loggedInUser">
           <div v-if="liked">
             <img
@@ -12,7 +14,7 @@
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
               class="is-relative like"
-              style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+              style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
             />
 
             <img
@@ -21,50 +23,42 @@
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
               class="is-relative like"
-              style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+              style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
             />
           </div>
         </div>
       </figure>
+      </div>
+
       <div style="position:relative;"></div>
     </div>
     
-    <!--#################### -->
-    <!-- TODO : SHOW IT IN A BETTER WAY -->
+   
     
     <!-- TEXT -->
-    <!-- <div class="column is-6 horiznal-shadow"> -->
+    <div class="column is-6 horiznal-shadow" style="position: relative;">
       <router-link :to="getUrlWithYachtId">
-        <!-- <div class="media-content"> -->
-          <!-- <div class="content"> -->
+       
             <strong class="title is-4">{{yacht.name}}</strong>
             <p class="has-gray-text is-small">{{yacht.description}}</p>
-          <!-- </div> -->
-        <!-- </div> -->
-
-        <!-- <nav class="level is-mobile"> -->
-          <!-- <div class="content"> -->
           
-          <!-- <div class="level-left level-item"> -->
-          <p>
-            <b>{{yacht.owner.name}}</b>
+          
             <!-- THE FACILITES -->
+        
+          
+          <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
+            <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
+          <br/>
+          <p class=" level-left level-item has-text-grey margin-min">
+            {{yacht.owner.name}}
           </p>
-          <!-- </div> -->
-
-          <!-- <div class="level-left is-hidden-mobile"> -->
-          <p class="is-hidden-mobile">
-            <span class=" has-text-grey"> {{yacht.location.country}}</span>,
-            <span>{{yacht.location.city}}</span>
+          <p class="level-left level-item is-hidden-mobile">
+            <span><b > {{yacht.location.country}}, {{yacht.location.city}}</b></span>
           </p>
-          <figure class="image is-48x48 margin-min">
-            <img class="is-rounded" :src="yacht.owner.img" />
           </figure>
-          <!-- </div> -->
-          <!-- </div> -->
-        <!-- </nav> -->
+        
       </router-link>
-    <!-- </div> -->
+    </div>
 
     <!-- REVIEWS AND PRICE -->
     <div class="column">
@@ -72,9 +66,12 @@
         <div>
           <p class="price-per-night">
             {{yacht.pricePerNight}} $
+          
             <br />
           </p>
           <span v-html="showStars"></span>
+          
+          <br />
           <small class="is-center is-clearfix has-text-grey">{{getNumberOfReviews}} Reviews</small>
           <router-link
             :to="getUrlWithYachtId"
@@ -208,7 +205,8 @@ a {
 
 .img-boat {
   /* max-width: 20vw; */
-  min-height: 220px;
+  min-height: 220px;  
+  max-height: 225px;
   margin-top: -1.7rem;
 }
 .img-owner {
@@ -218,7 +216,7 @@ a {
 }
 
 .img-wrap {
-  height: auto;
+  /* height: auto; */
   overflow: auto;
 }
 </style>

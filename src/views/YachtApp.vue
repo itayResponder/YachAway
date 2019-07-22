@@ -1,7 +1,7 @@
 
 <template>
   <section>
-    <h1 class="is-size-1">{{cityName}}</h1>
+    <h1 class="is-size-1 is-capitalized">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
       <img v-show="isGrid" type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
@@ -11,7 +11,7 @@
     </b-button>
 
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
-      <yacht-filter class="column is-one-fifth is-hidden-mobile is-3" @set-filter="setFilter"></yacht-filter>
+      <yacht-filter class="column is-one-fifth is-hidden-mobile is-3"  @set-filter="setFilter"></yacht-filter>
       <div></div>
       <yacht-List
         class="column"
@@ -39,7 +39,11 @@ export default {
     };
   },
   async created() {
+    const filterBy = {};
+    if (!this.filterBy) filterBy.txt = this.$route.params.city;
+    
     try {
+      this.$store.commit("setFilter", filterBy);
       const yachts = await this.$store.dispatch({
         type: "loadYachts",
         owner: {}
@@ -48,15 +52,21 @@ export default {
       console.log("Could not load yachts error:", err);
     }
   },
+  mounted() {
+                window.scrollTo(0,0);
+  },
   methods: {
     setFilter(filterBy) {
       this.$store.commit("setFilter", filterBy);
     },
 
-    async emitUpdateLikedYacht(updateLikedYachts) {  
+    async emitUpdateLikedYacht(updateLikedYachts) {
       updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
       try {
-        const updatedUser = await this.$store.dispatch({type: "updateUserLikedYachts", updateLikedYachts})
+        const updatedUser = await this.$store.dispatch({
+          type: "updateUserLikedYachts",
+          updateLikedYachts
+        });
       } catch (err) {
         console.log("Coudlnt update user updateLikedYachts error:", err);
       }
@@ -72,7 +82,7 @@ export default {
     },
 
     cityName() {
-      return this.$route.name.city || "Italy, Venice";
+      return this.$route.params.city || "Any Ocean & Sea";
     }
   },
   components: {

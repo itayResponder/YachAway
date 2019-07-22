@@ -83,7 +83,7 @@ export default {
   },
   computed: {
     menuClass() {
-      if (this.$route.name === "Home") return "navbar-item  has-text-black";
+      if (this.$route.name === "Home") return "navbar-item  has-text-white";
       else return "navbar-item  has-text-black";
     },
     getUrlId() {

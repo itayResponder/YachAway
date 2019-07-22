@@ -24,7 +24,7 @@ export default new Router({
     routes: [
         { path: '/', name: 'Home', component: Home },
         { path: '/About', name: 'About', component: About },
-        { path: '/yachts', name: 'YachtApp', component: YachtApp },
+        { path: '/yachts/:city?', name: 'YachtApp', component: YachtApp },
         { path: '/edit/:id?', name: 'YachtEdit', component: YachtEdit },
         { path: '/admin', name: 'Admin', component: Admin },
         { path: '/admin/:id', name: 'AdminDetails', component: AdminDetails },

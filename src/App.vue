@@ -44,7 +44,8 @@ export default {
 @import "assets/css/main.css";
 
 // Set your colors
-$primary: #b9ced1;
+// $primary: #b9ced1;
+$primary: #4d9989;
 // $primary-invert: findColorInvert($primary);
 
 
