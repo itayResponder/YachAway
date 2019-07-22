@@ -47,7 +47,7 @@ export default {
             var yachts = [...state.yachts]
 
             var txt
-            if (!state.filterBy.txt && typeof state.filterBy.txt === "string") txt = "" 
+            if (!state.filterBy.txt || typeof state.filterBy.txt === "string") txt = "" 
             else txt = state.filterBy.txt.toLowerCase()
 
             var minPeople = state.filterBy.minPeople || ""
