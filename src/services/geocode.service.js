@@ -11,7 +11,8 @@ function getCityByLatLng(lat, lng) {
         .then(res => (res.json()))
         .then(resData => {
             const city = resData.results.find((components) => {
-                return components.types.includes("locality")
+                return components.types.includes("cities")
+                // return components.types.includes("locality")
             })
             return city.formatted_address;
         })

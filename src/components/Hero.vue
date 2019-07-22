@@ -32,6 +32,7 @@
                 <vue-google-autocomplete
                   class="search-query form-control"
                   ref="address"
+                  :country="['es','it','fr','gr']"
                   id="map"
                   placeholder="PIck Destination"
                   v-on:placechanged="getAddressData"
@@ -39,7 +40,7 @@
                 <!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
               </div>
             </div>
-
+            {{showYachtCity}}
             <p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p>
           </div>
         </div>
@@ -55,6 +56,11 @@ import VueGoogleAutocomplete from "vue-google-autocomplete";
 
 export default {
   props: ["loggedInUser"],
+  data() {
+    return {
+      countryCode: null
+    };
+  },
   mounted() {
     this.$refs.address.focus();
   },
@@ -63,23 +69,54 @@ export default {
     myHeader
   },
   methods: {
-	  // ON WORK :
-    showYachtCity() {
-      console.log("test city search");
-      this.$route.push("/yachts");
-      //   this.address
-    },
     /*
      * When the location found
      * @param {Object} addressData Data of the found location
      * @param {Object} placeResultData PlaceResult object
      * @param {String} id Input container ID
      */
-    getAddressData: function(addressData, placeResultData, id) {
-      this.address = addressData;
+    async getAddressData(addressData, placeResultData, id) {
+      try {
+        //  this.addressData = await addressData
+        this.placeResultData = await placeResultData;
+        this.countryCode = await placeResultData.address_components[4]
+          .short_name;
+      } catch (err) {
+        const errMsg = "GOT PROBLEMS WITH GOOGLE MAP";
+        console.log(errMsg, " : ", err);
+      }
     }
   },
-  computed: {}
+  computed: {
+    showYachtCity() {
+      if (!this.countryCode || this.countryCode.length < 2 ) return;
+      
+      var country;
+      switch (this.countryCode.toUpperCase()) {
+        // case "AU":
+        //   country = "australia";
+        //   break;
+        case "IT":
+          country = "italy";
+          break;
+        case "ES":
+          country = "spain";
+          break;
+        // case "FR":
+        //   country = "france";
+        //   break;
+        case "GR":
+          country = "greece";
+          break;
+          //default
+        default:
+          country = "";
+      }
+
+      const url = "/yachts/" + country;
+      setTimeout(this.$router.push(url), 450);
+    }
+  }
 };
 </script>
 
