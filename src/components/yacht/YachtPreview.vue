@@ -9,8 +9,8 @@
         <div v-if="loggedInUser">
           <div v-if="liked">
             <img
-              v-if="!like"
-              @click="likeClicked"
+              v-if="!isLike"
+              @click="isLike = !isLike , likeClicked"
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
               class="is-relative like"
@@ -18,8 +18,8 @@
             />
 
             <img
-              v-if="like"
-              @click="likeClicked"
+              v-if="isLike"
+              @click="isLike = !isLike, likeClicked"
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
               class="is-relative like"
