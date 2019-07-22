@@ -3,7 +3,7 @@
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
-        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: fill;" />
+        <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: fill; overflow: hidden;" />
         <div v-if="loggedInUser">
           <div v-if="liked">
             <img

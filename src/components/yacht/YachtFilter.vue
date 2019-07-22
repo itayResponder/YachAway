@@ -17,7 +17,7 @@
             @change="emitFilter"
           >
             <option value disabled selected>
-                     How Many?              
+                     Guests              
               </option>
             <option value="10">Adults 1-10</option>
             <option value="16">Adults 10-15</option>

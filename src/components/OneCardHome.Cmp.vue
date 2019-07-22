@@ -3,7 +3,7 @@
 		<router-link to="/yachts">
 			<div class="card-image" style="object-fit: cover;"><a>
 					<figure class="image">
-						<img class="picture" src="https://res.cloudinary.com/nivb/image/upload/v1562862459/city/city-3227665_640_ulbvzb.jpg">
+						<img class="picture" :src="image">
 						<!---->
 					</figure>
 				</a>
@@ -12,10 +12,10 @@
 			<div class="card-content is-clickable">
 				<div>
 					<p class="title is-7 has-text-grey-light">
-						City subtitle
+						<slot name="subtitle">City subtitle</slot>
 					</p>
 					<p class="subtitle has-text-weight-bold is-6">
-						City name
+						<slot name="title">City name</slot>
 					</p>
 				</div>
 				<!---->
@@ -26,7 +26,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+	created() {
+		if (!this.image) this.image = "https://res.cloudinary.com/nivb/image/upload/v1562862459/city/city-3227665_640_ulbvzb.jpg"
+	},
+	props:['image']
+};
 </script>
 
 <style scoped>
