@@ -33,28 +33,18 @@
       <div style="position:relative;"></div>
     </div>
     
-    <!--#################### -->
-    <!-- TODO : SHOW IT IN A BETTER WAY -->
+   
     
     <!-- TEXT -->
     <div class="column is-6 horiznal-shadow" style="position: relative;">
       <router-link :to="getUrlWithYachtId">
-        <!-- <div class="media-content"> -->
-          <!-- <div class="content"> -->
+       
             <strong class="title is-4">{{yacht.name}}</strong>
             <p class="has-gray-text is-small">{{yacht.description}}</p>
-          <!-- </div> -->
-        <!-- </div> -->
-
-        <!-- <nav class="level is-mobile"> -->
-          <!-- <div class="content"> -->
           
-          <!-- <div class="level-left level-item"> -->
           
             <!-- THE FACILITES -->
-          <!-- </div> -->
-
-          <!-- <div class="level-left is-hidden-mobile"> -->
+        
           
           <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
             <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
@@ -66,9 +56,7 @@
             <span><b > {{yacht.location.country}}, {{yacht.location.city}}</b></span>
           </p>
           </figure>
-          <!-- </div> -->
-          <!-- </div> -->
-        <!-- </nav> -->
+        
       </router-link>
     </div>
 
