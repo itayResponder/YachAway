@@ -80,6 +80,7 @@ export default {
 
         async pendingReservation({ commit }, { reservation }) {
             try {
+                console.log('pendingreser reservation:', reservation)
                 const updatedOwner = await userService.sendReservationToOwner(reservation)
                 commit({ type: 'setOwnerReservations', updatedOwner })
                 return updatedOwner

@@ -58,8 +58,8 @@ async function updateUserLikedYachts(updateLikedYachts) {
 }
 
 async function sendReservationToOwner(reservation) {
-    const msgSent = await httpService.put(_getUrl('sendMsg'), reservation)
     try {
+        const msgSent = await httpService.put(_getUrl('sendMsg'), reservation)
         return msgSent
     } catch (err) {
         throw err;
