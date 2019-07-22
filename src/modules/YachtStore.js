@@ -45,7 +45,7 @@ export default {
             var facilities = state.filterBy.facilities || []
             // console.log('facilities is ',facilities)
             var yachts = [...state.yachts]
-            var txt = state.filterBy.txt.toLowerCase()
+            var txt = state.filterBy.txt || ""
             var minPeople = state.filterBy.minPeople || ""
             if (!state.filterBy) return yachts
             else if (true)

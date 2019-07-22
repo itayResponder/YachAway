@@ -37,17 +37,17 @@
             <div class="navbar-dropdown is-boxed">
               <router-link
                 v-show="loggedInUser"
-                :class="[menuClass,'is-subtitle']"
+                :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/my-yachts"
               >My Yachts</router-link>
               <router-link
                 v-show="loggedInUser"
-                :class="[menuClass,'is-subtitle']"
+                :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/reservation"
               >My Reservation</router-link>
               <router-link
                 v-show="loggedInUser"
-                :class="[menuClass,'is-subtitle']"
+                :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/messages"
               >My Messages</router-link>
 
