@@ -3,13 +3,13 @@
     <nav class="panel">
       <div class="panel-heading">
         <div class="field">
-          <b-switch v-model="showStars">Pro Only</b-switch>
+          <b-switch v-model="showStars">Pros Only</b-switch>
           <br /><small>verified owners and professionals skippers.</small>
         </div>
       </div>
       <!-- FILTERS -->
 
-      <label class="panel-block">
+      <label class="panel-block"> 
         <p class="control has-icons-left">
           <select
             class="input is-fullwidth is-medium"

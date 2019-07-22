@@ -166,7 +166,7 @@ export default {
       if (!this.yacht || !this.yacht.owner || !this.yacht.owner.name)
         return false;
       const api = "https://api.whatsapp.com/send?l=en";
-      const txt = `Hi!%20I%27m%20interested%20in%20$one%20of%20your%20Yachts,%20specifically%20in%20:%20${this.yacht.name}%20`;
+      const txt = `Hi! I%27m interested in one of your Yachts, specifically in : ${this.yacht.name}`;
       // for now we not load it from DB :
       let phone = "";
       // for now we not load it from DB :
@@ -178,7 +178,8 @@ export default {
       else phone = "";
 
       this.phoneContactText = "Contact the owner";
-      return `${api}&text=${txt}&phone=${phone}`;
+      const whatsappLink = encodeURI(`${api}&phone=${phone}`); //&text=${txt} <--- NOT WORK
+      return whatsappLink;
     }
   },
   components: {
