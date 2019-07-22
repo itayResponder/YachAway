@@ -135,6 +135,9 @@ export default {
     const tempIsMobile = this.isNotMobile;
     this.isNotAMobile = tempIsMobile ? true : false;
   },
+  mounted() {
+                window.scrollTo(0,0);
+  },
   methods: {
     goBack() {
       this.$router.push("/yachts");
