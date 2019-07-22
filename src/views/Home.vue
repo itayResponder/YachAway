@@ -1,5 +1,6 @@
 <template>
   <div class="layout">
+    
     <hero :loggedInUser="getLoggedInUser"/>
     <citeis />
     <featureArea />

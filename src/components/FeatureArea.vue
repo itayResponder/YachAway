@@ -1,6 +1,7 @@
 <template>
 	<div class="hero-body mobile is-paddingless">
-		<img alt="" src="../assets/img/yacht-1280x720.jpg" style="width: 100%; height: 343px; object-fit: cover; object-position: left center;">
+		<!-- <img alt="" src="../assets/img/yacht-1280x720.jpg" style="width: 100%; height: 343px; object-fit: cover; object-position: left center;"> -->
+		<img alt="" src="https://res.cloudinary.com/ocean-yachts/image/upload/v1563779317/Yacths/optional%20for%20mobile/7_qewfrv.jpg" style="width: 100%; height: 600px; object-fit: cover; object-position: left center;">
 		<div class="hero-body">
 			<div class="container has-text-centered">
 				<p class="title has-text-white button is-danger is-medium">
