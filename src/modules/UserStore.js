@@ -9,7 +9,7 @@ export default {
         userLoggedIn({ loggedInUser }) {
             return loggedInUser
         },
-        userReservations({userReservations}) {
+        userReservations({ userReservations }) {
             return userReservations;
         }
     },
@@ -42,10 +42,24 @@ export default {
             }
         },
 
-        async loadUserReservations({commit}, {userId}) {
+        async updateUserIsOwner({ commit }, { userId }) {
+            try {
+                let sessionUser = await userService.updateLoggedInUserIsOwner(userId)
+                console.log('userStore updateIsOwner:', sessionUser)
+                commit({type: 'setUser', sessionUser})
+                sessionUser = await userService.setLoggedInUser(sessionUser)
+                return sessionUser.isOwner;
+            } catch (err) {
+                console.log('Could not update user owner error:', err)
+
+                throw err;
+            }
+        },
+
+        async loadUserReservations({ commit }, { userId }) {
             try {
                 const userReservations = await userService.loadUserReservations(userId)
-                commit({type: 'setUserReservations', userReservations})
+                commit({ type: 'setUserReservations', userReservations })
                 return userReservations;
             } catch (err) {
                 console.log('Could not load user reservations error:', err)
@@ -55,7 +69,7 @@ export default {
 
         async replyUser(context, { replyUser }) {
             try {
-                console.log('UserStore replyUser:', replyUser )
+                console.log('UserStore replyUser:', replyUser)
                 const sendUserMsg = userService.replyUserMsg(replyUser)
                 return sendUserMsg;
             } catch (err) {

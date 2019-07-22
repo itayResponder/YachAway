@@ -9,7 +9,8 @@ export default {
     updateUserLikedYachts,
     setLoggedInUser,
     replyUserMsg,
-    loadUserReservations
+    loadUserReservations,
+    updateLoggedInUserIsOwner
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
@@ -17,6 +18,13 @@ var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 async function login(user) {
     let validUser = await httpService.post(_getUrl('login'), user)
     return _handleSuccessfullRegister(validUser)
+}
+
+async function updateLoggedInUserIsOwner(userId) {
+    let updatedLoggedInUserIsOwner = await httpService.put(_getUrl(userId))
+    let currUserLoggedIn = { ...loggedInUser };
+    currUserLoggedIn.isOwner = updatedLoggedInUserIsOwner
+    return currUserLoggedIn;
 }
 
 async function loadUserReservations(userId) {

@@ -26,7 +26,7 @@
         <b>Selection:</b>
         {{yacht.facilities}}
       </p>
-       <b-field class="file">
+       <!-- <b-field class="file">
         <b-upload v-model="file">
             <a class="button is-primary">
                 <b-icon icon="upload"></b-icon>
@@ -36,7 +36,7 @@
         <span class="file-name" v-if="file">
             {{ file }}
         </span>
-    </b-field>
+    </b-field> -->
       <div class="edit-buttons">
       <b-button @click="saveYacht" type="is-info">Save</b-button>
       <b-button @click="back" type="is-info">Back</b-button>
@@ -50,18 +50,18 @@ import Swal from "sweetalert2";
 export default {
   data() {
     return {
-      file: null,
+      // file: null,
       userLoggedIn: null,
       id: "",
       yacht: {
-        name: "",
-        pricePerNight: null,
+        name: "test",
+        pricePerNight: 500,
         owner: {_id: "" ,email: "", name: "", img: "" },
-        imgs: [],
-        location: { country: "", city: "", lat: "", lng: "" },
+        imgs: ["https://static01.nyt.com/images/2019/06/22/realestate/22real-boats-qna01-inyt/92e2f7d0e3454d4292c2fbef90bfb8bf-jumbo.jpg"],
+        location: { country: "test", city: "test", lat: "", lng: "" },
         reviews: [],
-        maxPeopleOnBoard: "",
-        description: "",
+        maxPeopleOnBoard: "25",
+        description: "test",
         facilities: []
       }
     };
@@ -109,6 +109,9 @@ export default {
           this.yacht.owner.email = this.userLoggedIn.email
           await this.$store.dispatch({ type: "saveYacht", yacht: this.yacht });
           message = "A new yacht has added";
+        }
+        if(!this.userLoggedIn.isOwner) {
+          await this.$store.dispatch({type: "updateUserIsOwner", userId: this.userLoggedIn._id})
         }
         this.$router.push("/profile/my-yachts");
       } catch (err){
