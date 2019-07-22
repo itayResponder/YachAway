@@ -35,7 +35,7 @@
         <input
           v-model="numOfGuest"
           min="1"
-          class="input is-small"
+          class="input is-medium"
           type="number"
           placeholder="How Many Guests"
         />
@@ -44,6 +44,7 @@
         </span>
       </p>
     </div>
+    
     <div class="panel-block is-active">
       <span class="is-medium is-left">{{yacht.pricePerNight}} $</span>
     </div>
@@ -72,7 +73,7 @@ export default {
       isCalendarShowModalActive: false,
       fromDate: "2019-07-19", //null,
       toDate: "2019-07-20", //null,
-      numOfGuest: 1,
+      numOfGuest: null,
       reservation: null
     };
   },

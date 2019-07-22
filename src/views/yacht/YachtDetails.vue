@@ -20,10 +20,25 @@
           <div class="content margin-small">
             <!-- TITLE  -->
             <h1>{{yacht.name}}</h1>
-            <h4 v-if="yacht">facilities</h4>
+
+            <!-- owner -->
+            <figure class="image is-48x48" style="display:flex;">
+              <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
+              <br />
+              <p
+                class="level-left level-item has-text-grey margin-min"
+              >Your Skipper / Host : {{yacht.owner.name}}</p>
+            </figure>
+
+            <!-- description -->
+            <h4 class="is-title is-primary margin-6rem">Description</h4>
+            <p>{{yacht.description}}</p>
+
+            <h4 class="is-title margin-6rem" v-if="yacht">Facilities</h4>
             <div class="facilities">
               <!-- facility  -->
               <div
+                class="margin-min"
                 style="display:inline-block; margin-right:8px;"
                 v-for="(facility, idx) in yacht.facilities"
                 :key="idx"
@@ -32,11 +47,8 @@
                 <h6>{{facility}}</h6>
               </div>
             </div>
-            <p>
-              <b>description:</b>
-              {{yacht.description}}
-            </p>
-            <calendarShow />
+
+            <calendarShow class="margin-6rem" />
             <previewReview />
           </div>
         </article>
