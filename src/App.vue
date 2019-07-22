@@ -2,11 +2,13 @@
 	<div id="app">
 		<my-header :loggedInUser="getLoggedInUser" v-if="!headerType"></my-header>
 		<router-view></router-view>
+		<Myfooter/>
 	</div>
 </template>
 
 <script>
 import MyHeader from "@/components/MyHeader.vue";
+import Myfooter from "@/components/sitecross/Footer.vue";
 export default {
 	name: "App",
 	data() {
@@ -14,7 +16,8 @@ export default {
 		};
 	},
 	components: {
-		MyHeader
+		MyHeader,
+		Myfooter
 	},
 
 	computed: {
@@ -41,7 +44,8 @@ export default {
 @import "assets/css/main.css";
 
 // Set your colors
-$primary: #b9ced1;
+// $primary: #b9ced1;
+$primary: #4d9989;
 // $primary-invert: findColorInvert($primary);
 
 

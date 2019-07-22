@@ -1,6 +1,5 @@
 <template>
 	<div class="card">
-        <h1>UserMessagesPreview</h1>
 		<div class="card-image">
 			<figure class="image is-4by3">
 				<img :src="reservation.yacht.img" alt="Placeholder image" />
@@ -46,18 +45,22 @@
 export default {
 	props: ["reservation"],
 	data() {
-		return {};
+		return {
+            replyUser: null
+        };
+    },
+    created() {
+        this.replyUser = this.reservation.user
+        this.replyUser.reservationId = this.reservation._id
     },
 	methods: {
 		approveUser() {
-            const replyUser = this.reservation.user
-            replyUser.isReply = true;
-            this.$emit("replyUser", replyUser)
+            this.replyUser.isReply = true;
+            this.$emit("replyUser", this.replyUser)
 		},
 		declineUser() {
-            const replyUser = this.reservation.user
             replyUser.isReply = false;
-            this.$emit("replyUser", replyUser)
+            this.$emit("replyUser", this.replyUser)
 		},
 	}
 };

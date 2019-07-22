@@ -41,10 +41,5 @@ export default {
 </script>
 
 <style>
-.margin-6rem {
-	margin: 6rem;
-}
-.margin-7rem {
-	margin: 7rem;
-}
+
 </style>

@@ -8,7 +8,8 @@ export default {
     sendReservationToOwner,
     updateUserLikedYachts,
     setLoggedInUser,
-    replyUserMsg
+    replyUserMsg,
+    loadUserReservations
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
@@ -16,6 +17,16 @@ var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 async function login(user) {
     let validUser = await httpService.post(_getUrl('login'), user)
     return _handleSuccessfullRegister(validUser)
+}
+
+async function loadUserReservations(userId) {
+    try {
+        let userReservations = await httpService.get(_getUrl(userId))
+        return userReservations;
+    } catch (err) {
+        console.log('Could not load user reservations error:', err)
+        throw err;
+    }
 }
 
 async function replyUserMsg(replyUser) {

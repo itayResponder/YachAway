@@ -1,6 +1,5 @@
 <template>
   <section class="my-cards" v-if="reservations">
-    <h1>USERLIST</h1>
     <user-messages-preview
       v-for="reservation in reservations"
       :key="reservation._id"

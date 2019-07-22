@@ -2,12 +2,16 @@ import userService from '../services/user.service'
 
 export default {
     state: {
-        loggedInUser: userService.getLoggedInUser()
+        loggedInUser: userService.getLoggedInUser(),
+        userReservations: []
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
             return loggedInUser
         },
+        userReservations({userReservations}) {
+            return userReservations;
+        }
     },
     mutations: {
         setOwnerReservations(state, context) {
@@ -18,7 +22,7 @@ export default {
             state.loggedInUser = context.sessionUser;
         },
 
-        setReservations(state, context) {
+        setUserReservations(state, context) {
             state.userReservations = context.userReservations;
         }
     },
@@ -34,7 +38,18 @@ export default {
                 }
             } catch (err) {
                 console.log('error with checkValudUser err:', err);
-                return err;
+                throw err;
+            }
+        },
+
+        async loadUserReservations({commit}, {userId}) {
+            try {
+                const userReservations = await userService.loadUserReservations(userId)
+                commit({type: 'setUserReservations', userReservations})
+                return userReservations;
+            } catch (err) {
+                console.log('Could not load user reservations error:', err)
+                throw err;
             }
         },
 
@@ -44,7 +59,8 @@ export default {
                 const sendUserMsg = userService.replyUserMsg(replyUser)
                 return sendUserMsg;
             } catch (err) {
-                console.log('err', err)
+                console.log('err', err);
+                throw err;
             }
         },
 
@@ -55,6 +71,7 @@ export default {
                 return updatedOwner
             } catch (err) {
                 console.log('userStore could not send msg to owner error:', err)
+                throw err;
             }
         },
 
@@ -65,7 +82,7 @@ export default {
                 return loggedInUser;
             } catch (err) {
                 console.log('error with logout err:', err);
-                return err;
+                throw err;
             }
         },
 
@@ -78,6 +95,7 @@ export default {
                 return sessionUser.likedYachts;
             } catch (err) {
                 console.log('userStore could not update liked yachts to user error:', err)
+                throw err;
             }
         }
     }
