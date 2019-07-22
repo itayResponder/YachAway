@@ -9,6 +9,7 @@ export default {
 }
 
 function query(owner = {}) {
+    console.log('front query owner:', owner)
     return httpService.get(_getUrl(), owner);
 }
 

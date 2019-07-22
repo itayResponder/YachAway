@@ -48,7 +48,7 @@ export default {
 
             var txt
             if (!state.filterBy.txt || typeof state.filterBy.txt === "string") txt = "" 
-            else txt = state.filterBy.txt.toLowerCase()
+            else  txt = state.filterBy.txt.toLowerCase()
 
             var minPeople = state.filterBy.minPeople || ""
 

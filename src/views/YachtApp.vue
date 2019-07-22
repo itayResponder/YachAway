@@ -39,11 +39,12 @@ export default {
     };
   },
   async created() {
-    const filterBy = {};
-    if (!this.filterBy) filterBy.txt = this.$route.params.city;
+    // const filterBy = {};
+    // if (!this.filterBy) filterBy.txt = this.$route.params.city;
     
     try {
-      this.$store.commit("setFilter", filterBy);
+      // console.log('YachtApp filterBy:', this.$route.params.city)
+      // this.$store.commit("set-Filter", setFilter);
       const yachts = await this.$store.dispatch({
         type: "loadYachts",
         owner: {}
@@ -57,7 +58,7 @@ export default {
   },
   methods: {
     setFilter(filterBy) {
-      this.$store.commit("setFilter", filterBy);
+      this.$store.commit("set-filter", filterBy);
     },
 
     async emitUpdateLikedYacht(updateLikedYachts) {

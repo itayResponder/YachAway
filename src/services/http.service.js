@@ -11,6 +11,7 @@ const BASE_URL = process.env.NODE_ENV === 'production' ?
 
 export default {
     get(endpoint, data) {
+        console.log('front http service get BASE_URL:', BASE_URL, 'endpoint:',endpoint, 'data:', data)
         return ajax(endpoint, 'GET', null, data);
     },
     post(endpoint, data) {
