@@ -1,7 +1,7 @@
 <template>
   <div class="b-tabs">
-    <nav class="tabs is-medium is-taller has-side-space">
-      <ul>
+    <nav class="tabs is-medium is-taller has-side-space ">
+      <ul >
         <li :class="{'is-active' : showUpcoming}">
           <a>
             <!---->
