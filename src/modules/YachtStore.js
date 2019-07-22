@@ -43,6 +43,7 @@ export default {
     getters: {
         yachtsToShow(state) {
             var facilities = state.filterBy.facilities
+            console.log('facilities is ',facilities)
             var yachts = [...state.yachts]
             var txt = state.filterBy.txt.toLowerCase()
             var minPeople = state.filterBy.minPeople

@@ -2,6 +2,8 @@
   <div class="columns is-12 is-mobile row-shadow yacht-list-preview-margin max-height">
     <div class="column is-one-third">
       <!-- image is-4by5 -->
+      <div class="container">
+
       <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
         <img :src="yacht.imgs[0]" class="img-boat" style="height:auto; object-fit: fill; overflow: hidden;" />
         <div v-if="loggedInUser">
@@ -12,7 +14,7 @@
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
               class="is-relative like"
-              style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+              style="height:50px; z-index: 10; float:right; left: 31%; top:-12.5rem; padding:10px;"
             />
 
             <img
@@ -21,11 +23,13 @@
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
               class="is-relative like"
-              style="height:50px; z-index: 10; float:right; left: 41%; top:-12.5rem; padding:10px;"
+              style="height:50px; z-index: 10; float:right; left: 31%; top:-12.5rem; padding:10px;"
             />
           </div>
         </div>
       </figure>
+      </div>
+
       <div style="position:relative;"></div>
     </div>
     
@@ -207,8 +211,9 @@ a {
 }
 
 .img-boat {
-  /* max-width: 20vw; */
+  max-width: 20vw;
   min-height: 220px;
+  max-height: 225px;
   margin-top: -1.7rem;
 }
 .img-owner {
@@ -218,7 +223,7 @@ a {
 }
 
 .img-wrap {
-  height: auto;
+  /* height: auto; */
   overflow: auto;
 }
 </style>

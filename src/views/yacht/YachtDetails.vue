@@ -24,7 +24,7 @@
             <div class="facilities">
               <!-- facility  -->
               <div
-                style="display:inline-block; margin-right:5px;"
+                style="display:inline-block; margin-right:8px;"
                 v-for="(facility, idx) in yacht.facilities"
                 :key="idx"
               >
@@ -96,7 +96,7 @@ export default {
           return require("../../assets/icons/golf court.svg");
         case "no smoking":
           return require("../../assets/icons/no smoking.svg");
-        case "smoking allowed":
+        case "smoking":
           return require("../../assets/icons/smoking allowed.svg");
         case "kitchen":
           return require("../../assets/icons/kitchen.svg");
