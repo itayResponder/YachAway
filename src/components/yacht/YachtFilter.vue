@@ -84,7 +84,7 @@
           <label class="panel-block">
             <b-checkbox
               v-model="filterBy.facilities"
-              native-value="tv"
+              native-value="TV"
               type="is-info"
               @input="emitFilter"
             >Tv</b-checkbox>
