@@ -1,6 +1,6 @@
 <template>
 	<div class="card is-borderless">
-		<router-link to="/yachts">
+		<router-link :to="getUrl">
 			<div class="card-image" style="object-fit: cover;"><a>
 					<figure  class="image image is-4by3">
 						<img class="picture" :src="detail.img">
@@ -27,7 +27,12 @@
 
 <script>
 export default {
-	props:["detail"]
+	props:["detail"],
+	computed: {
+		getUrl(){
+			return "/yachts/"+this.detail.url
+		}
+	},
 };
 </script>
 
