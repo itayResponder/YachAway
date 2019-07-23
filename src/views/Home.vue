@@ -2,7 +2,9 @@
   <div class="layout">
     
     <hero :loggedInUser="getLoggedInUser"/>
-    <citeis />
+    <citeis>
+      Sail Your Way
+    </citeis>
     <yacht-home-cards />
     <bullets />
     <featureArea  class="margin-top-6rem" />
