@@ -3,7 +3,7 @@
     <div class="container">
       <div class="navbar-brand">
         <router-link class="navbar-item" exact to="/">
-          <img src="@/assets/img/logo/yacht.png" width="30"  />
+          <img src="@/assets/img/logo/yacht.png" width="30" />
         </router-link>
 
         <span
@@ -101,7 +101,12 @@ export default {
       }
     }
   },
-  mounted() {}
+  mounted() {},
+  created() {
+    // if (this.$route.name === "Home") return document.body.style = "padding-top: 0;";
+    if (this.$route.name === "Home") {return document.body.classList.remove("has-navbar-fixed-top");}
+    else return document.body.classList.add("has-navbar-fixed-top");
+  }
 };
 </script>
 

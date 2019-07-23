@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<div id="app" >
 		<my-header :loggedInUser="getLoggedInUser" v-if="!headerType"></my-header>
 		<router-view></router-view>
 		<Myfooter/>

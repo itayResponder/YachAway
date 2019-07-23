@@ -19,6 +19,7 @@ export default {
       return this.$store.getters.userLoggedIn;
     }
   },
+  
   components: {
     citeis,
     featureArea,

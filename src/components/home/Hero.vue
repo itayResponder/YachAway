@@ -2,8 +2,8 @@
   <!-- mobile-->
   <!-- desktop-->
   <header class="hero is-large is-fullheight-with-navbar-desktop">
-      <section class="has-bg-img ">
     <!-- <section class="hero-video"> -->
+      <section class="has-bg-img ">
         <!-- class="is-hidden-mobile" -->
         <!-- <video
         poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg"
