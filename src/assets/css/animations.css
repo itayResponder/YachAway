@@ -10,7 +10,7 @@
   
   /*Simple transforming the image when container gets hovered */
   .img-hover-zoom:hover img:nth-of-type(1) {
-    transform: scale(1.1);
+    transform: scale(0.95);
     filter: brightness(100%) !important;
 
   }
@@ -24,7 +24,7 @@
   
   /* Brightness The Transformation */
   .img-hover--brightness:hover img:first-child {
-    filter: brightness(140%);
+    filter: brightness(130%);
   }
 
 /*----------Contrast ---------*/
@@ -36,6 +36,7 @@
   
   /* Contrast The Transformation */
   .img-hover--contrast:hover img:first-child {
+    transition: filter 0.4s ease-in-out;
     filter: contrast(140%);
   }
 
