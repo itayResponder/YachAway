@@ -8,8 +8,9 @@ export default {
     update,
 }
 
-function query(owner = {}) {
-    return httpService.get(_getUrl(), owner);
+function query(filterBy = {}) {
+    console.log('filterBy frontend service iis:',filterBy)
+    return httpService.get(_getUrl(), filterBy);
 }
 
 function remove(yachtId) {
