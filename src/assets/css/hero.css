@@ -1,0 +1,33 @@
+
+.hero-video video {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    object-fit: cover;
+  }
+  .hero-video {
+    overflow: auto;
+  }
+  
+  .hero-head {
+    z-index: 5;
+  }
+  .has-bg-img {
+    background-image: url("https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #999;
+  }
+  
+  #location-search-input .search-query {
+    width: 35%;
+    padding: 1rem 0.875rem;
+    border: 0;
+    border-radius: 3px;
+    box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.75);
+    font-weight: 600;
+    color: #444;
+  }

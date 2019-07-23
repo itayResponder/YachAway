@@ -25,10 +25,8 @@
 
         <div class="hero-body">
           <div class="container has-text-centered">
-            <div id="custom-search-input">
+            <div id="location-search-input">
               <div class="input-group">
-                <!-- TODO : WORK ON  SEARCH BY GOOGLE WITH PUSH  @change="showYachtCity" -->
-
                 <vue-google-autocomplete
                   class="search-query form-control"
                   ref="address"
@@ -40,8 +38,35 @@
                 <!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
               </div>
             </div>
-            {{showYachtCity}}
-            <p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p>
+            <span class="is-invisible">{{showYachtCity}}</span>
+            <!-- <p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p> -->
+
+            <!-- popular tags -->
+            <div class="is-inline-flex" style="padding-top:1rem;">
+              <p class="is-small has-text-white" style="padding-right:1rem;">popular:</p>
+              <div class="tags">
+                <!--maybe add to the above class for mobile ??:  field is-grouped is-grouped-multiline -->
+                <router-link
+                  to="yachts/italy"
+                  class="tag is-capitalized button is-outlined is-white"
+                >italy</router-link>
+                <router-link
+                  to="yachts/spain"
+                  class="tag is-capitalized button is-outlined is-white"
+                >spain</router-link>
+                <router-link
+                  to="yachts/france"
+                  class="tag is-capitalized button is-outlined is-white"
+                >france</router-link>
+                <div class="has-addons">
+                  <router-link
+                    to="yachts/greece"
+                    class="tag is-capitalized button is-outlined is-white"
+                  >greece</router-link>
+                  <span class="tag is-capitalized is-primary">3,123 yachts</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -89,8 +114,8 @@ export default {
   },
   computed: {
     showYachtCity() {
-      if (!this.countryCode || this.countryCode.length < 2 ) return;
-      
+      if (!this.countryCode || this.countryCode.length < 2) return;
+
       var country;
       switch (this.countryCode.toUpperCase()) {
         // case "AU":
@@ -108,49 +133,18 @@ export default {
         case "GR":
           country = "greece";
           break;
-          //default
+        //default
         default:
           country = "";
       }
 
       const url = "/yachts/" + country;
-      setTimeout(this.$router.push(url), 450);
+      setTimeout(this.$router.push(url), 200);
     }
   }
 };
 </script>
 
 <style>
-.hero-video video {
-  position: relative;
-  left: auto;
-  top: auto;
-  transform: none;
-  object-fit: cover;
-}
-.hero-head {
-  z-index: 5;
-}
-.has-bg-img {
-  background-image: url("https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg");
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #999;
-}
-
-#custom-search-input .search-query {
-  width: 650px;
-  padding: 15px 30px;
-  border: 0;
-  border-radius: 30px;
-  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.75);
-  font-weight: 600;
-  color: #444;
-}
-.hero-video {
-  overflow: auto;
-}
 </style>
 
