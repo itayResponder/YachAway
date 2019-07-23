@@ -45,7 +45,8 @@ export default {
 
 // Set your colors
 // $primary: #b9ced1;
-$primary: #4d9989;
+// #4d9989;
+$primary: #3273dc; 
 // $primary-invert: findColorInvert($primary);
 
 
