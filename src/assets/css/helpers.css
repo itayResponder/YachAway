@@ -87,6 +87,18 @@
 
 /* ========== */
  /* TEXT */
- .text-start {
-  text-align: start;
- }
+.text-start {
+   text-align: start;
+  }
+  /* ========== */
+   /* IMAGES */
+
+.is-cover {
+   object-fit: cover
+}
+.is-contain{
+ object-fit: contain
+}
+.is-scale-down{
+ object-fit: scale-down
+}
