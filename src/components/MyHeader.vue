@@ -49,7 +49,7 @@
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/messages"
-              >My Messages</router-link>
+              >My Messages {{this.counter}}</router-link>
 
               <hr class="navbar-divider" />
               <span v-show="loggedInUser" @click="logout" class="navbar-item">
@@ -78,6 +78,7 @@ export default {
   props: ["loggedInUser"],
   data() {
     return {
+      counter: 0,
       isBurgerMenuOpen: false
     };
   },
