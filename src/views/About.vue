@@ -82,7 +82,7 @@
           <div class="column is-half margin-top-2rem">
             <p class="column text-start">{{p1}}</p>
             <!-- <p> -->
-              <figure class="image margin-top-2rem">
+              <figure class="image" style="margin-top:11.5rem">
                 <img
                   src="https://www.oceanindependence.com/sites/default/files/styles/half/public/%C2%A9Guillaume%20Plisson-49761_2000x1250%20%281%29.jpg"
                 />
