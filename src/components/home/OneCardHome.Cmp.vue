@@ -4,7 +4,6 @@
 			<div class="card-image" style="object-fit: cover;"><a>
 					<figure  class="image is-4by3 ">
 						<img class="picture" :src="detail.img">
-						<!---->
 					</figure>
 				</a>
 				<!---->
