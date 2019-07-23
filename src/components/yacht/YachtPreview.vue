@@ -40,8 +40,8 @@
         <!-- THE FACILITES -->
 
         <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
-          <!-- <img class="level-left level-item is-rounded" :src="getOwnerImg" /> -->
-          <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
+          <img class="level-left level-item is-rounded" :src="getOwnerImg" />
+          <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
           <br />
           <p class="level-left level-item has-text-grey margin-min">{{yacht.owner.name}}</p>
           <p class="level-left level-item is-hidden-mobile">
