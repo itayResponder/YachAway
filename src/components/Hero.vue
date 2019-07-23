@@ -48,21 +48,21 @@
                 <!--maybe add to the above class for mobile ??:  field is-grouped is-grouped-multiline -->
                 <router-link
                   to="yachts/italy"
-                  class="tag is-capitalized button is-outlined is-white"
+                  class="tag tag-size is-capitalized button is-outlined is-white"
                 >italy</router-link>
                 <router-link
                   to="yachts/spain"
-                  class="tag is-capitalized button is-outlined is-white"
+                  class="tag tag-size is-capitalized button is-outlined is-white"
                 >spain</router-link>
                 <router-link
                   to="yachts/france"
-                  class="tag is-capitalized button is-outlined is-white"
+                  class="tag tag-size is-capitalized button is-outlined is-white"
                 >france</router-link>
                   <router-link
                     to="yachts/greece"
-                    class="tag is-capitalized button is-outlined is-white"
+                    class="tag tag-size is-capitalized button is-outlined is-white"
                   >greece</router-link>
-                  <span class="tag is-capitalized is-primary ">3,123 yachts</span>
+                  <span class="tag tag-size is-capitalized is-primary ">{{yachtsCount}} yachts</span>
               </div>
             </div>
           </div>
@@ -111,6 +111,10 @@ export default {
     }
   },
   computed: {
+    yachtsCount() {
+      var count = '3,183'
+      return count
+    },
     showYachtCity() {
       if (!this.countryCode || this.countryCode.length < 2) return;
 
@@ -143,6 +147,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.tag-size{
+  font-size: 0.8rem;
+}
 </style>
 
