@@ -34,11 +34,22 @@ export default {
         }
     },
     actions: {
-        async checkValidUser({ commit }, { user }) {
-            var checkedUser;
+        async signUp({commit}, {user}) {
+            let sessionUser;
             try {
-                checkedUser = await userService.login(user)
-                let sessionUser = checkedUser;
+                sessionUser = await userService.signUp(user)
+                commit({type: 'setUser', sessionUser})
+                return sessionUser;
+            } catch (err) {
+                console.log('userStore Could not signUp err:', err);
+                throw err;
+            }
+        },
+
+        async login({ commit }, { user }) {
+            let sessionUser;
+            try {
+                sessionUser = await userService.login(user)
                 if (sessionUser) {
                     commit({ type: 'setUser', sessionUser })
                     return sessionUser;

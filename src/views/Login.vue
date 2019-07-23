@@ -22,7 +22,7 @@
       </div>
       <div class="login-buttons">
       <b-button @click="login" type="is-info">Login</b-button>
-      <b-button @click="signup" type="is-info">Sign-Up</b-button>
+      <b-button @click="signUp" type="is-info">Sign-Up</b-button>
       </div>
     </form>
   </section>
@@ -44,7 +44,7 @@ export default {
       let cpyUser = JSON.parse(JSON.stringify(this.user));
       try {
         let validUser = await this.$store.dispatch({
-          type: "checkValidUser",
+          type: "login",
           user: cpyUser
         });
         
@@ -56,8 +56,17 @@ export default {
         this.user.password = "";
       }
     },
-    signup() {
-      console.log("signup clicked!");
+    async signUp() {
+      let cpyUser = {...this.user}
+      try {
+        await this.$store.dispatch({type: "signUp", user: cpyUser})
+      } catch (err) {
+        console.log("user allready exist! error:", err)
+        Swal.fire({ type: "error", text: "Email is allready exist!" });
+        this.user.email = "";
+        this.user.password = "";
+      }
+      this.$router.push("/yachts");
     }
   }
 };
