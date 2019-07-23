@@ -38,9 +38,6 @@ export default {
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-// @import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
-
 @import "assets/css/main.css";
 
 // Set your colors

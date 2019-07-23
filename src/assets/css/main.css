@@ -1,6 +1,19 @@
 
+/* ICONS */
+/* ========== */
+/* ===================================================================================== */
 /* @import url('https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css'); */
+/* ===================================================================================== */
+/* ========== */
+
+/* FONTS */
+/* ===================================================================================== */
+/* @import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap"); */
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
+/* ===================================================================================== */
+
+
 @import url('./helpers.css');
 @import url('./animations.css');
 @import url('./hero.css');  
