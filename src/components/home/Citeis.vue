@@ -12,7 +12,12 @@
 				<div v-for="(detail,idx) in locationDetails " :key="idx"
 				 class="column 
 				is-one-third-desktop is-half-tablet is-one-mobile">
-					<OneCardItem :detail="detail" />
+					<OneCardItem :detail="detail" >
+                       <figure  class="image is-4by3 ">
+					     	<img class="picture" :src="detail.img">
+					   </figure>
+
+					</OneCardItem >
 				</div>
 			</div>
 		</div>
