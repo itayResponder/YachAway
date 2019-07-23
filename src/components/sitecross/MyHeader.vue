@@ -86,7 +86,7 @@ export default {
   },
   computed: {
     menuClass() {
-      if (this.$route.name === "Home" && !utillService.isNotMobile) return "navbar-item  has-text-white";
+      if (this.$route.name === "Home") return "navbar-item has-text-white hamburger-text-color-fixer";
       else return "navbar-item  has-text-black";
     },
     getUrlId() {
@@ -120,4 +120,11 @@ export default {
 b-button {
   padding: 0.5rem 0.75rem 0 0.75rem;
 }
+
+@media (max-width: 960px) {
+  .hamburger-text-color-fixer {
+    color: black !important;
+  }
+}
+
 </style>
