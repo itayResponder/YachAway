@@ -12,7 +12,12 @@
 				<div v-for="(detail,idx) in locationDetails " :key="idx"
 				 class="column 
 				is-one-fifth-desktop is-half-tablet is-one-mobile">
-					<OneCardItem :detail="detail" />
+					<OneCardItem :detail="detail" >
+                       <figure  class="image is-2by3">
+					     	<img class="is-cover" :src="detail.img">
+					   </figure>
+
+					</OneCardItem >
 				</div>
 			</div>
 		</div>
@@ -28,7 +33,12 @@
 				<div v-for="(detail,idx) in locationDetails " :key="idx"
 				 class="column 
 				is-one-fifth-desktop is-half-tablet is-one-mobile">
-					<OneCardItem :detail="detail" />
+					<OneCardItem :detail="detail" >
+                       <figure  class="image is-3by5">
+					     	<img class="is-cover" :src="detail.img">
+					   </figure>
+
+					</OneCardItem >
 				</div>
 			</div>
 		</div>
