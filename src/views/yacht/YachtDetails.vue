@@ -22,6 +22,7 @@
 
             <!-- owner -->
             <figure class="image is-48x48" style="display:flex;">
+              <img class="level-left level-item is-rounded" :src="getOwnerImg" />
               <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
               <br />
               <p
@@ -64,6 +65,7 @@
 </template>
 
 <script>
+import utillservice from "@/services/utill.service";
 import calendarShow from "@/components/general/CalendarShow";
 import previewReview from "@/components/yacht/PreviewReview";
 import reservationBox from "@/components/yacht/ReservationBox";
@@ -154,6 +156,25 @@ export default {
       } else {
         return true;
       }
+    }
+  },
+
+  computed: {
+    getOwnerImg() {
+      const cloudName = "dopdel26f";
+      const uploadPreset = "upload";
+      const sourceImage = this.yacht.owner.img;
+      const settings = "w_48,h_48";
+      const placeholder = "https://bulma.io/images/placeholders/48x48.png";
+      const newImageUrl = utillservice.getImgCloudinary(
+        cloudName,
+        sourceImage,
+        placeholder,
+        settings,
+        uploadPreset
+      );
+      return newImageUrl;
+      // https://res.cloudinary.com/dopdel26f/image/upload/v1563460765/Users/Itay/IMG-20190531-WA0015_kwkbib.jpg"
     }
   },
 
