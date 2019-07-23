@@ -1,18 +1,20 @@
 <template>
   <!-- <div class="content" v-if="yacht"> -->
   <nav
-    v-if="yacht"
-    class="panel"
-    style="position: sticky;  z-index: 30; top:64px; right:inherit; left:inherit;"
+    v-if="yacht"  
+    class="panel has-text-centered sticky-fix"
+    style="margin-top:1.9rem;"
   >
-    <p class="panel-heading is-black has-background-white">PRICE PER NIGHT</p>
+    <!-- TODO: MAYBE CHANGE THE TEXT OF PRICE PER NIGHT -->
+    <p class="panel-heading is-black has-background-white" style="border-bottom: 0">PRICE PER NIGHT</p>
     <div class="panel-block">
       <p class="control has-icons-left">
-        <input v-model="fromDate" class="touch-only input is-small" type="date" placeholder="dates" />
-        <input v-model="toDate" class="touch-only input is-small" type="date" placeholder="dates" />
+        <input v-model="fromDate" class="touch-only input  has-text-centered" type="date" placeholder="dates" />
+        <input v-model="toDate" class="touch-only input has-text-centered" type="date" placeholder="dates" />
         
 
         <!-- ################## 
+        TODO
           ON GOING WORK : 
         BUTTON TO SHOW THE CALENDAR YOU SEE IN THE DETAILS -->
         <!-- <button
@@ -31,25 +33,22 @@
       </p>
     </div>
     <div class="panel-block">
-      <p class="control has-icons-left">
+      <p class="control">
         <input
           v-model="numOfGuest"
           min="1"
-          class="input is-medium"
+          class="input is-normal has-text-centered "
           type="number"
           placeholder="How Many Guests"
         />
-        <span class="icon is-small is-left">
-          <i class="fas fa-search" aria-hidden="true"></i>
-        </span>
       </p>
     </div>
     
-    <div class="panel-block is-active">
-      <span class="is-medium is-left">{{yacht.pricePerNight}} $</span>
+    <div class="panel-bloc">
+      <span class="control is-medium is-left has-text-centered " >{{yacht.pricePerNight}} $</span>
     </div>
     <div class="panel-block">
-      <button @click="makeReservation" class="button is-danger is-link is-fullwidth">Book it now</button>
+      <button @click="makeReservation" class="button is-primary is-fullwidth">Book it now</button>
     </div>
     <div v-if="getWhatsappLink" class="panel-block">
       <a
@@ -190,5 +189,8 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.sticky-fix {
+  position: sticky;  z-index: 30; top:64px; right:inherit; left:inherit; 
+}
 </style>
