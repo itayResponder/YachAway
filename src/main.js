@@ -13,14 +13,23 @@ import 'vuelendar/scss/vuelendar.scss'
 import AirbnbStyleDatepicker from 'vue-airbnb-style-datepicker'
 import 'vue-airbnb-style-datepicker/dist/vue-airbnb-style-datepicker.min.css'
 
+
+// CLOUDINARY
+// https://cloudinary.com/documentation/vue_integration#overview
+// USING FOR UPLOAD :
+// import Cloudinary from 'cloudinary-vue';
+
 // see docs for available options
 const datepickerOptions = {}
 
 Vue.use(AirbnbStyleDatepicker, datepickerOptions)
 Vue.use(Buefy)
 Vue.use(require('vue-moment'));
-
-
+// Vue.use(Cloudinary, {
+//     cloudName :"ocean-yachts",
+//     "api_key":  
+// });
+//NADAV API  
 
 Vue.config.productionTip = false
 

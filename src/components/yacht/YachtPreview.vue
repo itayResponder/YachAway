@@ -4,7 +4,9 @@
       <!-- image is-4by5 -->
       <div class="container">
         <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
-          <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" />
+          <img :src="getYachtFrontImg" class="img-boat" style="object-fit: fill; overflow: hidden;" />
+          <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
+
           <div v-if="loggedInUser">
             <img
               v-if="!like"
@@ -38,7 +40,8 @@
         <!-- THE FACILITES -->
 
         <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
-          <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
+          <img class="level-left level-item is-rounded" :src="getOwnerImg" />
+          <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
           <br />
           <p class="level-left level-item has-text-grey margin-min">{{yacht.owner.name}}</p>
           <p class="level-left level-item is-hidden-mobile">
@@ -75,6 +78,8 @@
 </template>
 
 <script>
+import utillservice from "@/services/utill.service";
+
 // import Swal from "sweetalert2";
 export default {
   name: "YachtPreview",
@@ -89,8 +94,6 @@ export default {
         isLiked: false
       }
     };
-  },
-  created() {
   },
   methods: {
     likeClicked() {
@@ -153,7 +156,30 @@ export default {
     },
     getUrlWithYachtId() {
       return "/yacht/" + this.yacht._id;
-    }
+    },
+    getYachtFrontImg() {
+      // const apiKey = "518953374957666";
+      const cloudName = "ocean-yachts";
+      const uploadPreset = "upload";
+      const sourceImage = this.yacht.imgs[0];
+      const settings = 'w_300,h_300'
+      const placeholder ='https://bulma.io/images/placeholders/256x256.png'
+      const newImageUrl =  utillservice.getImgCloudinary (cloudName,sourceImage,placeholder, settings, uploadPreset)           
+      return newImageUrl;
+      // OUTPUT EXAMPLE :
+      // https://res.cloudinary.com/ocean-yachts/image/upload/v1563712228/Yacths/The%20Blue%20Wave/5_onguhp.jpg
+    },
+    getOwnerImg(){
+      const cloudName = "dopdel26f";
+      const uploadPreset = "upload";
+      const sourceImage = this.yacht.owner.img;
+      const settings = 'w_48,h_48'
+      const placeholder ='https://bulma.io/images/placeholders/48x48.png'
+      const newImageUrl =  utillservice.getImgCloudinary (cloudName,sourceImage,placeholder, settings, uploadPreset)           
+      return newImageUrl;
+      // https://res.cloudinary.com/dopdel26f/image/upload/v1563460765/Users/Itay/IMG-20190531-WA0015_kwkbib.jpg"
+}
+
   }
 };
 </script>
