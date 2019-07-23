@@ -44,7 +44,6 @@ export default {
     // if (!this.filterBy) filterBy.txt = this.$route.params.city;
     if(this.loggedInUser) {
       try {
-        console.log('yacht app userloggedIn:', this.loggedInUser)
         await this.$store.dispatch({
           type: "loadUserLikedYachts",
           userId: this.$store.getters.userLoggedIn._id
