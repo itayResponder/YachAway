@@ -90,6 +90,9 @@ export default {
       }
     };
   },
+  created() {
+    console.log('NADAV YA MANYAK!!!!!')
+  },
   methods: {
     likeClicked() {
       var foundLikedYacht = this.likedYachts.find(likedYacht => {
