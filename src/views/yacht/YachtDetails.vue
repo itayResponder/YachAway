@@ -116,6 +116,8 @@ export default {
           return require("../../assets/icons/snorkel.svg");
         case "safe":
           return require("../../assets/icons/safe.svg");
+        case "jacuzzi":
+          return require("../../assets/icons/jacuzzi.svg");
       }
     }
     //   getDesc(facility){
