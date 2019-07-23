@@ -4,7 +4,8 @@
     <hero :loggedInUser="getLoggedInUser"/>
     <citeis />
     <yacht-home-cards />
-    <featureArea />
+    <bullets />
+    <featureArea  class="margin-top-6rem" />
   </div>
 </template>
 
@@ -12,6 +13,7 @@
 import hero from "@/components/home/Hero";
 import citeis from "@/components/home/Citeis";
 import yachtHomeCards from "@/components/home/YachtHomeCards";
+import bullets from "@/components/general/ThreeBulletsAndMedia";
 import featureArea from "@/components/home/FeatureArea";
 
 export default {
@@ -26,6 +28,7 @@ export default {
     citeis,
     yachtHomeCards,
     featureArea,
+    bullets,
     hero
   }
 };
