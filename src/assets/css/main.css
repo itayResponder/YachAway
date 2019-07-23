@@ -10,6 +10,7 @@
 .router-link-exact-active, .router-link-active {
 	/* border-bottom: 2px solid #3273dc !important; */
 	border-bottom: 2px solid #00d1b2 !important;
+	margin-top: 2px;
 }
 
 
