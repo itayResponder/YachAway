@@ -53,7 +53,7 @@
 
               <hr class="navbar-divider" />
               <span v-show="loggedInUser" @click="logout" class="navbar-item">
-                <b-button class="is-link" type="is-primary">Logout</b-button>
+                <b-button class="is-primary">Logout</b-button>
               </span>
 
               <!-- end nav bar drop down -->
