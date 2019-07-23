@@ -1,6 +1,6 @@
 
 <template>
-  <section> 
+  <section>
     <h1 class="is-size-1 is-capitalized">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
@@ -42,14 +42,14 @@ export default {
   async created() {
     // const filterBy = {};
     // if (!this.filterBy) filterBy.txt = this.$route.params.city;
-    if(this.loggedInUser) {
+    if (this.loggedInUser) {
       try {
         await this.$store.dispatch({
           type: "loadUserLikedYachts",
           userId: this.$store.getters.userLoggedIn._id
         });
       } catch (err) {
-        console.log("Could not load user liked yachts error:", err)
+        console.log("Could not load user liked yachts error:", err);
       }
     }
     try {
@@ -57,7 +57,7 @@ export default {
       // this.$store.commit("set-Filter", setFilter);
       await this.$store.dispatch({
         type: "loadYachts",
-        owner: {}
+        filterBy: {}
       });
     } catch (err) {
       console.log("Could not load yachts error:", err);
@@ -67,8 +67,15 @@ export default {
     window.scrollTo(0, 0);
   },
   methods: {
-    setFilter(filterBy) {
-      this.$store.commit("setfilter", filterBy);
+    async setFilter(filterBy) {
+      try {
+        await this.$store.dispatch({
+          type: "loadYachts",
+          filterBy: filterBy
+        });
+      } catch (err) {
+        console.log("Could not load yachts error:", err);
+      }
     },
 
     async emitUpdateLikedYacht(updateLikedYachts) {

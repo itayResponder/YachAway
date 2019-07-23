@@ -189,7 +189,8 @@ export default {
         minPeople: "",
         txt: "",
         facilities: [],
-        sort: ""
+        sort: "",
+        owner: null
       }
     };
   },
