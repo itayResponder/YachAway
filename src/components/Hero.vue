@@ -1,11 +1,11 @@
 <template>
   <!-- mobile-->
   <!-- desktop-->
-  <header class="hero is-large is-fullheight-with-navbar">
-    <section class="hero-video">
-      <section class="has-bg-img">
+  <header class="hero is-large is-fullheight-with-navbar-desktop">
+      <section class="has-bg-img ">
+    <!-- <section class="hero-video"> -->
+        <!-- class="is-hidden-mobile" -->
         <!-- <video
-        class="is-hidden-mobile"
         poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg"
         id="bgvid"
         playsinline
@@ -17,7 +17,7 @@
           src="https://res.cloudinary.com/dopdel26f/video/upload/v1563442703/video/www.kizoa.com_y2mate.com_-_my_aspire_51m_video_OlXpmcyvPFE_1080p_exaq4d.mp4"
           type="video/mp4"
         />
-        </video>-->
+        </video> -->
 
         <div class="hero-head">
           <my-header :loggedInUser="loggedInUser" />
@@ -68,7 +68,7 @@
           </div>
         </div>
       </section>
-    </section>
+    <!-- </section> -->
   </header>
 </template>
 
@@ -151,5 +151,6 @@ export default {
 .tag-size{
   font-size: 0.8rem;
 }
+
 </style>
 
