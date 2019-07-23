@@ -2,9 +2,10 @@
 	<div class="card is-shadowless is-relative 	">
 		<router-link :to="getUrl">
 			<div class="card-image" style="object-fit: cover;"><a>
-					<figure  class="image is-4by3 ">
+					<slot></slot>
+					<!-- <figure  class="image is-4by3 ">
 						<img class="picture" :src="detail.img">
-					</figure>
+					</figure> -->
 				</a>
 				<!---->
 			</div>
