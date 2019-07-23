@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import OneCardItem from "@/components/OneCardHome.Cmp";
+import OneCardItem from "@/components/home/OneCardHome.Cmp";
 export default {
 	components: {
 		OneCardItem

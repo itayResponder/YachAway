@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import MyHeader from "@/components/MyHeader.vue";
+import MyHeader from "@/components/sitecross/MyHeader.vue";
 import Myfooter from "@/components/sitecross/Footer.vue";
 export default {
 	name: "App",

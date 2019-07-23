@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import hero from "@/components/Hero";
-import citeis from "@/components/Citeis";
-import featureArea from "@/components/FeatureArea";
+import hero from "@/components/home/Hero";
+import citeis from "@/components/home/Citeis";
+import featureArea from "@/components/home/FeatureArea";
 
 export default {
   name: "home",

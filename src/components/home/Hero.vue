@@ -73,7 +73,7 @@
 </template>
 
 <script>
-import myHeader from "@/components/MyHeader";
+import myHeader from "@/components/sitecross/MyHeader";
 // import GeocodeService from "@/services/geocode.service.js";
 import VueGoogleAutocomplete from "vue-google-autocomplete";
 
