@@ -73,6 +73,8 @@
 </template>
 
 <script>
+import utillService from "@/services/utill.service";
+
 export default {
   name: "MyHeader",
   props: ["loggedInUser"],
@@ -84,7 +86,7 @@ export default {
   },
   computed: {
     menuClass() {
-      if (this.$route.name === "Home") return "navbar-item  has-text-white";
+      if (this.$route.name === "Home" && !utillService.isNotMobile) return "navbar-item  has-text-white";
       else return "navbar-item  has-text-black";
     },
     getUrlId() {

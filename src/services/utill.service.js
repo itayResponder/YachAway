@@ -1,6 +1,18 @@
 
 export default {
-    getImgCloudinary
+    getImgCloudinary, isNotMobile
+}
+
+function isNotMobile() {
+    if (
+      /Android|webOS|iPhone||iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      )
+    ) {
+      return false;
+    } else {
+      return true;
+    }
 }
 
 function getImgCloudinary (cloudName,sourceImage, placeholder = 'https://bulma.io/images/placeholders/128x128.png',settings = '', uploadPreset = 'upload') {
