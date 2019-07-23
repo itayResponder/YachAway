@@ -42,13 +42,16 @@ export default {
   async created() {
     // const filterBy = {};
     // if (!this.filterBy) filterBy.txt = this.$route.params.city;
-    try {
-      await this.$store.dispatch({
-        type: "loadUserLikedYachts",
-        userId: this.$store.getters.userLoggedIn._id
-      });
-    } catch (err) {
-      console.log("Could not load user liked yachts error:", err)
+    if(this.loggedInUser) {
+      try {
+        console.log('yacht app userloggedIn:', this.loggedInUser)
+        await this.$store.dispatch({
+          type: "loadUserLikedYachts",
+          userId: this.$store.getters.userLoggedIn._id
+        });
+      } catch (err) {
+        console.log("Could not load user liked yachts error:", err)
+      }
     }
     try {
       // console.log('YachtApp filterBy:', this.$route.params.city)
