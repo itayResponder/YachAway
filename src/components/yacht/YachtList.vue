@@ -3,6 +3,7 @@
     <yacht-preview @emitUpdateLikedYacht="emitUpdateLikedYacht" class="img-hover--brightness" v-for="yacht in yachts" :key="yacht._id"
       :yacht="yacht"
       :loggedInUser="loggedInUser"
+      :likedYachts="likedYachts"
       >
       </yacht-preview>
   </section>
@@ -13,7 +14,7 @@ import YachtPreview from "@/components/yacht/YachtPreview";
 
 export default {
   name: "YachtList",
-  props: ["yachts", "loggedInUser"],
+  props: ["yachts", "loggedInUser", "likedYachts"],
 
   data() {
     return {};

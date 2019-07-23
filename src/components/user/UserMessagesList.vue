@@ -19,6 +19,9 @@ export default {
   data() {
     return {};
   },
+  created() {
+    console.log('UserMessagesList reservations:', this.reservations)
+  },
   methods: {
     replyUser(replyUser) {
 		this.$emit("replyUser", replyUser);

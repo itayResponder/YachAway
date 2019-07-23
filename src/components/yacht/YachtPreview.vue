@@ -4,38 +4,26 @@
       <!-- image is-4by5 -->
       <div class="container">
         <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
-          <!-- <img
-            :v-cl-image="getImgCloudinary"
-            width ="300"
-            responsive
-            dpr="auto"
-            crop="scale"
-            class="img-boat"
-            style="object-fit: fill; overflow: hidden;"
-          />-->
           <img :src="getYachtFrontImg" class="img-boat" style="object-fit: fill; overflow: hidden;" />
           <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
 
           <div v-if="loggedInUser">
-            <div v-if="liked">
-              <img
-                v-if="!isLike"
-                @click="isLike = !isLike , likeClicked"
-                src="@/assets/icons/heart-multiple-outline.svg"
-                alt="you don't like this yacht yet"
-                class="is-relative like"
-                style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
-              />
-
-              <img
-                v-if="isLike"
-                @click="isLike = !isLike, likeClicked"
-                src="@/assets/icons/heart-multiple.svg"
-                alt="favorite yacht"
-                class="is-relative like"
-                style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
-              />
-            </div>
+            <img
+              v-if="!like"
+              @click="likeClicked"
+              src="@/assets/icons/heart-multiple-outline.svg"
+              alt="you don't like this yacht yet"
+              class="is-relative like"
+              style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
+            />
+            <img
+              v-if="like"
+              @click="likeClicked"
+              src="@/assets/icons/heart-multiple.svg"
+              alt="favorite yacht"
+              class="is-relative like"
+              style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
+            />
           </div>
         </figure>
       </div>
@@ -52,7 +40,8 @@
         <!-- THE FACILITES -->
 
         <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
-          <img class="level-left level-item is-rounded" :src="getOwnerImg" />
+          <!-- <img class="level-left level-item is-rounded" :src="getOwnerImg" /> -->
+          <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
           <br />
           <p class="level-left level-item has-text-grey margin-min">{{yacht.owner.name}}</p>
           <p class="level-left level-item is-hidden-mobile">
@@ -94,11 +83,9 @@ import utillservice from "@/services/utill.service";
 // import Swal from "sweetalert2";
 export default {
   name: "YachtPreview",
-  props: ["yacht", "loggedInUser"],
-  mounted() {},
+  props: ["yacht", "loggedInUser", "likedYachts"],
   data() {
     return {
-      isLike: false,
       avrage: "",
       likedYacht: {
         _id: "",
@@ -110,28 +97,24 @@ export default {
   },
   methods: {
     likeClicked() {
-      var updateLikedYachts = this.loggedInUser.likedYachts.find(
-        likedYacht => likedYacht._id === this.yacht._id
-      );
-      if (updateLikedYachts) {
-        var cpyUpdatedLikedYachts = JSON.parse(
-          JSON.stringify(updateLikedYachts)
-        );
-        cpyUpdatedLikedYachts.isLiked = true;
-        this.$emit("emitUpdateLikedYacht", cpyUpdatedLikedYachts);
+      var foundLikedYacht = this.likedYachts.find(likedYacht => {
+        return likedYacht._id === this.yacht._id;
+      });
+      if (foundLikedYacht) {
+        let cpyFoundLikedYacht = {...foundLikedYacht}
+        cpyFoundLikedYacht.isLiked = false;
+        this.$emit("emitUpdateLikedYacht", cpyFoundLikedYacht);
       } else {
-        this.likedYacht._id = this.yacht._id;
-        this.likedYacht.name = this.yacht.name;
-        this.likedYacht.img = this.yacht.imgs[0];
-        updateLikedYachts = this.likedYacht;
-        this.$emit("emitUpdateLikedYacht", updateLikedYachts);
+        let newlikedYacht = {...this.likedYacht};
+        newlikedYacht._id = this.yacht._id;
+        newlikedYacht.name = this.yacht.name;
+        newlikedYacht.img = this.yacht.imgs[0];
+        newlikedYacht.isLiked = true;
+        this.$emit("emitUpdateLikedYacht", newlikedYacht);
       }
     }
   },
   computed: {
-    liked() {
-      return this.loggedInUser.likedYachts;
-    },
     getNumberOfReviews() {
       return this.yacht.reviews.length;
     },
@@ -146,7 +129,7 @@ export default {
       return average;
     },
     like() {
-      return this.loggedInUser.likedYachts.find(
+      return this.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
     },
@@ -200,10 +183,6 @@ export default {
   }
 };
 </script>
-
-
-
-
 <style scoped>
 .like-it-symbole {
   position: absolute;

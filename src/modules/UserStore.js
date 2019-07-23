@@ -3,14 +3,18 @@ import userService from '../services/user.service'
 export default {
     state: {
         loggedInUser: userService.getLoggedInUser(),
-        userReservations: []
+        userReservations: [],
+        userLikedYachts: []
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
             return loggedInUser
         },
-        userReservations({userReservations}) {
+        userReservations({ userReservations }) {
             return userReservations;
+        },
+        userLikedYachts({userLikedYachts}) {
+            return userLikedYachts;
         }
     },
     mutations: {
@@ -24,6 +28,9 @@ export default {
 
         setUserReservations(state, context) {
             state.userReservations = context.userReservations;
+        },
+        setUserLikedYachts(state, context) {
+            state.userLikedYachts = context.userLikedYachts;
         }
     },
     actions: {
@@ -42,10 +49,34 @@ export default {
             }
         },
 
-        async loadUserReservations({commit}, {userId}) {
+        async loadUserLikedYachts({commit}, {userId}) {
+            try {
+                let userLikedYachts = await userService.loadLikedYachts(userId)
+                commit({type: 'setUserLikedYachts', userLikedYachts})
+                return userLikedYachts;                
+            } catch (err) {
+                console.log('user store Could not load user liked yachts error:', err)
+                throw err;
+            }
+        },
+
+        async updateUserIsOwner({ commit }, { userId }) {
+            try {
+                let sessionUser = await userService.updateLoggedInUserIsOwner(userId)
+                commit({type: 'setUser', sessionUser})
+                sessionUser = await userService.setLoggedInUser(sessionUser)
+                return sessionUser.isOwner;
+            } catch (err) {
+                console.log('Could not update user owner error:', err)
+
+                throw err;
+            }
+        },
+
+        async loadUserReservations({ commit }, { userId }) {
             try {
                 const userReservations = await userService.loadUserReservations(userId)
-                commit({type: 'setUserReservations', userReservations})
+                commit({ type: 'setUserReservations', userReservations })
                 return userReservations;
             } catch (err) {
                 console.log('Could not load user reservations error:', err)
@@ -55,7 +86,6 @@ export default {
 
         async replyUser(context, { replyUser }) {
             try {
-                console.log('UserStore replyUser:', replyUser )
                 const sendUserMsg = userService.replyUserMsg(replyUser)
                 return sendUserMsg;
             } catch (err) {
@@ -86,13 +116,11 @@ export default {
             }
         },
 
-        async updateUserLikedYachts(context, { updateLikedYachts }) {
+        async updateUserLikedYachts({commit}, { updateLikedYachts }) {
             try {
-                updateLikedYachts.userId = context.state.loggedInUser._id;
-                let sessionUser = await userService.updateUserLikedYachts(updateLikedYachts)
-                context.commit({ type: 'setUser', sessionUser })
-                sessionUser = await userService.setLoggedInUser(sessionUser)
-                return sessionUser.likedYachts;
+                let userLikedYachts = await userService.updateUserLikedYachts(updateLikedYachts)
+                commit({ type: 'setUserLikedYachts', userLikedYachts })
+                return userLikedYachts;
             } catch (err) {
                 console.log('userStore could not update liked yachts to user error:', err)
                 throw err;

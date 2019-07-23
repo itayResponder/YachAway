@@ -1,6 +1,7 @@
 <template>
-  <section v-if="yachts">
-    <owner-yacht-list :yachts="yachts" @removeOwnerYacht="removeOwnerYacht"></owner-yacht-list>
+  <section>
+    <h1 v-if="!yachts[0]"><b>You Didnt list any yachts, go list some</b></h1>
+    <owner-yacht-list v-else :yachts="yachts" @removeOwnerYacht="removeOwnerYacht"></owner-yacht-list>
   </section>
 </template>
 

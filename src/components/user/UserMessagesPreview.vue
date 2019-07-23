@@ -2,7 +2,7 @@
 	<div class="card">
 		<div class="card-image">
 			<figure class="image is-4by3">
-				<img :src="reservation.yacht.img" alt="Placeholder image" />
+				<img v-if="reservation" :src="reservation.yacht.img" alt="Placeholder image" />
 			</figure>
 		</div>
 		<div class="card-content">
@@ -50,9 +50,12 @@ export default {
         };
     },
     created() {
-        this.replyUser = this.reservation.user
+		console.log('userMsgPrev created reservation:', this.reservation, 'replyUser:',this.replyUser)
+	},
+	mounted() {
+		this.replyUser = this.reservation.user
         this.replyUser.reservationId = this.reservation._id
-    },
+	},
 	methods: {
 		approveUser() {
             this.replyUser.isReply = true;

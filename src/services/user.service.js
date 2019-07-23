@@ -7,9 +7,10 @@ export default {
     signUp,
     sendReservationToOwner,
     updateUserLikedYachts,
-    setLoggedInUser,
     replyUserMsg,
-    loadUserReservations
+    loadUserReservations,
+    updateLoggedInUserIsOwner,
+    loadLikedYachts
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
@@ -17,6 +18,13 @@ var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
 async function login(user) {
     let validUser = await httpService.post(_getUrl('login'), user)
     return _handleSuccessfullRegister(validUser)
+}
+
+async function updateLoggedInUserIsOwner(userId) {
+    let updatedLoggedInUserIsOwner = await httpService.put(_getUrl(userId))
+    let currUserLoggedIn = { ...loggedInUser };
+    currUserLoggedIn.isOwner = updatedLoggedInUserIsOwner
+    return currUserLoggedIn;
 }
 
 async function loadUserReservations(userId) {
@@ -41,18 +49,25 @@ async function replyUserMsg(replyUser) {
 async function updateUserLikedYachts(updateLikedYachts) {
     try {
         const updatedUserLikedYachts = await httpService.put(_getUrl('updateLikedYachts'), updateLikedYachts)
-        let currUserLoggedIn = { ...loggedInUser };
-        currUserLoggedIn.likedYachts = updatedUserLikedYachts;
-        return currUserLoggedIn;
+        return updatedUserLikedYachts;
     } catch (err) {
         throw err;
     }
 }
 
 async function sendReservationToOwner(reservation) {
-    const msgSent = await httpService.put(_getUrl('sendMsg'), reservation)
     try {
+        const msgSent = await httpService.put(_getUrl('sendMsg'), reservation)
         return msgSent
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function loadLikedYachts(userId) {
+    try {
+        const userLikedYachts = await httpService.get(_getUrl(), userId)
+        return userLikedYachts;
     } catch (err) {
         throw err;
     }
@@ -71,10 +86,6 @@ async function logout() {
     } catch (err) {
         throw err;
     }
-}
-
-function setLoggedInUser(user) {
-    return _handleSuccessfullRegister(user);
 }
 
 function getLoggedInUser() {

@@ -1,9 +1,8 @@
 <template>
-  <div class="container">
+  <div v-if="this.yacht" class="container">
     <!-- Start Carousel -->
     <figure class="image">
       <vueper-slides
-        v-if="yacht.imgs"
         :slide-ratio="1/2"
         :bullets="isNotAMobile"
         :fade="isNotAMobile"
@@ -23,7 +22,7 @@
 
             <!-- owner -->
             <figure class="image is-48x48" style="display:flex;">
-              <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
+              <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
               <br />
               <p
                 class="level-left level-item has-text-grey margin-min"
@@ -34,7 +33,7 @@
             <h4 class="is-title is-primary margin-6rem">Description</h4>
             <p>{{yacht.description}}</p>
 
-            <h4 class="is-title margin-6rem" v-if="yacht">Facilities</h4>
+            <h4 class="is-title margin-6rem">Facilities</h4>
             <div class="facilities">
               <!-- facility  -->
               <div
@@ -78,7 +77,7 @@ export default {
       //FOR DEMONSTARATION PERPUSES
       toggleDesc: true,
       toggleFacility: true,
-      yacht: {},
+      yacht: null,
       isNotAMobile: true
     };
   },
@@ -116,6 +115,8 @@ export default {
           return require("../../assets/icons/snorkel.svg");
         case "safe":
           return require("../../assets/icons/safe.svg");
+        case "jacuzzi":
+          return require("../../assets/icons/jacuzzi.svg");
       }
     }
     //   getDesc(facility){
@@ -136,7 +137,7 @@ export default {
     this.isNotAMobile = tempIsMobile ? true : false;
   },
   mounted() {
-                window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
   methods: {
     goBack() {
