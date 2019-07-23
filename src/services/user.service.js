@@ -7,10 +7,10 @@ export default {
     signUp,
     sendReservationToOwner,
     updateUserLikedYachts,
-    setLoggedInUser,
     replyUserMsg,
     loadUserReservations,
-    updateLoggedInUserIsOwner
+    updateLoggedInUserIsOwner,
+    loadLikedYachts
 }
 
 var loggedInUser = JSON.parse(sessionStorage.getItem('loggedInUser'))
@@ -49,9 +49,7 @@ async function replyUserMsg(replyUser) {
 async function updateUserLikedYachts(updateLikedYachts) {
     try {
         const updatedUserLikedYachts = await httpService.put(_getUrl('updateLikedYachts'), updateLikedYachts)
-        let currUserLoggedIn = { ...loggedInUser };
-        currUserLoggedIn.likedYachts = updatedUserLikedYachts;
-        return currUserLoggedIn;
+        return updatedUserLikedYachts;
     } catch (err) {
         throw err;
     }
@@ -61,6 +59,15 @@ async function sendReservationToOwner(reservation) {
     try {
         const msgSent = await httpService.put(_getUrl('sendMsg'), reservation)
         return msgSent
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function loadLikedYachts(userId) {
+    try {
+        const userLikedYachts = await httpService.get(_getUrl(), userId)
+        return userLikedYachts;
     } catch (err) {
         throw err;
     }
@@ -79,10 +86,6 @@ async function logout() {
     } catch (err) {
         throw err;
     }
-}
-
-function setLoggedInUser(user) {
-    return _handleSuccessfullRegister(user);
 }
 
 function getLoggedInUser() {

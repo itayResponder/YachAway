@@ -1,6 +1,6 @@
 
 <template>
-  <section>
+  <section> 
     <h1 class="is-size-1 is-capitalized">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
@@ -11,11 +11,12 @@
     </b-button>
 
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
-      <yacht-filter class="column is-one-fifth is-hidden-mobile is-3"  @set-filter="setFilter"></yacht-filter>
+      <yacht-filter class="column is-one-fifth is-hidden-mobile is-3" @set-filter="setFilter"></yacht-filter>
       <div></div>
       <yacht-List
         class="column"
         :loggedInUser="loggedInUser"
+        :likedYachts="likedYachts"
         @emitUpdateLikedYacht="emitUpdateLikedYacht"
         :yachts="yachts"
       ></yacht-List>
@@ -41,11 +42,18 @@ export default {
   async created() {
     // const filterBy = {};
     // if (!this.filterBy) filterBy.txt = this.$route.params.city;
-    
+    try {
+      await this.$store.dispatch({
+        type: "loadUserLikedYachts",
+        userId: this.$store.getters.userLoggedIn._id
+      });
+    } catch (err) {
+      console.log("Could not load user liked yachts error:", err)
+    }
     try {
       // console.log('YachtApp filterBy:', this.$route.params.city)
       // this.$store.commit("set-Filter", setFilter);
-      const yachts = await this.$store.dispatch({
+      await this.$store.dispatch({
         type: "loadYachts",
         owner: {}
       });
@@ -54,7 +62,7 @@ export default {
     }
   },
   mounted() {
-                window.scrollTo(0,0);
+    window.scrollTo(0, 0);
   },
   methods: {
     setFilter(filterBy) {
@@ -64,10 +72,11 @@ export default {
     async emitUpdateLikedYacht(updateLikedYachts) {
       updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
       try {
-        const updatedUser = await this.$store.dispatch({
+        const updatedUserLikedYachts = await this.$store.dispatch({
           type: "updateUserLikedYachts",
           updateLikedYachts
         });
+        return updatedUserLikedYachts;
       } catch (err) {
         console.log("Coudlnt update user updateLikedYachts error:", err);
       }
@@ -76,6 +85,10 @@ export default {
   computed: {
     yachts() {
       return this.$store.getters.yachtsToShow;
+    },
+
+    likedYachts() {
+      return this.$store.getters.userLikedYachts;
     },
 
     loggedInUser() {

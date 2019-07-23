@@ -3,60 +3,50 @@
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <div class="container">
-
-      <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
-        <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" />
-        <div v-if="loggedInUser">
-          <div v-if="liked">
+        <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
+          <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" />
+          <div v-if="loggedInUser">
             <img
-              v-if="!isLike"
-              @click="isLike = !isLike , likeClicked"
+              v-if="!like"
+              @click="likeClicked"
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
               class="is-relative like"
               style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
             />
-
             <img
-              v-if="isLike"
-              @click="isLike = !isLike, likeClicked"
+              v-if="like"
+              @click="likeClicked"
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
               class="is-relative like"
               style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
             />
           </div>
-        </div>
-      </figure>
+        </figure>
       </div>
 
       <div style="position:relative;"></div>
     </div>
-    
-   
-    
+
     <!-- TEXT -->
     <div class="column is-6 horiznal-shadow" style="position: relative;">
       <router-link :to="getUrlWithYachtId">
-       
-            <strong class="title is-4">{{yacht.name}}</strong>
-            <p class="has-gray-text is-small">{{yacht.description}}</p>
-          
-          
-            <!-- THE FACILITES -->
-        
-          
-          <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
-            <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
-          <br/>
-          <p class=" level-left level-item has-text-grey margin-min">
-            {{yacht.owner.name}}
-          </p>
+        <strong class="title is-4">{{yacht.name}}</strong>
+        <p class="has-gray-text is-small">{{yacht.description}}</p>
+
+        <!-- THE FACILITES -->
+
+        <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
+          <img class="level-left level-item is-rounded" :src="yacht.owner.img" />
+          <br />
+          <p class="level-left level-item has-text-grey margin-min">{{yacht.owner.name}}</p>
           <p class="level-left level-item is-hidden-mobile">
-            <span><b > {{yacht.location.country}}, {{yacht.location.city}}</b></span>
+            <span>
+              <b>{{yacht.location.country}}, {{yacht.location.city}}</b>
+            </span>
           </p>
-          </figure>
-        
+        </figure>
       </router-link>
     </div>
 
@@ -66,11 +56,10 @@
         <div>
           <p class="price-per-night">
             {{yacht.pricePerNight}} $
-          
             <br />
           </p>
           <span v-html="showStars"></span>
-          
+
           <br />
           <small class="is-center is-clearfix has-text-grey">{{getNumberOfReviews}} Reviews</small>
           <router-link
@@ -89,10 +78,9 @@
 // import Swal from "sweetalert2";
 export default {
   name: "YachtPreview",
-  props: ["yacht", "loggedInUser"],
+  props: ["yacht", "loggedInUser", "likedYachts"],
   data() {
     return {
-      isLike: false,
       avrage: "",
       likedYacht: {
         _id: "",
@@ -104,26 +92,24 @@ export default {
   },
   methods: {
     likeClicked() {
-      var updateLikedYachts = this.loggedInUser.likedYachts.find(
-        likedYacht => likedYacht._id === this.yacht._id
-      );
-      if (updateLikedYachts) {
-        var cpyUpdatedLikedYachts = JSON.parse(JSON.stringify(updateLikedYachts));
-        cpyUpdatedLikedYachts.isLiked = true;
-        this.$emit("emitUpdateLikedYacht", cpyUpdatedLikedYachts);
+      var foundLikedYacht = this.likedYachts.find(likedYacht => {
+        return likedYacht._id === this.yacht._id;
+      });
+      if (foundLikedYacht) {
+        let cpyFoundLikedYacht = {...foundLikedYacht}
+        cpyFoundLikedYacht.isLiked = false;
+        this.$emit("emitUpdateLikedYacht", cpyFoundLikedYacht);
       } else {
-        this.likedYacht._id = this.yacht._id;
-        this.likedYacht.name = this.yacht.name;
-        this.likedYacht.img = this.yacht.imgs[0];
-        updateLikedYachts = this.likedYacht;
-        this.$emit("emitUpdateLikedYacht", updateLikedYachts);
+        let newlikedYacht = {...this.likedYacht};
+        newlikedYacht._id = this.yacht._id;
+        newlikedYacht.name = this.yacht.name;
+        newlikedYacht.img = this.yacht.imgs[0];
+        newlikedYacht.isLiked = true;
+        this.$emit("emitUpdateLikedYacht", newlikedYacht);
       }
     }
   },
   computed: {
-    liked() {
-      return this.loggedInUser.likedYachts;
-    },
     getNumberOfReviews() {
       return this.yacht.reviews.length;
     },
@@ -138,7 +124,7 @@ export default {
       return average;
     },
     like() {
-      return this.loggedInUser.likedYachts.find(
+      return this.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
     },
@@ -196,7 +182,6 @@ a {
   color: #999;
 }
 
-
 /* margin: 0px 10px; */
 
 .max-height {
@@ -205,7 +190,7 @@ a {
 
 .img-boat {
   /* max-width: 20vw; */
-  min-height: 220px;  
+  min-height: 220px;
   max-height: 225px;
   margin-top: -1.7rem;
 }
