@@ -44,36 +44,6 @@ export default {
     getters: {
         yachtsToShow({yachts}) {
             return yachts
-            // var facilities = state.filterBy.facilities || []
-            // // console.log('facilities is ',facilities)
-            // var yachts = [...state.yachts]
-
-            // var txt
-            // if (!state.filterBy.txt || typeof state.filterBy.txt !== "string") txt = "" 
-            // else  txt = state.filterBy.txt.toLowerCase()
-
-            // var minPeople = state.filterBy.minPeople || ""
-
-            // if (!state.filterBy) return yachts
-            // else if (true)
-            //     yachts = state.yachts.filter(yacht => {
-            //         return yacht.location.country.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil)) ||
-            //             yacht.location.city.toLowerCase().includes(txt) && yacht.maxPeopleOnBoard >= minPeople && facilities.every(currFacil => yacht.facilities.includes(currFacil))
-
-            //     })
-            // if (state.filterBy.sort === 'name')
-            //     yachts.sort(function (a, b) {
-            //         if (a.name < b.name) { return -1; }
-            //         if (a.name > b.name) { return 1; }
-            //         return 0;
-            //     })
-            // else if (state.filterBy.sort === 'price')
-            //     yachts.sort(function (a, b) {
-            //         if (a.pricePerNight < b.pricePerNight) { return 1; }
-            //         if (a.pricePerNight > b.pricePerNight) { return -1; }
-            //         return 0;
-            //     })
-            // return yachts;
         },
         getyacht({ yacht }) {
             return yacht;
@@ -83,7 +53,6 @@ export default {
     actions: {
         async loadYachts({ commit }, { filterBy }) {
             try {
-                console.log('yachtStore load yachts filterby:',filterBy)
                 const yachts = await yachtService.query(filterBy)
                 commit({ type: "setYachts", yachts })
                 return yachts;

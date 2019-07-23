@@ -9,7 +9,6 @@ export default {
 }
 
 function query(filterBy = {}) {
-    console.log('filterBy frontend service iis:',filterBy)
     return httpService.get(_getUrl(), filterBy);
 }
 

@@ -12,13 +12,13 @@ export default {
   data() {
     return {
       yachtsByOwner: null,
-      owner: { _id: "" }
+      filterBy: { ownerId: "" }
     };
   },
   async created() {
     try {
-      this.owner._id = await this.$store.getters.userLoggedIn._id;
-      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", owner: this.owner})
+      this.filterBy.ownerId = await this.$store.getters.userLoggedIn._id;
+      this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
     } catch (err) {
       console.log("Could not get Owner yachts error:", err);
     }
