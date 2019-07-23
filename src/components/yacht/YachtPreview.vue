@@ -155,10 +155,6 @@ export default {
   }
 };
 </script>
-
-
-
-
 <style scoped>
 .like-it-symbole {
   position: absolute;
