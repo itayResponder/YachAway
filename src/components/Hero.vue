@@ -58,13 +58,11 @@
                   to="yachts/france"
                   class="tag is-capitalized button is-outlined is-white"
                 >france</router-link>
-                <div class="has-addons">
                   <router-link
                     to="yachts/greece"
                     class="tag is-capitalized button is-outlined is-white"
                   >greece</router-link>
-                  <span class="tag is-capitalized is-primary">3,123 yachts</span>
-                </div>
+                  <span class="tag is-capitalized is-primary ">3,123 yachts</span>
               </div>
             </div>
           </div>
