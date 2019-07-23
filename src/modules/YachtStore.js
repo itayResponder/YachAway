@@ -15,6 +15,8 @@ export default {
 
     mutations: {
         setFilter(state, filter) {
+            // console.log('in the setFilter function',state)
+            console.log('in the setFilter function',filter)
             state.filterBy = filter
         },
         setYachts(state, context) {
@@ -42,12 +44,13 @@ export default {
 
     getters: {
         yachtsToShow(state) {
+            console.log('the fil    ter in the yacht store is ',state.filterBy )
             var facilities = state.filterBy.facilities || []
             // console.log('facilities is ',facilities)
             var yachts = [...state.yachts]
 
             var txt
-            if (!state.filterBy.txt || typeof state.filterBy.txt === "string") txt = "" 
+            if (!state.filterBy.txt || typeof state.filterBy.txt !== "string") txt = "" 
             else  txt = state.filterBy.txt.toLowerCase()
 
             var minPeople = state.filterBy.minPeople || ""
@@ -82,6 +85,7 @@ export default {
         async loadYachts({ commit }, { owner }) {
             try {
                 const yachts = await yachtService.query(owner)
+                console.log(owner)
                 commit({ type: "setYachts", yachts })
                 return yachts;
             } catch (err) {

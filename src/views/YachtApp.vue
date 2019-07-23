@@ -68,7 +68,7 @@ export default {
   },
   methods: {
     setFilter(filterBy) {
-      this.$store.commit("set-filter", filterBy);
+      this.$store.commit("setfilter", filterBy);
     },
 
     async emitUpdateLikedYacht(updateLikedYachts) {

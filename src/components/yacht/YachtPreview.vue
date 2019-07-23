@@ -91,7 +91,6 @@ export default {
     };
   },
   created() {
-    console.log('NADAV YA MANYAK!!!!!')
   },
   methods: {
     likeClicked() {

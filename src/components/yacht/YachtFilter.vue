@@ -32,9 +32,9 @@
       <label class="panel-block">
         <p class="control has-icons-left">
           <select class="input is-small is-fullwidth" v-model="filterBy.sort" @change="emitFilter">
-            <option value>Sort</option>
-            <option value="price">Sort By Price</option>
-            <option value="name">Sort By Name</option>
+            <option value>Sort By</option>
+            <option value="price">Price</option>
+            <option value="name">Name</option>
           </select>
         </p>
       </label>
@@ -44,7 +44,7 @@
         <p class="control has-icons-left">
           <input
             class="input is-small is-fullwidth"
-            placeholder="search by name"
+            placeholder="Insert city/country"
             type="text"
             v-model="filterBy.txt"
             @input="emitFilter"
