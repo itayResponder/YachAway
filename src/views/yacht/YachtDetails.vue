@@ -57,7 +57,7 @@
       <!-- RIGHT -->
       <div class="tile is-parent is-vertical is-3">
         <article class="tile is-child">
-          <reservationBox :yacht="yacht" />
+          <reservationBox :yacht="yacht"/>
         </article>
       </div>
     </div>
