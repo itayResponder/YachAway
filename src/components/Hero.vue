@@ -43,7 +43,7 @@
 
             <!-- popular tags -->
             <div class="is-inline-flex" style="padding-top:1rem;">
-              <p class="is-small has-text-white" style="padding-right:1rem;">popular:</p>
+              <p class="is-small has-text-white is-capitalized" style="padding-right:1rem;">popular:</p>
               <div class="tags">
                 <!--maybe add to the above class for mobile ??:  field is-grouped is-grouped-multiline -->
                 <router-link
