@@ -43,20 +43,20 @@
 }
 
 .margin-6rem {
-	margin: 6rem;
+	margin: 6rem 0;
 }
 .margin-7rem {
-	margin: 7rem;
+	margin: 7rem 0;
 }
 
 .margin-min {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 .margin-small {
-  margin: 2rem;
+  margin: 2rem 0;
 }
 .margin-3rem {
-  margin: 3rem;
+  margin: 3rem 0;
 }
 
 
