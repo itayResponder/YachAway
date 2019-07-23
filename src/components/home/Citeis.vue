@@ -1,9 +1,9 @@
 <template>
 	<div class="container is-relative" index="13" >
-		<div class="margin-6rem">
-			<p class="title">
-				Sail Your Way
-			</p>
+		<div class="margin-3rem">
+			<h2 class="title is-capitalized">
+				<slot> Sail Your Way</slot>
+			</h2>
 		</div>
 		<div>
 		</div>
