@@ -1,6 +1,6 @@
 <template>
   <div class="columns is-12 is-mobile row-shadow margin-bottom-3rem">
-    <div class="column is-one-third">
+    <div class="column ">
       <!-- image is-4by5 -->
       <div class="container">
         <figure class="image is-relative">
@@ -38,11 +38,11 @@
     <!-- TEXT -->
     <router-link
       :to="getUrlWithYachtId"
-      class="column is-5 horiznal-shadow"
+      class="column is-5 is-3-mobile horiznal-shadow"
       style="position: relative;"
     >
       <strong class="title is-4 level-left margin-top-2rem">{{yacht.name}}</strong>
-      <p class="has-gray-text text-start level-left is-small">{{yacht.description}}</p>
+      <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}</p>
 
       <!-- THE FACILITES -->
 
@@ -62,7 +62,7 @@
     </router-link>
 
     <!-- REVIEWS AND PRICE -->
-    <div class="column">
+    <div class="column is-3">
       <div class="media is-boxed has-bullet-separator" style="text-align: center">
         <div>
           <p class="price-per-night">
