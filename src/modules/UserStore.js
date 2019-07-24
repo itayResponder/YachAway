@@ -19,6 +19,7 @@ export default {
             return userLikedYachts;
         },
         userMsgs({userMsgs}) {
+            console.log('user store getters userMsgs:', userMsgs)
             return userMsgs;
         },
         userMsgsCount({userMsgs}) {

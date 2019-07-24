@@ -4,16 +4,19 @@
       <b>You dont have any messages</b>
     </h1>
     <nav v-else>
-      <b>You have got new messages</b>
+      <b>You have got messages</b>
+      {{userMsgs}} test
       <br />
       <!-- {{this.userLoggedInReservations}} -->
+    </nav>
+    <section v-if="this.loggedInUser.isOwner">
       <user-messages-list
         v-if="this.loggedInUser.isOwner"
         :reservations="reservations"
         @replyToUserFromOwner="replyToUserFromOwner"
       ></user-messages-list>
-      <div v-else>{{userMsgs}} test</div>
-    </nav>
+      <!-- <div v-else>{{userMsgs}} test</div> -->
+    </section>
   </section>
 </template>
 
