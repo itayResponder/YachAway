@@ -45,6 +45,15 @@ export default {
         }
     },
     actions: {
+        async loadUserMsgs({commit}, {userLoggedInId}) {
+            try {
+                const userMsgs = await userService.getLoggedInUserMsgs(userLoggedInId);
+                commit({type: 'setUserMsgs', userMsgs})
+            } catch (err) {
+                console.log('userStore Could not get usermsgs error:', err)
+            }
+        },
+
         async signUp({commit}, {user}) {
             let sessionUser;
             try {
@@ -62,9 +71,6 @@ export default {
             try {
                 sessionUser = await userService.login(user)
                 if (sessionUser) {
-                    let userMsgs = sessionUser.messages;
-                    commit({type: 'setUserMsgs', userMsgs})
-                    delete sessionUser.messages;
                     commit({ type: 'setUser', sessionUser })
                     return sessionUser;
                 }
@@ -93,7 +99,6 @@ export default {
                 return sessionUser.isOwner;
             } catch (err) {
                 console.log('Could not update user owner error:', err)
-
                 throw err;
             }
         },
