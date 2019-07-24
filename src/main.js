@@ -5,6 +5,7 @@ import store from './store'
 // console.log('######### TO STOP BUG WITH EXTENTION OF  VUE', store)
 import './registerServiceWorker'
 import Buefy from 'buefy'
+import facilitiesFilter from '@/components/yacht/filterFacilities.vue'
 
 // import 'buefy/dist/buefy.css'
 
