@@ -1,12 +1,16 @@
 <template>
-  <section class="yacht-list-preview-margin">
+  <section class="">
     <nav class="panel">
-      <div class="panel-heading">
+        <h3 class="title is-3">Filter By</h3>
+
+
+      <!-- <div class="panel-heading">
         <div class="field">
           <b-switch v-model="showStars">Pros Only</b-switch>
           <br /><small>verified owners and professionals skippers.</small>
         </div>
-      </div>
+      </div> -->
+
       <!-- FILTERS -->
 
       <label class="panel-block"> 
@@ -56,13 +60,11 @@
       </label>
 
       <!-- TABS -->
-      <b-tabs v-model="activeTab" class="b-tabs" >
-        <hr />
-        <h3 class="title is-3">Filter By</h3>
+      <!-- <b-tabs v-model="activeTab" class="b-tabs" > -->
         <div v-show="showStars">
           <h4 class="subtitle">Stars</h4>
           <label class="panel-block">
-            <b-checkbox native-value="4" type="is-primary" @input="emitFilter">4</b-checkbox>
+            <b-checkbox native-value="4" type="is-primary" @input="emitFilter">4 +</b-checkbox>
           </label>
           <label class="panel-block">
             <b-checkbox native-value="5" type="is-primary" @input="emitFilter">5</b-checkbox>
@@ -73,6 +75,7 @@
         <!-- room faclities -->
         <!-- <b-tab-item  label="room faclities"> -->
           <h4 class="subtitle">room faclities</h4>
+        <!-- <hr /> -->
           <label class="panel-block">
             <b-checkbox
               v-model="filterBy.facilities"
@@ -173,7 +176,7 @@
                   
          <!-- <b-tab-item label="yacht faclities"> -->
         <!-- </b-tab-item> -->
-      </b-tabs>
+      <!-- </b-tabs> -->
     </nav>
   </section>
 </template>
