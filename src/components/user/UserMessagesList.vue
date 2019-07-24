@@ -4,7 +4,7 @@
       v-for="reservation in reservations"
       :key="reservation._id"
       :reservation="reservation"
-      @replyUser="replyUser"
+      @replyToUserFromOwner="replyToUserFromOwner"
     ></user-messages-preview>
   </section>
 </template>
@@ -19,12 +19,9 @@ export default {
   data() {
     return {};
   },
-  created() {
-    console.log('UserMessagesList reservations:', this.reservations)
-  },
   methods: {
-    replyUser(replyUser) {
-		this.$emit("replyUser", replyUser);
+    replyToUserFromOwner(replyToUserFromOwner) {
+		this.$emit("replyToUserFromOwner", replyToUserFromOwner);
 	}
   },
   components: {

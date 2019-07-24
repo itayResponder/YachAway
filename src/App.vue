@@ -15,6 +15,9 @@ export default {
 		return {
 		};
 	},
+	async created() {
+		await this.$store.dispatch({type: 'loadUserMsgs', userLoggedInId: this.$store.getters.userLoggedIn._id})
+	},
 	components: {
 		MyHeader,
 		Myfooter

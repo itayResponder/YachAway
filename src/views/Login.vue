@@ -21,8 +21,8 @@
         <p class="control"></p>
       </div>
       <div class="login-buttons">
-      <b-button @click="login" type="is-info">Login</b-button>
-      <b-button @click="signUp" type="is-info">Sign-Up</b-button>
+      <b-button @click="login" type="is-primary">Login</b-button>
+      <b-button @click="signUp" type="is-primary">Sign-Up</b-button>
       </div>
     </form>
   </section>

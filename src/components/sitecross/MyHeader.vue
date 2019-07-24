@@ -44,12 +44,17 @@
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/reservation"
-              >My Reservation</router-link>
+              >My Reservations</router-link>
+              <router-link
+                v-show="loggedInUser"
+                :class="['navbar-item has-text-black is-subtitle']"
+                to="/profile/orders"
+              >My Orders</router-link>
               <router-link
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/messages"
-              >My Messages {{this.counter}}</router-link>
+              >My Messages: {{this.userMsgsCount}}</router-link>
 
               <hr class="navbar-divider" />
               <span v-show="loggedInUser" @click="logout" class="navbar-item">
@@ -80,11 +85,13 @@ export default {
   props: ["loggedInUser"],
   data() {
     return {
-      counter: 0,
       isBurgerMenuOpen: false
     };
   },
   computed: {
+    userMsgsCount() {
+      return this.$store.getters.userMsgsCount;
+    },
     menuClass() {
       if (this.$route.name === "Home") return "navbar-item has-text-white hamburger-text-color-fixer";
       else return "navbar-item  has-text-black";

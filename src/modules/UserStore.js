@@ -4,7 +4,9 @@ export default {
     state: {
         loggedInUser: userService.getLoggedInUser(),
         userReservations: [],
-        userLikedYachts: []
+        userLikedYachts: [],
+        userMsgs: [],
+        ownerOrders: []
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
@@ -15,6 +17,12 @@ export default {
         },
         userLikedYachts({userLikedYachts}) {
             return userLikedYachts;
+        },
+        userMsgs({userMsgs}) {
+            return userMsgs;
+        },
+        userMsgsCount({userMsgs}) {
+            return userMsgs.length;
         }
     },
     mutations: {
@@ -31,9 +39,21 @@ export default {
         },
         setUserLikedYachts(state, context) {
             state.userLikedYachts = context.userLikedYachts;
+        },
+        setUserMsgs(state, context) {
+            state.userMsgs = context.userMsgs;
         }
     },
     actions: {
+        async loadUserMsgs({commit}, {userLoggedInId}) {
+            try {
+                const userMsgs = await userService.getLoggedInUserMsgs(userLoggedInId);
+                commit({type: 'setUserMsgs', userMsgs})
+            } catch (err) {
+                console.log('userStore Could not get usermsgs error:', err)
+            }
+        },
+
         async signUp({commit}, {user}) {
             let sessionUser;
             try {
@@ -79,7 +99,6 @@ export default {
                 return sessionUser.isOwner;
             } catch (err) {
                 console.log('Could not update user owner error:', err)
-
                 throw err;
             }
         },
@@ -95,9 +114,9 @@ export default {
             }
         },
 
-        async replyUser(context, { replyUser }) {
+        async replyToUserFromOwner(context, { replyToUserFromOwner }) {
             try {
-                const sendUserMsg = userService.replyUserMsg(replyUser)
+                const sendUserMsg = userService.replyUserMsg(replyToUserFromOwner)
                 return sendUserMsg;
             } catch (err) {
                 console.log('err', err);

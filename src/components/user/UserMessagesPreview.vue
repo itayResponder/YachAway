@@ -28,13 +28,10 @@
 				<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
 			</div>
 			<div class=" is-bottom ">
-				<b-button @click="approveUser" type="button field">
+				<b-button @click="approveUser" type="button field is-primary">
 					Approve User Request
 				</b-button>
-				<!-- <b-button @click="editOwnerYacht" type="button field">
-					<img src="@/assets/icons/baseline-edit.svg" alt="edit" />
-				</b-button> -->
-				<b-button type="button field" @click="declineUser">
+				<b-button type="button field is-primary" @click="declineUser">
 					Decline User Request
 				</b-button>
 			</div>
@@ -46,24 +43,21 @@ export default {
 	props: ["reservation"],
 	data() {
 		return {
-            replyUser: null
+            replyToUserFromOwner: null
         };
     },
-    created() {
-		console.log('userMsgPrev created reservation:', this.reservation, 'replyUser:',this.replyUser)
-	},
 	mounted() {
-		this.replyUser = this.reservation.user
-        this.replyUser.reservationId = this.reservation._id
+		this.replyToUserFromOwner = this.reservation.user
+        this.replyToUserFromOwner.reservationId = this.reservation._id
 	},
 	methods: {
 		approveUser() {
-            this.replyUser.isReply = true;
-            this.$emit("replyUser", this.replyUser)
+            this.replyToUserFromOwner.isReply = true;
+            this.$emit("replyToUserFromOwner", this.replyToUserFromOwner)
 		},
 		declineUser() {
-            replyUser.isReply = false;
-            this.$emit("replyUser", this.replyUser)
+            replyToUserFromOwner.isReply = false;
+            this.$emit("replyToUserFromOwner", this.replyToUserFromOwner)
 		},
 	}
 };
