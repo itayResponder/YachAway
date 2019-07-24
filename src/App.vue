@@ -38,9 +38,6 @@ export default {
 @import "~bulma";
 @import "~buefy/src/scss/buefy";
 
-// @import url("https://fonts.googleapis.com/css?family=EB+Garamond&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Dosis&display=swap');
-
 @import "assets/css/main.css";
 
 // Set your colors
@@ -64,7 +61,7 @@ $primary: #4d9989;
 	}
 
 	body {
-		font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto",
+		font-family:  "Roboto", BlinkMacSystemFont, -apple-system, "Segoe UI",
 			"Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
 			"Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
 	}

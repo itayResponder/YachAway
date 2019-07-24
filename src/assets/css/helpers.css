@@ -6,8 +6,7 @@
 
 .grid-container {
     display: grid;
-
-  }
+}
 
 
 .grid-auto {
@@ -19,6 +18,7 @@
 
   }
 
+
   .space-between {
     align-content: space-between;
   }
@@ -26,7 +26,7 @@
   .align-center {
       align-content: center;
   }
-
+/* ================= */
   /* SHADOW */
 
   .row-shadow {
@@ -36,21 +36,85 @@
     box-shadow: 1px 0px 0px 0px rgba(0, 0, 0, 0.12);
   }
 
+  /* ============= */
   /* Margins */
 .yacht-list-preview-margin{
   margin: 30px 0;
 }
 
 .margin-6rem {
-	margin: 6rem;
+	margin: 6rem 0;
 }
 .margin-7rem {
-	margin: 7rem;
+	margin: 7rem 0;
 }
 
 .margin-min {
-  margin: 1rem;
+  margin: 1rem 0;
 }
 .margin-small {
-  margin: 2rem;
+  margin: 2rem 0;
+}
+.margin-3rem {
+  margin: 3rem 0;
+}
+
+
+
+
+/* Margins TOP */
+.margin-top-1rem {
+  margin-top: 1rem;
+}
+.margin-top-2rem {
+  margin-top: 2rem;
+}
+.margin-top-3rem {
+  margin-top: 3rem;
+}
+.margin-top-4rem {
+  margin-top: 4rem;
+}
+.margin-top-5rem {
+  margin-top: 5rem;
+}
+.margin-top-6rem {
+  margin-top: 6rem;
+}
+.margin-top-7rem {
+  margin-top: 7rem;
+}
+ .margin-top-8rem {
+  margin-top: 8rem;
+}
+.margin-top-9rem {
+  margin-top: 9rem;
+}
+.margin-top-10rem {
+  margin-top: 10rem;
+}
+
+/* .margin-top-11rem {
+  margin-top: 11rem;
+} 
+.margin-top-12rem {
+  margin-top: 12rem;
+} */
+
+/* ========== */
+ /* TEXT */
+.text-start {
+   text-align: start;
+  }
+  /* ========== */
+   /* IMAGES */
+
+.is-cover {
+   object-fit: cover
+}
+.is-contain{
+ object-fit: contain
+}
+.is-scale-down{
+ object-fit: scale-down
 }

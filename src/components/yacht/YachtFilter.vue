@@ -71,7 +71,7 @@
         <br />
         <!-- ####################### -->
         <!-- room faclities -->
-        <b-tab-item  label="room faclities">
+        <!-- <b-tab-item  label="room faclities"> -->
           <h4 class="subtitle">room faclities</h4>
           <label class="panel-block">
             <b-checkbox
@@ -129,12 +129,11 @@
               @input="emitFilter"
             >Fridge</b-checkbox>
           </label>
-        </b-tab-item>
+        <!-- </b-tab-item> -->
 
         <br />
         <!-- ####################### -->
         <!-- yacht faclities -->
-        <b-tab-item label="yacht faclities">
           <h4 class="subtitle">yacht faclities</h4>
           <label class="panel-block">
             <b-checkbox
@@ -171,7 +170,9 @@
               @input="emitFilter"
             >nothing</b-checkbox>
           </label>
-        </b-tab-item>
+                  
+         <!-- <b-tab-item label="yacht faclities"> -->
+        <!-- </b-tab-item> -->
       </b-tabs>
     </nav>
   </section>

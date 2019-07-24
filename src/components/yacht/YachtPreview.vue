@@ -3,7 +3,7 @@
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <div class="container">
-        <figure class="image img-wrap img-hover-zoom" style="overflow: hidden;">
+        <figure class="image img-wrap" style="overflow: hidden;">
           <img :src="getYachtFrontImg" class="img-boat" style="object-fit: fill; overflow: hidden;" />
           <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
 

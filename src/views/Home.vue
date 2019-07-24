@@ -2,14 +2,20 @@
   <div class="layout">
     
     <hero :loggedInUser="getLoggedInUser"/>
-    <citeis />
-    <featureArea />
+    <citeis>
+      Sail Your Way
+    </citeis>
+    <yacht-home-cards />
+    <bullets />
+    <featureArea  class="margin-top-6rem" />
   </div>
 </template>
 
 <script>
 import hero from "@/components/home/Hero";
 import citeis from "@/components/home/Citeis";
+import yachtHomeCards from "@/components/home/YachtHomeCards";
+import bullets from "@/components/general/ThreeBulletsAndMedia";
 import featureArea from "@/components/home/FeatureArea";
 
 export default {
@@ -22,7 +28,9 @@ export default {
   
   components: {
     citeis,
+    yachtHomeCards,
     featureArea,
+    bullets,
     hero
   }
 };

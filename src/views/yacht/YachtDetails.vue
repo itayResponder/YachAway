@@ -65,7 +65,7 @@
 </template>
 
 <script>
-import utillservice from "@/services/utill.service";
+import utillService from "@/services/utill.service";
 import calendarShow from "@/components/general/CalendarShow";
 import previewReview from "@/components/yacht/PreviewReview";
 import reservationBox from "@/components/yacht/ReservationBox";
@@ -135,7 +135,7 @@ export default {
     }
 
     // AVOID ERROR FOR GIVING A FUNC INSTEAD OF BOLOLEAN
-    const tempIsMobile = this.isNotMobile;
+    const tempIsMobile = utillService.isNotMobile;
     this.isNotAMobile = tempIsMobile ? true : false;
   },
   mounted() {
@@ -145,18 +145,6 @@ export default {
     goBack() {
       this.$router.push("/yachts");
     },
-
-    isNotMobile() {
-      if (
-        /Android|webOS|iPhone||iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        return false;
-      } else {
-        return true;
-      }
-    }
   },
 
   computed: {
@@ -166,7 +154,7 @@ export default {
       const sourceImage = this.yacht.owner.img;
       const settings = "w_48,h_48";
       const placeholder = "https://bulma.io/images/placeholders/48x48.png";
-      const newImageUrl = utillservice.getImgCloudinary(
+      const newImageUrl = utillService.getImgCloudinary(
         cloudName,
         sourceImage,
         placeholder,
