@@ -51,7 +51,7 @@
         <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
         <br />
         <p
-          class="level-left level-item has-text-grey margin-min is-hidden-mobile"
+          class="level-left level-item has-text-grey margin-1rem is-hidden-mobile"
         >{{yacht.owner.name}}&nbsp;&nbsp;&nbsp;</p>
         <p class="level-left level-item is-hidden-mobile">
           <span>
