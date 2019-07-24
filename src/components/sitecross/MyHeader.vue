@@ -22,17 +22,17 @@
       </div>
       <div id="navbarMenuHeroB" :class="[{'is-active': isBurgerMenuOpen}, 'navbar-menu']">
         <div class="navbar-start">
-          <router-link :class="[menuClass]" exact to="/">Home</router-link>
-          <router-link :class="[menuClass]" to="/yachts">Yachts</router-link>
-          <router-link :class="[menuClass]" to="/About">About / Help</router-link>
+          <router-link :class="[menuClass, {'has-text-black' : isBurgerMenuOpen}]" exact to="/">Home</router-link>
+          <router-link :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]" to="/yachts">Yachts</router-link>
+          <router-link :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]" to="/About">About / Help</router-link>
           <!-- <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link> -->
         </div>
         <div class="navbar-end">
-          <router-link :class="[menuClass]" to="/edit">List Your Yacht</router-link>
+          <router-link :class="[menuClass, {'has-text-black' : isBurgerMenuOpen}]" to="/edit">List Your Yacht</router-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <router-link
               v-show="loggedInUser"
-              :class="[menuClass, 'navbar-link']"
+              :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
             >Profile</router-link>
             <div class="navbar-dropdown is-boxed">
@@ -69,7 +69,7 @@
           <!-- need to login or signup -->
           <div v-show="!loggedInUser" class="navbar-item">
             <span class="button is-primary navbar-content is-outlined">
-              <router-link :class="[menuClass]" to="/login">Login</router-link>
+              <router-link :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]" to="/login">Login</router-link>
             </span>
           </div>
         </div>
@@ -94,7 +94,7 @@ export default {
       return this.$store.getters.userMsgsCount;
     },
     menuClass() {
-      if (this.$route.name === "Home" || !this.isBurgerMenuOpen ) return "navbar-item has-text-white hamburger-text-color-fixer";
+      if (this.$route.name === "Home") return "navbar-item has-text-white hamburger-text-color-fixer";
       else return "navbar-item  has-text-black";
     },
     getUrlId() {
@@ -127,6 +127,10 @@ export default {
 
 b-button {
   padding: 0.5rem 0.75rem 0 0.75rem;
+}
+
+.navbar-burger {
+	color: #0a0a0a !important;
 }
 
 @media (max-width: 960px) {
