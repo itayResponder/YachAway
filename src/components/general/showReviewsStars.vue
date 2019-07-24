@@ -37,14 +37,14 @@ export default {
 
       //FULL STARS
       while (average > 0.5) {
-        stars += '<img width="20" src="/img/icons/star.svg"/>';
+        stars += '<img width="17%" src="/img/icons/star.svg"/>';
         average--;
       }
       //HALF STAR
-      if (average === 0.5) stars += '<img  width="20" src="/img/icons/star-half.svg"/>';
+      if (average === 0.5) stars += '<img  width="17%" src="/img/icons/star-half.svg"/>';
       //EMPTY STARS
       while (emptyStar > 0.5) {
-        stars += '<img  width="20" src="/img/icons/star-outline.svg"/>';
+        stars += '<img  width="17%" src="/img/icons/star-outline.svg"/>';
         emptyStar--;
       }
       return stars;
