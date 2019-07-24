@@ -22,7 +22,7 @@ export default {
             return userMsgs;
         },
         userMsgsCount({userMsgs}) {
-            return userMsgs.length;
+            return userMsgs ? userMsgs.length : 0;
         }
     },
     mutations: {
