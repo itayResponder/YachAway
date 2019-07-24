@@ -49,7 +49,7 @@
             </div>
 
             <calendarShow class="margin-6rem" />
-            <previewReview />
+            <reviewList />
           </div>
         </article>
       </div>
@@ -67,7 +67,7 @@
 <script>
 import utillService from "@/services/utill.service";
 import calendarShow from "@/components/general/CalendarShow";
-import previewReview from "@/components/yacht/PreviewReview";
+import reviewList from "@/components/general/ReviewList";
 import reservationBox from "@/components/yacht/ReservationBox";
 // import imageCarousel from "@/components/general/ImageCarousel";
 import { VueperSlides, VueperSlide } from "vueperslides";
@@ -168,7 +168,7 @@ export default {
 
   components: {
     calendarShow,
-    previewReview,
+    reviewList,
     reservationBox,
     VueperSlides,
     VueperSlide
