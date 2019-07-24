@@ -13,6 +13,7 @@
           data-target="navbarMenuHeroB"
           @click="isBurgerMenuOpen = !isBurgerMenuOpen"
           v-bind:class="{'is-active': isBurgerMenuOpen}"
+          
         >
           <span></span>
           <span></span>
@@ -93,7 +94,7 @@ export default {
       return this.$store.getters.userMsgsCount;
     },
     menuClass() {
-      if (this.$route.name === "Home") return "navbar-item has-text-white hamburger-text-color-fixer";
+      if (this.$route.name === "Home" || this.window.width > 1034 ) return "navbar-item has-text-white hamburger-text-color-fixer";
       else return "navbar-item  has-text-black";
     },
     getUrlId() {

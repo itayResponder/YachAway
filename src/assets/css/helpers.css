@@ -46,7 +46,7 @@
 .margin-1rem, .margin-min {
   margin: 1rem;
 }
-.margin-2rem {
+.margin-2rem, .margin-small {
   margin: 2rem;
 }
 .margin-3rem {

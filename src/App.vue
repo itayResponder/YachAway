@@ -1,6 +1,6 @@
 <template>
 	<div id="app" >
-		<my-header :loggedInUser="getLoggedInUser" v-if="!headerType"></my-header>
+		<my-header :loggedInUser="getLoggedInUser" v-show="!homePage"></my-header>
 		<router-view></router-view>
 		<Myfooter/>
 	</div>
@@ -24,8 +24,8 @@ export default {
 	},
 
 	computed: {
-		headerType() {
-			return this.$route.name === "Home";
+		homePage() {
+			return this.$route.name === "Home" || this.$route.param === '/';
 		},
 		getLoggedInUser() {
 			return this.$store.getters.userLoggedIn;
