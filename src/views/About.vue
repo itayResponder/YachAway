@@ -79,23 +79,23 @@
         </div>
 
         <div class="columns">
-          <div class="column is-half margin-top-2rem">
-            <p class="column text-start">{{p1}}</p>
+          <div class="column is-half" >
+            <p class="column text-start margin-top-2rem">{{p1}}</p>
             <!-- <p> -->
-              <figure class="image" style="margin-top:11.5rem">
+              <figure class="image margin-top-2rem" >
                 <img
                   src="https://www.oceanindependence.com/sites/default/files/styles/half/public/%C2%A9Guillaume%20Plisson-49761_2000x1250%20%281%29.jpg"
                 />
               </figure>
           </div>
 
-          <div class="column margin-top-3rem">
-            <figure class="image">
+          <div class="column">
+            <figure class="image margin-top-2rem">
               <img
                 src="https://www.oceanindependence.com/sites/default/files/styles/half/public/Guillaume_plisson_U4A6127_2000.jpg"
               />
         </figure>
-            <p class="column margin-top-7rem text-start">{{p2}}</p>
+            <p class="column text-start margin-top-2rem">{{p2}}</p>
           </div>
         </div>
 
