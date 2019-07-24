@@ -1,13 +1,13 @@
 <template>
   <div class="columns is-12 is-mobile row-shadow margin-bottom-3rem">
-    <div class="column ">
+    <div class="column">
       <!-- image is-4by5 -->
       <div class="container">
         <figure class="image is-relative">
           <img
             :src="getYachtFrontImg"
-            class
-            style="object-fit: cover; overflow: hidden; height: 22vw;"
+            class = "max-height"
+            style="object-fit: cover; overflow: hidden; "
           />
           <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
 
@@ -18,7 +18,7 @@
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
               class="like like-it-symbole"
-              style="height:30px; width: 30px"
+              style="height:18%; width: 18%"
             />
             <img
               v-if="like"
@@ -26,7 +26,7 @@
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
               class="like like-it-symbole"
-              style="height:30px; width: 30px"
+              style="height:18%; width: 18%"
             />
           </div>
         </figure>
@@ -38,15 +38,16 @@
     <!-- TEXT -->
     <router-link
       :to="getUrlWithYachtId"
-      class="column is-5 is-3-mobile horiznal-shadow"
+      class="column is-5 is-hidden-mobile horiznal-shadow"
       style="position: relative;"
     >
-      <strong class="title is-4 level-left margin-top-2rem">{{yacht.name}}</strong>
+      <strong class="title is-4 level-left">{{yacht.name}}</strong>
       <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}</p>
 
       <!-- THE FACILITES -->
 
-      <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
+      <figure class="image is-48x48" 
+      style="display:flex; position: absolute;  bottom: 14px;">
         <img class="level-left level-item is-rounded is-hidden-mobile" :src="getOwnerImg" />
         <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
         <br />
@@ -62,7 +63,9 @@
     </router-link>
 
     <!-- REVIEWS AND PRICE -->
-    <div class="column is-3">
+    <router-link
+      :to="getUrlWithYachtId"
+     class="column is-3">
       <div class="media is-boxed has-bullet-separator" style="text-align: center">
         <div>
           <p class="price-per-night">
@@ -78,7 +81,7 @@
           >Sail !</router-link>
         </div>
       </div>
-    </div>
+    </router-link>
 
     <!-- END columns -->
   </div>
@@ -176,7 +179,7 @@ export default {
   z-index: 10;
   float: left;
   top: 7px;
-  left: 85%;
+  left: 82%;
   /* padding: 10px; */
 }
 
@@ -197,7 +200,13 @@ a {
 /* margin: 0px 10px; */
 
 .max-height {
-  height: 22vh;
+  height: 25vh;
+  /* height: minmax(175px,1fr); */
+}
+@media only screen and (max-width: 600px) {
+  .max-height {
+    height: inherit;
+  }
 }
 
 .img-boat {
