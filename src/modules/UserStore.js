@@ -39,6 +39,9 @@ export default {
         },
         setUserLikedYachts(state, context) {
             state.userLikedYachts = context.userLikedYachts;
+        },
+        setUserMsgs(state, context) {
+            state.userMsgs = context.userMsgs;
         }
     },
     actions: {
@@ -59,6 +62,9 @@ export default {
             try {
                 sessionUser = await userService.login(user)
                 if (sessionUser) {
+                    let userMsgs = sessionUser.messages;
+                    commit({type: 'setUserMsgs', userMsgs})
+                    delete sessionUser.messages;
                     commit({ type: 'setUser', sessionUser })
                     return sessionUser;
                 }

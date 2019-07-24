@@ -97,7 +97,8 @@ function _getUrl(userId = '') {
 }
 
 function _handleSuccessfullRegister(user) {
-    loggedInUser = user
+    loggedInUser = {...user};
+    delete loggedInUser.messages;
     sessionStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-    return loggedInUser;
+    return user;
 }

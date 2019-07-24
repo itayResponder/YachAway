@@ -24,6 +24,7 @@ export default {
   },
   methods: {
     replyToUserFromOwner(replyToUserFromOwner) {
+      console.log('userMsgList:', replyToUserFromOwner)
 		this.$emit("replyToUserFromOwner", replyToUserFromOwner);
 	}
   },

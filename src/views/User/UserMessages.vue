@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 v-if="!this.userLoggedInReservations[0]">
+    <h1 v-if="!this.userMsgs[0]">
       <b>You dont have any messages</b>
     </h1>
     <nav v-else>
@@ -12,7 +12,7 @@
         :reservations="reservations"
         @replyToUserFromOwner="replyToUserFromOwner"
       ></user-messages-list>
-      <div v-else>{{this.userLoggedInReservations}}</div>
+      <div v-else>{{userMsgs}} test</div>
     </nav>
   </section>
 </template>
@@ -24,7 +24,7 @@ export default {
   data() {
     return {
       loggedInUser: null,
-      userLoggedInReservations: []
+      userLoggedInReservations: [],
     };
   },
   async created() {
@@ -36,6 +36,10 @@ export default {
     }
   },
   computed: {
+    userMsgs() {
+      console.log('userMsgs:',this.$store.getters.userMsgs)
+      return this.$store.getters.userMsgs;
+    },
     reservations() {
       return this.$store.getters.userReservations;
     }
@@ -45,7 +49,7 @@ export default {
       try {
         const answer = await this.$store.dispatch({
           type: "replyToUserFromOwner",
-          replyUser
+          replyToUserFromOwner
         });
         await Swal.fire(
           "Allright",

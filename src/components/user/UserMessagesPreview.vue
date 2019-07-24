@@ -28,13 +28,10 @@
 				<time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
 			</div>
 			<div class=" is-bottom ">
-				<b-button @click="approveUser" type="button field">
+				<b-button @click="approveUser" type="button field is-primary">
 					Approve User Request
 				</b-button>
-				<!-- <b-button @click="editOwnerYacht" type="button field">
-					<img src="@/assets/icons/baseline-edit.svg" alt="edit" />
-				</b-button> -->
-				<b-button type="button field" @click="declineUser">
+				<b-button type="button field is-primary" @click="declineUser">
 					Decline User Request
 				</b-button>
 			</div>
@@ -56,11 +53,11 @@ export default {
 	methods: {
 		approveUser() {
             this.replyToUserFromOwner.isReply = true;
-            this.$emit("replyUser", this.replyToUserFromOwner)
+            this.$emit("replyToUserFromOwner", this.replyToUserFromOwner)
 		},
 		declineUser() {
             replyToUserFromOwner.isReply = false;
-            this.$emit("replyUser", this.replyToUserFromOwner)
+            this.$emit("replyToUserFromOwner", this.replyToUserFromOwner)
 		},
 	}
 };
