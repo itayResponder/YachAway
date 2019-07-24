@@ -1,6 +1,6 @@
 <template>
 	<div class="container is-relative">
-		<div class="margin-min level-left">
+		<div class="margin-1rem level-left">
 			<p class="title is-capitalized">
 				Luxury Yachts
 			</p>
@@ -21,7 +21,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="margin-min level-left">
+		<div class="margin-1rem level-left">
 			<p class="title is-capitalized">
 				 top rated yachts
 			</p>

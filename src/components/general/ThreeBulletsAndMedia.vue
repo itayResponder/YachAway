@@ -1,6 +1,6 @@
 <template>
-  <div class="columns margin-min margin-top-2rem">
-    <div class="column is-half text-start margin-top-2rem">
+  <div class="columns margin-top-2rem">
+    <div class="column is-half text-start margin-2rem">
       <h2 class="is-title is-capitalized is-size-2">
         <slot name="title">Explore your nature, see seas, With Confidence</slot>
       </h2>

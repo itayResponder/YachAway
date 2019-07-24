@@ -5,7 +5,7 @@
       width="500"
       alt="Merchant Equipment Store Credit Card Logos"
     />
-    <div class="content has-text-left margin-small">
+    <div class="content has-text-left margin-top-1rem">
       <p>
         <strong>Yacht Away &#169;</strong>2019 - present.
         <i>Sprint</i> project for

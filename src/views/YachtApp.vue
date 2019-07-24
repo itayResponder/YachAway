@@ -1,7 +1,7 @@
 
 <template>
   <section>
-    <h1 class="is-size-1 is-capitalized">{{cityName}}</h1>
+    <h1 class="is-size-1 is-capitalized ">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
       <img v-show="isGrid" type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
@@ -44,6 +44,7 @@ export default {
     // if (!this.filterBy) filterBy.txt = this.$route.params.city;
     if (this.loggedInUser) {
       try {
+        
         await this.$store.dispatch({
           type: "loadUserLikedYachts",
           userId: this.$store.getters.userLoggedIn._id

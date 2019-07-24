@@ -16,7 +16,7 @@
       <!-- LEFT -->
       <div class="tile is-parent is-9">
         <article class="tile is-child">
-          <div class="content margin-small">
+          <div class="content margin-top-2rem">
             <!-- TITLE  -->
             <h1>{{yacht.name}}</h1>
 
@@ -31,10 +31,10 @@
             </figure>
 
             <!-- description -->
-            <h4 class="is-title is-primary margin-6rem">Description</h4>
+            <h4 class="is-title is-primary  margin-top-6rem">Description</h4>
             <p>{{yacht.description}}</p>
 
-            <h4 class="is-title margin-6rem">Facilities</h4>
+            <h4 class="is-title margin-top-6rem">Facilities</h4>
             <div class="facilities">
               <!-- facility  -->
               <div
@@ -49,7 +49,7 @@
             </div>
 
             <calendarShow class="margin-6rem" />
-            <previewReview />
+            <reviewList />
           </div>
         </article>
       </div>
@@ -67,7 +67,7 @@
 <script>
 import utillService from "@/services/utill.service";
 import calendarShow from "@/components/general/CalendarShow";
-import previewReview from "@/components/yacht/PreviewReview";
+import reviewList from "@/components/general/ReviewList";
 import reservationBox from "@/components/yacht/ReservationBox";
 // import imageCarousel from "@/components/general/ImageCarousel";
 import { VueperSlides, VueperSlide } from "vueperslides";
@@ -168,7 +168,7 @@ export default {
 
   components: {
     calendarShow,
-    previewReview,
+    reviewList,
     reservationBox,
     VueperSlides,
     VueperSlide

@@ -116,7 +116,7 @@ export default {
       return count
     },
     showYachtCity() {
-      if (!this.countryCode || this.countryCode.length < 2) return;
+      if (!this.countryCode) return;
 
       var country;
       switch (this.countryCode.toUpperCase()) {

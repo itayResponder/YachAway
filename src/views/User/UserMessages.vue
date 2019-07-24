@@ -1,19 +1,22 @@
 <template>
   <section>
-    <h1 v-if="!this.userMsgs[0]">
+    <h1 v-if="!this.userMsgs">
       <b>You dont have any messages</b>
     </h1>
     <nav v-else>
-      <b>You have got new messages</b>
+      <b>You have got messages</b>
+      {{userMsgs}}
       <br />
       <!-- {{this.userLoggedInReservations}} -->
+    </nav>
+    <section v-if="this.loggedInUser.isOwner">
       <user-messages-list
         v-if="this.loggedInUser.isOwner"
         :reservations="reservations"
         @replyToUserFromOwner="replyToUserFromOwner"
       ></user-messages-list>
-      <div v-else>{{userMsgs}} test</div>
-    </nav>
+      <!-- <div v-else>{{userMsgs}} test</div> -->
+    </section>
   </section>
 </template>
 
@@ -24,21 +27,24 @@ export default {
   data() {
     return {
       loggedInUser: null,
-      userLoggedInReservations: [],
+      userLoggedInReservations: []
     };
   },
   async created() {
     this.loggedInUser = this.$store.getters.userLoggedIn;
     try {
-        this.userLoggedInReservations = await this.$store.dispatch({type: "loadUserReservations", userId: this.loggedInUser._id})
+      await this.$store.dispatch({type: 'loadUserMsgs', userLoggedInId: this.loggedInUser._id})
+      this.userLoggedInReservations = await this.$store.dispatch({
+        type: "loadUserReservations",
+        userId: this.loggedInUser._id
+      });
     } catch (err) {
-        console.log("Could not load user reservations error:", err)
+      console.log("Could not load user reservations error:", err);
     }
   },
   computed: {
-    userMsgs() {
-      console.log('userMsgs:',this.$store.getters.userMsgs)
-      return this.$store.getters.userMsgs;
+     userMsgs() {
+        return this.$store.getters.userMsgs;
     },
     reservations() {
       return this.$store.getters.userReservations;

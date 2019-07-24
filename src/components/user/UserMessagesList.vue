@@ -19,12 +19,8 @@ export default {
   data() {
     return {};
   },
-  created() {
-    console.log('UserMessagesList reservations:', this.reservations)
-  },
   methods: {
     replyToUserFromOwner(replyToUserFromOwner) {
-      console.log('userMsgList:', replyToUserFromOwner)
 		this.$emit("replyToUserFromOwner", replyToUserFromOwner);
 	}
   },
