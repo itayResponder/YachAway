@@ -3,7 +3,7 @@
     <div class="column is-one-third">
       <!-- image is-4by5 -->
       <div class="container">
-        <figure class="image img-wrap" style="overflow: hidden;">
+        <figure class="image is-4by3 img-wrap" style="overflow: hidden;">
           <img :src="getYachtFrontImg" class="img-boat" style="object-fit: fill; overflow: hidden;" />
           <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
 
@@ -13,8 +13,8 @@
               @click="likeClicked"
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
-              class="is-relative like"
-              style="height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
+              class=" like"
+              style="position: absolute; height:50px; z-index: 10; float:right; left: 40%; top:-12.5rem; padding:10px;"
             />
             <img
               v-if="like"
@@ -61,10 +61,9 @@
             {{yacht.pricePerNight}} $
             <br />
           </p>
-          <span v-html="showStars"></span>
 
-          <br />
-          <small class="is-center is-clearfix has-text-grey">{{getNumberOfReviews}} Reviews</small>
+          <showReviewsStars :reviews="this.yacht.reviews"/>
+
           <router-link
             :to="getUrlWithYachtId"
             class="button is-primary is-hidden-mobile is-3 margin-min"
@@ -79,9 +78,10 @@
 
 <script>
 import utillservice from "@/services/utill.service";
-
+import showReviewsStars from "@/components/general/showReviewsStars"
 // import Swal from "sweetalert2";
 export default {
+  components: {showReviewsStars},
   name: "YachtPreview",
   props: ["yacht", "loggedInUser", "likedYachts"],
   data() {
@@ -115,45 +115,13 @@ export default {
     }
   },
   computed: {
-    getNumberOfReviews() {
-      return this.yacht.reviews.length;
-    },
-    getAverageReviews() {
-      var length = this.yacht.reviews.length;
-      var sum = 0;
-      this.yacht.reviews.forEach(review => {
-        sum += review.score;
-      });
-      var average = sum / length;
-      this.average = average;
-      return average;
-    },
+   
     like() {
       return this.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
     },
-    showStars() {
-      this.averag = this.getAverageReviews;
-      var stars = "";
-      var emptyStar = 5 - this.average;
-      //FULL STARS
-      while (this.average > 0.5) {
-        stars += '<img src="/img/icons/star.svg"/>';
-        this.average--;
-      }
-      //HALF STAR
-      if (this.average === 0.5)
-        stars += '<img src="/img/icons/star-half.svg"/>';
-      //EMPTY STARS
-      while (emptyStar > 0.5) {
-        stars += '<img src="/img/icons/star-outline.svg"/>';
-        emptyStar--;
-      }
-      return stars;
-      // END
-      // OLD HTML star CODE = '&#11088 ';
-    },
+    
     getUrlWithYachtId() {
       return "/yacht/" + this.yacht._id;
     },
@@ -162,7 +130,7 @@ export default {
       const cloudName = "ocean-yachts";
       const uploadPreset = "upload";
       const sourceImage = this.yacht.imgs[0];
-      const settings = 'w_300,h_300'
+      const settings = 'w_450'
       const placeholder ='https://bulma.io/images/placeholders/256x256.png'
       const newImageUrl =  utillservice.getImgCloudinary (cloudName,sourceImage,placeholder, settings, uploadPreset)           
       return newImageUrl;
