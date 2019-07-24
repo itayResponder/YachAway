@@ -3,11 +3,9 @@
     grid-template-columns: 1fr 1rem minmax(224px, 3fr);
 }
 
-
 .grid-container {
     display: grid;
 }
-
 
 .grid-auto {
     grid-template-columns: auto auto auto;
@@ -15,17 +13,16 @@
 
 .grid-third {
     grid-template-columns: 1fr 2fr 1fr;
-
   }
 
 
-  .space-between {
+.space-between {
     align-content: space-between;
-  }
+}
 
-  .align-center {
+.align-center {
       align-content: center;
-  }
+}
 /* ================= */
   /* SHADOW */
 
