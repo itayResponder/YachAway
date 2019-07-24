@@ -40,7 +40,6 @@ export default {
   },
   computed: {
     userMsgs() {
-      console.log('userMsgs:',this.$store.getters.userMsgs)
       return this.$store.getters.userMsgs;
     },
     reservations() {
