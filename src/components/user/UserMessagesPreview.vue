@@ -46,24 +46,21 @@ export default {
 	props: ["reservation"],
 	data() {
 		return {
-            replyUser: null
+            replyToUserFromOwner: null
         };
     },
-    created() {
-		console.log('userMsgPrev created reservation:', this.reservation, 'replyUser:',this.replyUser)
-	},
 	mounted() {
-		this.replyUser = this.reservation.user
-        this.replyUser.reservationId = this.reservation._id
+		this.replyToUserFromOwner = this.reservation.user
+        this.replyToUserFromOwner.reservationId = this.reservation._id
 	},
 	methods: {
 		approveUser() {
-            this.replyUser.isReply = true;
-            this.$emit("replyUser", this.replyUser)
+            this.replyToUserFromOwner.isReply = true;
+            this.$emit("replyUser", this.replyToUserFromOwner)
 		},
 		declineUser() {
-            replyUser.isReply = false;
-            this.$emit("replyUser", this.replyUser)
+            replyToUserFromOwner.isReply = false;
+            this.$emit("replyUser", this.replyToUserFromOwner)
 		},
 	}
 };

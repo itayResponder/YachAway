@@ -4,7 +4,8 @@ export default {
     state: {
         loggedInUser: userService.getLoggedInUser(),
         userReservations: [],
-        userLikedYachts: []
+        userLikedYachts: [],
+        userMsgs: [],
     },
     getters: {
         userLoggedIn({ loggedInUser }) {
@@ -15,6 +16,12 @@ export default {
         },
         userLikedYachts({userLikedYachts}) {
             return userLikedYachts;
+        },
+        userMsgs({userMsgs}) {
+            return userMsgs;
+        },
+        userMsgsCount({userMsgs}) {
+            return userMsgs.length;
         }
     },
     mutations: {
@@ -95,9 +102,9 @@ export default {
             }
         },
 
-        async replyUser(context, { replyUser }) {
+        async replyToUserFromOwner(context, { replyToUserFromOwner }) {
             try {
-                const sendUserMsg = userService.replyUserMsg(replyUser)
+                const sendUserMsg = userService.replyUserMsg(replyToUserFromOwner)
                 return sendUserMsg;
             } catch (err) {
                 console.log('err', err);

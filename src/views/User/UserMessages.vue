@@ -10,7 +10,7 @@
       <user-messages-list
         v-if="this.loggedInUser.isOwner"
         :reservations="reservations"
-        @replyUser="replyUser"
+        @replyToUserFromOwner="replyToUserFromOwner"
       ></user-messages-list>
       <div v-else>{{this.userLoggedInReservations}}</div>
     </nav>
@@ -41,10 +41,10 @@ export default {
     }
   },
   methods: {
-    async replyUser(replyUser) {
+    async replyToUserFromOwner(replyToUserFromOwner) {
       try {
         const answer = await this.$store.dispatch({
-          type: "replyUser",
+          type: "replyToUserFromOwner",
           replyUser
         });
         await Swal.fire(
