@@ -162,17 +162,6 @@
             >Shnorkel</b-checkbox>
           </label>
 
-          <label class="panel-block">
-            <b-checkbox
-              v-model="filterBy.facilities"
-              native-value="nothing"
-              type="is-primary"
-              @input="emitFilter"
-            >nothing</b-checkbox>
-          </label>
-                  
-         <!-- <b-tab-item label="yacht faclities"> -->
-        <!-- </b-tab-item> -->
       </b-tabs>
     </nav>
   </section>
