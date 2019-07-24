@@ -6,6 +6,7 @@ export default {
         userReservations: [],
         userLikedYachts: [],
         userMsgs: [],
+        ownerOrders: []
     },
     getters: {
         userLoggedIn({ loggedInUser }) {

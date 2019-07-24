@@ -62,10 +62,10 @@
         <div v-show="showStars">
           <h4 class="subtitle">Stars</h4>
           <label class="panel-block">
-            <b-checkbox native-value="4" type="is-info" @input="emitFilter">4</b-checkbox>
+            <b-checkbox native-value="4" type="is-primary" @input="emitFilter">4</b-checkbox>
           </label>
           <label class="panel-block">
-            <b-checkbox native-value="5" type="is-info" @input="emitFilter">5</b-checkbox>
+            <b-checkbox native-value="5" type="is-primary" @input="emitFilter">5</b-checkbox>
           </label>
         </div>
         <br />
@@ -77,7 +77,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="wifi"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Wifi</b-checkbox>
           </label>
@@ -85,7 +85,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="TV"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Tv</b-checkbox>
           </label>
@@ -93,7 +93,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="towels"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Towels</b-checkbox>
           </label>
@@ -101,7 +101,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="safe"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Safe</b-checkbox>
           </label>
@@ -109,7 +109,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="AC"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >AC</b-checkbox>
           </label>
@@ -117,7 +117,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="kitchen"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Kitchen</b-checkbox>
           </label>
@@ -125,7 +125,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="fridge"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Fridge</b-checkbox>
           </label>
@@ -139,7 +139,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="golf court"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >
               <b-tooltip type="is-success" label="for extra price">Golf Court</b-tooltip>
@@ -149,7 +149,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="pool"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Pool</b-checkbox>
           </label>
@@ -157,7 +157,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="shnorkel"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >Shnorkel</b-checkbox>
           </label>
@@ -166,7 +166,7 @@
             <b-checkbox
               v-model="filterBy.facilities"
               native-value="nothing"
-              type="is-info"
+              type="is-primary"
               @input="emitFilter"
             >nothing</b-checkbox>
           </label>
