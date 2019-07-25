@@ -42,7 +42,12 @@
               v-show="loggedInUser"
               :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
-            >Profile </router-link>
+            >Profile</router-link>
+            <div
+              v-if="loggedInUser"
+              class="navbar-item"
+              :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]"
+            >Hello {{loggedInUser.firstName}}</div>
             <div class="navbar-dropdown is-boxed">
               <router-link
                 v-show="loggedInUser"
@@ -97,8 +102,7 @@ export default {
   props: ["loggedInUser"],
   data() {
     return {
-      isBurgerMenuOpen: false,
-      
+      isBurgerMenuOpen: false
     };
   },
   computed: {
@@ -119,17 +123,16 @@ export default {
       try {
         this.$store.dispatch({ type: "logout", loggedUser: this.userLoggedIn });
         this.$router.push("/");
-      } catch (err) {
-         }
-     console.log("Could not log out err:", err);
-    },
+      } catch (err) {}
+      console.log("Could not log out err:", err);
+    }
   },
   created() {
     if (this.$route.name === "Home") {
-			return document.body.classList.remove("has-navbar-fixed-top");
-      } else return document.body.classList.add("has-navbar-fixed-top");  
+      return document.body.classList.remove("has-navbar-fixed-top");
+    } else return document.body.classList.add("has-navbar-fixed-top");
   },
-  mounted() {},
+  mounted() {}
 };
 </script>
 
