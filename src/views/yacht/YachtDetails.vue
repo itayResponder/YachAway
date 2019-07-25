@@ -168,7 +168,7 @@ export default {
   components: {
     calendarShow,
     reviewList,
-    showReviewsStars,
+    reviewsStars,
     reservationBox,
     VueperSlides,
     VueperSlide,
@@ -178,7 +178,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .info-bullet ::before {
 content: '\227B';
 color: #927f7f; 
