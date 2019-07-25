@@ -19,10 +19,10 @@ export default {
             return userLikedYachts;
         },
         userMsgs({userMsgs}) {
-            return userMsgs ? userMsgs : 0;
+            return userMsgs;
         },
         userMsgsCount({userMsgs}) {
-            return userMsgs;
+            return userMsgs ? userMsgs.length : 0;
         }
     },
     mutations: {
