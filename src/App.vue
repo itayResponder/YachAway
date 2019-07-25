@@ -15,8 +15,10 @@ export default {
 		return {
 		};
 	},
-	async created() {
-		await this.$store.dispatch({type: 'loadUserMsgs', userLoggedInId: this.$store.getters.userLoggedIn._id})
+	async mounted() {
+		if(this.$store.getters.userLoggedIn) {
+			await this.$store.dispatch({type: 'loadUserMsgs', userLoggedInId: this.$store.getters.userLoggedIn._id})
+		}
 	},
 	components: {
 		MyHeader,
