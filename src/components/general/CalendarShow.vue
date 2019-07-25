@@ -1,20 +1,15 @@
 <template>
 
-	<v-range-selector :start-date.sync="range.start" :end-date.sync="range.end" :is-disabled="d => d > '2019-07-21'" enable-single-date />
+	<v-range-selector :start-date.sync="range.start" :end-date.sync="range.end" :is-disabled="this.getBlockDates " enable-single-date />
 
 </template>
 
 <script>
+//this.getBlockDates.forEach(date)
 // https://vuejsexamples.com/simple-and-clean-calendar-written-in-vue-js/
 // import VDaySelector from "vuelendar/components/vl-day-selector";
 import VRangeSelector from "vuelendar/components/vl-range-selector";
-
 export default {
-	// data() {
-	// 	return {
-	// 		//t: { to: "2019-07-21" }
-	// 	};
-	// },
 	components: {
 		VRangeSelector,
 		// VDaySelector
@@ -25,9 +20,19 @@ export default {
 				start: null,
 				end: null
 			},
-			date: null
+			blockDates: ['2019-07-21']
+			// blockDates: ['2019-07-21', '2019-07-23']
 		};
-	}
+	},
+	computed: {
+		getBlockDates(){
+			return d => 
+				d ===  '2019-07-21' || d === '2019-07-23'
+				// 	this.blockDates.forEach(blockedDate => {
+				// 			return d === blockedDate
+				// }); 
+		}
+	},
 	// ...
 };
 </script>
