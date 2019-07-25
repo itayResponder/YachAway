@@ -195,15 +195,7 @@ export default {
 a {
   color: inherit;
 }
-/* .score {
-  border-radius: 50%;
-  padding: 5px;
-  border: 2px solid #999;
-  color: #999;
-} */
-
 /* margin: 0px 10px; */
-
 .max-height {
   height: 25vh;
   /* height: minmax(175px,1fr); */
@@ -214,20 +206,16 @@ a {
   }
 }
 
+  
+  .star {
+    width:15% !important;
+    height:15% !important;
+  }
+/* NO USE FOR NOW*/ 
 .img-boat {
   /* max-width: 20vw; */
   min-height: 220px;
   max-height: 225px;
   /* margin-top: -1.7rem; */
-}
-
-.img-wrap {
-  /* height: auto; */
-  overflow: auto;
-}
-
-.star {
-  width:15% !important;
-  height:15% !important;
 }
 </style>
