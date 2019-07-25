@@ -19,7 +19,7 @@ export default {
             return userLikedYachts;
         },
         userMsgs({userMsgs}) {
-            return userMsgs;
+            return userMsgs ? userMsgs : 0;
         },
         userMsgsCount({userMsgs}) {
             return userMsgs;
