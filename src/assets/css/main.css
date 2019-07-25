@@ -38,7 +38,13 @@
 
 .vueperslides__arrow
 {
-	width: 2.5em ;
-    color: rgba(255,255,255,0.5) ;
+	
+	color: rgba(255,255,255,0.5) ;
+}
+
+@media (min-width: 960px) {
+	.vueperslides__arrow{
+		width: 2.5em ;
+	}
 }
 
