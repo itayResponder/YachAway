@@ -26,10 +26,13 @@
 	margin-top: 2px;
 }
 
+/* a {
+	color: #42b983;
+} */
 
 .price-per-night {
 	font-size: 2rem; 
-	font-family: Montserrat,Arial,sans-serif;
+	/* font-family: Montserrat,Arial,sans-serif; */
 }
 
 
