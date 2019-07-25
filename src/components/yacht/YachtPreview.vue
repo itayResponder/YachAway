@@ -73,7 +73,7 @@
             <br />
           </p>
 
-          <showReviewsStars :reviews="this.yacht.reviews" />
+          <reviews-Stars :reviews="this.yacht.reviews" />
 
           <router-link
             :to="getUrlWithYachtId"
@@ -89,7 +89,7 @@
 
 <script>
 import utillservice from "@/services/utill.service";
-import showReviewsStars from "@/components/general/showReviewsStars";
+import reviewsStars from "@/components/general/ReviewsStars";
 // import Swal from "sweetalert2";
 export default {
   components: { showReviewsStars },
