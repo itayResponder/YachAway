@@ -17,14 +17,14 @@
       <!-- LEFT -->
       <div class="tile is-parent is-9">
         <div class="tile is-child">
-          <nav class="level">
+          <nav class="level is-relative">
             <div class="level-left level-item has-text-centered margin-top-2rem">
               <!-- TITLE  -->
               <h1 class="title is-size-3">{{yacht.name}}</h1>
             </div>
             <!-- owner -->
-            <div class="level-right level-item" style="margin: 0 20px;">
-              <figure class="image is-48x48">
+            <div class="level-right level-item" style="position:absolute; left:84%; top:38%">
+              <figure class="image is-64x64">
                 <img class="is-rounded" :src="getOwnerImg" />
                 <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
               </figure>
@@ -66,8 +66,8 @@
             <h4 class="is-subtitle is-size-5 margin-top-2rem">Facilities</h4>
             <div class="facilities">
               <div
-                class="margin-top-1rem"
-                style="display:inline-block; margin-right:8px;"
+                class="is-inline-flex margin-top-1rem"
+                style="margin-left:1rem;"
                 v-for="(facility, idx) in yacht.facilities" :key="idx"
               >
               <filterFacilities :facility="facility"/>
@@ -78,8 +78,10 @@
 
           <hr />
           <calendarShow class="margin-top-4rem" />
-          
-          <reviewList />
+          <hr />
+          <show-reviews-stars :reviews ="yacht.reviews"/>
+          <hr />
+          <review-list />
         </div>
       </div>
       <!-- </div> -->
@@ -98,6 +100,7 @@
 import utillService from "@/services/utill.service";
 import calendarShow from "@/components/general/CalendarShow";
 import reviewList from "@/components/general/ReviewList";
+import reviewsStars from "@/components/general/ReviewsStars";
 import reservationBox from "@/components/yacht/ReservationBox";
 import filterFacilities from "@/components/yacht/filterFacilities";
 // import imageCarousel from "@/components/general/ImageCarousel";
@@ -148,7 +151,7 @@ export default {
       const cloudName = "dopdel26f";
       const uploadPreset = "upload";
       const sourceImage = this.yacht.owner.img;
-      const settings = "w_48,h_48";
+      const settings = "w_64,h_64";
       const placeholder = "https://bulma.io/images/placeholders/48x48.png";
       const newImageUrl = utillService.getImgCloudinary(
         cloudName,
@@ -165,6 +168,7 @@ export default {
   components: {
     calendarShow,
     reviewList,
+    showReviewsStars,
     reservationBox,
     VueperSlides,
     VueperSlide,
@@ -178,5 +182,9 @@ export default {
 .info-bullet ::before {
 content: '\227B';
 color: #927f7f; 
+}
+
+.star{
+  width: 8% !important;
 }
 </style>
