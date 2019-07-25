@@ -199,8 +199,8 @@ export default {
   },
   mounted() {
     // HIDE SCROLL OF TABS:
-    const elTabs = document.querySelector('.tabs')
-    elTabs.style.overflow = "hidden"
+    // const elTabs = document.querySelector('.tabs')
+    // elTabs.style.overflow = "hidden"
   },
 
   computed: {},
