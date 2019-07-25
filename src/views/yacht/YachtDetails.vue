@@ -68,15 +68,17 @@
               <div
                 class="margin-top-1rem"
                 style="display:inline-block; margin-right:8px;"
-                v-for="(facility, idx) in yacht.facilities" :key="idx" :facility="facility"
+                v-for="(facility, idx) in yacht.facilities" :key="idx"
               >
+              <filterFacilities :facility="facility"/>
                 
-              </filterFacilities>
             </div>
           </div>
+        </div>
 
           <hr />
           <calendarShow class="margin-top-4rem" />
+          
           <reviewList />
         </div>
       </div>
@@ -105,17 +107,17 @@ import "vueperslides/dist/vueperslides.css";
 export default {
   data() {
     return {
-      //FOR DEMONSTARATION PERPUSES
-      toggleDesc: true,
-      toggleFacility: true,
       yacht: null,
       isNotAMobile: true,
+      // :::::::::::::::::::::::::
+      //FOR DEMONSTARATION PERPUSES
       rooms: Math.round(Math.random() * 9 + 1),
       bedrooms: Math.round(Math.random() * 4 + 1),
       bathrooms: Math.round(Math.random() * 2 + 1),
       size: Math.round(Math.random() * 220 + 120),
       info:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi est quam, volutpat et arcu eu, pharetra congue augue. Integer vel nibh eu eros interdum commodo. Vivamus finibus fringilla libero, id consectetur purus sollicitudin vel. Proin dapibus ante et pharetra luctus. Ut lacinia ante ut nunc pellentesque auctor. Proin laoreet erat sed ornare molestie. Fusce vehicula ut nulla facilisis vulputate. Quisque vel purus ac lectus tempus viverra. Maecenas at sem at erat pellentesque hendrerit nec in massa. Vestibulum nec lacinia dui, a congue ex. Vivamus ac ultricies mauris. Suspendisse commodo tempus suscipit. Nunc malesuada eu tortor in hendrerit"
+      // :::::::::::::::::::::::::
     };
   },
  
