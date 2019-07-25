@@ -123,6 +123,11 @@ export default {
      console.log("Could not log out err:", err);
     },
   },
+  created() {
+    if (this.$route.name === "Home") {
+			return document.body.classList.remove("has-navbar-fixed-top");
+      } else return document.body.classList.add("has-navbar-fixed-top");  
+  },
   mounted() {},
 };
 </script>

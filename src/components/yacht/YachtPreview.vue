@@ -42,7 +42,9 @@
       style="position: relative;"
     >
       <strong class="title is-4 level-left">{{yacht.name}}</strong>
-      <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}</p>
+      <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}
+      </p>
+      <!-- <small> {{yacht.type}} {{yacht.cabins}} </small> -->
 
       <!-- THE FACILITES -->
           <!-- <filterFacilities v-for="(facility, idx) in yacht.facilities" :key="idx" class="facility" :facility="facility"/> -->
@@ -205,9 +207,7 @@ a {
     height: inherit;
   }
 }
-
-  
-  .star {
+.star {
     width:15% !important;
     height:15% !important;
   }

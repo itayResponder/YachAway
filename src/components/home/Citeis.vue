@@ -14,7 +14,7 @@
 				is-one-third-desktop is-half-tablet is-one-mobile">
 					<OneCardItem :detail="detail" >
                        <figure  class="image is-4by3 ">
-					     	<img class="picture" :src="detail.img">
+					     	<img class="picture is-cover" :src="detail.img">
 					   </figure>
 
 					</OneCardItem >
