@@ -2,7 +2,9 @@
   <section>
     <span v-html="showStars"></span>
     <br />
-    <small class="is-center is-clearfix has-text-grey">{{getNumberOfReviews}} Reviews</small>
+    <small class="is-center is-clearfix has-text-grey">
+      {{getNumberOfReviews}} Reviews
+    </small>
   </section>
 </template>
 
@@ -37,14 +39,14 @@ export default {
 
       //FULL STARS
       while (average > 0.5) {
-        stars += '<img width="17%" src="/img/icons/star.svg"/>';
+        stars += '<img class="star" width="17%" src="/img/icons/star.svg"/>';
         average--;
       }
       //HALF STAR
-      if (average === 0.5) stars += '<img  width="17%" src="/img/icons/star-half.svg"/>';
+      if (average === 0.5) stars += '<img class="star" width="17%" src="/img/icons/star-half.svg"/>';
       //EMPTY STARS
       while (emptyStar > 0.5) {
-        stars += '<img  width="17%" src="/img/icons/star-outline.svg"/>';
+        stars += '<img class="star" width="17%" src="/img/icons/star-outline.svg"/>';
         emptyStar--;
       }
       return stars;
