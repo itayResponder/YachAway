@@ -85,7 +85,7 @@
           <hr />
           <calendarShow class="margin-top-4rem" />
           <hr />
-          <show-reviews-stars :reviews ="yacht.reviews"/>
+          <reviews-stars :reviews ="yacht.reviews"/>
           <hr />
           <review-list />
         </div>
