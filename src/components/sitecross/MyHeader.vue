@@ -42,7 +42,7 @@
               v-show="loggedInUser"
               :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
-            >Profile</router-link>
+            >Profile </router-link>
             <div class="navbar-dropdown is-boxed">
               <router-link
                 v-show="loggedInUser"
@@ -97,7 +97,8 @@ export default {
   props: ["loggedInUser"],
   data() {
     return {
-      isBurgerMenuOpen: false
+      isBurgerMenuOpen: false,
+      
     };
   },
   computed: {
