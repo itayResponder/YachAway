@@ -225,4 +225,9 @@ a {
   /* height: auto; */
   overflow: auto;
 }
+
+.star {
+  width:15% !important;
+  height:15% !important;
+}
 </style>

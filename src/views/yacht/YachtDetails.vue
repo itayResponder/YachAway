@@ -85,7 +85,7 @@
           <hr />
           <calendarShow class="margin-top-4rem" />
           <hr />
-          <reviews-stars :reviews ="yacht.reviews"/>
+          <reviews-stars class="all-stars" :reviews ="yacht.reviews"/>
           <hr />
           <review-list />
         </div>
@@ -189,7 +189,8 @@ content: '\227B';
 color: #927f7f; 
 }
 
-.star{
-  width: 8% !important;
+.star {
+  width:8% !important;
+  height:8% !important;
 }
 </style>
