@@ -44,7 +44,6 @@ export default {
     // if (!this.filterBy) filterBy.txt = this.$route.params.city;
     if (this.loggedInUser) {
       try {
-        
         await this.$store.dispatch({
           type: "loadUserLikedYachts",
           userId: this.$store.getters.userLoggedIn._id
@@ -80,7 +79,7 @@ export default {
     },
 
     async emitUpdateLikedYacht(updateLikedYachts) {
-      // updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
+      updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
       try {
         const updatedUserLikedYachts = await this.$store.dispatch({
           type: "updateUserLikedYachts",
