@@ -80,7 +80,7 @@ export default {
     },
 
     async emitUpdateLikedYacht(updateLikedYachts) {
-      updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
+      // updateLikedYachts.userId = this.$store.getters.userLoggedIn._id;
       try {
         const updatedUserLikedYachts = await this.$store.dispatch({
           type: "updateUserLikedYachts",

@@ -68,12 +68,10 @@
               <div
                 class="margin-top-1rem"
                 style="display:inline-block; margin-right:8px;"
-                v-for="(facility, idx) in yacht.facilities"
-                :key="idx"
+                v-for="(facility, idx) in yacht.facilities" :key="idx" :facility="facility"
               >
-                <img style="width:40px; height:40px;" :src="facility | getIcon" />
-                <h6>{{facility}}</h6>
-              </div>
+                
+              </filterFacilities>
             </div>
           </div>
 
@@ -99,6 +97,7 @@ import utillService from "@/services/utill.service";
 import calendarShow from "@/components/general/CalendarShow";
 import reviewList from "@/components/general/ReviewList";
 import reservationBox from "@/components/yacht/ReservationBox";
+import filterFacilities from "@/components/yacht/filterFacilities";
 // import imageCarousel from "@/components/general/ImageCarousel";
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
@@ -119,48 +118,7 @@ export default {
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi est quam, volutpat et arcu eu, pharetra congue augue. Integer vel nibh eu eros interdum commodo. Vivamus finibus fringilla libero, id consectetur purus sollicitudin vel. Proin dapibus ante et pharetra luctus. Ut lacinia ante ut nunc pellentesque auctor. Proin laoreet erat sed ornare molestie. Fusce vehicula ut nulla facilisis vulputate. Quisque vel purus ac lectus tempus viverra. Maecenas at sem at erat pellentesque hendrerit nec in massa. Vestibulum nec lacinia dui, a congue ex. Vivamus ac ultricies mauris. Suspendisse commodo tempus suscipit. Nunc malesuada eu tortor in hendrerit"
     };
   },
-  filters: {
-    getIcon(facility) {
-      facility = facility.toLowerCase();
-      // console.log('facility is ',facility)
-
-      switch (facility) {
-        case "wifi":
-          return require("../../assets/icons/wifi.svg");
-        case "pool":
-          return require("../../assets/icons/pool.svg");
-        case "tv":
-          return require("../../assets/icons/television-box.svg");
-        case "ac":
-          return require("../../assets/icons/ac.svg");
-        case "bathroom":
-          return require("../../assets/icons/bathroom.svg");
-        case "gym":
-          return require("../../assets/icons/gym.svg");
-        case "towels":
-          return require("../../assets/icons/towel.svg");
-        case "fishing":
-          return require("../../assets/icons/fishing.svg");
-        case "golf court":
-          return require("../../assets/icons/golf court.svg");
-        case "no smoking":
-          return require("../../assets/icons/no smoking.svg");
-        case "smoking":
-          return require("../../assets/icons/smoking allowed.svg");
-        case "kitchen":
-          return require("../../assets/icons/kitchen.svg");
-        case "snorkel":
-          return require("../../assets/icons/snorkel.svg");
-        case "safe":
-          return require("../../assets/icons/safe.svg");
-        case "jacuzzi":
-          return require("../../assets/icons/jacuzzi.svg");
-      }
-    }
-    //   getDesc(facility){
-    // console.log('in the get Desc facility is ',facility)
-    //   }
-  },
+ 
 
   async created() {
     const yachtId = this.$route.params.id;
@@ -207,7 +165,8 @@ export default {
     reviewList,
     reservationBox,
     VueperSlides,
-    VueperSlide
+    VueperSlide,
+    filterFacilities
     // imageCarousel
   }
 };
