@@ -32,6 +32,9 @@ export default {
     featureArea,
     bullets,
     hero
-  }
+  },
+  mounted() {
+    window.scrollTo(0, 0);
+  },
 };
 </script>
