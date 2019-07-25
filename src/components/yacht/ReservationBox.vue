@@ -155,7 +155,7 @@ export default {
         this.$toast.open({
           duration: 4050,
           message: `Check you have dates and number of guests`,
-          position: "is-top-left",
+          position: "is-top",
           type: "is-warning"
         });
       }
