@@ -13,7 +13,6 @@
           data-target="navbarMenuHeroB"
           @click="isBurgerMenuOpen = !isBurgerMenuOpen"
           v-bind:class="{'is-active': isBurgerMenuOpen}"
-          
         >
           <span></span>
           <span></span>
@@ -23,12 +22,21 @@
       <div id="navbarMenuHeroB" :class="[{'is-active': isBurgerMenuOpen}, 'navbar-menu']">
         <div class="navbar-start">
           <router-link :class="[menuClass, {'has-text-black' : isBurgerMenuOpen}]" exact to="/">Home</router-link>
-          <router-link :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]" to="/yachts">Yachts</router-link>
-          <router-link :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]" to="/About">About / Help</router-link>
+          <router-link
+            :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]"
+            to="/yachts"
+          >Yachts</router-link>
+          <router-link
+            :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]"
+            to="/About"
+          >About / Help</router-link>
           <!-- <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link> -->
         </div>
         <div class="navbar-end">
-          <router-link :class="[menuClass, {'has-text-black' : isBurgerMenuOpen}]" to="/edit">List Your Yacht</router-link>
+          <router-link
+            :class="[menuClass, {'has-text-black' : isBurgerMenuOpen}]"
+            to="/edit"
+          >List Your Yacht</router-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <router-link
               v-show="loggedInUser"
@@ -69,7 +77,10 @@
           <!-- need to login or signup -->
           <div v-show="!loggedInUser" class="navbar-item">
             <span class="button is-primary navbar-content is-outlined">
-              <router-link :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]" to="/login">Login</router-link>
+              <router-link
+                :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]"
+                to="/login"
+              >Login</router-link>
             </span>
           </div>
         </div>
@@ -94,7 +105,8 @@ export default {
       return this.$store.getters.userMsgsCount;
     },
     menuClass() {
-      if (this.$route.name === "Home") return "navbar-item has-text-white hamburger-text-color-fixer";
+      if (this.$route.name === "Home")
+        return "navbar-item has-text-white hamburger-text-color-fixer";
       else return "navbar-item  has-text-black";
     },
     getUrlId() {
@@ -107,16 +119,11 @@ export default {
         this.$store.dispatch({ type: "logout", loggedUser: this.userLoggedIn });
         this.$router.push("/");
       } catch (err) {
-        console.log("Could not log out err:", err);
-      }
-    }
+         }
+     console.log("Could not log out err:", err);
+    },
   },
   mounted() {},
-  created() {
-    // if (this.$route.name === "Home") return document.body.style = "padding-top: 0;";
-    if (this.$route.name === "Home") {return document.body.classList.remove("has-navbar-fixed-top");}
-    else return document.body.classList.add("has-navbar-fixed-top");
-  }
 };
 </script>
 
@@ -130,7 +137,7 @@ b-button {
 }
 
 .navbar-burger {
-	color: #0a0a0a !important;
+  color: #0a0a0a !important;
 }
 
 @media (max-width: 960px) {
@@ -138,5 +145,4 @@ b-button {
     color: black !important;
   }
 }
-
 </style>
