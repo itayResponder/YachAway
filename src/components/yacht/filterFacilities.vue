@@ -1,6 +1,6 @@
 <template>
   <section >
-  <img class="facility" style="width:40px; height:40px;" :src="facility | getIcon" />
+  <img class="facillity" style="width:40px; height:40px;" :src="facility | getIcon" />
   <h6>{{facility}}</h6>
    
   </section>

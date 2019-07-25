@@ -45,6 +45,7 @@
       <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}</p>
 
       <!-- THE FACILITES -->
+          <!-- <filterFacilities v-for="(facility, idx) in yacht.facilities" :key="idx" class="facility" :facility="facility"/> -->
 
       <figure class="image is-48x48" 
       style="display:flex; position: absolute;  bottom: 14px;">
@@ -90,9 +91,10 @@
 <script>
 import utillservice from "@/services/utill.service";
 import reviewsStars from "@/components/general/ReviewsStars";
+import filterFacilites from "@/components/yacht/filterFacilities";
 // import Swal from "sweetalert2";
 export default {
-  components: { showReviewsStars },
+  components: { reviewsStars, filterFacilites },
   name: "YachtPreview",
   props: ["yacht", "loggedInUser", "likedYachts"],
   data() {
@@ -173,6 +175,9 @@ export default {
 };
 </script>
 <style scoped>
+.facillity {
+  width: 6% !important;
+}
 .like-it-symbole {
   position: absolute;
   cursor: pointer;
@@ -190,12 +195,12 @@ export default {
 a {
   color: inherit;
 }
-.score {
+/* .score {
   border-radius: 50%;
   padding: 5px;
   border: 2px solid #999;
   color: #999;
-}
+} */
 
 /* margin: 0px 10px; */
 
@@ -215,9 +220,7 @@ a {
   max-height: 225px;
   /* margin-top: -1.7rem; */
 }
-.margin-bottom-3rem {
-  margin-bottom: 3rem;
-}
+
 .img-wrap {
   /* height: auto; */
   overflow: auto;
