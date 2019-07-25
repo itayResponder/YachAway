@@ -12,33 +12,61 @@
       </vueper-slides>
     </figure>
 
-    <div class="tile is-ancestor">
+    <!-- End Carousel -->
+    <div class="tile is-ancestor" style="margin: 0 0 0 50px !important;">
       <!-- LEFT -->
       <div class="tile is-parent is-9">
-        <article class="tile is-child">
-          <div class="content margin-top-2rem">
-            <!-- TITLE  -->
-            <h1>{{yacht.name}}</h1>
-
+        <div class="tile is-child">
+          <nav class="level">
+            <div class="level-left level-item has-text-centered margin-top-2rem">
+              <!-- TITLE  -->
+              <h1 class="title is-size-3">{{yacht.name}}</h1>
+            </div>
             <!-- owner -->
-            <figure class="image is-48x48" style="display:flex;">
-              <img class="level-left level-item is-rounded" :src="getOwnerImg" />
-              <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
-              <br />
-              <p
-                class="level-left level-item has-text-grey margin-min"
-              >Your Skipper / Host : {{yacht.owner.name}}</p>
-            </figure>
+            <div class="level-right level-item" style="margin: 0 20px;">
+              <figure class="image is-48x48">
+                <img class="is-rounded" :src="getOwnerImg" />
+                <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
+              </figure>
+              <p class="has-text-grey margin-1rem">{{yacht.owner.name}}</p>
+            </div>
+          </nav>
 
-            <!-- description -->
-            <h4 class="is-title is-primary  margin-top-6rem">Description</h4>
+          <!-- description -->
+          <div class="text-start">
+            <h4 class="is-subtitle is-size-5 margin-top-4rem">About this yacht</h4>
             <p>{{yacht.description}}</p>
+            <p>{{info}}</p>
+          </div>
 
-            <h4 class="is-title margin-top-6rem">Facilities</h4>
+          <!-- Accommodates  -->
+          <hr />
+          <div class="text-start">
+            <h4 class="is-subtitle is-size-5 margin-top-2rem">Accommodates</h4>
+              <ul class="info-bullet">
+                <li>
+                  rooms: {{rooms}}
+                </li>
+                <li>
+                  bedrooms: {{bedrooms}}
+                </li>
+                <li>
+                  bathrooms: {{bathrooms}}
+                </li>
+                <li>
+                  size: {{size}} sqm
+                </li>
+              </ul>
+            </div>
+          <!-- </div> -->
+
+          <!-- facility  -->
+          <hr />
+          <div class="text-start">
+            <h4 class="is-subtitle is-size-5 margin-top-2rem">Facilities</h4>
             <div class="facilities">
-              <!-- facility  -->
               <div
-                class="margin-min"
+                class="margin-top-1rem"
                 style="display:inline-block; margin-right:8px;"
                 v-for="(facility, idx) in yacht.facilities"
                 :key="idx"
@@ -47,17 +75,19 @@
                 <h6>{{facility}}</h6>
               </div>
             </div>
-
-            <calendarShow class="margin-6rem" />
-            <reviewList />
           </div>
-        </article>
+
+          <hr />
+          <calendarShow class="margin-top-4rem" />
+          <reviewList />
+        </div>
       </div>
+      <!-- </div> -->
 
       <!-- RIGHT -->
       <div class="tile is-parent is-vertical is-3">
         <article class="tile is-child">
-          <reservationBox :yacht="yacht"/>
+          <reservationBox :yacht="yacht" />
         </article>
       </div>
     </div>
@@ -80,7 +110,13 @@ export default {
       toggleDesc: true,
       toggleFacility: true,
       yacht: null,
-      isNotAMobile: true
+      isNotAMobile: true,
+      rooms: Math.round(Math.random() * 9 + 1),
+      bedrooms: Math.round(Math.random() * 4 + 1),
+      bathrooms: Math.round(Math.random() * 2 + 1),
+      size: Math.round(Math.random() * 220 + 120),
+      info:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi est quam, volutpat et arcu eu, pharetra congue augue. Integer vel nibh eu eros interdum commodo. Vivamus finibus fringilla libero, id consectetur purus sollicitudin vel. Proin dapibus ante et pharetra luctus. Ut lacinia ante ut nunc pellentesque auctor. Proin laoreet erat sed ornare molestie. Fusce vehicula ut nulla facilisis vulputate. Quisque vel purus ac lectus tempus viverra. Maecenas at sem at erat pellentesque hendrerit nec in massa. Vestibulum nec lacinia dui, a congue ex. Vivamus ac ultricies mauris. Suspendisse commodo tempus suscipit. Nunc malesuada eu tortor in hendrerit"
     };
   },
   filters: {
@@ -144,7 +180,7 @@ export default {
   methods: {
     goBack() {
       this.$router.push("/yachts");
-    },
+    }
   },
 
   computed: {
@@ -178,4 +214,8 @@ export default {
 </script>
 
 <style>
+.info-bullet ::before {
+content: '\227B';
+color: #927f7f; 
+}
 </style>
