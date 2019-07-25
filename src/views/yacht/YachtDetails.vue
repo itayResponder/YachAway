@@ -45,7 +45,13 @@
             <h4 class="is-subtitle is-size-5 margin-top-2rem">Accommodates</h4>
               <ul class="info-bullet">
                 <li>
-                  rooms: {{rooms}}
+                  type: {{yacht.type}}
+                </li>
+                <li>
+                  max people on board: {{yacht.maxPeopleOnBoard}}
+                </li>
+                <li>
+                  rooms: {{yacht.cabin}}
                 </li>
                 <li>
                   bedrooms: {{bedrooms}}
@@ -114,7 +120,6 @@ export default {
       isNotAMobile: true,
       // :::::::::::::::::::::::::
       //FOR DEMONSTARATION PERPUSES
-      rooms: Math.round(Math.random() * 9 + 1),
       bedrooms: Math.round(Math.random() * 4 + 1),
       bathrooms: Math.round(Math.random() * 2 + 1),
       size: Math.round(Math.random() * 220 + 120),
