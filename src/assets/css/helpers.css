@@ -121,3 +121,11 @@
 .is-absolute {
 position: absolute;
 }
+
+
+
+/* BACKGROUND */
+
+.has-background-light {
+background: rgb(253, 253, 253)
+}

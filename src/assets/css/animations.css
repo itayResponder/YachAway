@@ -1,3 +1,13 @@
+
+/* MOMVE THE CDN IN THE HTML IN CASE YOU IMPORT
+/* AT THIS MOMENT THERE IS AN ISSUE WITH THIS IMPORTS */
+/* @import url('./animate-lib/fadeInUp.css');
+@import url('./animate-lib/flipInX.css');
+@import url('./animate-lib/rotateIn.css');
+@import url('./animate-lib/rotateOut.css');  */
+
+
+
 /* Transition property for smooth transformation of images */
 .img-hover-zoom {
     height: inherit;
@@ -18,7 +28,7 @@
 /*----------Brightness ---------*/
   /* Brightness-zoom Container */
 .img-hover--brightness img {
-    transition: transform 2s, filter 0.8s ease-in-out;
+    transition: transform 2s, filter 0.3s ease-in-out;
     filter: brightness(95%);
   }
   
