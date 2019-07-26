@@ -21,12 +21,13 @@ export default {
       perRouterAnimation : "animated fadeInUp"
     };
   },
-  async created() {
-    await this.$store.dispatch({
-      type: "loadUserMsgs",
-      userLoggedInId: this.$store.getters.userLoggedIn._id
-    });
-  },
+  // async created() {
+  //   console.log('app created loggedInUser:',this.loggedInUser)
+  //   await this.$store.dispatch({
+  //     type: "loadUserMsgs",
+  //     userLoggedInId: this.$store.getters.userLoggedIn._id
+  //   });
+  // },
   components: {
     MyHeader,
     Myfooter

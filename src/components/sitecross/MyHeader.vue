@@ -39,10 +39,10 @@
           >List Your Yacht</router-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <router-link
-              v-show="loggedInUser"
+              v-if="loggedInUser"
               :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
-            >Profile </router-link>
+            >{{loggedInUser.firstName}}</router-link>
             <div class="navbar-dropdown is-boxed">
               <router-link
                 v-show="loggedInUser"
@@ -97,8 +97,7 @@ export default {
   props: ["loggedInUser"],
   data() {
     return {
-      isBurgerMenuOpen: false,
-      
+      isBurgerMenuOpen: false
     };
   },
   computed: {
@@ -120,16 +119,16 @@ export default {
         this.$store.dispatch({ type: "logout", loggedUser: this.userLoggedIn });
         this.$router.push("/");
       } catch (err) {
-         }
-     console.log("Could not log out err:", err);
-    },
+        console.log("Could not log out err:", err);
+      }
+    }
   },
   created() {
     if (this.$route.name === "Home") {
-			return document.body.classList.remove("has-navbar-fixed-top");
-      } else return document.body.classList.add("has-navbar-fixed-top");  
+      return document.body.classList.remove("has-navbar-fixed-top");
+    } else return document.body.classList.add("has-navbar-fixed-top");
   },
-  mounted() {},
+  mounted() {}
 };
 </script>
 
