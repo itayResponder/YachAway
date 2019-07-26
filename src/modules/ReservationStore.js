@@ -34,10 +34,7 @@ export default {
         },
         async loadReservations({ commit }, { filterBy }) {
             try {
-                console.log('filterBy:',filterBy);
-                
                 const reservations = await reservationService.query(filterBy)
-                console.log('reserStore loadreser reservaions:',reservations, 'filterBy:',filterBy)
                 commit({ type: 'setReservations', reservations })
                 return reservations;
 

@@ -6,7 +6,6 @@ export default {
 }
 
 function query(filterBy = {}) {
-    console.log('filterBy',filterBy)
     return httpService.get(_getUrl(), filterBy)
 }
 
