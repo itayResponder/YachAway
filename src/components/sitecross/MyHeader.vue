@@ -42,12 +42,7 @@
               v-show="loggedInUser"
               :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
-            >Profile</router-link>
-            <div
-              v-if="loggedInUser"
-              class="navbar-item"
-              :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]"
-            >Hello {{loggedInUser.firstName}}</div>
+            >{{loggedInUser.firstName}}</router-link>
             <div class="navbar-dropdown is-boxed">
               <router-link
                 v-show="loggedInUser"
