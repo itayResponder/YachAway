@@ -1,6 +1,6 @@
 
 <template>
-  <section>
+  <section class="has-background-white-bis">
     <h1 class="is-size-1 is-capitalized ">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
@@ -11,8 +11,8 @@
     </b-button>
 
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
-      <yacht-filter class="column is-one-fifth is-hidden-mobile is-3" @set-filter="setFilter"></yacht-filter>
-      <div></div>
+      <yacht-filter class="column has-bacground-white" @set-filter="setFilter"></yacht-filter>
+      <!-- <div class=" gap"></div> -->
       <yacht-List
         class="column"
         :loggedInUser="loggedInUser"

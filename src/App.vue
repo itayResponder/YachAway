@@ -1,7 +1,12 @@
 <template>
   <div id="app">
     <my-header :loggedInUser="getLoggedInUser" v-show="!homePage"></my-header>
-    <router-view></router-view>
+    <transition
+      name="router-anim"
+      :enter-active-class="perRouterAnimation"
+    >
+      <router-view />
+    </transition>
     <Myfooter />
   </div>
 </template>
@@ -12,7 +17,9 @@ import Myfooter from "@/components/sitecross/Footer.vue";
 export default {
   name: "App",
   data() {
-    return {};
+    return {
+      perRouterAnimation : "animated fadeInUp"
+    };
   },
   async created() {
     await this.$store.dispatch({
@@ -25,11 +32,17 @@ export default {
     Myfooter
   },
   watch: {
-	"$route.name"  : function() {
-		if (this.$route.name === "Home") {
-			return document.body.classList.remove("has-navbar-fixed-top");
-      } else return document.body.classList.add("has-navbar-fixed-top");  
-	}
+    "$route.name": function() {
+      if (this.$route.name === "About") this.perRouterAnimation="animated flipInX"
+      else this.perRouterAnimation="animated fadeInUp "
+
+      if (this.$route.name === "Home") {
+        return document.body.classList.remove("has-navbar-fixed-top");
+      } else return document.body.classList.add("has-navbar-fixed-top");
+
+      
+    },
+
   },
 
   computed: {
@@ -38,7 +51,8 @@ export default {
     },
     getLoggedInUser() {
       return this.$store.getters.userLoggedIn;
-    }
+    },
+
   }
 };
 </script>
@@ -94,5 +108,7 @@ $primary: #4d9989;
     }
   }
 }
+
+
 </style>
 
