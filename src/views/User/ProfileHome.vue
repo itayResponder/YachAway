@@ -6,13 +6,13 @@
 					<router-link to="/travel" class="is-active">Discover</router-link>
 				</li> -->
 				<li class="">
-					<router-link to="reservation" class="">My Reservations</router-link>
+					<router-link to="reservation" class="">My Trips</router-link>
 				</li>
 				<li class="">
 					<router-link to="my-yachts" class="">My Yachts</router-link>
 				</li>
 				<li class="">
-					<router-link to="messages" class="">My Messages</router-link>
+					<router-link to="messages" class="">Inbox</router-link>
 				</li>
 				<li class="">
 					<router-link to="orders" class="">My Orders</router-link>

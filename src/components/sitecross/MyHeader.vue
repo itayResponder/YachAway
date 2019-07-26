@@ -53,7 +53,7 @@
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/reservation"
-              >My Reservations</router-link>
+              >My Trips</router-link>
               <router-link
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
@@ -63,7 +63,7 @@
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/messages"
-              >My Messages: {{this.userMsgsCount}}</router-link>
+              >Inbox : {{this.userMsgsCount}}</router-link>
 
               <hr class="navbar-divider" />
               <span v-show="loggedInUser" @click="logout" class="navbar-item">
