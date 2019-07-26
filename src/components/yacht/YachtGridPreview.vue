@@ -1,5 +1,5 @@
 <template>
-	<div class="card is-borderless">
+	<div class="card is-borderless has-background-white">
 		<router-link to="/yachts">
 			<div class="card-image " style="object-fit: cover;"><a>
 					<figure class="image is-16by9">

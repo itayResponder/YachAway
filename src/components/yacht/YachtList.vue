@@ -1,11 +1,15 @@
 <template>
   <section>
-    <yacht-preview @emitUpdateLikedYacht="emitUpdateLikedYacht" class="img-hover--brightness" v-for="yacht in yachts" :key="yacht._id"
+    <yacht-preview
+      @emitUpdateLikedYacht="emitUpdateLikedYacht"
+      class="has-background-white img-hover--brightness"
+      style="margin-bottom: 1.3rem;"
+      v-for="yacht in yachts"
+      :key="yacht._id"
       :yacht="yacht"
       :loggedInUser="loggedInUser"
       :likedYachts="likedYachts"
-      >
-      </yacht-preview>
+    ></yacht-preview>
   </section>
 </template>
 
@@ -21,8 +25,8 @@ export default {
   },
   methods: {
     emitUpdateLikedYacht(updateLikedYachts) {
-      this.$emit("emitUpdateLikedYacht", updateLikedYachts)
-    },
+      this.$emit("emitUpdateLikedYacht", updateLikedYachts);
+    }
   },
   components: {
     YachtPreview

@@ -1,6 +1,6 @@
 <template>
-  <div class="columns is-12 is-mobile row-shadow margin-bottom-3rem">
-    <div class="column">
+  <div class="columns is-12 is-mobile row-shadow">
+    <div class="column  ">
       <!-- image is-4by5 -->
       <div class="container">
         <figure class="image is-relative">
