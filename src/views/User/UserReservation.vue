@@ -125,6 +125,7 @@ export default {
   },
   async created() {
     try {
+      console.log(this.user)
       this.user._id = this.$store.getters.userLoggedIn._id;
       const reservations = await this.$store.dispatch({
         type: "loadReservations",

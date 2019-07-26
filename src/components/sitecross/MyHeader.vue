@@ -39,7 +39,7 @@
           >List Your Yacht</router-link>
           <div class="navbar-item has-dropdown is-hoverable">
             <router-link
-              v-show="loggedInUser"
+              v-if="loggedInUser"
               :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
             >{{loggedInUser.firstName}}</router-link>
