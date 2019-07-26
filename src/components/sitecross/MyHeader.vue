@@ -118,8 +118,9 @@ export default {
       try {
         this.$store.dispatch({ type: "logout", loggedUser: this.userLoggedIn });
         this.$router.push("/");
-      } catch (err) {}
-      console.log("Could not log out err:", err);
+      } catch (err) {
+        console.log("Could not log out err:", err);
+      }
     }
   },
   created() {
