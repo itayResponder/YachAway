@@ -176,7 +176,6 @@
 <script>
 export default {
   name: "yacht-filter",
-
   data() {
     return {
       activeTab: 0,
@@ -189,6 +188,9 @@ export default {
         owner: null
       }
     };
+  },
+  created() {
+    this.$emit("set-filter",this.filterBy)
   },
   methods: {
     emitFilter() {

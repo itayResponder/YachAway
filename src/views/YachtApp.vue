@@ -37,7 +37,8 @@ export default {
   data() {
     return {
       isGrid: false,
-      newYacht: ""
+      newYacht: "",
+      filter: null
     };
   },
   async created() {
@@ -52,10 +53,12 @@ export default {
       }
     }
     try {
-      await this.$store.dispatch({
-        type: "loadYachts",
-        filterBy: {}
-      });
+      if(!this.filter) {
+        await this.$store.dispatch({
+          type: "loadYachts",
+          filterBy: this.filter
+        });
+      }
     } catch (err) {
       console.log("Could not load yachts error:", err);
     }
@@ -65,6 +68,7 @@ export default {
   },
   methods: {
     async setFilter(filterBy) {
+      this.filter = filterBy;
       try {
         await this.$store.dispatch({
           type: "loadYachts",
