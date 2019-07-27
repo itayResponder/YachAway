@@ -68,7 +68,6 @@ export default {
   methods: {
     async setFilter(filterBy) {
       this.filter = filterBy;
-      console.log('yachtApp setFilter:',filterBy)
       try {
         await this.$store.dispatch({
           type: "loadYachts",
