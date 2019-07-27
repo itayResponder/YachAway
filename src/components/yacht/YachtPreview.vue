@@ -18,7 +18,7 @@
               src="@/assets/icons/heart-multiple-outline.svg"
               alt="you don't like this yacht yet"
               class="like like-it-symbole"
-              style="height:18%; width: 18%"
+              style="height:10%; width: 10%"
             />
             <img
               v-if="like"
@@ -26,7 +26,7 @@
               src="@/assets/icons/heart-multiple.svg"
               alt="favorite yacht"
               class="like like-it-symbole"
-              style="height:18%; width: 18%"
+              style="height:10%; width: 10%"
             />
           </div>
         </figure>
