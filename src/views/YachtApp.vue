@@ -11,7 +11,7 @@
     </b-button>
 
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
-      <yacht-filter class="column has-bacground-white" @set-filter="setFilter"></yacht-filter>
+      <yacht-filter class="column has-background-white" @set-filter="setFilter"></yacht-filter>
       <!-- <div class=" gap"></div> -->
       <yacht-List
         class="column"
