@@ -1,5 +1,5 @@
 <template>
-  <section class=" is-2 is-hidden-mobile" style="background:#fefefe;">
+  <section class=" is-2 is-hidden-mobile">
     <nav class="panel">
         <h3 class="title is-3">Filter By</h3>
 
