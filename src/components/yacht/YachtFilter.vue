@@ -14,14 +14,14 @@
       <!-- FILTERS -->
 
       <label class="panel-block"> 
-        <p class="control has-icons-left">
+        <p class="control">
           <select
             class="input is-fullwidth is-medium"
             v-model="filterBy.minPeople"
             @change="emitFilter"
           >
             <option value disabled selected>
-                     Guests              
+                  How Many Guests              
               </option>
             <option value="10">Adults 1-10</option>
             <option value="16">Adults 10-15</option>
@@ -34,8 +34,8 @@
 
       <!-- sort by -->
       <label class="panel-block">
-        <p class="control has-icons-left">
-          <select class="input is-small is-fullwidth" v-model="filterBy.sort" @change="emitFilter">
+        <p class="control">
+          <select class="input is-fullwidth is-medium" v-model="filterBy.sort" @change="emitFilter">
             <option value>Sort By</option>
             <option value="price">Price</option>
             <option value="name">Name</option>
@@ -45,9 +45,9 @@
 
       <!-- SEARCH BY TEXT -->
       <label class="panel-block">
-        <p class="control has-icons-left">
+        <p class="control">
           <input
-            class="input is-small is-fullwidth"
+            class="input is-fullwidth is-medium"
             placeholder="Insert city/country"
             type="text"
             v-model="filterBy.txt"
@@ -74,7 +74,7 @@
         <!-- ####################### -->
         <!-- room faclities -->
         <!-- <b-tab-item  label="room faclities"> -->
-          <h4 class="subtitle">room faclities</h4>
+          <h4 class="subtitle">Room Faclities</h4>
         <!-- <hr /> -->
           <label class="panel-block">
             <b-checkbox
@@ -137,7 +137,7 @@
         <br />
         <!-- ####################### -->
         <!-- yacht faclities -->
-          <h4 class="subtitle">yacht faclities</h4>
+          <h4 class="subtitle">Yacht Faclities</h4>
           <label class="panel-block">
             <b-checkbox
               v-model="filterBy.facilities"
@@ -162,7 +162,7 @@
               native-value="shnorkel"
               type="is-primary"
               @input="emitFilter"
-            >Shnorkel</b-checkbox>
+            >Snorkel</b-checkbox>
           </label>
 
                   
@@ -183,14 +183,13 @@ export default {
       showStars: false,
       filterBy: {
         minPeople: "",
-        txt: "",
+        txt: this.$route.params.city,
         facilities: [],
         sort: "",
         owner: null
       }
     };
   },
-  created() {},
   methods: {
     emitFilter() {
       var filter = { ...this.filterBy };

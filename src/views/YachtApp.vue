@@ -40,8 +40,6 @@ export default {
     };
   },
   async created() {
-    // const filterBy = {};
-    // if (!this.filterBy) filterBy.txt = this.$route.params.city;
     if (this.loggedInUser) {
       try {
         await this.$store.dispatch({
@@ -53,8 +51,6 @@ export default {
       }
     }
     try {
-      // console.log('YachtApp filterBy:', this.$route.params.city)
-      // this.$store.commit("set-Filter", setFilter);
       await this.$store.dispatch({
         type: "loadYachts",
         filterBy: {}
@@ -68,6 +64,7 @@ export default {
   },
   methods: {
     async setFilter(filterBy) {
+      console.log('yachtApp filterBy:',filterBy)
       try {
         await this.$store.dispatch({
           type: "loadYachts",

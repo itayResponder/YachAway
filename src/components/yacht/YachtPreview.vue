@@ -68,7 +68,7 @@
       <div class="media is-boxed has-bullet-separator" style="text-align: center">
         <div>
           <p class="price-per-night">
-            {{yacht.pricePerNight}} $
+            {{yacht.pricePerNight}}$ Per Night
             <br />
           </p>
 
