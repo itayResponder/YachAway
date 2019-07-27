@@ -4,22 +4,29 @@
     <h1 class="is-size-1 is-capitalized">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
-      <img aria-disabled="isGrid" type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
+      <img
+        aria-disabled="isGrid"
+        type="has-text-grey-light"
+        src="@/assets/icons/view-list.svg"
+        alt="list"
+      />
     </b-button>
     <b-button type="button field is-white" @click="isGrid=!isGrid">
-      <img  aria-disabled="!isGrid" class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
+      <img aria-disabled="!isGrid" class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
     </b-button>
 
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
       <yacht-filter class="column has-background-white" @set-filter="setFilter"></yacht-filter>
       <!-- <div class=" gap"></div> -->
-      <yacht-List
-        class="column"
-        :loggedInUser="loggedInUser"
-        :likedYachts="likedYachts"
-        @emitUpdateLikedYacht="emitUpdateLikedYacht"
-        :yachts="yachts"
-      ></yacht-List>
+      <keep-alive>
+        <yacht-List
+          class="column"
+          :loggedInUser="loggedInUser"
+          :likedYachts="likedYachts"
+          @emitUpdateLikedYacht="emitUpdateLikedYacht"
+          :yachts="yachts"
+        ></yacht-List>
+      </keep-alive>
     </div>
 
     <yacht-grid :yachts="yachts" v-show="isGrid"></yacht-grid>
@@ -30,7 +37,7 @@
 import YachtList from "@/components/yacht/YachtList";
 import YachtFilter from "@/components/yacht/YachtFilter";
 //lazy load cmp :
-const YachtGrid = () =>   import ("@/components/yacht/YachtGrid");
+const YachtGrid = () => import("@/components/yacht/YachtGrid");
 
 export default {
   name: "YachtApp",
@@ -53,7 +60,7 @@ export default {
       }
     }
     try {
-      if(!this.filter) {
+      if (!this.filter) {
         await this.$store.dispatch({
           type: "loadYachts",
           filterBy: this.filter
@@ -90,7 +97,7 @@ export default {
       } catch (err) {
         console.log("Coudlnt update user updateLikedYachts error:", err);
       }
-    },
+    }
   },
   computed: {
     yachts() {

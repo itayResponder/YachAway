@@ -97,6 +97,8 @@ export default {
   props: ["yacht", "loggedInUser", "likedYachts"],
   data() {
     return {
+      isShowImg: false,
+      observer: null,
       avrage: "",
       likedYacht: {
         _id: "",
@@ -105,6 +107,15 @@ export default {
         isLiked: false
       }
     };
+  },
+  mounted() {
+    this.observer = new IntersectionObserver(([entry]) => {
+      if (entry && entry.isIntersecting) {
+        // console.log(this.$el);
+        this.isShowImg = true
+      }
+    });
+    this.observer.observe(this.$el);
   },
   methods: {
     likeClicked() {
@@ -136,7 +147,11 @@ export default {
       return "/yacht/" + this.yacht._id;
     },
     getYachtFrontImg() {
-      // const apiKey = "518953374957666";
+      // console.log('img not loaded');
+      if (!this.isShowImg) return;
+      // console.log('img loaded');
+      
+
       const cloudName = "ocean-yachts";
       const uploadPreset = "upload";
       const sourceImage = this.yacht.imgs[0];
@@ -154,6 +169,8 @@ export default {
       // https://res.cloudinary.com/ocean-yachts/image/upload/v1563712228/Yacths/The%20Blue%20Wave/5_onguhp.jpg
     },
     getOwnerImg() {
+      if (!this.isShowImg) return;
+
       const cloudName = "dopdel26f";
       const uploadPreset = "upload";
       const sourceImage = this.yacht.owner.img;

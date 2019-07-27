@@ -9,10 +9,10 @@
 		</div>
 		<div style="overflow: hidden;">
 			<div class="columns transition is-multiline">
-				<div v-for="(detail,idx) in yachtDetails " :key="idx"
+				<div v-show="isShowingImg" v-for="(detail,idx) in yachtDetails " :key="idx"
 				 class="column 
 				is-one-fifth-desktop is-half-tablet is-one-mobile">
-					<OneCardItem :detail="detail" >
+					<OneCardItem  :detail="detail" >
                        <figure  class="image is-3by5">
 					     	<img class="is-cover" :src="detail.img">
 					   </figure>
@@ -30,10 +30,10 @@
 		</div>
 		<div style="overflow: hidden;">
 			<div class="columns transition is-multiline">
-				<div v-for="(detail,idx) in locationDetails " :key="idx"
+				<div v-show="isShowingImg" v-for="(detail,idx) in locationDetails " :key="idx"
 				 class="column 
 				is-one-third-desktop is-half-tablet is-one-mobile">
-					<OneCardItem :detail="detail" >
+					<OneCardItem  :detail="detail" >
                        <figure  class="image is-3by2">
 					     	<img class="is-cover" :src="detail.img">
 					   </figure>
@@ -52,8 +52,20 @@ export default {
 	components: {
 		OneCardItem
 	},
+	mounted() {
+		this.observer = new IntersectionObserver(([entry]) => {
+      if (entry && entry.isIntersecting) {
+        // console.log(this.isShowingImg);
+        this.isShowingImg = true
+        // console.log(this.isShowingImg);
+      }
+    });
+    this.observer.observe(this.$el);
+	},
 	data() {
 		return {
+			isShowingImg : false,
+			observer : null,
 			locationDetails:[
             {img:'https://res.cloudinary.com/ocean-yachts/image/upload/h_850/Yacths/Sky/1_ubucz9.jpg',city:'Sky',country: ' ', url:'australia'},
 			{img:'https://res.cloudinary.com/ocean-yachts/image/upload/h_850/Yacths/Claudia/8_bck62m.jpg',city:'Claudia',country: ' ', url:'italy'},

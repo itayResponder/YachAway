@@ -1,13 +1,10 @@
 <template>
   <div class="layout">
-    
-    <hero :loggedInUser="getLoggedInUser"/>
-    <citeis>
-      Sail Your Way
-    </citeis>
-    <yacht-home-cards />
-    <bullets />
-    <featureArea  class="margin-top-6rem" />
+    <hero :loggedInUser="getLoggedInUser" />
+    <citeis >Sail Your Way</citeis>
+    <yacht-home-cards  />
+    <bullets  />
+    <featureArea class="margin-top-6rem" />
   </div>
 </template>
 
@@ -20,12 +17,13 @@ import featureArea from "@/components/home/FeatureArea";
 
 export default {
   name: "home",
+  
   computed: {
     getLoggedInUser() {
       return this.$store.getters.userLoggedIn;
     }
   },
-  
+
   components: {
     citeis,
     yachtHomeCards,
@@ -35,6 +33,7 @@ export default {
   },
   mounted() {
     window.scrollTo(0, 0);
-  },
+    
+  }
 };
 </script>
