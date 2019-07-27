@@ -1,13 +1,13 @@
 
 <template>
   <section class="has-background-white-bis">
-    <h1 class="is-size-1 is-capitalized ">{{cityName}}</h1>
+    <h1 class="is-size-1 is-capitalized">{{cityName}}</h1>
 
     <b-button type="button field  is-white" @click="isGrid=!isGrid">
-      <img v-show="isGrid" type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
+      <img aria-disabled="isGrid" type="has-text-grey-light" src="@/assets/icons/view-list.svg" alt="list" />
     </b-button>
     <b-button type="button field is-white" @click="isGrid=!isGrid">
-      <img v-show="!isGrid" class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
+      <img  aria-disabled="!isGrid" class="is-info" src="@/assets/icons/grid.svg" alt="grid" />
     </b-button>
 
     <div class="columns is-multiline is-mobile" v-show="!isGrid">
@@ -28,8 +28,9 @@
 
 <script>
 import YachtList from "@/components/yacht/YachtList";
-import YachtGrid from "@/components/yacht/YachtGrid";
 import YachtFilter from "@/components/yacht/YachtFilter";
+//lazy load cmp :
+const YachtGrid = () =>   import ("@/components/yacht/YachtGrid");
 
 export default {
   name: "YachtApp",
@@ -85,7 +86,7 @@ export default {
       } catch (err) {
         console.log("Coudlnt update user updateLikedYachts error:", err);
       }
-    }
+    },
   },
   computed: {
     yachts() {
