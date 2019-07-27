@@ -1,12 +1,12 @@
 <template>
   <div class="columns is-12 is-mobile row-shadow">
-    <div class="column  ">
+    <div class="column">
       <!-- image is-4by5 -->
       <div class="container">
         <figure class="image is-relative">
           <img
             :src="getYachtFrontImg"
-            class = "max-height"
+            class="max-height"
             style="object-fit: cover; overflow: hidden; "
           />
           <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
@@ -42,15 +42,13 @@
       style="position: relative;"
     >
       <strong class="title is-4 level-left">{{yacht.name}}</strong>
-      <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}
-      </p>
+      <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}</p>
       <!-- <small> {{yacht.type}} {{yacht.cabins}} </small> -->
 
       <!-- THE FACILITES -->
-          <!-- <filterFacilities v-for="(facility, idx) in yacht.facilities" :key="idx" class="facility" :facility="facility"/> -->
+      <!-- <filterFacilities v-for="(facility, idx) in yacht.facilities" :key="idx" class="facility" :facility="facility"/> -->
 
-      <figure class="image is-48x48" 
-      style="display:flex; position: absolute;  bottom: 14px;">
+      <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
         <img class="level-left level-item is-rounded is-hidden-mobile" :src="getOwnerImg" />
         <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
         <br />
@@ -66,9 +64,7 @@
     </router-link>
 
     <!-- REVIEWS AND PRICE -->
-    <router-link
-      :to="getUrlWithYachtId"
-     class="column is-3">
+    <router-link :to="getUrlWithYachtId" class="column is-3">
       <div class="media is-boxed has-bullet-separator" style="text-align: center">
         <div>
           <p class="price-per-night">
@@ -184,9 +180,10 @@ export default {
   position: absolute;
   cursor: pointer;
   z-index: 10;
-  float: left;
-  top: 7px;
-  left: 82%;
+  bottom: 7px;
+  /* float: right; */
+  /* left: 82%; */
+  /* padding: 10px; */
   /* padding: 10px; */
 }
 
@@ -208,10 +205,10 @@ a {
   }
 }
 .star {
-    width:15% !important;
-    height:15% !important;
-  }
-/* NO USE FOR NOW*/ 
+  width: 15% !important;
+  height: 15% !important;
+}
+/* NO USE FOR NOW*/
 .img-boat {
   /* max-width: 20vw; */
   min-height: 220px;
