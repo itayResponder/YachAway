@@ -1,18 +1,30 @@
 <template>
   <section>
-    <h1 v-if="!yachts[0]"><b>You Didnt list any yachts, go list some</b></h1>
+    <div v-if="!yachts[0]">
+          <empty-data-case :info="noYachts"></empty-data-case>
+    
+    
+    </div>
     <owner-yacht-list v-else :yachts="yachts" @removeOwnerYacht="removeOwnerYacht"></owner-yacht-list>
   </section>
 </template>
 
 <script>
 import OwnerYachtList from "@/components/owner/OwnerYachtList";
+import emptyDataCase from "@/components/general/EmptyDataCase";
+
 export default {
   name: "OwnerYachts",
   data() {
     return {
       yachtsByOwner: null,
-      filterBy: { ownerId: "" }
+      filterBy: { ownerId: "" },
+      noYachts: {
+        title: "No Yachts",
+        info:
+          "You Didn't list any yachts here ,But hi! you can still have a trip",
+        imageType: "emptyYachts",
+      },
     };
   },
   async created() {
@@ -34,7 +46,8 @@ export default {
     }
   },
   components: {
-    OwnerYachtList
+    OwnerYachtList,
+    emptyDataCase
   }
 };
 </script>

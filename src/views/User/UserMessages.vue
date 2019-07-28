@@ -1,14 +1,17 @@
 <template>
   <section>
-    <h1 v-if="!this.userMsgs">
-      <b>You dont have any messages</b>
-    </h1>
+    <!-- ##ITAY CHECK IF IT IS OKAY - I ADDED " [0]" IN THE IF -->
+    <div v-if="!this.userMsgs[0]">
+            <empty-data-case :info="noMessages"></empty-data-case>
+    </div>
+    
     <nav v-else>
       <b>You have got messages</b>
       {{userMsgs}}
       <br />
       <!-- {{this.userLoggedInReservations}} -->
     </nav>
+
     <section v-if="this.loggedInUser.isOwner">
       <user-messages-list
         v-if="this.loggedInUser.isOwner"
@@ -17,17 +20,27 @@
       ></user-messages-list>
       <!-- <div v-else>{{userMsgs}} test</div> -->
     </section>
+  
   </section>
 </template>
 
 <script>
 import Swal from "sweetalert2";
 import UserMessagesList from "@/components/user/UserMessagesList";
+import emptyDataCase from "@/components/general/EmptyDataCase";
+
+
 export default {
   data() {
     return {
       loggedInUser: null,
-      userLoggedInReservations: []
+      userLoggedInReservations: [],
+      noMessages: {
+        title: "No messages",
+        info:
+          "Start send messages ,And get more deals for your trip",
+        imageType: "emptyInbox",
+      },
     };
   },
   async created() {
@@ -68,7 +81,8 @@ export default {
     }
   },
   components: {
-    UserMessagesList
-  }
+    UserMessagesList,
+emptyDataCase
+}
 };
 </script>
