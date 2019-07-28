@@ -1,7 +1,9 @@
 <template>
   <div class="b-tabs">
-    <nav class="tabs is-medium is-taller has-side-space ">
-      <ul >
+
+    <!--TABS-->
+    <nav class="tabs is-medium is-taller has-side-space">
+      <ul>
         <li :class="{'is-active' : showUpcoming}">
           <a>
             <!---->
@@ -17,7 +19,7 @@
       </ul>
     </nav>
 
-    <!---->
+    <!--TAB 1-->
     <section class="tab-content">
       <div class="tab-item" style>
         <!---->
@@ -28,86 +30,29 @@
         >
           <!-- HAVE RESERVATION -->
           <div v-if="reservations[0]">
-            <div v-for="reservation in reservations" :key="reservation._id" class="card">
-              <div class="card-image">
-                <figure class="image is-1by4">
-				  <p class="title is-4">{{reservation.yacht.name}}</p>
-                  <img
-                    :src="reservation.yacht.img" style="max-width:50vw; max-height:300px; object-fit: contain;"
-                    alt="Placeholder image"
-                  />
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-128x128">
-                      <img
-                        :src="reservation.yacht.owner.img"
-                        alt="Placeholder image"
-                      />
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <p class="title is-4">Owner name: {{reservation.yacht.owner.name}}</p>
-                    <a class="subtitle is-6">Owner email: {{reservation.yacht.owner.email}}</a>
-					<p>From: {{reservation.fromDate}}</p>
-					<p>To: {{reservation.toDate}}</p>
-					<p>Number Of Guests: {{reservation.numOfGuest}}</p>
-					<p>Price Per Night: {{reservation.yacht.pricePerNight}}$</p>
-                  </div>
-                </div>
-
-                <div class="content">
-                  
-                  <br />
-                  <span><b>Created: {{reservation.createdAt | moment("dddd, MMMM Do YYYY")}}</b></span>
-                </div>
-              </div>
+            <div v-for="reservation in reservations" :key=  "reservation._id" class="card">
+              <user-reservation-preview-card :reservation="reservation" />
             </div>
-            <!-- <p class="has-text-weight-semibold">upcoming bookings</p>
 
-            <div v-for="reservation in reservations" :key="reservation._id">
-              <p>
-                <span>From Date:</span>
-                <span>{{reservation.fromDate}}</span>
-              </p>
-              <p>
-                <span>To Date:</span>
-                <span>{{reservation.toDate}}</span>
-              </p>
-              <p>
-                <span>yacht:</span>
-                <span>{{reservation.yacht.name}}</span>
-              </p>
-              <p>
-                <span>Total Price:$</span>
-                {{reservation.totalPrice}}
-              </p>
-              <hr />
-            </div>-->
-
-            <p>Once you make a booking, your upcoming bookings will show up here.</p>
+            <!--  END HAVE RESERVATION  -->
           </div>
+
           <!-- NO RESERVATION -->
           <div v-if="!reservations[0]">
-            <img src="@/assets/img/2b11c87.png" alt="no-upcoming-bookings" />
-            <p class="has-text-weight-semibold">No upcoming bookings</p>
-            <p>Once you make a booking, your upcoming bookings will show up here.</p>
+            <empty-data-case :info="noUpcomingBooking"></empty-data-case>
           </div>
+          <!-- NO RESERVATION END -->
         </div>
         <div class="margin-top-sm"></div>
       </div>
 
+        <!--TAB 2-->
       <div class="tab-item" v-show="!showUpcoming">
-        <!---->
-        <!---->
+        <!-- NO PAST RESERVATION -->
         <div class="empty-bookings has-text-centered text-lighter t4 text-unresponsive">
-          <img src="@/assets/img/2b11c87.png" alt="no-past-bookings" />
-          <p class="has-text-weight-semibold">No past bookings</p>
-          <p>All your past bookings will show up here.</p>
+          <empty-data-case :info="noPastBooking"></empty-data-case>
         </div>
-        <!---->
+        <!-- NO PAST RESERVATION END -->
         <div class="margin-top-sm"></div>
       </div>
     </section>
@@ -115,12 +60,26 @@
 </template>
 
 <script>
+import emptyDataCase from "@/components/general/EmptyDataCase";
+import userReservationPreviewCard from "@/components/user/UserReservationPreviewCard"
 export default {
+  components: { emptyDataCase, userReservationPreviewCard },
   data() {
     return {
       showUpcoming: true,
       user: { _id: "" },
-      reservations: []
+      reservations: [],
+      noUpcomingBooking: {
+        title: "No upcoming bookings",
+        info:
+          "Once you make a booking, your upcoming bookings will show up here.",
+        imageType: "emptySuitcase"
+      },
+      noPastBooking: {
+        title: "No past bookings ",
+        info: "All your past bookings will show up here.",
+        imageType: "emptySuitcase"
+      }
     };
   },
   async created() {
@@ -134,7 +93,7 @@ export default {
     } catch (err) {
       console.log("Couldent load reservations error:", err);
     }
-  },
+  }
 };
 </script>
 
