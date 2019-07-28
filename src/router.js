@@ -14,6 +14,8 @@ import ProfileHome from '@/views/user/ProfileHome.vue'
 import OwnerYachtDetails from '@/views/owner/OwnerYachtDetails.vue'
 import OwnerYachtEdit from '@/views/owner/OwnerYachtEdit.vue'
 import UserMessages from '@/views/user/UserMessages.vue'
+import OwnerMessages from '@/views/owner/OwnerMessages.vue'
+import OwnerPage from '@/views/owner/OwnerPage.vue'
 
 Vue.use(Router)
 
@@ -35,7 +37,13 @@ export default new Router({
         { path: '/owner/edit/:id?', name: 'OwnerYachtEdit', component: OwnerYachtEdit },
         { path: '/profile', name: 'ProfileHome', component: ProfileHome,
         children: [
-            { path: 'my-yachts', component: OwnerYachts },
+            { path: 'my-yachts', component: OwnerPage,
+            children: [
+                {path: 'manage', component: OwnerYachts},
+                {path: 'hosting', component: OwnerMessages}
+            ]
+        
+        },
             { path: 'reservation', component: UserReservation },
             { path: 'messages', component: UserMessages },
         ],
