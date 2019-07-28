@@ -27,7 +27,7 @@
 			</div>
     </header>-->
     <section class="width-limit has-space-h is-fullwidth-when-narrow">
-      <div class="box all-bookings is-light is-paddingless is-collapsed-when-narrow has-fade">
+      <!-- <div class="box all-bookings is-light is-paddingless is-collapsed-when-narrow has-fade"> -->
         <transition
           name="inner-router-anime"
           enter-active-class="routateIn"
@@ -35,7 +35,7 @@
         >
           <router-view />
         </transition>
-      </div>
+      <!-- </div> -->
     </section>
   </main>
 </template>
