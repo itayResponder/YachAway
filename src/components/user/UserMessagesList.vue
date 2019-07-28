@@ -31,10 +31,10 @@ export default {
 </script>
 
 <style scoped>
-.my-cards {
+/* .my-cards {
   display: flex;
   justify-content: space-evenly;
   margin-top: 150px;
   flex-wrap: wrap;
-}
+} */
 </style>
