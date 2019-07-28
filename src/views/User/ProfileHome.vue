@@ -12,7 +12,7 @@
           <router-link to="/profile/reservation" class>My Trips</router-link>
         </li>
         <li class>
-          <router-link to="/profile/my-yachts" class>My Yachts</router-link>
+          <router-link to="/profile/my-yachts/manage" class>My Yachts</router-link>
         </li>
         <li class>
           <router-link to="#" >Settings</router-link>
