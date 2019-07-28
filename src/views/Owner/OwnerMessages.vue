@@ -1,21 +1,19 @@
 <template>
-  <section>
-    <!-- ##ITAY CHECK IF IT IS OKAY - I ADDED " [0]" IN THE IF -->
-    <div v-if="!this.userMsgs[0]">
+  <section v-if="this.loggedInUser.isOwner">
+    <user-messages-list
+      v-if="this.loggedInUser.isOwner && userLoggedInReservations[0]"
+      :reservations="reservations"
+      @replyToUserFromOwner="replyToUserFromOwner"
+    ></user-messages-list>
+
+    <div v-else>
       <empty-data-case :info="noMessages"></empty-data-case>
     </div>
-
-    <nav v-else>
-      <b>You have got messages</b>
-      {{userMsgs}}
-      <br />
-      <!-- {{this.userLoggedInReservations}} -->
-    </nav>
+    <!-- <div v-else>{{userMsgs}} test</div> -->
   </section>
 </template>
 
 <script>
-import Swal from "sweetalert2";
 import UserMessagesList from "@/components/user/UserMessagesList";
 import emptyDataCase from "@/components/general/EmptyDataCase";
 
@@ -47,12 +45,12 @@ export default {
     }
   },
   computed: {
-    userMsgs() {
-      return this.$store.getters.userMsgs;
+    //  userMsgs() {
+    //     return this.$store.getters.userMsgs;
+    // },
+    reservations() {
+      return this.$store.getters.userReservations;
     }
-    // reservations() {
-    //   return this.$store.getters.userReservations;
-    // }
   },
   methods: {
     async replyToUserFromOwner(replyToUserFromOwner) {
@@ -77,3 +75,6 @@ export default {
   }
 };
 </script>
+
+<style>
+</style>
