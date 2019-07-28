@@ -107,16 +107,7 @@ export default {
       }
     };
   },
-  // mounted() {
-  //   const script = document.createElement("script");
-  //   const scriptVue = document.createElement("script");
-  //   scriptVue.src = "https://unpkg.com/vue";
-  //   script.src =
-  //     "https://unpkg.com/vue-paypal-checkout@2.0.0/dist/vue-paypal-checkout.min.js";
-  //   // script.addEventListener("load", this.setLoaded);
-  //   document.body.appendChild(script);
-  //   document.body.appendChild(scriptVue);
-  // },
+  
   methods: {
     createUserObj() {
       // create USER object
