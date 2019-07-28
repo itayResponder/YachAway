@@ -6,16 +6,16 @@
 					<router-link to="/travel" class="is-active">Discover</router-link>
         </li>-->
         <li class>
-          <router-link to="messages" class>Inbox</router-link>
+          <router-link to="/profile/messages" class>Inbox</router-link>
         </li>
         <li class>
-          <router-link to="reservation" class>My Trips</router-link>
+          <router-link to="/profile/reservation" class>My Trips</router-link>
         </li>
         <li class>
-          <router-link to="my-yachts" class>My Yachts</router-link>
+          <router-link to="/profile/my-yachts" class>My Yachts</router-link>
         </li>
         <li class>
-          <router-link to="settings" >Settings</router-link>
+          <router-link to="#" >Settings</router-link>
         </li>
       </ul>
     </div>
