@@ -8,10 +8,10 @@
     <nav class="tabs is-medium is-taller has-side-space">
       <ul>
         <li>
-          <router-link to="./manage" class>manage</router-link>
+          <router-link to="/profile/my-yachts/manage" class>manage</router-link>
         </li>
         <li>
-          <router-link to="./hosting">hosting</router-link>
+          <router-link to="/profile/my-yachts/hosting">hosting</router-link>
         </li>
         <!-- <li :class="{'is-active' : !showUpcoming}">
           <a>
