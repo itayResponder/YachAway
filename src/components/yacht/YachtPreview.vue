@@ -77,7 +77,7 @@
           <router-link
             :to="getUrlWithYachtId"
             class="button is-primary is-hidden-mobile is-3 margin-min"
-          >Sail !</router-link>
+          >Sail Away!</router-link>
         </div>
       </div>
     </router-link>
