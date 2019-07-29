@@ -1,5 +1,5 @@
 <template>
-  <section v-if="this.loggedInUser.isOwner">
+  <section>
     <user-messages-list
       v-if="this.loggedInUser.isOwner && userLoggedInReservations[0]"
       :reservations="reservations"
@@ -18,6 +18,7 @@ import UserMessagesList from "@/components/user/UserMessagesList";
 import emptyDataCase from "@/components/general/EmptyDataCase";
 
 export default {
+  // props: ["loggedInUser","userLoggedInReservations"],
   data() {
     return {
       loggedInUser: null,
@@ -41,6 +42,11 @@ export default {
         userId: this.loggedInUser._id
       });
     } catch (err) {
+      this.noMessages.title = "We couldn't retrive your messages"
+      this.noMessages.info = "Get a better connection or try again in few minutes"
+      this.noMessages.imageType = "noConnectionPhone"
+      // this.noMessages.imageType = "noConnectionCrab"
+      
       console.log("Could not load user reservations error:", err);
     }
   },
@@ -67,6 +73,10 @@ export default {
       } catch (err) {
         console.log("UserMesseges eror", err);
       }
+    },
+    emitUserType() {
+      var filter = { ...this.filterBy };
+      this.$emit("set-filter", filter);
     }
   },
   components: {

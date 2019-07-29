@@ -43,6 +43,9 @@ export default {
         userId: this.loggedInUser._id
       });
     } catch (err) {
+      this.noMessages.title = "We couldn't retrive your messages"
+      this.noMessages.info = "Get a better connection or try again in few minutes"
+      this.noMessages.imageType = "noConnectionPhone"
       console.log("Could not load user reservations error:", err);
     }
   },
