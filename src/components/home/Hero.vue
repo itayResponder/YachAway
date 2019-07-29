@@ -24,9 +24,9 @@
         </div>
 
         <div class="hero-body">
-          <div class="container has-text-centered">
+          <div class="container has-text-centered is-medium">
             <div id="location-search-input">
-              <div class="input-group">
+              <div class="input-group ">
                 <vue-google-autocomplete
                   class="search-query form-control"
                   ref="address"
@@ -43,7 +43,7 @@
 
             <!-- popular tags -->
             <div class="is-inline-flex" style="padding-top:1rem;">
-              <p class="is-small has-text-white is-capitalized" style="padding-right:1rem;">popular:</p>
+              <p class="has-text-white is-capitalized" style="padding-right:1rem; font-size:1.3rem;">popular:</p>
               <div class="tags">
                 <!--maybe add to the above class for mobile ??:  field is-grouped is-grouped-multiline -->
                 <router-link
@@ -98,7 +98,7 @@ export default {
      * @param {Object} placeResultData PlaceResult object
      * @param {String} id Input container ID
      */
-    async getAddressData(addressData, placeResultData, id) {
+    async getAddressData(addressData, placeResultData ) {
       try {
         //  this.addressData = await addressData
         this.placeResultData = await placeResultData;
@@ -149,7 +149,7 @@ export default {
 
 <style scoped>
 .tag-size{
-  font-size: 0.8rem;
+  font-size: 1rem;
 }
 
 </style>
