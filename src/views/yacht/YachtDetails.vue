@@ -104,12 +104,15 @@
 
 <script>
 import utillService from "@/services/utill.service";
+
 import calendarShow from "@/components/general/CalendarShow";
+
 import reviewList from "@/components/general/ReviewList";
 import reviewsStars from "@/components/general/ReviewsStars";
+
 import reservationBox from "@/components/yacht/ReservationBox";
 import filterFacilities from "@/components/yacht/filterFacilities";
-// import imageCarousel from "@/components/general/ImageCarousel";
+
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
 
