@@ -9,6 +9,10 @@
             class="max-height"
             style="object-fit: cover; overflow: hidden; "
           />
+          <!-- the above img src is rendering only when the user scroll 
+          and from cloudinery by requsted size with place holder in case we don't have it
+          regular img tag was :
+          -->
           <!-- <img :src="yacht.imgs[0]" class="img-boat" style="object-fit: fill; overflow: hidden;" /> -->
 
           <div v-if="loggedInUser">
