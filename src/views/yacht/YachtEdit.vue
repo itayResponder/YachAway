@@ -20,9 +20,8 @@
         <br />
         <b-checkbox v-model="yacht.facilities" native-value="golf court" type="is-primary">Golf Court</b-checkbox>
         <b-checkbox v-model="yacht.facilities" native-value="pool" type="is-primary">Pool</b-checkbox>
-        <b-checkbox v-model="yacht.facilities" native-value="shnorkel" type="is-primary">Shnorkel</b-checkbox>
+        <b-checkbox v-model="yacht.facilities" native-value="snorkel" type="is-primary">Snorkel</b-checkbox>
         <b-checkbox v-model="yacht.facilities" native-value="kitchen" type="is-primary">Kitchen</b-checkbox>
-        <b-checkbox v-model="yacht.facilities" native-value="fridge" type="is-primary">Fridge</b-checkbox>
       </div>
       <p class="content">
         <b>Selection:</b>

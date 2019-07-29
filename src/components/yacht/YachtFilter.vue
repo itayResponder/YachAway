@@ -124,14 +124,6 @@
               @input="emitFilter"
             >Kitchen</b-checkbox>
           </label>
-          <label class="panel-block">
-            <b-checkbox
-              v-model="filterBy.facilities"
-              native-value="fridge"
-              type="is-primary"
-              @input="emitFilter"
-            >Fridge</b-checkbox>
-          </label>
         <!-- </b-tab-item> -->
 
         <br />
