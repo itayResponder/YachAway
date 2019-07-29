@@ -29,7 +29,7 @@
           <router-link
             :class="[menuClass,{'has-text-black' : isBurgerMenuOpen}]"
             to="/About"
-          >About / Help</router-link>
+          >About</router-link>
           <!-- <router-link v-if="loggedInUser" :class="[menuClass]" to="/admin">Admin</router-link> -->
         </div>
         <div class="navbar-end">
@@ -37,34 +37,39 @@
             :class="[menuClass, {'has-text-black' : isBurgerMenuOpen}]"
             to="/edit"
           >List Your Yacht</router-link>
-          <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-item has-dropdown is-centered is-hoverable">
             <router-link
               v-if="loggedInUser"
               :class="[menuClass, 'navbar-link', {'has-text-black' : isBurgerMenuOpen}]"
               :to="getUrlId"
             >{{loggedInUser.firstName}}</router-link>
             <div class="navbar-dropdown is-boxed">
-              <router-link
-                v-show="loggedInUser"
-                :class="['navbar-item has-text-black is-subtitle']"
-                to="/profile/my-yachts"
-              >My Yachts</router-link>
-              <router-link
-                v-show="loggedInUser"
-                :class="['navbar-item has-text-black is-subtitle']"
-                to="/profile/reservation"
-              >My Trips</router-link>
-              <router-link
-                v-show="loggedInUser"
-                :class="['navbar-item has-text-black is-subtitle']"
-                to="/profile/orders"
-              >My Orders</router-link>
+              
               <router-link
                 v-show="loggedInUser"
                 :class="['navbar-item has-text-black is-subtitle']"
                 to="/profile/messages"
               >Inbox : {{this.userMsgsCount}}</router-link>
 
+              
+              <router-link
+                v-show="loggedInUser"
+                :class="['navbar-item has-text-black is-subtitle']"
+                to="/profile/reservation"
+              >My Trips</router-link>
+
+              <router-link
+                v-show="loggedInUser"
+                :class="['navbar-item has-text-black is-subtitle']"
+                to="/profile/my-yachts/manage"
+              >My Yachts</router-link>
+              
+              <router-link
+                v-show="loggedInUser"
+                :class="['navbar-item has-text-black is-subtitle']"
+                to="/profile/settings"
+              >Settings</router-link>
+              
               <hr class="navbar-divider" />
               <span v-show="loggedInUser" @click="logout" class="navbar-item">
                 <b-button class="is-primary">Logout</b-button>
