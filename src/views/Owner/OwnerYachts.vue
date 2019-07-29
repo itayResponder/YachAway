@@ -32,6 +32,8 @@ export default {
       this.filterBy.ownerId = await this.$store.getters.userLoggedIn._id;
       this.yachtsByOwner = await this.$store.dispatch({type: "loadYachts", filterBy: this.filterBy})
     } catch (err) {
+      this.noYachts.title = "We couldn't retrive your yachts"
+      this.noYachts.info = "Get a better connection or try again in few minutes"
       console.log("Could not get Owner yachts error:", err);
     }
   },

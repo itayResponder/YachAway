@@ -11,7 +11,7 @@
           <router-link to="/profile/my-yachts/manage" class="is-capitalized">manage</router-link>
         </li>
         <li>
-          <router-link to="/profile/my-yachts/hosting" class="is-capitalized" >hosting</router-link>
+          <router-link to="/profile/my-yachts/hosting" v-if="this.loggedInUser.isOwner" class="is-capitalized">hosting</router-link>
         </li>
         <!-- <li :class="{'is-active' : !showUpcoming}">
           <a>
@@ -23,13 +23,10 @@
 
     <section class="width-limit has-space-h is-fullwidth-when-narrow">
       <!-- <div class="box all-bookings is-light is-paddingless is-collapsed-when-narrow has-fade"> -->
-        <transition
-          name="inner-router-anime"
-          enter-active-class="routateIn"
-          leave-active-class="routateOut"
-        >
-          <router-view />
-        </transition>
+      <keep-alive>
+        <router-view />
+      </keep-alive>
+
       <!-- </div> -->
     </section>
   </main>
@@ -37,11 +34,31 @@
 
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      userLoggedInReservations: [],
+      loggedInUser: null,
+    }
+  },
+    async created() {
+    this.loggedInUser = this.$store.getters.userLoggedIn;
+    try {
+      await this.$store.dispatch({
+        type: "loadUserMsgs",
+        userLoggedInId: this.loggedInUser._id
+      });
+      this.userLoggedInReservations = await this.$store.dispatch({
+        type: "loadUserReservations",
+        userId: this.loggedInUser._id
+      });
+    } catch (err) {
+      console.log("Could not load user reservations error:", err);
+    }
+  },
+};
 </script>
 
 
 <style>
-
-
 </style>

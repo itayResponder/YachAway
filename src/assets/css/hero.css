@@ -22,6 +22,7 @@
     background-color: #999;
   }
   
+  /* REGULAR VERSION *//*
   #location-search-input .search-query {
     width: 43%;
     padding: 1rem 0.875rem;
@@ -31,3 +32,15 @@
     font-weight: 600;
     color: #444;
   }
+*/
+/*PRESENTAION VERSION */
+#location-search-input .search-query {
+  width: 32rem;
+  padding: 0.3rem 1rem;
+  border: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.75);
+  font-weight: 400;
+  color: #444;
+  font-size: 1.2rem;
+}
