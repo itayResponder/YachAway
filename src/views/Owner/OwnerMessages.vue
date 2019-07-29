@@ -7,7 +7,7 @@
     ></user-messages-list>
 
     <div v-else>
-      <empty-data-case :info="noMessages"></empty-data-case>
+      <empty-data-case  :info="noMessages"></empty-data-case>
     </div>
     <!-- <div v-else>{{userMsgs}} test</div> -->
   </section>
