@@ -59,7 +59,11 @@ export default {
         console.log("Could not load user liked yachts error:", err);
       }
     }
-    try {
+   
+  },
+  async mounted() {
+    window.scrollTo(0, 0);
+     try {
       if (!this.filter) {
         await this.$store.dispatch({
           type: "loadYachts",
@@ -69,9 +73,6 @@ export default {
     } catch (err) {
       console.log("Could not load yachts error:", err);
     }
-  },
-  mounted() {
-    window.scrollTo(0, 0);
   },
   methods: {
     async setFilter(filterBy) {

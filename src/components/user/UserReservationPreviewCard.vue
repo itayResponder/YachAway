@@ -30,7 +30,8 @@
                 <div class="content">
                   <br />
                   <span>
-                    <b>Created: {{reservation.createdAt | moment("dddd, MMMM Do YYYY")}}</b>
+                    <b>Created: {{+reservation.createdAt | moment("dddd, MMMM Do YYYY")}}  </b>
+                    <b>Before: {{+reservation.createdAt | moment("from","now")}}</b>
                   </span>
                 </div>
               </div>
