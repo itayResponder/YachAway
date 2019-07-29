@@ -159,7 +159,7 @@
           <label class="panel-block">
             <b-checkbox
               v-model="filterBy.facilities"
-              native-value="shnorkel"
+              native-value="snorkel"
               type="is-primary"
               @input="emitFilter"
             >Snorkel</b-checkbox>
