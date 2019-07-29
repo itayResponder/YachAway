@@ -87,7 +87,7 @@
           <hr />
           <reviews-stars class="all-stars" :reviews ="yacht.reviews"/>
           <hr />
-          <review-list />
+          <review-list v-for="review in yacht.reviews" :key="review._id" :review ="review"/>
         </div>
       </div>
       <!-- </div> -->
@@ -107,7 +107,7 @@ import utillService from "@/services/utill.service";
 
 import calendarShow from "@/components/general/CalendarShow";
 
-import reviewList from "@/components/general/ReviewList";
+import reviewList from "@/components/yacht/ReviewList";
 import reviewsStars from "@/components/general/ReviewsStars";
 
 import reservationBox from "@/components/yacht/ReservationBox";
