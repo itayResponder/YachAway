@@ -11,58 +11,70 @@
           <img class="level-left level-item is-rounded is-hidden-mobile" :src="getYachtOwnerImg" />
           <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
           <br />
-          <p
-            class="level-left level-item has-text-grey is-hidden-mobile margin-1rem"
-          >{{reservation.yacht.owner.name}}&nbsp;
-          (The Owner)
-          
+          <p class="level-left level-item has-text-grey is-hidden-mobile margin-1rem">
+            {{reservation.yacht.owner.name}}&nbsp;
+            (The Owner)
           </p>
         </figure>
 
         <div class="is-hidden-mobile">
           <br />
           <br />
-          
         </div>
-        
       </div>
 
       <!-- <div style="position:relative;"></div> -->
     </div>
 
     <!-- TEXT -->
-    <div class="column is-7 horiznal-shadow text-start" >
-      <p class="is-4 ">Reservation: &nbsp;
-      <strong class="title is-4">{{reservation.yacht.name}}</strong>
+    <div class="column is-6 horiznal-shadow text-start">
+      <p>
+        Reservation: &nbsp;
+        <strong class="title is-4">{{reservation.yacht.name}}</strong>
       </p>
 
-        <span>reserved on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}</span>
-      <span>.&nbsp;&nbsp;</span>
-        <span>{{+reservation.createdAt | moment("from","now")}}</span>
-      
+      <span>reserved on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}</span>
+      <span>,&nbsp;&nbsp;</span>
+      <span>{{+reservation.createdAt | moment("from","now")}}</span>
 
       <!--DETAILS -->
-      <div class="has-gray-text text-start is-medium is-capitalized">
+      <div class="  has-gray-text text-start is-medium is-capitalized">
+         <span >check in</span>
+         <span >  {{reservation.fromDate | moment(" MMMM Do YYYY")}}</span>
         <br />
-        check in {{reservation.fromDate | moment(" MMMM Do YYYY")}} &nbsp;&nbsp;
+        <span >check out  </span>
+        <span >{{reservation.toDate | moment(" MMMM Do YYYY")}}</span>
         <br />
-        <span>check out {{reservation.toDate | moment(" MMMM Do YYYY")}}</span>
+        <span >Guests Allowed  </span>
+        <span >{{reservation.numOfGuest}}</span>
         <br />
-        <span>Guests Allowed: {{reservation.numOfGuest}}</span>
-        <br />
-        <span>Price Per Night: {{reservation.yacht.pricePerNight}}$</span>
+        <span >Price Per Night: </span>
+        <span> {{reservation.yacht.pricePerNight}}$</span>
       </div>
     </div>
 
     <!-- RIGHT SIDE -->
-    <div class="column is-2 is-mobile-hidden">
+    <div class="column is-3 is-mobile-hidden">
       <div class="media has-bullet-separator" style="text-align: center">
         <!-- buttons -->
-        <div class="buttons">
-          <button class="is-capitalized is-outlined is-danger button is-small">cancel</button>
-          <button class="is-capitalized is-outlined is-info button is-small">request to change</button>
-          <button class="is-capitalized is-outlined button is-small">pay</button>
-          <a :href="getOwnerEmail" class="is-capitalized is-outlined button is-small">contact owner</a>
+        <div class="buttons is-capitalized is-fullwidth is-outlined">
+          <button class="button">pay</button>
+          <a :href="getOwnerEmail" class="is-capitalized is-outlined button">email owner</a>
+          <a target="_blank" :href="getWhatsappLink" class="button is-button">
+            <span class="icon is-left">
+              <img src="@/assets/icons/whatsapp.svg" alt="whatsapp" />
+              &nbsp; &nbsp;
+            </span>
+            What'sapp owner
+          </a>
+          <button class="button is-button-link has-text-link  is-small"  @click="showMoreButtons = !showMoreButtons">
+            {{getShowMoreText}}
+          </button>
+          <div @click="showMoreButtons = !showMoreButtons" v-show="showMoreButtons">
+            
+            <button class="is-outlined is-danger button is-small">cancel</button>
+            <button class="is-outlined is-info button is-small">request to change</button>
+          </div>
           <!-- end buttons -->
         </div>
       </div>
@@ -79,7 +91,8 @@ export default {
   data() {
     return {
       isShowImg: false,
-      observer: null
+      observer: null,
+      showMoreButtons: false
     };
   },
   mounted() {
@@ -92,6 +105,10 @@ export default {
     this.observer.observe(this.$el);
   },
   computed: {
+      getShowMoreText(){
+          if (!this.showMoreButtons) return 'Show More'
+          else return 'Hide'
+      },
     getYachtImg() {
       if (!this.isShowImg) return;
 
@@ -128,6 +145,26 @@ export default {
     },
     getOwnerEmail() {
       return `mailto://${this.reservation.yacht.owner.email}`;
+    },
+    // TODO - gET USER PHONE BY AGGREGATION
+    getWhatsappLink() {
+      if (!this.yacht || !this.yacht.owner || !this.yacht.owner.name)
+        return false;
+      const api = "https://api.whatsapp.com/send?l=en";
+      const txt = `Hi! I'm interested in one of your Yachts, specifically in : ${this.yacht.name}`;
+      // for now we not load it from DB :
+      let phone = "";
+      // for now we not load it from DB :
+      if (this.yacht.owner.name.toLowerCase() === "niv") phone = "972548082717";
+      else if (this.yacht.owner.name.toLowerCase() === "nadav")
+        phone = "972523831348";
+      else if (this.yacht.owner.name.toLowerCase() === "itay")
+        phone = "972507161645";
+      else phone = "";
+
+      this.phoneContactText = "Contact";
+      const whatsappLink = encodeURI(`${api}&phone=${phone}&text=${txt}`);
+      return whatsappLink;
     }
   }
 };
