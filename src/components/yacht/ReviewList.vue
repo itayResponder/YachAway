@@ -10,10 +10,10 @@
 			<div class="content">
 				<p>
 					<!-- slot name -->
-					<strong>John Smith</strong> <br />
+					<strong>{{review.name}}</strong> <br />
 					<!-- slot date -->
 					<!-- <small>{{review.createdAt | moment("dddd ,MMMM Do YYYY ") }}</small> -->
-					<small>{{+review.createdAt | moment("from","now") }}</small>
+					<small>{{+review.date | moment("from","now") }}</small>
 					<br>
 					<!-- slot review -->
 					{{review.description || defualtReview	}}

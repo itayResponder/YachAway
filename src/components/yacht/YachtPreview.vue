@@ -46,7 +46,9 @@
       style="position: relative;"
     >
       <strong class="title is-4 level-left">{{yacht.name}}</strong>
-      <p class="has-gray-text text-start level-left is-small is-hidden-mobile">{{yacht.description}}</p>
+      <p class="has-gray-text text-start level-left is-small is-hidden-mobile"><b>Description: <br></b>{{yacht.description}}</p><br>
+      <p class="has-gray-text text-start level-left is-small is-hidden-mobile"><b>Cabins: <br></b>{{yacht.cabin}}</p><br>
+      <p class="has-gray-text text-start level-left is-small is-hidden-mobile"><b>Type: <br></b>{{yacht.type}}</p>
       <!-- <small> {{yacht.type}} {{yacht.cabins}} </small> -->
 
       <!-- THE FACILITES -->
