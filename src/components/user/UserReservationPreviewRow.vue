@@ -88,6 +88,7 @@
             </span>
             What'sapp owner
           </a>
+          <br/>
           <button
             class="button is-button-link has-text-link is-small"
             @click="showMoreButtons = !showMoreButtons"
