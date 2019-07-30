@@ -58,7 +58,7 @@
             <td>{{reservation.toDate | moment(" MMMM Do YYYY")}}</td>
           </tr>
           <tr>
-            <td>Guests Allowed</td>
+            <td>Guests </td>
             <td>{{reservation.numOfGuest}}</td>
           </tr>
           <tr>
