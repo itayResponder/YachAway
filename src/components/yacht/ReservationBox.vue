@@ -48,7 +48,7 @@
       </p>
     </div>
 
-    <div class="panel-bloc">
+    <div class="panel-block">
       <span class="control is-medium is-left has-text-centered">{{yacht.pricePerNight}} $</span>
     </div>
     <div class="panel-block">
@@ -58,7 +58,7 @@
       <a
         target="_blank"
         :href="getWhatsappLink"
-        class="button is-success is-outlined is-button is-fullwidth"
+        class="button is-success has-text-grey-dark is-outlined is-button is-fullwidth"
       >
       <span class="icon is-small is-left">
             <img src="@/assets/icons/whatsapp.svg" alt="whatsapp" />
@@ -66,8 +66,7 @@
           </span>
       {{phoneContactText}}
       </a>
-    </div>
-
+    </div><br/><br/>
     <!-- <paypal-checkout amount="10.00" currency="USD" :client="paypal"></paypal-checkout> -->
     <div ref="paypal" class="panel-block">
       <button class="button is-fullwidth is-outlined">
