@@ -3,10 +3,15 @@
     <div class="column">
       <!-- image is-4by5 -->
       <div class="container">
-        <figure class="image is-relative">
-          <img :src="getYachtImg" class="max-height" style="object-fit: cover; overflow: hidden; " />
-        </figure>
-
+        <router-link :to="getYachtUrl">
+          <figure class="image is-relative">
+            <img
+              :src="getYachtImg"
+              class="max-height"
+              style="object-fit: cover; overflow: hidden; "
+            />
+          </figure>
+        </router-link>
         <figure class="image is-48x48" style="display:flex; position: absolute;  bottom: 14px;">
           <img class="level-left level-item is-rounded is-hidden-mobile" :src="getYachtOwnerImg" />
           <!-- <img class="level-left level-item is-rounded" :src="yacht.owner.img" /> -->
@@ -27,22 +32,22 @@
     </div>
 
     <!-- TEXT -->
-    <div class="column is-6 horiznal-shadow text-start">
+    <div class="column is-5 horiznal-shadow text-start">
       <!-- <tbody> -->
       <p class="near-table">
         <!-- <td style="width:100%;"> -->
         Reservation: &nbsp;
-        <strong class="title is-4">{{reservation.yacht.name}}</strong>
+        <router-link :to="getYachtUrl">
+          <strong class="title is-4">{{reservation.yacht.name}}</strong>
+        </router-link>
         <br />
         reserved on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}
         <span>,&nbsp;&nbsp;</span>
         {{+reservation.createdAt | moment("from","now")}}
-        <!-- </td> -->
       </p>
-      <!-- </tbody> -->
 
       <!--DETAILS -->
-      <table>
+      <table class="is-fullwidth">
         <tbody class="has-gray-text text-start is-medium is-capitalized">
           <tr>
             <td>check in</td>
@@ -70,7 +75,11 @@
       <div class="media has-bullet-separator" style="text-align: center">
         <!-- buttons -->
         <div class="buttons is-capitalized is-fullwidth is-outlined">
-          <button class="button">pay</button>
+          <b-tooltip class="is-capitalized" label="change payment method">
+            <button class="button is-capitalized" @click="showPayPal = !showPayPal">you paying cash</button>
+          </b-tooltip>
+          <paypal-payment v-show="showPayPal"  :product="product"></paypal-payment>
+
           <a :href="getOwnerEmail" class="is-capitalized is-outlined button">email owner</a>
           <a target="_blank" :href="getWhatsappLink" class="button is-button">
             <span class="icon is-left">
@@ -97,14 +106,22 @@
 
 <script>
 import utillservice from "@/services/utill.service";
+import paypalPayment from "@/components/yacht/PaypalPayment";
 
 export default {
+    components:{paypalPayment},
   props: ["reservation"],
   data() {
     return {
       isShowImg: false,
       observer: null,
-      showMoreButtons: false
+      showMoreButtons: false,
+      showPayPal : false,
+      product: {
+        price: this.reservation.yacht.pricePerNight,
+        description: this.reservation.yacht.name,
+        img: this.reservation.yacht.img
+      }
     };
   },
   mounted() {
@@ -155,6 +172,9 @@ export default {
       );
       return newImageUrl;
     },
+    getYachtUrl() {
+      return "../yacht/" + this.reservation.yacht._id;
+    },
     getOwnerEmail() {
       return `mailto://${this.reservation.yacht.owner.email}`;
     },
@@ -188,6 +208,5 @@ table td {
 td,
 p.near-table {
   padding: 10px;
-  /* width :150px */
 }
 </style>
