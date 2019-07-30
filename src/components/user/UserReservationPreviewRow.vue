@@ -28,29 +28,41 @@
 
     <!-- TEXT -->
     <div class="column is-6 horiznal-shadow text-start">
-      <p>
-        Reservation: &nbsp;
-        <strong class="title is-4">{{reservation.yacht.name}}</strong>
-      </p>
+        <!-- <tbody> -->
+          <p class="near-table">
+            <!-- <td style="width:100%;"> -->
+                Reservation: &nbsp;
+                 <strong class="title is-4">{{reservation.yacht.name}}</strong>
+<br/>             
+        reserved on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}
+          <span>,&nbsp;&nbsp;</span>
+            {{+reservation.createdAt | moment("from","now")}}
+            <!-- </td> -->
+          </p>
+        <!-- </tbody> -->
 
-      <span>reserved on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}</span>
-      <span>,&nbsp;&nbsp;</span>
-      <span>{{+reservation.createdAt | moment("from","now")}}</span>
-
-      <!--DETAILS -->
-      <div class="  has-gray-text text-start is-medium is-capitalized">
-         <span >check in</span>
-         <span >  {{reservation.fromDate | moment(" MMMM Do YYYY")}}</span>
-        <br />
-        <span >check out  </span>
-        <span >{{reservation.toDate | moment(" MMMM Do YYYY")}}</span>
-        <br />
-        <span >Guests Allowed  </span>
-        <span >{{reservation.numOfGuest}}</span>
-        <br />
-        <span >Price Per Night: </span>
-        <span> {{reservation.yacht.pricePerNight}}$</span>
-      </div>
+        <!--DETAILS -->
+      <table>
+        <tbody class="has-gray-text text-start is-medium is-capitalized">
+          <tr>
+            <td>check in</td>
+            <td>{{reservation.fromDate | moment(" MMMM Do YYYY")}}</td>
+          </tr>
+          <tr>
+            <td>check out</td>
+            <td>{{reservation.toDate | moment(" MMMM Do YYYY")}}</td>
+          </tr>
+          <tr>
+            <td>Guests Allowed</td>
+            <td>{{reservation.numOfGuest}}</td>
+          </tr>
+          <tr>
+            <td>Price Per Night:</td>
+            <td>{{reservation.yacht.pricePerNight}}$</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- </div> -->
     </div>
 
     <!-- RIGHT SIDE -->
@@ -67,11 +79,11 @@
             </span>
             What'sapp owner
           </a>
-          <button class="button is-button-link has-text-link  is-small"  @click="showMoreButtons = !showMoreButtons">
-            {{getShowMoreText}}
-          </button>
+          <button
+            class="button is-button-link has-text-link is-small"
+            @click="showMoreButtons = !showMoreButtons"
+          >{{getShowMoreText}}</button>
           <div @click="showMoreButtons = !showMoreButtons" v-show="showMoreButtons">
-            
             <button class="is-outlined is-danger button is-small">cancel</button>
             <button class="is-outlined is-info button is-small">request to change</button>
           </div>
@@ -105,10 +117,10 @@ export default {
     this.observer.observe(this.$el);
   },
   computed: {
-      getShowMoreText(){
-          if (!this.showMoreButtons) return 'Show More'
-          else return 'Hide'
-      },
+    getShowMoreText() {
+      if (!this.showMoreButtons) return "Show More";
+      else return "Hide";
+    },
     getYachtImg() {
       if (!this.isShowImg) return;
 
@@ -146,7 +158,7 @@ export default {
     getOwnerEmail() {
       return `mailto://${this.reservation.yacht.owner.email}`;
     },
-    // TODO - gET USER PHONE BY AGGREGATION
+    // TODO - GET USER PHONE BY AGGREGATION
     getWhatsappLink() {
       if (!this.yacht || !this.yacht.owner || !this.yacht.owner.name)
         return false;
@@ -160,7 +172,7 @@ export default {
         phone = "972523831348";
       else if (this.yacht.owner.name.toLowerCase() === "itay")
         phone = "972507161645";
-      else phone = "";
+      else phone = "972548082717"; // DOTO DELETE FOR DEMONSTARTION PERPUSE
 
       this.phoneContactText = "Contact";
       const whatsappLink = encodeURI(`${api}&phone=${phone}&text=${txt}`);
@@ -169,3 +181,12 @@ export default {
   }
 };
 </script>
+<style scoped>
+table td {
+  vertical-align: bottom;
+}
+td,  p.near-table {
+  padding: 10px;
+  /* width :150px */
+}
+</style>
