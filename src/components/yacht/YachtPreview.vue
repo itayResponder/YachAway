@@ -46,9 +46,16 @@
       style="position: relative;"
     >
       <strong class="title is-4 level-left">{{yacht.name}}</strong>
-      <p class="has-gray-text text-start level-left is-small is-hidden-mobile"><b>Description: <br></b>{{yacht.description}}</p><br>
-      <p class="has-gray-text text-start level-left is-small is-hidden-mobile"><b>Cabins: <br></b>{{yacht.cabin}}</p><br>
-      <p class="has-gray-text text-start level-left is-small is-hidden-mobile"><b>Type: <br></b>{{yacht.type}}</p>
+      <p class="text-start level-left is-small is-hidden-mobile">
+        {{getYachtDescription}}
+        </p>
+
+        
+      <div class="text-start level-left is-small is-hidden-mobile">
+       <p > <b>Cabins:</b> &nbsp; {{yacht.cabin}} </p>
+       <span class=" margin-min"></span>
+    <p > <b>Type: </b>&nbsp; {{yacht.type}} </p>
+     </div>
       <!-- <small> {{yacht.type}} {{yacht.cabins}} </small> -->
 
       <!-- THE FACILITES -->
@@ -147,6 +154,10 @@ export default {
       return this.likedYachts.find(
         likedYacht => likedYacht._id === this.yacht._id
       );
+    },
+    getYachtDescription(){
+      const length = 50
+      return this.yacht.description.substring(0, length)+'...'
     },
 
     getUrlWithYachtId() {

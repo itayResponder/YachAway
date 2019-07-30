@@ -25,6 +25,7 @@ export default {};
 <style scoped>
 a {
   color: rgb(83, 76, 76) !important;
-  /* font-style: italic */
+  font-style: italic
 }
+
 </style>

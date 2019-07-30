@@ -1,41 +1,51 @@
 <template>
-  <section>
+  <section class="is-inline-flex">
     <div class="card-image">
       <figure class="image is-1by4">
-        <p class="title is-4">{{reservation.yacht.name}}</p>
         <img
           :src="getYachtImg"
-          style="max-width:50vw; max-height:300px; object-fit: contain;"
-          alt="Placeholder image"
+          style="max-width:20vw; max-height:200px; object-fit: contain;"
+          alt="Your reserved yacht image"
         />
       </figure>
+
+      <p class="title is-4">{{reservation.yacht.name}}</p>
     </div>
     <div class="card-content">
       <div class="media">
-        <div class="media-left">
-          <figure class="image is-128x128">
-            <img :src="getYachtOwnerImg" alt="Yacht image" />
+        <!-- <div class="media-left ">
+          <figure class="image  is-48x48">
+            <img class="is-rounded" :src="getYachtOwnerImg" alt="Yacht image" />
           </figure>
-        </div>
-        <div class="media-content">
-          <p class="title is-4">Owner name: {{reservation.yacht.owner.name}}</p>
-          <a class="subtitle is-6">Owner email: {{reservation.yacht.owner.email}}</a>
-          <p>From: {{reservation.fromDate}}</p>
-          <p>To: {{reservation.toDate}}</p>
-          <p>Number Of Guests: {{reservation.numOfGuest}}</p>
-          <p>Price Per Night: {{reservation.yacht.pricePerNight}}$</p>
-        </div>
-      </div>
+          <p class="subtitle is-6 is-capitalized">
+            {{reservation.yacht.owner.name}}
+            <br/>
+            the owner
+            
+          </p>
 
-      <div class="content">
-        <br />
-        <span>
-          <b>Created: {{+reservation.createdAt | moment("dddd, MMMM Do YYYY")}}</b>
-          <b>Before: {{+reservation.createdAt | moment("from","now")}}</b>
-        </span>
+        </div>-->
+        <div class="content">
+          <a class="subtitle is-6">email: {{reservation.yacht.owner.email}}</a>
+          <p>
+            From: {{reservation.fromDate}} &nbsp;&nbsp;
+            <br />
+            <span>To: {{reservation.toDate}}</span>
+            <br />
+            <span>Guests Allowed: {{reservation.numOfGuest}}</span>
+            <br />
+            <span>Price Per Night: {{reservation.yacht.pricePerNight}}$</span>
+          </p>
+          <p>
+            <span>reserved {{+reservation.createdAt | moment("from","now")}}</span>
+            <br />
+            <span>on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}</span>
+          </p>
+        </div>
       </div>
     </div>
   </section>
+
 </template>
 
 <script>
