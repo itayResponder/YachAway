@@ -30,8 +30,9 @@
         >
           <!-- HAVE RESERVATION -->
           <div v-if="reservations[0]">
-            <div v-for="reservation in reservations" :key=  "reservation._id" class="card">
-              <user-reservation-preview-card :reservation="reservation" />
+            <div v-for="reservation in reservations" :key=  "reservation._id">
+              <!-- <user-reservation-preview-card :reservation="reservation"  class="card" /> -->
+              <user-reservation-preview-row :reservation="reservation" />
             </div>
 
             <!--  END HAVE RESERVATION  -->
@@ -61,9 +62,11 @@
 
 <script>
 import emptyDataCase from "@/components/general/EmptyDataCase";
-import userReservationPreviewCard from "@/components/user/UserReservationPreviewCard"
+// import userReservationPreviewCard from "@/components/user/UserReservationPreviewCard"
+import userReservationPreviewRow from "@/components/user/UserReservationPreviewRow"
 export default {
-  components: { emptyDataCase, userReservationPreviewCard },
+  components: { emptyDataCase,  userReservationPreviewRow },
+  // userReservationPreviewCard
   data() {
     return {
       showUpcoming: true,
