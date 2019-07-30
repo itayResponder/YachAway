@@ -28,20 +28,20 @@
 
     <!-- TEXT -->
     <div class="column is-6 horiznal-shadow text-start">
-        <!-- <tbody> -->
-          <p class="near-table">
-            <!-- <td style="width:100%;"> -->
-                Reservation: &nbsp;
-                 <strong class="title is-4">{{reservation.yacht.name}}</strong>
-<br/>             
+      <!-- <tbody> -->
+      <p class="near-table">
+        <!-- <td style="width:100%;"> -->
+        Reservation: &nbsp;
+        <strong class="title is-4">{{reservation.yacht.name}}</strong>
+        <br />
         reserved on the {{+reservation.createdAt | moment(" MMMM Do YYYY")}}
-          <span>,&nbsp;&nbsp;</span>
-            {{+reservation.createdAt | moment("from","now")}}
-            <!-- </td> -->
-          </p>
-        <!-- </tbody> -->
+        <span>,&nbsp;&nbsp;</span>
+        {{+reservation.createdAt | moment("from","now")}}
+        <!-- </td> -->
+      </p>
+      <!-- </tbody> -->
 
-        <!--DETAILS -->
+      <!--DETAILS -->
       <table>
         <tbody class="has-gray-text text-start is-medium is-capitalized">
           <tr>
@@ -185,7 +185,8 @@ export default {
 table td {
   vertical-align: bottom;
 }
-td,  p.near-table {
+td,
+p.near-table {
   padding: 10px;
   /* width :150px */
 }
