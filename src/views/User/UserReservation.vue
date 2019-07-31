@@ -94,6 +94,9 @@ export default {
       });
       this.reservations = reservations;
     } catch (err) {
+      this.noPastBooking.title = "Couldn't connect to server"
+      this.noPastBooking.info = "Please check your connection"
+      this.noPastBooking.imageType = "noConnectionCrab"
       console.log("Couldent load reservations error:", err);
     }
   }
