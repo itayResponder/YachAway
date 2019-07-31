@@ -3,9 +3,9 @@
   <!-- desktop-->
   <header class="hero is-large is-fullheight-with-navbar-desktop">
     <!-- <section class="hero-video"> -->
-      <section class="has-bg-img ">
-        <!-- class="is-hidden-mobile" -->
-        <!-- <video
+    <section class="has-bg-img">
+      <!-- class="is-hidden-mobile" -->
+      <!-- <video
         poster="https://res.cloudinary.com/nivb/image/upload/v1562845570/hero/motor_yachts_lil9cp.jpg"
         id="bgvid"
         playsinline
@@ -17,57 +17,60 @@
           src="https://res.cloudinary.com/dopdel26f/video/upload/v1563442703/video/www.kizoa.com_y2mate.com_-_my_aspire_51m_video_OlXpmcyvPFE_1080p_exaq4d.mp4"
           type="video/mp4"
         />
-        </video> -->
+      </video>-->
 
-        <div class="hero-head">
-          <my-header :loggedInUser="loggedInUser" />
-        </div>
+      <div class="hero-head">
+        <my-header :loggedInUser="loggedInUser" />
+      </div>
 
-        <div class="hero-body">
-          <div class="container has-text-centered is-medium">
-            <div id="location-search-input">
-              <div class="input-group ">
-                <vue-google-autocomplete
-                  class="search-query form-control"
-                  ref="address"
-                  :country="['es','it','fr','gr']"
-                  id="map"
-                  placeholder="PIck Destination"
-                  v-on:placechanged="getAddressData"
-                ></vue-google-autocomplete>
-                <!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
-              </div>
+      <div class="hero-body">
+        <div class="container has-text-centered is-medium">
+          <div id="location-search-input">
+            <div class="input-group">
+              <vue-google-autocomplete
+                class="search-query form-control"
+                ref="address"
+                :country="['es','it','fr','gr']"
+                id="map"
+                placeholder="PIck Destination"
+                v-on:placechanged="getAddressData"
+              ></vue-google-autocomplete>
+              <!-- <input ref="autocomplete" onfocus value='' type="text" class="search-query" placeholder="Your next vacation" @keydown.enter="search" /> -->
             </div>
-            <span class="is-invisible">{{showYachtCity}}</span>
-            <!-- <p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p> -->
+          </div>
+          <span class="is-invisible">{{showYachtCity}}</span>
+          <!-- <p class="subtitle has-text-white">FEEL LIKE HOME AWAY FROM HOME</p> -->
 
-            <!-- popular tags -->
-            <div class="is-inline-flex" style="padding-top:1rem;">
-              <p class="has-text-white is-capitalized" style="padding-right:1rem; font-size:1.3rem;">popular:</p>
-              <div class="tags">
-                <!--maybe add to the above class for mobile ??:  field is-grouped is-grouped-multiline -->
-                <router-link
-                  to="yachts/italy"
-                  class="tag tag-size is-capitalized button is-outlined is-white"
-                >italy</router-link>
-                <router-link
-                  to="yachts/spain"
-                  class="tag tag-size is-capitalized button is-outlined is-white"
-                >spain</router-link>
-                <router-link
-                  to="yachts/france"
-                  class="tag tag-size is-capitalized button is-outlined is-white"
-                >france</router-link>
-                  <router-link
-                    to="yachts/greece"
-                    class="tag tag-size is-capitalized button is-outlined is-white"
-                  >greece</router-link>
-                  <span class="tag tag-size is-capitalized is-primary ">{{yachtsCount}} yachts</span>
-              </div>
+          <!-- popular tags -->
+          <div class="is-inline-flex" style="padding-top:1rem;">
+            <p
+              class="has-text-white is-capitalized"
+              style="padding-right:1rem; font-size:1.3rem;"
+            >popular:</p>
+            <div class="tags">
+              <!--maybe add to the above class for mobile ??:  field is-grouped is-grouped-multiline -->
+              <router-link
+                to="yachts/italy"
+                class="tag tag-size is-capitalized button is-outlined is-white"
+              >italy</router-link>
+              <router-link
+                to="yachts/spain"
+                class="tag tag-size is-capitalized button is-outlined is-white"
+              >spain</router-link>
+              <router-link
+                to="yachts/france"
+                class="tag tag-size is-capitalized button is-outlined is-white"
+              >france</router-link>
+              <router-link
+                to="yachts/greece"
+                class="tag tag-size is-capitalized button is-outlined is-white"
+              >greece</router-link>
+              <span class="tag tag-size is-capitalized is-primary">{{yachtsCount}} yachts</span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
     <!-- </section> -->
   </header>
 </template>
@@ -98,7 +101,7 @@ export default {
      * @param {Object} placeResultData PlaceResult object
      * @param {String} id Input container ID
      */
-    async getAddressData(addressData, placeResultData ) {
+    async getAddressData(addressData, placeResultData) {
       try {
         //  this.addressData = await addressData
         this.placeResultData = await placeResultData;
@@ -112,8 +115,8 @@ export default {
   },
   computed: {
     yachtsCount() {
-      var count = '3,183'
-      return count
+      var count = "3,183";
+      return count;
     },
     showYachtCity() {
       if (!this.countryCode) return;
@@ -148,9 +151,13 @@ export default {
 </script>
 
 <style scoped>
-.tag-size{
-  font-size: 1rem;
+@media (min-width: 960px) {
+  .tag-size {
+    font-size: 1rem;
+  }
 }
-
+.tag-size {
+  font-size: 0.7rem;
+}
 </style>
 
